@@ -1,0 +1,11 @@
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\Test\TJAPlayer3-Develop-ReWrite.exe.config
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\Test\TJAPlayer3-Develop-ReWrite.exe
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\Test\TJAPlayer3-Develop-ReWrite.pdb
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.AssemblyReference.cache
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.Properties.Discord.resources
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.Properties.Resources.resources
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.GenerateResource.cache
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.CoreCompileInputs.cache
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.CopyComplete
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3-Develop-ReWrite.exe
+C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3-Develop-ReWrite.pdb
