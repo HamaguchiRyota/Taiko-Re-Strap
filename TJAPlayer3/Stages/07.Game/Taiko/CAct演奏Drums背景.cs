@@ -710,6 +710,7 @@ namespace TJAPlayer3
                         TJAPlayer3.Tx.Background_Down_Sc_1.Opacity = Cin;
                         TJAPlayer3.Tx.Background_Down_M0.Opacity = Cin;
                         TJAPlayer3.Tx.Background_Down_M1.Opacity = Cin;
+                        TJAPlayer3.Tx.Background_Down_Splash.Opacity = Cin;
 
                         double TexSize = 1280 / TJAPlayer3.Tx.Background_Down_Scroll.szテクスチャサイズ.Width;
                         int ForLoop = (int)Math.Ceiling(TexSize) + 1;
@@ -727,10 +728,10 @@ namespace TJAPlayer3
 
                         TJAPlayer3.Tx.Background_Down_M1.t2D描画(TJAPlayer3.app.Device, 0, 260 + ymP);
 
-                        TJAPlayer3.Tx.Background_Down_Sc_1.t2D描画(TJAPlayer3.app.Device, 0 - this.ct下背景スクロール用タイマー2.n現在の値, 585);
+                        TJAPlayer3.Tx.Background_Down_Sc_1.t2D描画(TJAPlayer3.app.Device, 0 - this.ct下背景スクロール用タイマー2.n現在の値, 619);
                         for (int l = 1; l < ForLoop + 1; l++)
                         {
-                            TJAPlayer3.Tx.Background_Down_Sc_1.t2D描画(TJAPlayer3.app.Device, +(l * TJAPlayer3.Tx.Background_Down_Sc_1.szテクスチャサイズ.Width) - this.ct下背景スクロール用タイマー2.n現在の値, 585);
+                            TJAPlayer3.Tx.Background_Down_Sc_1.t2D描画(TJAPlayer3.app.Device, +(l * TJAPlayer3.Tx.Background_Down_Sc_1.szテクスチャサイズ.Width) - this.ct下背景スクロール用タイマー2.n現在の値, 619);
                         }
                         TJAPlayer3.Tx.Background_Down_Splash.t2D描画(TJAPlayer3.app.Device, 0, 360);
                         TJAPlayer3.Tx.Background_Down_Splash.Opacity = (int)(100.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ct点滅2.n現在の値 * 2 / 100.0)));

@@ -94,8 +94,9 @@ namespace TJAPlayer3
                     this.list進行文字列.Add("TJAP3DRW forked TJAPlayer3-Develop-ReWrite(@TouhouRenren)");
                     this.list進行文字列.Add("DRW edited by Mekk(Jamix_JP)");
                     this.list進行文字列.Add("2022_05/06 Release Version.");
+					this.list進行文字列.Add("");
 
-                    es = new CEnumSongs();
+					es = new CEnumSongs();
 					es.StartEnumFromCache();										// 曲リスト取得(別スレッドで実行される)
 					base.b初めての進行描画 = false;
 					return 0;
