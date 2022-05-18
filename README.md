@@ -2,7 +2,7 @@
  
 # 使用上の注意
 
-# hangelog
+# Changelog
 ```
 v0.0　TJAPlayer3-Develop-ReWrite(touhou_renren氏開発)
 
