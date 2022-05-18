@@ -41,18 +41,17 @@ namespace TJAPlayer3
                 if (!TJAPlayer3.stage演奏ドラム画面.actDan.GetFailedAllChallenges())
                 {
                     // 段位認定モード、クリア成功
-                    //this.Mode[0] = EndMode.StageCleared;
-                    /*
-                    if (TJAPlayer3.stage演奏ドラム画面.CChartScore[0].nMiss == 0)
+                    this.Mode[0] = EndMode.StageCleared;
+                    
+                    if (TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Miss == 0)
                     {
-                        if (TJAPlayer3.stage演奏ドラム画面.CChartScore[0].nGood == 0)
+                        if (TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Good == 0)
                             this.Mode[0] = EndMode.StageDondaFullCombo;
                         else
                             this.Mode[0] = EndMode.StageFullCombo;
                     }
                     else
                         this.Mode[0] = EndMode.StageCleared;
-                    */
 
                 }
                 else
