@@ -46,13 +46,13 @@ v0.5.7(2022_05/07)　下背景変更、下背景のフェード追加
 # To-Doリスト
 
 >選曲画面でのスコア記録の表示
-
+>
 >音色
-
+>
 >演奏右上にサブタイトルを表示するオプションの追加
-
+>
 >リザルト画面にもサブタイトルを表示するオプションの追加(サブタイトルがない場合の自動座標調整も追加する)
-
+>
 >リザルトの演出(山、背景)
 
 
@@ -60,17 +60,17 @@ v0.5.7(2022_05/07)　下背景変更、下背景のフェード追加
 以下の開発者様のコードを参考に開発させていただいております。
 
 >DTXMania(FROM様)
-
+>
 >TJAP2fPC(Kairera0467様)
-
+>
 >TJAPlayer3(Aioilight様)
-
+>
 >TJAPlayer3(TwoPointZero様)
-
+>
 >TJAPlayer3-Develop-ReWrite(touhou_renren様)
-
+>
 >DonSpire(CYakigasi様)
-
+>
 >TJAPlayer3-f(Mr.Ojii様)
-
+>
 >OpenTaiko(0auBSQ様)
