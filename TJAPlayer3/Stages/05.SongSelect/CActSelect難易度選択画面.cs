@@ -284,13 +284,11 @@ namespace TJAPlayer3
                     if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RBlue2P))
                     {
                         TJAPlayer3.Skin.sound変更音.t再生する();
-                        TJAPlayer3.Skin.sound裏.t再生する();
                         this.t次に移動(1);
                     }
                     else if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LBlue2P))
                     {
                         TJAPlayer3.Skin.sound変更音.t再生する();
-                        TJAPlayer3.Skin.sound裏.t再生する();
                         this.t前に移動(1);
                     }
                     if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LRed2P) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RRed2P))

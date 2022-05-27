@@ -342,7 +342,6 @@ namespace TJAPlayer3
 						{
                             TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 10, 5);
                             TJAPlayer3.Tx.Chara_Ef.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ctCharaEf.n現在の値 * 2 / 100.0)));
-
                         }
 
                     }
