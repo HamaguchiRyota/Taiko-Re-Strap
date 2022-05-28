@@ -244,10 +244,7 @@ namespace TJAPlayer3
                         if (TJAPlayer3.Tx.Chara_Become_Maxed[i] != null && TJAPlayer3.Skin.Game_Chara_Ptn_SoulIn != 0 || TJAPlayer3.Tx.Chara_Ef != null)
                         {
                             TJAPlayer3.Tx.Chara_Become_Maxed[(int)this.ctキャラクターアクション_魂MAX[i].n現在の値].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Chara_X[i], TJAPlayer3.Skin.Game_Chara_Y[i]);
-                            //TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Chara_X[i], TJAPlayer3.Skin.Game_Chara_Y[i]);
                         }
-
-                        //TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Chara_X[i], TJAPlayer3.Skin.Game_Chara_Y[i]);
 
                         if (this.ctキャラクターアクション_魂MAX[i].b終了値に達した)
                         {

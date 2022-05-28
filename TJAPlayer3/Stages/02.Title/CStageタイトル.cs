@@ -493,7 +493,9 @@ namespace TJAPlayer3
 					TJAPlayer3.Tx.Entry_Player[2].t2D描画(TJAPlayer3.app.Device, ptプレイヤーエントリーバー座標[n現在の選択行プレイヤーエントリー].X, ptプレイヤーエントリーバー座標[n現在の選択行プレイヤーエントリー].Y,
 						new RectangleF(n現在の選択行プレイヤーエントリー == 1 ? 199 : 0, 92 * 2, n現在の選択行プレイヤーエントリー == 1 ? 224 : 199, 92));
 
-					TJAPlayer3.NamePlate.tNamePlateDraw(530, 385, 0, true, ctエントリーバー決定点滅.n現在の値 >= 800 ? 255 - (ctエントリーバー決定点滅.n現在の値 - 800) : (this.ctバナパス読み込み成功.n現在の値 - 3400));
+					Opacity = ctエントリーバー決定点滅.n現在の値 >= 800 ? 255 - (ctエントリーバー決定点滅.n現在の値 - 800) : (this.ctバナパス読み込み成功.n現在の値 - 3400);
+					if (Opacity > 0)
+						TJAPlayer3.NamePlate.tNamePlateDraw(530, 385, 0, true, Opacity);
 
 					if (!TJAPlayer3.Skin.soundTaikoS.bPlayed)
 						TJAPlayer3.Skin.soundTaikoS.t再生する();

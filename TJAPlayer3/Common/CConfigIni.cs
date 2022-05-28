@@ -760,7 +760,6 @@ namespace TJAPlayer3
         public bool ShowFooter;
         public bool ShowMob;
         public bool ShowPuchiChara; // リザーブ
-        //
 
         public EScrollMode eScrollMode = EScrollMode.Normal;
         public bool bスクロールモードを上書き = false;
@@ -1741,10 +1740,9 @@ namespace TJAPlayer3
             sw.WriteLine("; 真打モード (0:OFF, 1:ON)");
             sw.WriteLine("; Fixed score mode (0:OFF, 1:ON)");
             sw.WriteLine("{0}={1}", nameof(ShinuchiMode), ShinuchiMode ? 1 : 0);
-            //sw.WriteLine( "; 1ノーツごとのスクロール速度をランダムで変更します。(0:OFF, 1:ON)" );
-            //sw.WriteLine( "HispeedRandom={0}", this.bHispeedRandom ? 1 : 0 );
-            //sw.WriteLine();
-            sw.WriteLine( "; 大音符の両手入力待機時間(ms)" );
+			sw.WriteLine();
+
+			sw.WriteLine( "; 大音符の両手入力待機時間(ms)" );
 			sw.WriteLine( "BigNotesWaitTime={0}", this.n両手判定の待ち時間 );
 			sw.WriteLine();
 			sw.WriteLine( "; 大音符の両手判定(0:OFF, 1:ON)" );
@@ -1786,9 +1784,6 @@ namespace TJAPlayer3
             sw.WriteLine( "; プレイ人数" );
             sw.WriteLine( "PlayerCount={0}", this.nPlayerCount );
             sw.WriteLine();
-            //sw.WriteLine( "; 選曲画面の初期選択難易度(ベータ版)" );
-			//sw.WriteLine( "DifficultPriority={0}", this.bJudgeCountDisplay ? 1 : 0 );
-			//sw.WriteLine();
 
 			sw.WriteLine( ";-------------------" );
 			#endregion

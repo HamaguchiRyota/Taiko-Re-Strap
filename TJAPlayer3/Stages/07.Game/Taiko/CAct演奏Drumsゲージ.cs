@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
 using System.Drawing;
-using System.Diagnostics;
-using SlimDX;
 using FDK;
 
 namespace TJAPlayer3
@@ -123,7 +119,6 @@ namespace TJAPlayer3
                 this.ct虹アニメ = new CCounter( 0, TJAPlayer3.Skin.Game_Gauge_Rainbow_Ptn -1, TJAPlayer3.Skin.Game_Gauge_Rainbow_Timer, TJAPlayer3.Timer );
                 this.ct虹透明度 = new CCounter(0, TJAPlayer3.Skin.Game_Gauge_Rainbow_Timer-1, 1, TJAPlayer3.Timer);
                 this.ctGaugeFlash = new CCounter(0, 532, 1, TJAPlayer3.Timer);
-                this.ctCharaFlash = new CCounter(0, 532, 1, TJAPlayer3.Timer);
                 this.ctCharaEf = new CCounter(0, 100, 17, TJAPlayer3.Timer);
                 base.OnManagedリソースの作成();
 			}
@@ -334,13 +329,12 @@ namespace TJAPlayer3
                 if (TJAPlayer3.Tx.Chara_Ef != null)
                 {
                     //仮置き
-                    //int[] nCharaEf = new int[] { 52, 443, 0, 0 };
+                    int[] nCharaEf = new int[] { 0, 530, 0, 0 };
                     for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                     {
-
                         if (this.db現在のゲージ値[i] >= 100.0)
 						{
-                            TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 10, 5);
+                            TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 10, nCharaEf[ i ]);
                             TJAPlayer3.Tx.Chara_Ef.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ctCharaEf.n現在の値 * 2 / 100.0)));
                         }
 
@@ -386,7 +380,6 @@ namespace TJAPlayer3
         #region [ private ]
         //-----------------
         private CCounter ctGaugeFlash;
-        private CCounter ctCharaFlash;
 
         protected STSTATUS[] st花火状態 = new STSTATUS[ 32 ];
         protected STSTATUS[] st花火状態2P = new STSTATUS[ 32 ];

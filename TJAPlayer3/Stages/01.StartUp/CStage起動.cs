@@ -93,7 +93,7 @@ namespace TJAPlayer3
                     this.list進行文字列.Add("");
                     this.list進行文字列.Add("TJAP3DRW forked TJAPlayer3-Develop-ReWrite(@TouhouRenren)");
                     this.list進行文字列.Add("DRW edited by Mekk(Jamix_JP)");
-                    this.list進行文字列.Add("2022_05/06 Release Version.");
+                    this.list進行文字列.Add("2022_05/28 Release Version.");
 					this.list進行文字列.Add("");
 
 					es = new CEnumSongs();
@@ -101,11 +101,6 @@ namespace TJAPlayer3
 					base.b初めての進行描画 = false;
 					return 0;
 				}
-
-				// CSongs管理 s管理 = CDTXMania.Songs管理;
-
-				//if( this.tx背景 != null )
-				//	this.tx背景.t2D描画( CDTXMania.app.Device, 0, 0 );
 
 				#region [ this.str現在進行中 の決定 ]
 				//-----------------
