@@ -461,7 +461,7 @@ namespace TJAPlayer3
 				if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan && TJAPlayer3.stage結果.nスコアランク > 0)
 				{
 					int CurrentFlash = 0;
-					int[] FlashTimes = { 1500, 1540, 1580, 1620, 1660, 1700, 1740, 1780 };
+					int[] FlashTimes = { 1500, 1540, 1580, 1620, 0, 0, 0, 0 };
 
 					if (ctFlash_Icon.n現在の値 >= FlashTimes[0] && ctFlash_Icon.n現在の値 <= FlashTimes[1] || ctFlash_Icon.n現在の値 >= FlashTimes[4] && ctFlash_Icon.n現在の値 <= FlashTimes[5])
 						CurrentFlash = 1;
@@ -533,7 +533,7 @@ namespace TJAPlayer3
 					if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)(Difficulty.Dan) && ClearType >= 0)
 					{
 						int CurrentFlash = 0;
-						int[] FlashTimes = { 2000, 2040, 2080, 2120, 2160, 2200, 2240, 2280 };
+						int[] FlashTimes = { 2000, 2040, 2080, 2120, 0, 0, 0, 0 };
 
 						if (ctFlash_Icon.n現在の値 >= FlashTimes[0] && ctFlash_Icon.n現在の値 <= FlashTimes[1] || ctFlash_Icon.n現在の値 >= FlashTimes[4] && ctFlash_Icon.n現在の値 <= FlashTimes[5])
 							CurrentFlash = 1;
