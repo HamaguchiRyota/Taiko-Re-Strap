@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
-using System.Drawing;
 using System.IO;
-using SlimDX;
 using FDK;
 
 namespace TJAPlayer3
@@ -56,10 +52,6 @@ namespace TJAPlayer3
 			this.bやり直しを選択した = false;
 			base.tActivatePopupMenu( einst );
 		}
-		//public void tDeativatePopupMenu()
-		//{
-		//	base.tDeativatePopupMenu();
-		//}
 
 		public override void t進行描画sub()
 		{

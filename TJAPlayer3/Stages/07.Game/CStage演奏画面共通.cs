@@ -3261,10 +3261,6 @@ namespace TJAPlayer3
                     }
                 }
 
-                //if((!pChip.bHit || pChip.bShow) && (pChip.nバーからの距離dot.Drums < 0))
-                //{
-                //    NowProcessingChip[pChip.nPlayerSide] = nCurrentTopChip;
-                //}
 
                 if (pChip.nPlayerSide == nPlayer && pChip.n発声時刻ms >= n現在時刻ms)
                 {
@@ -3944,14 +3940,8 @@ namespace TJAPlayer3
 
                             pChip.bHit = true;
                         }
-
                         break;
                     case 0xE0:
-                        //if( !pChip.bHit && ( pChip.nバーからの距離dot.Drums < 0 ) )
-                        //{
-                        //#BARLINEONと#BARLINEOFF
-                        //演奏中は使用しません。
-                        //}
                         break;
                     case 0xE1:
                         if (!pChip.bHit && (pChip.nバーからの距離dot.Drums < 0))
@@ -4020,7 +4010,7 @@ namespace TJAPlayer3
                             pChip.bHit = true;
                         }
                         break;
-                        #endregion
+                    #endregion
                 }
 
             }
@@ -4391,6 +4381,9 @@ namespace TJAPlayer3
             for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
             {
                 this.chip現在処理中の連打チップ[i] = null;
+                this.actChara.b風船連打中[i] = false;
+                this.actChara.bマイどんアクション中[i] = false;
+                this.actChara.アクションタイマーリセット(i);
             }
             this.bPAUSE = false;
         }
@@ -4691,64 +4684,6 @@ namespace TJAPlayer3
                 //
             }
 
-            //CDTXMania.act文字コンソール.tPrint(60, 140, C文字コンソール.Eフォント種別.白, ct制御タイマ.n現在の値.ToString());
-            //this.nタイマ番号 = (int)this.actChara.ctモブモーション.n現在の値;
-            //CDTXMania.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, this.nタイマ番号.ToString());
-
-
-            //if (this.actChara.ctモブモーション.n現在の値 <= 30)
-            //{
-            //    this.n現在の音符の顔番号 = 0;
-            //} else
-            //{
-            //    this.n現在の音符の顔番号 = 1;
-            //}
-
-            /*long num = FDK.CSound管理.rc演奏用タイマ.n現在時刻;
-			if( num < this.ct制御タイマ )
-			{
-				this.ct制御タイマ = num;
-			}
-			while( ( num - this.ct制御タイマ ) >= 1000 )
-			{
-				if( this.n現在の音符の顔番号 == 0 )
-				{
-					this.n現在の音符の顔番号 = 1;
-		        }
-				else if( this.n現在の音符の顔番号 == 1 )
-				{
-					this.n現在の音符の顔番号 = 0;
-		        }
-                if( this.actCombo.n現在のコンボ数.P1 < 50 )
-                {
-                    this.ct制御タイマ += 500;
-                }
-                else if(this.actCombo.n現在のコンボ数.P1 >= 50 && this.actCombo.n現在のコンボ数.P1 < 150)
-                {
-                    this.ct制御タイマ += 400;
-                }
-                else if( this.actCombo.n現在のコンボ数.P1 >= 150 && this.actCombo.n現在のコンボ数.P1 < 250 )
-                {
-                    this.ct制御タイマ += 300;
-                }
-                else if( this.actCombo.n現在のコンボ数.P1 >= 250 && this.actCombo.n現在のコンボ数.P1 < 300 )
-                {
-                    this.ct制御タイマ += 200;
-                }
-                else if( this.actCombo.n現在のコンボ数.P1 >= 300 )
-                {
-                    this.ct制御タイマ += 80;
-                }
-                else
-                {
-                    this.ct制御タイマ += 500;
-                }
-		    }*/
-
-            //if ( this.actChara.ctゴーゴーモーション != null )
-            //{
-            //    this.actChara.ctゴーゴーモーション.t進行LoopDb();
-            //}
         }
 
         protected bool t進行描画_フェードイン_アウト()
@@ -4884,11 +4819,6 @@ namespace TJAPlayer3
 
                 }
 
-                //this.nScore[ 0 ] = (int)nInit;
-                //this.nScore[ 1 ] = (int)( nInit + nDiff );
-                //this.nScore[ 2 ] = (int)( nInit + ( nDiff * 2 ) );
-                //this.nScore[ 3 ] = (int)( nInit + ( nDiff * 4 ) );
-                //this.nScore[ 4 ] = (int)( nInit + ( nDiff * 8 ) );
             }
         }
     }

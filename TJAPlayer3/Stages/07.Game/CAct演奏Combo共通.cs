@@ -146,13 +146,11 @@ namespace TJAPlayer3
 		protected const int nドラムコンボの文字間隔 = -6;
 		protected int[] nジャンプ差分値 = new int[180];
 		protected CSTATUS status;
-		//protected CTexture txCOMBO太鼓;
-		//protected CTexture txCOMBO太鼓_でかいやつ;
-		//protected CTexture txコンボラメ;
 		public CCounter[] ctコンボ加算;
 		public CCounter ctコンボラメ;
 
-		protected float[,] nコンボ拡大率_座標 = new float[,]{
+		protected float[,] nコンボ拡大率_座標 = new float[,]
+		{
 						{1.11f,-7},
 						{1.22f,-14},
 						{1.2f,-12},
@@ -162,8 +160,9 @@ namespace TJAPlayer3
 						{1.06f,-3},
 						{1.04f,-2},
 						{1.0f,0},
-					};
-		protected float[,] nコンボ拡大率_座標_100combo = new float[,]{
+		};
+		protected float[,] nコンボ拡大率_座標_100combo = new float[,]
+		{
 						{0.81f,-7},
 						{0.92f,-14},
 						{0.9f,-12},
@@ -173,8 +172,9 @@ namespace TJAPlayer3
 						{0.78f,-3},
 						{0.74f,-2},
 						{0.7f,0},
-				};
-		protected float[,] nコンボ拡大率_座標_1000combo = new float[,]{
+		};
+		protected float[,] nコンボ拡大率_座標_1000combo = new float[,]
+		{
 						{1.11f,-7},
 						{1.22f,-14},
 						{1.2f,-12},
@@ -184,9 +184,7 @@ namespace TJAPlayer3
 						{1.06f,-3},
 						{1.04f,-2},
 						{1.0f,0},
-					};
-
-
+		};
 		private float[] ComboScale = new float[]
 		{
 			 0.000f,

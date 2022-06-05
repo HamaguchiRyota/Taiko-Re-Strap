@@ -269,13 +269,6 @@ namespace TJAPlayer3
 
 				int AnimeCount = 3000 + (int)ctゲージアニメ.n終了値 * 59;
 				int ScoreApparitionTimeStamp = AnimeCount + 420 * 4 + 840;
-				//bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
-				//bool is2PSide = TJAPlayer3.P1IsBlue();
-				//int shift = 635;
-				//int shiftPos = (i == 1 || is2PSide) ? 1 : 0;
-				//int totalShift = shiftPos * shift;
-				//int shift = 635;
-
 
 				bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
 				//bool is2PSide = TJAPlayer3.P1IsBlue();
@@ -287,7 +280,7 @@ namespace TJAPlayer3
 
 				TJAPlayer3.Tx.Result_Gauge_Base.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
-				#region [ ModIcons ]
+				#region [ オプションアイコン・ModIcons ]
 				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
 				{
 					ModIcons.tDisplayModsMenu(185 + i * 980, 130, i);
@@ -533,7 +526,7 @@ namespace TJAPlayer3
 					if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)(Difficulty.Dan) && ClearType >= 0)
 					{
 						int CurrentFlash = 0;
-						int[] FlashTimes = { 2000, 2040, 2080, 2120, 0, 0, 0, 0 };
+						int[] FlashTimes = { 0, 0, 0, 0, 2000, 2040, 2080, 2120 };
 
 						if (ctFlash_Icon.n現在の値 >= FlashTimes[0] && ctFlash_Icon.n現在の値 <= FlashTimes[1] || ctFlash_Icon.n現在の値 >= FlashTimes[4] && ctFlash_Icon.n現在の値 <= FlashTimes[5])
 							CurrentFlash = 1;

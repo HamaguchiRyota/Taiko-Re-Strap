@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using FDK;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -317,8 +315,6 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
-				//this.txScore = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\7_Score_number.png" ) );
-    //            this.txScore_1P = CDTXMania.tテクスチャの生成(CSkin.Path(@"Graphics\7_Score_number_1P.png"));
 				base.OnManagedリソースの作成();
 			}
 		}
@@ -326,8 +322,6 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
-				//CDTXMania.tテクスチャの解放( ref this.txScore );
-    //            CDTXMania.tテクスチャの解放(ref this.txScore_1P);
 				base.OnManagedリソースの解放();
 			}
 		}
@@ -346,7 +340,6 @@ namespace TJAPlayer3
                             case 0:
                                 if( TJAPlayer3.Tx.Taiko_Score[0] != null )
                                 {
-                                    //this.txScore.color4 = new SlimDX.Color4( 1.0f, 1.0f, 1.0f );
                                     TJAPlayer3.Tx.Taiko_Score[0].Opacity = alpha;
                                     TJAPlayer3.Tx.Taiko_Score[0].vc拡大縮小倍率.Y = ScoreScale[this.ct点数アニメタイマ[player].n現在の値];
                                     TJAPlayer3.Tx.Taiko_Score[0].t2D拡大率考慮下基準描画( TJAPlayer3.app.Device, x , y, rectangle );
@@ -356,8 +349,6 @@ namespace TJAPlayer3
                             case 1:
                                 if(TJAPlayer3.Tx.Taiko_Score[1] != null )
                                 {
-                                    //this.txScore.color4 = new SlimDX.Color4( 1.0f, 0.5f, 0.4f );
-                                    //this.txScore.color4 = CDTXMania.Skin.cScoreColor1P;
                                     TJAPlayer3.Tx.Taiko_Score[1].Opacity = alpha;
                                     TJAPlayer3.Tx.Taiko_Score[1].vc拡大縮小倍率.Y = 1;
                                     TJAPlayer3.Tx.Taiko_Score[1].t2D拡大率考慮下基準描画( TJAPlayer3.app.Device, x, y, rectangle );
@@ -366,8 +357,6 @@ namespace TJAPlayer3
                             case 2:
                                 if(TJAPlayer3.Tx.Taiko_Score[2] != null )
                                 {
-                                    //this.txScore.color4 = new SlimDX.Color4( 0.4f, 0.5f, 1.0f );
-                                    //this.txScore.color4 = CDTXMania.Skin.cScoreColor2P;
                                     TJAPlayer3.Tx.Taiko_Score[2].Opacity = alpha;
                                     TJAPlayer3.Tx.Taiko_Score[2].vc拡大縮小倍率.Y = 1;
                                     TJAPlayer3.Tx.Taiko_Score[2].t2D拡大率考慮下基準描画( TJAPlayer3.app.Device, x, y, rectangle );

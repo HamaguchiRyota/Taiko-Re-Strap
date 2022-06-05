@@ -345,7 +345,7 @@ namespace TJAPlayer3
 				tSongNumberDraw(1204, 14, MaxSong.ToString());
 
 
-				#region ネームプレート
+				#region [ ネームプレート ]
 				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
 				{
 					TJAPlayer3.NamePlate.tNamePlateDraw(28, 619, i);
