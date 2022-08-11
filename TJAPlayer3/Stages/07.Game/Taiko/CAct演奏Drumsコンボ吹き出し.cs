@@ -122,14 +122,17 @@ namespace TJAPlayer3
 
                         if( this.ct進行[ i ].b進行中 )
                         {
+                            //コンボバルーン
                             TJAPlayer3.Tx.Balloon_Combo[ i ].t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Balloon_Combo_X[ i ], TJAPlayer3.Skin.Game_Balloon_Combo_Y[ i ], new RectangleF(NowDrawBalloon * 360f, 0, 360f, 192) );
                             if( this.nCombo_渡[ i ] < 1000 ) //2016.08.23 kairera0467 仮実装。
                             {
+                                //コンボ文字
                                 this.t小文字表示( TJAPlayer3.Skin.Game_Balloon_Combo_Number_X[ i], TJAPlayer3.Skin.Game_Balloon_Combo_Number_Y[ i ], string.Format( "{0,4:###0}", this.nCombo_渡[ i ] ), i);
                                 TJAPlayer3.Tx.Balloon_Number_Combo.t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Balloon_Combo_Text_X[ i] + 6 - NowDrawBalloon * 3, TJAPlayer3.Skin.Game_Balloon_Combo_Text_Y[ i ], new Rectangle(0, 124, 100, 30));
                             }
                             else
                             {
+                                //4桁コンボナンバー？
                                 this.t小文字表示( TJAPlayer3.Skin.Game_Balloon_Combo_Number_Ex_X[ i], TJAPlayer3.Skin.Game_Balloon_Combo_Number_Ex_Y[ i ], string.Format( "{0,4:###0}", this.nCombo_渡[ i ] ), i );
                                 TJAPlayer3.Tx.Balloon_Number_Combo.vc拡大縮小倍率.X = 1.0f;
                                 TJAPlayer3.Tx.Balloon_Number_Combo.t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Balloon_Combo_Text_Ex_X[ i] + 6 - NowDrawBalloon * 3, TJAPlayer3.Skin.Game_Balloon_Combo_Text_Ex_Y[ i ], new Rectangle( 0, 124, 100, 30 ) );
@@ -176,7 +179,7 @@ namespace TJAPlayer3
 						if(TJAPlayer3.Tx.Balloon_Number_Combo != null )
 						{
                             if (int.Parse(str) >= 1000)
-                                TJAPlayer3.Tx.Balloon_Number_Combo.vc拡大縮小倍率.X = 0.8f;
+                                TJAPlayer3.Tx.Balloon_Number_Combo.vc拡大縮小倍率.X = 0.7f;
                             else
                                 TJAPlayer3.Tx.Balloon_Number_Combo.vc拡大縮小倍率.X = 1.0f;
 

@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\TJAPlayer3.csproj": {}
+    "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj": {
+    "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj",
-        "projectName": "FDK19",
-        "projectPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj",
-        "packagesPath": "C:\\Users\\xxryo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\obj\\",
+        "projectUniqueName": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+        "projectName": "FDK",
+        "projectPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+        "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\xxryo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -73,18 +77,22 @@
         }
       }
     },
-    "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\TJAPlayer3.csproj": {
+    "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\TJAPlayer3.csproj",
-        "projectName": "TJAPlayer3",
-        "projectPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\TJAPlayer3.csproj",
-        "packagesPath": "C:\\Users\\xxryo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\obj\\",
+        "projectUniqueName": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
+        "projectName": "Taiko-Re-Strap",
+        "projectPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
+        "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\xxryo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,8 +105,8 @@
         "frameworks": {
           "net48": {
             "projectReferences": {
-              "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj": {
-                "projectPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj"
+              "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
+                "projectPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj"
               }
             }
           }

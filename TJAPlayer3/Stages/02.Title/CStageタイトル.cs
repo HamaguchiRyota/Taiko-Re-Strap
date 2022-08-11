@@ -38,7 +38,7 @@ namespace TJAPlayer3
 
 				this.ctどんちゃんエントリーループ = new CCounter();
 				this.ctどんちゃんイン = new CCounter();
-				this.ctどんちゃんループ = new CCounter(0, TJAPlayer3.Tx.Entry_Donchan_Normal.Length - 1, 1000 / 30, TJAPlayer3.Timer);
+				this.ctどんちゃんループ = new CCounter(0, TJAPlayer3.Tx.Entry_Donchan_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);
 
 				this.ctBarAnimeIn = new CCounter();
 				this.ctBarMove = new CCounter();

@@ -638,11 +638,10 @@ namespace TJAPlayer3
                 if (TJAPlayer3.Tx.Background_Down != null)
                 {
                     TJAPlayer3.Tx.Background_Down.t2D描画(TJAPlayer3.app.Device, 0, 360);
-                    TJAPlayer3.Tx.Background_Down_Light_A.t2D描画(TJAPlayer3.app.Device, 0, 360);
-                    TJAPlayer3.Tx.Background_Down_Light_A.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ct点滅0.n現在の値 * 2 / 100.0)));//176.0 + 80.0
+                    //TJAPlayer3.Tx.Background_Down_Light_A.t2D描画(TJAPlayer3.app.Device, 0, 360);
+                    //TJAPlayer3.Tx.Background_Down_Light_A.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ct点滅0.n現在の値 * 2 / 100.0)));//176.0 + 80.0
                     TJAPlayer3.Tx.Background_Down_Light_B.t2D描画(TJAPlayer3.app.Device, 0, 360);
                     TJAPlayer3.Tx.Background_Down_Light_B.Opacity = (int)(176.0 + 30.0 * Math.Sin((double)(2 * Math.PI * this.ct点滅1.n現在の値 * 2 / 500.0)));//176.0 + 80.0
-                    TJAPlayer3.Tx.Background_Down_add.t2D描画(TJAPlayer3.app.Device, 0, 360);
                 }
                 if (TJAPlayer3.stage演奏ドラム画面.bIsAlreadyCleared[0])
                 {

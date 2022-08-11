@@ -521,8 +521,6 @@ namespace TJAPlayer3
             Background_Down_Splash = TxC(GAME + BACKGROUND + @"0\" + @"Down_Splash.png");
 
             //Background_Down_Clear_Light = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light.png");
-            Background_Down_Light_A = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light_A.png");
-            Background_Down_add = TxC(GAME + BACKGROUND + @"0\" + @"Down_add.png");
             Background_Down_Light_B = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light_B.png");
             Background_Down_Scroll = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll.png");
             //Background_Down_Scroll_Matu = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll_Matu.png");
@@ -544,13 +542,15 @@ namespace TJAPlayer3
             Taiko_NamePlate = new CTexture[2];
             Taiko_NamePlate[0] = TxC(GAME + TAIKO + @"1P_NamePlate.png");
             Taiko_NamePlate[1] = TxC(GAME + TAIKO + @"2P_NamePlate.png");
-            Taiko_Base = TxC(GAME + TAIKO + @"Base.png");
-            Taiko_Don_Left = TxC(GAME + TAIKO + @"Don_L.png");
-            Taiko_Don_Right = TxC(GAME + TAIKO + @"Don_R.png");
-            Taiko_Ka_Left = TxC(GAME + TAIKO + @"Ka_L.png");
-            Taiko_Ka_Right = TxC(GAME + TAIKO + @"Ka_R.png");
-            Taiko_LevelUp = TxC(GAME + TAIKO + @"LevelUp.png");
-            Taiko_LevelDown = TxC(GAME + TAIKO + @"LevelDown.png");
+            Taiko_Base = TxC(GAME + TAIKO + @"Taiko_M.png");
+            Taiko_Don_Left = TxC(GAME + TAIKO + @"Taiko_M.png");
+            Taiko_Don_Right = TxC(GAME + TAIKO + @"Taiko_M.png");
+            Taiko_Ka_Left = TxC(GAME + TAIKO + @"Taiko_M.png");
+            Taiko_Ka_Right = TxC(GAME + TAIKO + @"Taiko_M.png");
+
+
+            Taiko_LevelUp = TxC(GAME + TAIKO + @"Level.png");
+            Taiko_LevelDown = TxC(GAME + TAIKO + @"Level.png");
             Couse_Symbol = new CTexture[(int)Difficulty.Total + 1]; // +1は真打ちモードの分
             string[] Couse_Symbols = new string[(int)Difficulty.Total + 1] { "Easy", "Normal", "Hard", "Oni", "Edit", "Tower", "Dan", "Shin" };
             for (int i = 0; i < (int)Difficulty.Total + 1; i++)
@@ -1020,9 +1020,7 @@ namespace TJAPlayer3
             Background_Down_Splash,
 
         //Background_Down_Clear_Light,
-            Background_Down_Light_A,
             Background_Down_Light_B,
-            Background_Down_add,
             Background_Down_Scroll;
             //Background_Down_Scroll_Matu,
             //Background_Down_Scroll_Kumo,

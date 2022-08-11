@@ -326,10 +326,7 @@ namespace TJAPlayer3
 					TJAPlayer3.Tx.Result_Background[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
 				}
 
-				if (TJAPlayer3.Tx.Result_Header != null)
-				{
-					TJAPlayer3.Tx.Result_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
-				}
+
 
 				if (this.actParameterPanel.On進行描画() == 0)
 				{

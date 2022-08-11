@@ -9,3 +9,15 @@ C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Rele
 C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.CopyComplete
 C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Release\TJAP3DRW.exe
 C:\Users\xxryo\Desktop\TJAPlayer3-Develop-ReWrite-master\TJAPlayer3\obj\x86\Release\TJAP3DRW.pdb
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.AssemblyReference.cache
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.SuggestedBindingRedirects.cache
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.Properties.Discord.resources
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.Properties.Resources.resources
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.GenerateResource.cache
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.CoreCompileInputs.cache
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.CopyComplete
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\Test\Taiko-Re-Strap.exe.config
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\Test\Taiko-Re-Strap.exe
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\Test\Taiko-Re-Strap.pdb
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\Taiko-Re-Strap.exe
+C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\Taiko-Re-Strap.pdb

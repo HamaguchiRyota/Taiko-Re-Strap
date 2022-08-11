@@ -270,6 +270,18 @@ namespace TJAPlayer3
 				int AnimeCount = 3000 + (int)ctゲージアニメ.n終了値 * 59;
 				int ScoreApparitionTimeStamp = AnimeCount + 420 * 4 + 840;
 
+				if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500)
+				{
+					if (TJAPlayer3.Tx.Result_Background != null)
+					{
+						TJAPlayer3.Tx.Result_Background[1].t2D描画(TJAPlayer3.app.Device, 0, 0);
+					}
+				}
+				if (TJAPlayer3.Tx.Result_Header != null)
+				{
+					TJAPlayer3.Tx.Result_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
+				}
+
 				bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
 				//bool is2PSide = TJAPlayer3.P1IsBlue();
 				TJAPlayer3.Tx.Result_Mountain[0].t2D描画(TJAPlayer3.app.Device, 0, 0);

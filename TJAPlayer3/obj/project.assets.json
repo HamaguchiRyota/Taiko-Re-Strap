@@ -71,7 +71,7 @@
           "lib/NET40/SlimDX.dll": {}
         }
       },
-      "FDK19/1.0.0": {
+      "FDK/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
@@ -83,10 +83,10 @@
           "SlimDX": "4.0.13.44"
         },
         "compile": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         },
         "runtime": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         }
       }
     },
@@ -160,7 +160,7 @@
           "lib/NET40/SlimDX.dll": {}
         }
       },
-      "FDK19/1.0.0": {
+      "FDK/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
@@ -172,10 +172,10 @@
           "SlimDX": "4.0.13.44"
         },
         "compile": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         },
         "runtime": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         }
       }
     },
@@ -249,7 +249,7 @@
           "lib/NET40/SlimDX.dll": {}
         }
       },
-      "FDK19/1.0.0": {
+      "FDK/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
@@ -261,10 +261,10 @@
           "SlimDX": "4.0.13.44"
         },
         "compile": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         },
         "runtime": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         }
       }
     },
@@ -338,7 +338,7 @@
           "lib/NET40/SlimDX.dll": {}
         }
       },
-      "FDK19/1.0.0": {
+      "FDK/1.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.8",
         "dependencies": {
@@ -350,10 +350,10 @@
           "SlimDX": "4.0.13.44"
         },
         "compile": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         },
         "runtime": {
-          "bin/placeholder/FDK19.dll": {}
+          "bin/placeholder/FDK.dll": {}
         }
       }
     }
@@ -502,7 +502,7 @@
         "slimdx.nuspec"
       ]
     },
-    "FDK19/1.0.0": {
+    "FDK/1.0.0": {
       "type": "project",
       "path": "../FDK19/FDK19.csproj",
       "msbuildProject": "../FDK19/FDK19.csproj"
@@ -510,7 +510,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
-      "FDK19 >= 1.0.0",
+      "FDK >= 1.0.0",
       "LargeAddressAware >= 1.0.5",
       "ReadJEnc >= 1.3.1.2",
       "SharpDX >= 4.2.0",
@@ -520,20 +520,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\xxryo\\.nuget\\packages\\": {}
+    "C:\\Users\\hama\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\TJAPlayer3.csproj",
-      "projectName": "TJAPlayer3",
-      "projectPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\TJAPlayer3.csproj",
-      "packagesPath": "C:\\Users\\xxryo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\TJAPlayer3\\obj\\",
+      "projectUniqueName": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
+      "projectName": "Taiko-Re-Strap",
+      "projectPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
+      "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\TJAPlayer3\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\xxryo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -546,8 +551,8 @@
       "frameworks": {
         "net48": {
           "projectReferences": {
-            "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj": {
-              "projectPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj"
+            "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
+              "projectPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj"
             }
           }
         }
