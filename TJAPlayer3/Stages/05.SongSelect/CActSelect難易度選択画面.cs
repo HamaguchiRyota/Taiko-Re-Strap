@@ -182,7 +182,7 @@ namespace TJAPlayer3
             ctBarAnime[0].t進行();
             ctBarAnime[1].t進行();
 
-            #region[難易度マーク]
+            #region[ 難易度マーク ]
             /*
             for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
             {

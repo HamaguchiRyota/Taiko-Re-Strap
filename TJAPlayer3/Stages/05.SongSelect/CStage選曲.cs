@@ -633,9 +633,6 @@ namespace TJAPlayer3
                 }
                 //------------------------------
 
-                if (act難易度選択画面.bOption[0]) actPlayOption.On進行描画(0);
-                if (act難易度選択画面.bOption[1]) actPlayOption.On進行描画(1);
-
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 1)
                 {
                     var opacity = 0;
@@ -750,7 +747,8 @@ namespace TJAPlayer3
                 tSongNumberDraw(1097, 167, NowSong.ToString());
                 tSongNumberDraw(1190, 167, MaxSong.ToString());
 
-
+                if (act難易度選択画面.bOption[0]) actPlayOption.On進行描画(0);
+                if (act難易度選択画面.bOption[1]) actPlayOption.On進行描画(1);
 
                 switch (base.eフェーズID)
                 {
