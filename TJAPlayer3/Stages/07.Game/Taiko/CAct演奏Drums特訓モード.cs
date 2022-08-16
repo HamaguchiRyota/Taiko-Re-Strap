@@ -289,6 +289,8 @@ namespace TJAPlayer3
 					}
 				}
 
+
+
 			}
 
 			var current = (double)(CSound管理.rc演奏用タイマ.n現在時刻ms * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0));
@@ -322,6 +324,8 @@ namespace TJAPlayer3
 			return base.On進行描画();
 		}
 
+
+
 		public int On進行描画_背景()
 		{
 			if (this.ct背景スクロールタイマー != null)
@@ -341,10 +345,18 @@ namespace TJAPlayer3
 			if (TJAPlayer3.Tx.Tokkun_DownBG != null) TJAPlayer3.Tx.Tokkun_DownBG.t2D描画(TJAPlayer3.app.Device, 0, 360);
 			if (TJAPlayer3.Tx.Tokkun_BigTaiko != null) TJAPlayer3.Tx.Tokkun_BigTaiko.t2D描画(TJAPlayer3.app.Device, 334, 400);
 
+
+
+
+
+
+
 			return base.On進行描画();
 		}
 
-		public void On進行描画_小節_速度()
+
+
+	    public void On進行描画_小節_速度()
 		{
 			if (TJAPlayer3.Tx.Tokkun_Speed_Measure != null)
 				TJAPlayer3.Tx.Tokkun_Speed_Measure.t2D描画(TJAPlayer3.app.Device, 0, 360);
@@ -478,6 +490,12 @@ namespace TJAPlayer3
 			this.b特訓PAUSE = false;
 		}
 
+
+
+
+
+
+
 		public void t譜面の表示位置を合わせる(bool doScroll)
 		{
 			this.nスクロール前ms = CSound管理.rc演奏用タイマ.n現在時刻ms;
@@ -520,6 +538,10 @@ namespace TJAPlayer3
 			}
 		}
 
+
+
+
+
 		public void t現在の位置にジャンプポイントを設定する()
 		{
 			if (!this.bスクロール中 && this.b特訓PAUSE)
@@ -545,7 +567,7 @@ namespace TJAPlayer3
 		public int n現在の小節線;
 		public int n小節の総数;
 
-		#region [private]
+		#region [ private ]
 		private long nスクロール前ms;
 		private long nスクロール後ms;
 		private long n最終演奏位置ms;
@@ -562,6 +584,15 @@ namespace TJAPlayer3
 		private List<STJUMPP> JumpPointList;
 		private long[] LBlue = new long[] { 0, 0, 0, 0, 0 };
 		private long[] RBlue = new long[] { 0, 0, 0, 0, 0 };
+
+		private struct STパッド状態
+		{
+			public int n明るさ;
+		}
+
+		//太鼓
+		private STパッド状態[] stパッド状態 = new STパッド状態[4 * 4];
+
 
 		private struct STJUMPP
 		{

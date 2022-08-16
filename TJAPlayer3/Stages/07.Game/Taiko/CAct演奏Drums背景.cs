@@ -725,7 +725,11 @@ namespace TJAPlayer3
 
                         TJAPlayer3.Tx.Background_Down_M0.t2D描画(TJAPlayer3.app.Device, 0, 300 + ym);
 
+                        TJAPlayer3.Tx.Background_Down_Fune.t2D描画(TJAPlayer3.app.Device, 0, 340 + ymP);
+
                         TJAPlayer3.Tx.Background_Down_M1.t2D描画(TJAPlayer3.app.Device, 0, 260 + ymP);
+
+                        TJAPlayer3.Tx.Background_Down_FuneX2.t2D描画(TJAPlayer3.app.Device, 0, 340 + ymP);
 
                         TJAPlayer3.Tx.Background_Down_Sc_1.t2D描画(TJAPlayer3.app.Device, 0 - this.ct下背景スクロール用タイマー2.n現在の値, 619);
                         for (int l = 1; l < ForLoop + 1; l++)

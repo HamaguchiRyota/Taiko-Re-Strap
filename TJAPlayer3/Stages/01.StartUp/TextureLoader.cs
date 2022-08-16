@@ -90,6 +90,7 @@ namespace TJAPlayer3
             #endregion
             #region 1_タイトル画面
             Title_Background = TxC(TITLE + @"Background.png");
+            Entry_Overlay = TxC(TITLE + @"Overlay.png");
             Entry_Bar = TxC(TITLE + @"Entry_Bar.png");
             Entry_Bar_Text = TxC(TITLE + @"Entry_Bar_Text.png");
 
@@ -235,6 +236,9 @@ namespace TJAPlayer3
 
             Difficulty_Select_Bar[0] = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Select_Bar.png");
             Difficulty_Select_Bar[1] = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Select_Bar2.png");
+
+            Ctr = TxC(SONGSELECT + @"Difficulty_Select\Ctr.png");
+            Ctr_Ef = TxC(SONGSELECT + @"Difficulty_Select\Ctr_Ef.png");
 
             TJAPlayer3.Skin.SongSelect_Difficulty_Background_Count = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + SONGSELECT + @"Difficulty_Select\Difficulty_Back\"), "Difficulty_Back_");
 
@@ -518,6 +522,8 @@ namespace TJAPlayer3
             Background_Down_Sc_1 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Sc1.png");
             Background_Down_M0 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_M0.png");
             Background_Down_M1 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_M1.png");
+            Background_Down_Fune = TxC(GAME + BACKGROUND + @"0\" + @"Down_Fune.png");
+            Background_Down_FuneX2 = TxC(GAME + BACKGROUND + @"0\" + @"Down_FuneX2.png");
             Background_Down_Splash = TxC(GAME + BACKGROUND + @"0\" + @"Down_Splash.png");
 
             //Background_Down_Clear_Light = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light.png");
@@ -756,6 +762,10 @@ namespace TJAPlayer3
             
             Tokkun_DownBG = TxC(GAME + TRAINING + @"Down.png");
             Tokkun_BigTaiko = TxC(GAME + TRAINING + @"BigTaiko.png");
+            Tokkun_BigDon_Left = TxC(GAME + TRAINING + @"BigDon.png");
+            Tokkun_BigDon_Right = TxC(GAME + TRAINING + @"BigDon.png");
+            Tokkun_BigKa_Left = TxC(GAME + TRAINING + @"BigKa.png");
+            Tokkun_BigKa_Right = TxC(GAME + TRAINING + @"BigKa.png");
             Tokkun_ProgressBar = TxC(GAME + TRAINING + @"ProgressBar_Red.png");
             Tokkun_ProgressBarWhite = TxC(GAME + TRAINING + @"ProgressBar_White.png");
             Tokkun_GoGoPoint = TxC(GAME + TRAINING + @"GoGoPoint.png");
@@ -868,6 +878,7 @@ namespace TJAPlayer3
         #endregion
         #region 1_タイトル画面
         public CTexture Title_Background,
+            Entry_Overlay,
             Entry_Bar,
             Entry_Bar_Text;
 
@@ -875,8 +886,8 @@ namespace TJAPlayer3
         public CTexture[] Banapas_Load_Clear = new CTexture[2];
         public CTexture[] Banapas_Load_Failure = new CTexture[2];
         public CTexture[] Entry_Player = new CTexture[3];
-        public CTexture[] Donchan_Entry = new CTexture[44];
-        public CTexture[] Entry_Donchan_Normal = new CTexture[13];
+        public CTexture[] Donchan_Entry = new CTexture[41];
+        public CTexture[] Entry_Donchan_Normal = new CTexture[30];
         public CTexture[] ModeSelect_Bar = new CTexture[3];
         public CTexture[] ModeSelect_Bar_Chara = new CTexture[2];
         public CTexture[] ModeSelect_Bar_Text = new CTexture[2];
@@ -924,9 +935,9 @@ namespace TJAPlayer3
             SongSelect_Bar_Genre,
             SongSelect_Box_Chara,
             SongSelect_ScoreWindow = new CTexture[(int)Difficulty.Total],
-            SongSelect_Donchan_Select = new CTexture[47],
-            SongSelect_Donchan_Normal = new CTexture[49],
-            SongSelect_Donchan_Jump = new CTexture[18],
+            SongSelect_Donchan_Select = new CTexture[65],
+            SongSelect_Donchan_Normal = new CTexture[61],
+            SongSelect_Donchan_Jump = new CTexture[16],
             SongSelect_NamePlate = new CTexture[1];
 
         #region [ 難易度選択画面 ]
@@ -936,6 +947,8 @@ namespace TJAPlayer3
         public CTexture Difficulty_Crown;
         public CTexture Difficulty_Option;
         public CTexture Difficulty_Option_Select;
+        public CTexture Ctr;
+        public CTexture Ctr_Ef;
 
         public CTexture[] Difficulty_Select_Bar = new CTexture[2];
         public CTexture[] Difficulty_Back;
@@ -1010,7 +1023,6 @@ namespace TJAPlayer3
         //Background_Up_Clear_HM1,
           Background_Down,
             Background_Down_Clear,
-
             Background_Down_BG_0,
             Background_Down_BG_1,
             Background_Down_Sc_0,
@@ -1018,7 +1030,8 @@ namespace TJAPlayer3
             Background_Down_M0,
             Background_Down_M1,
             Background_Down_Splash,
-
+            Background_Down_Fune,
+            Background_Down_FuneX2,
         //Background_Down_Clear_Light,
             Background_Down_Light_B,
             Background_Down_Scroll;
@@ -1155,6 +1168,10 @@ namespace TJAPlayer3
         #region Training
         public CTexture Tokkun_DownBG,
             Tokkun_BigTaiko,
+            Tokkun_BigDon_Left,
+            Tokkun_BigDon_Right,
+            Tokkun_BigKa_Left,
+            Tokkun_BigKa_Right,
             Tokkun_ProgressBar,
             Tokkun_ProgressBarWhite,
             Tokkun_GoGoPoint,
@@ -1197,7 +1214,7 @@ namespace TJAPlayer3
         public CTexture[]
             Result_Rainbow = new CTexture[41],
             Result_Background = new CTexture[2],
-            Result_Donchan_Normal = new CTexture[28],
+            Result_Donchan_Normal = new CTexture[30],
             Result_Donchan_Clear = new CTexture[38],
             Result_Mountain = new CTexture[2];
         #endregion

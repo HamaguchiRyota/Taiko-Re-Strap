@@ -149,8 +149,9 @@ namespace TJAPlayer3
 				return;
 
             this.soundSelectAnnounce = TJAPlayer3.Sound管理.tサウンドを生成する( CSkin.Path( @"Sounds\DiffSelect.ogg" ), ESoundGroup.SoundEffect );
+            this.ct点滅 = new CCounter(0, 100, 50, TJAPlayer3.Timer);
 
-			base.OnManagedリソースの作成();
+            base.OnManagedリソースの作成();
 		}
 		public override void OnManagedリソースの解放()
 		{
@@ -420,9 +421,14 @@ namespace TJAPlayer3
             this.txTitle.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + TJAPlayer3.Skin.SongSelect_Title_X, 140 + TJAPlayer3.Skin.SongSelect_Title_Y);
             this.txSubTitle.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + TJAPlayer3.Skin.SongSelect_Title_X, 180 + TJAPlayer3.Skin.SongSelect_Title_Y);
 
+            this.ct点滅.t進行Loop();
+            TJAPlayer3.Tx.Ctr.t2D描画(TJAPlayer3.app.Device, 399, 611);
+            TJAPlayer3.Tx.Ctr_Ef.t2D描画(TJAPlayer3.app.Device, 399, 611);
+            TJAPlayer3.Tx.Ctr_Ef.Opacity = (int)(200 * Math.Sin((double)(2 * Math.PI * this.ct点滅.n現在の値 * 2 / 100.0)));//176.0 + 80.0
+
             #region [ バーの描画 ]
 
-            for(int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
+            for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
             {
                 TJAPlayer3.Tx.Difficulty_Select_Bar[i].t2D描画(TJAPlayer3.app.Device,
                     TJAPlayer3.ConfigIni.nPlayerCount == 2 ? n現在の選択行[0] != n現在の選択行[1] ? (float)this.BarX[n現在の選択行[i]] : i == 0 ? (float)this.BarX[n現在の選択行[i]] - 25 : (float)this.BarX[n現在の選択行[i]] + 25 : (float)this.BarX[n現在の選択行[i]], 
@@ -455,6 +461,7 @@ namespace TJAPlayer3
         private CPrivateFastFont pfSubTitle;
         private CTexture txTitle;
         private CTexture txSubTitle;
+        private CCounter ct点滅;
 
         private CCounter ctBarAnimeIn;
         private CCounter[] ctBarAnime = new CCounter[2];

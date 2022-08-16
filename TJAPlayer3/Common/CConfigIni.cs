@@ -1073,7 +1073,7 @@ namespace TJAPlayer3
 		#endregion
 
 
-        #region[Ver.K追加オプション]
+        #region[ Ver.K追加オプション ]
         //--------------------------
         //ゲーム内のオプションに加えて、
         //システム周りのオプションもこのブロックで記述している。
@@ -1495,7 +1495,7 @@ namespace TJAPlayer3
 			sw.WriteLine( "ClipDispType={0}", (int) this.eClipDispType );
 			sw.WriteLine();
 			#endregion
-    		#region [ プレビュー音 ]
+    		    #region [ プレビュー音 ]
 			sw.WriteLine( "; 曲選択からプレビュー音の再生までのウェイト[ms]" );
 			sw.WriteLine( "PreviewSoundWait={0}", this.n曲が選択されてからプレビュー音が鳴るまでのウェイトms );
 			sw.WriteLine();
@@ -1578,13 +1578,6 @@ namespace TJAPlayer3
 			sw.WriteLine( "; (Only available when you're using using WASAPI or ASIO)" );	//
 			sw.WriteLine( "TimeStretch={0}", this.bTimeStretch ? 1 : 0 );					//
 			sw.WriteLine();
-			//sw.WriteLine( "; WASAPI/ASIO使用時に、MP3をストリーム再生するかどうか(0:ストリーム再生する, 1:しない)" );			//
-			//sw.WriteLine( "; (mp3のシークがおかしくなる場合は、これを1にしてください) " );	//
-			//sw.WriteLine( "; Set \"0\" if you'd like to use mp3 streaming playback on WASAPI/ASIO." );		//
-			//sw.WriteLine( "; Set \"1\" not to use streaming playback for mp3." );			//
-			//sw.WriteLine( "; (If you feel illegal seek with mp3, please set it to 1.)" );	//
-			//sw.WriteLine( "NoMP3Streaming={0}", this.bNoMP3Streaming ? 1 : 0 );				//
-			//sw.WriteLine();
             sw.WriteLine( "; 動画再生にDirectShowを使用する(0:OFF, 1:ON)" );
 			sw.WriteLine( "; 動画再生にDirectShowを使うことによって、再生時の負担を軽減できます。");
 			sw.WriteLine( "; ただし使用時にはセットアップが必要になるのでご注意ください。");

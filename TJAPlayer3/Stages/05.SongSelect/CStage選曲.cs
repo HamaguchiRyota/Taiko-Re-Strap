@@ -193,7 +193,7 @@ namespace TJAPlayer3
                 for (int i = 0; i < 2; i++)
                     this.ctキー反復用[i] = new CCounter(0, 0, 0, TJAPlayer3.Timer);
 
-                ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.SongSelect_Donchan_Normal.Length - 1, 1000 / 45, TJAPlayer3.Timer);
+                ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.SongSelect_Donchan_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);
                 ctDonchan_Select = new CCounter();
                 ctDonchan_Jump[0] = new CCounter();
                 ctDonchan_Jump[1] = new CCounter();
@@ -341,57 +341,9 @@ namespace TJAPlayer3
                     double dbY表示割合 = Math.Sin(Math.PI / 2 * db登場割合);
                     y = ((int)(TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height * dbY表示割合)) - TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height;
                 }
-                if (TJAPlayer3.Tx.SongSelect_Header != null)
-                    TJAPlayer3.Tx.SongSelect_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
-                tTimerDraw((100 - ctTimer.n現在の値).ToString());
-
-                tSongNumberDraw(1097, 167, NowSong.ToString());
-                tSongNumberDraw(1190, 167, MaxSong.ToString());
 
                 this.actInformation.On進行描画();
-
-                #region [ ネームプレート ]
-                for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
-                {
-                    TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.SongSelect_NamePlate_X[i], TJAPlayer3.Skin.SongSelect_NamePlate_Y[i], i);
-                }
-                #endregion
-
-                #region [ 演奏オプションアイコン ]
-                for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
-                {
-                    ModIcons.tDisplayModsMenu(40 + i * 980, 672, i);
-                }
-                #endregion
-
-                #region[ 下部テキスト ]
-
-                if (TJAPlayer3.Tx.SongSelect_Auto != null)
-                {
-                    if (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay)
-                    {
-                        TJAPlayer3.Tx.SongSelect_Auto.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.SongSelect_Auto_X[0], TJAPlayer3.Skin.SongSelect_Auto_Y[0]);
-                    }
-                    if (TJAPlayer3.ConfigIni.nPlayerCount > 1 && TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P)
-                    {
-                        TJAPlayer3.Tx.SongSelect_Auto.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.SongSelect_Auto_X[1], TJAPlayer3.Skin.SongSelect_Auto_Y[1]);
-                    }
-                }
-                if (TJAPlayer3.ConfigIni.bTokkunMode)
-                    TJAPlayer3.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, "GAME: TRAINING MODE");
-                if (TJAPlayer3.ConfigIni.eGameMode == EGame.完走叩ききりまショー)
-                    TJAPlayer3.act文字コンソール.tPrint(0, 16, C文字コンソール.Eフォント種別.白, "GAME: SURVIVAL");
-                if (TJAPlayer3.ConfigIni.eGameMode == EGame.完走叩ききりまショー激辛)
-                    TJAPlayer3.act文字コンソール.tPrint(0, 16, C文字コンソール.Eフォント種別.白, "GAME: SURVIVAL HARD");
-                if (TJAPlayer3.ConfigIni.bSuperHard)
-                    TJAPlayer3.act文字コンソール.tPrint(0, 32, C文字コンソール.Eフォント種別.赤, "SUPER HARD MODE : ON");
-                if (TJAPlayer3.ConfigIni.eScrollMode == EScrollMode.BMSCROLL)
-                    TJAPlayer3.act文字コンソール.tPrint(0, 48, C文字コンソール.Eフォント種別.赤, "BMSCROLL : ON");
-                else if (TJAPlayer3.ConfigIni.eScrollMode == EScrollMode.HBSCROLL)
-                    TJAPlayer3.act文字コンソール.tPrint(0, 48, C文字コンソール.Eフォント種別.赤, "HBSCROLL : ON");
-
-                #endregion
 
                 this.actPresound.On進行描画();
 
@@ -409,11 +361,9 @@ namespace TJAPlayer3
                 if (this.ctDiffSelect移動待ち != null)
                     this.ctDiffSelect移動待ち.t進行();
 
-              
 
                 // キー入力
-                if (base.eフェーズID == CStage.Eフェーズ.共通_通常状態
-                    && TJAPlayer3.act現在入力を占有中のプラグイン == null)
+                if (base.eフェーズID == CStage.Eフェーズ.共通_通常状態 && TJAPlayer3.act現在入力を占有中のプラグイン == null)
                 {
                     #region [ 簡易CONFIGでMore、またはShift+F1: 詳細CONFIG呼び出し ]
                     if (actQuickConfig.bGotoDetailConfig)
@@ -672,6 +622,7 @@ namespace TJAPlayer3
                     this.actQuickConfig.t進行描画();
                 }
 
+
                 //------------------------------
                 if (this.act難易度選択画面.bIsDifficltSelect)
                 {
@@ -682,8 +633,8 @@ namespace TJAPlayer3
                 }
                 //------------------------------
 
-                
-
+                if (act難易度選択画面.bOption[0]) actPlayOption.On進行描画(0);
+                if (act難易度選択画面.bOption[1]) actPlayOption.On進行描画(1);
 
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 1)
                 {
@@ -700,7 +651,7 @@ namespace TJAPlayer3
 
                     TJAPlayer3.Tx.SongSelect_Credit.t2D描画(TJAPlayer3.app.Device, 0, 0);
                 }
-                for(int i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     if (this.ctDonchan_Jump[i].n現在の値 >= this.ctDonchan_Jump[i].n終了値)
                     {
@@ -718,7 +669,7 @@ namespace TJAPlayer3
                     if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
                         TJAPlayer3.Tx.SongSelect_Donchan_Select[ctDonchan_Select.n現在の値].t2D左右反転描画(TJAPlayer3.app.Device, 981, 330);
 
-                    TJAPlayer3.Tx.SongSelect_Donchan_Select[ctDonchan_Select.n現在の値].t2D描画(TJAPlayer3.app.Device, 0, 330);
+                    TJAPlayer3.Tx.SongSelect_Donchan_Select[ctDonchan_Select.n現在の値].t2D描画(TJAPlayer3.app.Device, -320, 240);
                 }
                 else
                 {
@@ -726,7 +677,7 @@ namespace TJAPlayer3
                     {
                         if (this.ctDonchan_Jump[1].n現在の値 > 0)
                         {
-                            TJAPlayer3.Tx.SongSelect_Donchan_Jump[ctDonchan_Jump[1].n現在の値 >= 17 ? 17 : ctDonchan_Jump[1].n現在の値].t2D左右反転描画(TJAPlayer3.app.Device, 981, 330);
+                            TJAPlayer3.Tx.SongSelect_Donchan_Jump[ctDonchan_Jump[1].n現在の値 >= 15 ? 15 : ctDonchan_Jump[1].n現在の値].t2D左右反転描画(TJAPlayer3.app.Device, 981, 330);
                         }
                         else
                         {
@@ -735,13 +686,58 @@ namespace TJAPlayer3
                     }
                     if (this.ctDonchan_Jump[0].n現在の値 > 0)
                     {
-                        TJAPlayer3.Tx.SongSelect_Donchan_Jump[ctDonchan_Jump[0].n現在の値 >= 17 ? 17 : ctDonchan_Jump[0].n現在の値].t2D描画(TJAPlayer3.app.Device, 0, 330);
+                        TJAPlayer3.Tx.SongSelect_Donchan_Jump[ctDonchan_Jump[0].n現在の値 >= 15 ? 15 : ctDonchan_Jump[0].n現在の値].t2D描画(TJAPlayer3.app.Device, -320, 240);
                     }
                     else
                     {
-                        TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, 0, 330);
+                        TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -320, 240);//330
                     }
                 }
+
+                #region [ ネームプレート ]
+                for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
+                {
+                    TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.SongSelect_NamePlate_X[i], TJAPlayer3.Skin.SongSelect_NamePlate_Y[i], i);
+                }
+                #endregion
+
+                #region [ 演奏オプションアイコン ]
+                for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
+                {
+                    ModIcons.tDisplayModsMenu(40 + i * 980, 672, i);
+                }
+                #endregion
+
+                #region[ 下部テキスト ]
+
+                if (TJAPlayer3.Tx.SongSelect_Auto != null)
+                {
+                    if (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay)
+                    {
+                        TJAPlayer3.Tx.SongSelect_Auto.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.SongSelect_Auto_X[0], TJAPlayer3.Skin.SongSelect_Auto_Y[0]);
+                    }
+                    if (TJAPlayer3.ConfigIni.nPlayerCount > 1 && TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P)
+                    {
+                        TJAPlayer3.Tx.SongSelect_Auto.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.SongSelect_Auto_X[1], TJAPlayer3.Skin.SongSelect_Auto_Y[1]);
+                    }
+                }
+                if (TJAPlayer3.ConfigIni.bTokkunMode)
+                    TJAPlayer3.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, "GAME: TRAINING MODE");
+                if (TJAPlayer3.ConfigIni.eGameMode == EGame.完走叩ききりまショー)
+                    TJAPlayer3.act文字コンソール.tPrint(0, 16, C文字コンソール.Eフォント種別.白, "GAME: SURVIVAL");
+                if (TJAPlayer3.ConfigIni.eGameMode == EGame.完走叩ききりまショー激辛)
+                    TJAPlayer3.act文字コンソール.tPrint(0, 16, C文字コンソール.Eフォント種別.白, "GAME: SURVIVAL HARD");
+                if (TJAPlayer3.ConfigIni.bSuperHard)
+                    TJAPlayer3.act文字コンソール.tPrint(0, 32, C文字コンソール.Eフォント種別.赤, "SUPER HARD MODE : ON");
+                if (TJAPlayer3.ConfigIni.eScrollMode == EScrollMode.BMSCROLL)
+                    TJAPlayer3.act文字コンソール.tPrint(0, 48, C文字コンソール.Eフォント種別.赤, "BMSCROLL : ON");
+                else if (TJAPlayer3.ConfigIni.eScrollMode == EScrollMode.HBSCROLL)
+                    TJAPlayer3.act文字コンソール.tPrint(0, 48, C文字コンソール.Eフォント種別.赤, "HBSCROLL : ON");
+
+                #endregion
+
+                if (TJAPlayer3.Tx.SongSelect_Header != null)
+                    TJAPlayer3.Tx.SongSelect_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
                 if (TJAPlayer3.Tx.SongSelect_HighScore != null)
                     TJAPlayer3.Tx.SongSelect_HighScore.t2D描画(TJAPlayer3.app.Device, 11, 375);
@@ -750,9 +746,11 @@ namespace TJAPlayer3
                 {
                     tBoardNumberDraw(this.ptBoardNumber[i].X - 10, this.ptBoardNumber[i].Y, i < 7 ? this.act曲リスト.ScoreRankCount[i].ToString() : this.act曲リスト.CrownCount[i - 7].ToString());
                 }
+                tTimerDraw((100 - ctTimer.n現在の値).ToString());
+                tSongNumberDraw(1097, 167, NowSong.ToString());
+                tSongNumberDraw(1190, 167, MaxSong.ToString());
 
-                if (act難易度選択画面.bOption[0]) actPlayOption.On進行描画(0);
-                if (act難易度選択画面.bOption[1]) actPlayOption.On進行描画(1);
+
 
                 switch (base.eフェーズID)
                 {

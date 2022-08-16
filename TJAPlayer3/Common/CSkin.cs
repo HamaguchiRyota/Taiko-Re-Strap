@@ -2619,7 +2619,7 @@ namespace TJAPlayer3
         public Color SongSelect_ForeColor_創作譜面 = ColorTranslator.FromHtml("#FFFFFF");
         public Color SongSelect_BackColor_JPOP = ColorTranslator.FromHtml("#01455B");
         public Color SongSelect_BackColor_Anime = ColorTranslator.FromHtml("#99001F");
-        public Color SongSelect_BackColor_VOCALOID = ColorTranslator.FromHtml("#5B6278");
+        public Color SongSelect_BackColor_VOCALOID = ColorTranslator.FromHtml("#303546");
         public Color SongSelect_BackColor_Children = ColorTranslator.FromHtml("#9D3800");
         public Color SongSelect_BackColor_Variety = ColorTranslator.FromHtml("#366600");
         public Color SongSelect_BackColor_Classic = ColorTranslator.FromHtml("#875600");

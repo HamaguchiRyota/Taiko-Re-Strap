@@ -322,6 +322,24 @@ namespace TJAPlayer3
             this.Before[ player ] = Before;
         }
 
+        public void tBigTaikoDraw(int x, int y)
+        {
+            if (TJAPlayer3.Tx.Tokkun_BigDon_Left != null && TJAPlayer3.Tx.Tokkun_BigDon_Right != null && TJAPlayer3.Tx.Tokkun_BigKa_Left != null && TJAPlayer3.Tx.Tokkun_BigKa_Right != null)
+            {
+                TJAPlayer3.Tx.Tokkun_BigKa_Left.Opacity = this.stパッド状態[0].n明るさ * 73;
+                TJAPlayer3.Tx.Tokkun_BigKa_Right.Opacity = this.stパッド状態[1].n明るさ * 73;
+                TJAPlayer3.Tx.Tokkun_BigDon_Left.Opacity = this.stパッド状態[2].n明るさ * 73;
+                TJAPlayer3.Tx.Tokkun_BigDon_Right.Opacity = this.stパッド状態[3].n明るさ * 73;
+
+                TJAPlayer3.Tx.Tokkun_BigDon_Left.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                TJAPlayer3.Tx.Tokkun_BigDon_Right.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                TJAPlayer3.Tx.Tokkun_BigKa_Left.t2D描画(TJAPlayer3.app.Device, 0, 0, new Rectangle(0, 0, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Width / 2, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Height));
+                TJAPlayer3.Tx.Tokkun_BigKa_Right.t2D描画(TJAPlayer3.app.Device, 0, 0, new Rectangle(0, 310, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Width / 2, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Height));
+
+            }
+        }
+
+
 
         #region[ private ]
         //-----------------
@@ -344,6 +362,7 @@ namespace TJAPlayer3
         private CTexture txオプションパネル_RANMIR;
         private CTexture txオプションパネル_特殊;
         private int nHS;
+
 
         //譜面分岐
         private CCounter[] ctレベルアップダウン;

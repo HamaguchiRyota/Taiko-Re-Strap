@@ -282,7 +282,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\dtx.ico" />
-    <Content Include="TJAPlayer3-Develop-ReWrite.ico" />
     <Content Include="trs.ico" />
   </ItemGroup>
   <ItemGroup>

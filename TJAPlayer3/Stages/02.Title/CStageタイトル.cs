@@ -310,12 +310,15 @@ namespace TJAPlayer3
 
 				if (TJAPlayer3.Tx.Title_Background != null )
                     TJAPlayer3.Tx.Title_Background.t2D描画( TJAPlayer3.app.Device, 0, 0 );
-				
-                #endregion
 
-                #region [ バナパス読み込み ]
+				if (TJAPlayer3.Tx.Entry_Overlay != null)
+					TJAPlayer3.Tx.Entry_Overlay.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
-                if (!bバナパス読み込み && !bバナパス読み込み失敗)
+				#endregion
+
+				#region [ バナパス読み込み ]
+
+				if (!bバナパス読み込み && !bバナパス読み込み失敗)
                 {
 					TJAPlayer3.Tx.Entry_Bar.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
@@ -458,7 +461,7 @@ namespace TJAPlayer3
 
 					TJAPlayer3.Tx.Entry_Player[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
 
-					TJAPlayer3.Tx.Donchan_Entry[this.ctどんちゃんエントリーループ.n現在の値].t2D描画(TJAPlayer3.app.Device, 485, 140);
+					TJAPlayer3.Tx.Donchan_Entry[this.ctどんちゃんエントリーループ.n現在の値].t2D描画(TJAPlayer3.app.Device, 170, 0);//485, 140
 
 					TJAPlayer3.Tx.Entry_Player[2].Opacity = ctエントリーバー決定点滅.n現在の値 >= 800 ? 255 - (ctエントリーバー決定点滅.n現在の値 - 800 ) : (this.ctバナパス読み込み成功.n現在の値 - 3400) - (this.ctエントリーバー点滅.n現在の値 <= 255 ? this.ctエントリーバー点滅.n現在の値 : 255 - (this.ctエントリーバー点滅.n現在の値 - 255));
 					TJAPlayer3.Tx.Entry_Player[2].t2D描画(TJAPlayer3.app.Device, ptプレイヤーエントリーバー座標[n現在の選択行プレイヤーエントリー].X, ptプレイヤーエントリーバー座標[n現在の選択行プレイヤーエントリー].Y,
@@ -519,8 +522,8 @@ namespace TJAPlayer3
 						DonchanX = (float)Math.Sin(ctどんちゃんイン.n現在の値 / 2 * (Math.PI / 180)) * 200f;
 						DonchanY = ((float)Math.Sin((90 + (ctどんちゃんイン.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
-						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -200 + DonchanX, 341 - DonchanY);
-						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -200 + DonchanX, 341 - DonchanY);
+						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -520 + DonchanX, 241 - DonchanY);//200, 341
+						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -520 + DonchanX, 241 - DonchanY);
 					}
 					#endregion
 
