@@ -130,7 +130,7 @@ namespace TJAPlayer3
 
             for (int i = 0; i < OptionType.Length; i++)
             {
-                OptionType[i].t2D描画(TJAPlayer3.app.Device, 16, 379 + i * 40.8f + y);
+                OptionType[i].t2D描画(TJAPlayer3.app.Device, 16, 375 + i * 40.7f + y);
             }
 
             txSpeed[nSpeedCount].t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y);
