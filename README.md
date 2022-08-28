@@ -3,6 +3,30 @@
 # 使用上の注意
 このプログラムを使用した不具合・問題については責任を負いかねます。
 
+## How 2 Build
+- VisualStudio 2017 & C# 7.3
+- VC++ toolset
+- SlimDX用の署名
+
+## ライセンス関係
+Fork元より引用。
+
+> 以下のライブラリを使用しています。
+> * bass
+> * Bass.Net
+> * DirectShowLib
+> * FDK21
+> * SlimDX
+> * SharpDX
+> * ReadJEnc
+> * xadec
+> * IPAフォント
+> * libogg
+> * libvorbis
+> 「実行時フォルダ/Licenses」に収録しています。
+> 
+> また、このプログラムはFROM氏の「DTXMania」を元に製作しています。
+
 # Changelog
 ```
 v0.0　TJAPlayer3-Develop-ReWrite(touhou_renren氏開発)
