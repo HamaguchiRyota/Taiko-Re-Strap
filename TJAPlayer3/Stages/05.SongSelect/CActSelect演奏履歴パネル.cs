@@ -125,12 +125,6 @@ namespace TJAPlayer3
 		{
 			if (!base.b活性化してない)
 			{
-				//this.txパネル本体 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\5_play history panel.png" ) );
-				//this.txスコアボード[0] = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\5_scoreboard_0.png" ) );
-				//this.txスコアボード[1] = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\5_scoreboard_1.png" ) );
-				//this.txスコアボード[2] = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\5_scoreboard_2.png" ) );
-				//this.txスコアボード[3] = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\5_scoreboard_3.png" ) );
-				//this.tx文字 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\5_scoreboard_number.png" ) );
 				this.t選択曲が変更された();
 				base.OnManagedリソースの作成();
 			}
@@ -139,13 +133,6 @@ namespace TJAPlayer3
 		{
 			if (!base.b活性化してない)
 			{
-				//CDTXMania.tテクスチャの解放( ref this.txパネル本体 );
-				//CDTXMania.tテクスチャの解放( ref this.tx文字列パネル );
-				//            CDTXMania.tテクスチャの解放( ref this.txスコアボード[0] );
-				//            CDTXMania.tテクスチャの解放( ref this.txスコアボード[1] );
-				//            CDTXMania.tテクスチャの解放( ref this.txスコアボード[2] );
-				//            CDTXMania.tテクスチャの解放( ref this.txスコアボード[3] );
-				//            CDTXMania.tテクスチャの解放( ref this.tx文字 );
 				base.OnManagedリソースの解放();
 			}
 		}
@@ -168,7 +155,7 @@ namespace TJAPlayer3
 					{
 						//CDTXMania.Tx.SongSelect_ScoreWindow[CDTXMania.stage選曲.n現在選択中の曲の難易度].n透明度 = ct登場アニメ用.n現在の値 - 1745;
 						TJAPlayer3.Tx.SongSelect_ScoreWindow[TJAPlayer3.stage選曲.n現在選択中の曲の難易度].t2D描画(TJAPlayer3.app.Device, x, y);
-						this.t小文字表示(x + 56, y + 160, string.Format("{0,7:######0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[TJAPlayer3.stage選曲.n現在選択中の曲の難易度].ToString()));
+						this.t小文字表示(x + 56, y + 160, string.Format("{0,7:######0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[3].ToString()));
 						TJAPlayer3.Tx.SongSelect_ScoreWindow_Text.t2D描画(TJAPlayer3.app.Device, x + 236, y + 166, new Rectangle(0, 36, 32, 30));
 					}
 				}

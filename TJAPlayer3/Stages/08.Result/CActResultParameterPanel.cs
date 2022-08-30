@@ -280,34 +280,29 @@ namespace TJAPlayer3
 				if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500)
 				{
 					if (TJAPlayer3.Tx.Result_Background != null)
-					{
 						TJAPlayer3.Tx.Result_Background[1].t2D描画(TJAPlayer3.app.Device, 0, 0);
-					}
-				}
-				if (TJAPlayer3.Tx.Result_Header != null)
-				{
-					TJAPlayer3.Tx.Result_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
-				}
 
+                }
+
+                if (TJAPlayer3.Tx.Result_Header != null && TJAPlayer3.Tx.Result_Mountain[0] != null && TJAPlayer3.Tx.Result_Panel != null)
+                {
+					TJAPlayer3.Tx.Result_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
+					TJAPlayer3.Tx.Result_Mountain[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
+					TJAPlayer3.Tx.Result_Panel.t2D描画(TJAPlayer3.app.Device, 0, 0);
+				}
 				bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
 				//bool is2PSide = TJAPlayer3.P1IsBlue();
-				TJAPlayer3.Tx.Result_Mountain[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
-
-				TJAPlayer3.Tx.Result_Panel.t2D描画(TJAPlayer3.app.Device, 0, 0);
-
 				TJAPlayer3.Tx.Result_Diff_Bar.t2D描画(TJAPlayer3.app.Device, 18, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[0] * 54, 185, 54));
-
 				TJAPlayer3.Tx.Result_Gauge_Base.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
 				#region [ キャラクター & ぷち ]
 
-				TJAPlayer3.Tx.Result_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -210, 320);
-
-				TJAPlayer3.Tx.PuchiChara[0].t2D描画(TJAPlayer3.app.Device, 20, 485, new RectangleF(0, 0, 240, 240));
+				if (TJAPlayer3.Tx.Result_Donchan_Normal != null)
+					TJAPlayer3.Tx.Result_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -210, 320);
+				if (TJAPlayer3.Tx.PuchiChara[0] != null)
+					TJAPlayer3.Tx.PuchiChara[0].t2D描画(TJAPlayer3.app.Device, 20, 485, new RectangleF(0, 0, 240, 240));
 
 				#endregion
-
-
 
 				#region [ オプションアイコン・ModIcons ]
 				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)

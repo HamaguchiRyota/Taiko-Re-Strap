@@ -92,6 +92,7 @@ namespace TJAPlayer3
             #region 1_タイトル画面
             Title_Background = TxC(TITLE + @"Background.png");
             Entry_Overlay = TxC(TITLE + @"Overlay.png");
+            Title_Header = TxC(TITLE + @"Header.png");
             Entry_Bar = TxC(TITLE + @"Entry_Bar.png");
             Entry_Bar_Text = TxC(TITLE + @"Entry_Bar_Text.png");
 
@@ -688,6 +689,10 @@ namespace TJAPlayer3
             End_Clear_Text[0] = TxC(GAME + END + @"Clear_Text.png");
             End_Clear_Text[1] = TxC(GAME + END + @"Clear_Text_End.png");
 
+            End_FullCombo_Text = new CTexture[2];
+            End_FullCombo_Text[0] = TxC(GAME + END + @"FullCombo_Text.png");
+            End_FullCombo_Text[1] = TxC(GAME + END + @"FullCombo_Text_End.png");
+
             ClearFailed = TxC(GAME + END + @"ClearFailed\" + "Clear_Failed.png");
             ClearFailed1 = TxC(GAME + END + @"ClearFailed\" + "Clear_Failed1.png");
             ClearFailed2 = TxC(GAME + END + @"ClearFailed\" + "Clear_Failed2.png");
@@ -880,6 +885,7 @@ namespace TJAPlayer3
         #endregion
         #region 1_タイトル画面
         public CTexture Title_Background,
+            Title_Header,
             Entry_Overlay,
             Entry_Bar,
             Entry_Bar_Text;
@@ -1123,6 +1129,7 @@ namespace TJAPlayer3
         public CTexture End_Clear_Chara;
         public CTexture[] End_Clear_Text;
         public CTexture End_Star;
+        public CTexture[] End_FullCombo_Text;
 
         public CTexture[] End_ClearFailed,
             End_FullCombo,

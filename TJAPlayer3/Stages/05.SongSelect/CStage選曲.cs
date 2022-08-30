@@ -88,7 +88,7 @@ namespace TJAPlayer3
             {
                 return this.act曲リスト.r現在選択中の曲;
             }
-        }
+        }      
 
         // コンストラクタ
         public CStage選曲()
@@ -229,6 +229,14 @@ namespace TJAPlayer3
                 Trace.TraceInformation("選曲ステージの活性化を完了しました。");
                 Trace.Unindent();
             }
+            if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
+            {
+                this.pfScore = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.FontName), 20);
+            }
+            else
+                this.pfScore = new CPrivateFastFont(new FontFamily("MS UI Gothic"), 20);
+
+
         }
         public override void On非活性化()
         {
@@ -265,6 +273,7 @@ namespace TJAPlayer3
         {
             if (!base.b活性化してない)
             {
+                TJAPlayer3.t安全にDisposeする(ref this.pfScore);
                 base.OnManagedリソースの解放();
             }
         }
@@ -273,6 +282,7 @@ namespace TJAPlayer3
             if (!base.b活性化してない)
             {
                 this.ct背景スクロール用タイマー.t進行Loop();
+
                 #region [ 初めての進行描画 ]
                 //---------------------
                 if (base.b初めての進行描画)
@@ -293,7 +303,6 @@ namespace TJAPlayer3
                 }
                 //---------------------
                 #endregion
-
 
                 ctTimer.t進行();
                 ctCreditAnime.t進行Loop();
@@ -333,7 +342,6 @@ namespace TJAPlayer3
                     }
                 }
 
-                this.act曲リスト.On進行描画();
                 int y = 0;
                 if (this.ct登場時アニメ用共通.b進行中)
                 {
@@ -342,14 +350,13 @@ namespace TJAPlayer3
                     y = ((int)(TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height * dbY表示割合)) - TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height;
                 }
 
-
                 this.actInformation.On進行描画();
 
                 this.actPresound.On進行描画();
 
                 this.act演奏履歴パネル.On進行描画();
 
-                this.actShowCurrentPosition.On進行描画();                               // #27648 2011.3.28 yyagi
+                this.actShowCurrentPosition.On進行描画(); // #27648 2011.3.28 yyagi
 
                 if (TJAPlayer3.ConfigIni.bBGM音を発声する && !this.bBGM再生済み && (base.eフェーズID == CStage.Eフェーズ.共通_通常状態) && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                 {
@@ -357,10 +364,8 @@ namespace TJAPlayer3
                     this.bBGM再生済み = true;
                 }
 
-
                 if (this.ctDiffSelect移動待ち != null)
                     this.ctDiffSelect移動待ち.t進行();
-
 
                 // キー入力
                 if (base.eフェーズID == CStage.Eフェーズ.共通_通常状態 && TJAPlayer3.act現在入力を占有中のプラグイン == null)
@@ -618,11 +623,7 @@ namespace TJAPlayer3
                         TJAPlayer3.Input管理.Keyboard, TJAPlayer3.SoundGroupLevelController, TJAPlayer3.Skin, true);
                     #endregion
 
-                    this.actSortSongs.t進行描画();
-                    this.actQuickConfig.t進行描画();
                 }
-
-
                 //------------------------------
                 if (this.act難易度選択画面.bIsDifficltSelect)
                 {
@@ -632,6 +633,9 @@ namespace TJAPlayer3
                     }
                 }
                 //------------------------------
+
+
+
 
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 1)
                 {
@@ -691,6 +695,12 @@ namespace TJAPlayer3
                     }
                 }
 
+
+                this.act曲リスト.On進行描画();
+                this.actSortSongs.t進行描画();
+                this.actQuickConfig.t進行描画();
+
+
                 #region [ ネームプレート ]
                 for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                 {
@@ -731,13 +741,18 @@ namespace TJAPlayer3
                 else if (TJAPlayer3.ConfigIni.eScrollMode == EScrollMode.HBSCROLL)
                     TJAPlayer3.act文字コンソール.tPrint(0, 48, C文字コンソール.Eフォント種別.赤, "HBSCROLL : ON");
 
-                #endregion
-
                 if (TJAPlayer3.Tx.SongSelect_Header != null)
                     TJAPlayer3.Tx.SongSelect_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
                 if (TJAPlayer3.Tx.SongSelect_HighScore != null)
                     TJAPlayer3.Tx.SongSelect_HighScore.t2D描画(TJAPlayer3.app.Device, 11, 375);
+
+
+                #endregion
+
+                //TJAPlayer3.act文字コンソール.tPrint(4, 4, C文字コンソール.Eフォント種別.白, TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nハイスコア);
+
+                //if (TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nハイスコア != null)
 
                 for (int i = 0; i < 10; i++)
                 {
@@ -854,6 +869,7 @@ namespace TJAPlayer3
         private CActSelectShowCurrentPosition actShowCurrentPosition;
         public CActSelect難易度選択画面 act難易度選択画面;
         public CActPlayOption actPlayOption;
+        private CPrivateFastFont pfScore;
 
         public CActSortSongs actSortSongs;
         private CActSelectQuickConfig actQuickConfig;

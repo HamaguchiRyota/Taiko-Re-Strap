@@ -422,9 +422,10 @@ namespace TJAPlayer3
             this.txSubTitle.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + TJAPlayer3.Skin.SongSelect_Title_X, 180 + TJAPlayer3.Skin.SongSelect_Title_Y);
 
             this.ct点滅.t進行Loop();
-            TJAPlayer3.Tx.Ctr.t2D描画(TJAPlayer3.app.Device, 399, 611);
-            TJAPlayer3.Tx.Ctr_Ef.t2D描画(TJAPlayer3.app.Device, 399, 611);
-            TJAPlayer3.Tx.Ctr_Ef.Opacity = (int)(200 * Math.Sin((double)(2 * Math.PI * this.ct点滅.n現在の値 * 2 / 100.0)));//176.0 + 80.0
+            if ( TJAPlayer3.Tx.Ctr != null && TJAPlayer3.Tx.Ctr_Ef != null)
+                TJAPlayer3.Tx.Ctr.t2D描画(TJAPlayer3.app.Device, 399, 611);
+                TJAPlayer3.Tx.Ctr_Ef.t2D描画(TJAPlayer3.app.Device, 399, 611);
+                TJAPlayer3.Tx.Ctr_Ef.Opacity = (int)(200 * Math.Sin((double)(2 * Math.PI * this.ct点滅.n現在の値 * 2 / 100.0)));//176.0 + 80.0
 
             #region [ バーの描画 ]
 

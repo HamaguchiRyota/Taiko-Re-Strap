@@ -612,6 +612,8 @@ namespace TJAPlayer3
 							}
                         }
 					}
+					if (TJAPlayer3.Tx.Title_Header != null)
+						TJAPlayer3.Tx.Title_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
 					TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.SongSelect_NamePlate_X[0], TJAPlayer3.Skin.SongSelect_NamePlate_Y[0], 0, false, 255);
 				}
