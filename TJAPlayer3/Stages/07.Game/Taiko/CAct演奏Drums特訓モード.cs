@@ -345,12 +345,6 @@ namespace TJAPlayer3
 			if (TJAPlayer3.Tx.Tokkun_DownBG != null) TJAPlayer3.Tx.Tokkun_DownBG.t2D描画(TJAPlayer3.app.Device, 0, 360);
 			if (TJAPlayer3.Tx.Tokkun_BigTaiko != null) TJAPlayer3.Tx.Tokkun_BigTaiko.t2D描画(TJAPlayer3.app.Device, 334, 400);
 
-
-
-
-
-
-
 			return base.On進行描画();
 		}
 

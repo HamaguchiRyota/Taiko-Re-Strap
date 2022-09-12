@@ -327,7 +327,6 @@ namespace TJAPlayer3
         private bool bFirst;
 
         private CTexture txMusicName;
-        private CTexture txSubMusicName;
         private CTexture txStage;
         private CTexture txGENRE;
         private CTexture tx歌詞テクスチャ;
