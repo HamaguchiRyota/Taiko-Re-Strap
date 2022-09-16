@@ -105,7 +105,7 @@ namespace TJAPlayer3
 
                 TJAPlayer3.Tx.Taiko_Base.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 0, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Height / 5));
                 if( TJAPlayer3.stage演奏ドラム画面.bDoublePlay )
-                    TJAPlayer3.Tx.Taiko_Base.t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1]);
+                    TJAPlayer3.Tx.Taiko_Base.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 0, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Height / 5));
             }
             //1P
             if( TJAPlayer3.Tx.Taiko_Don_Left != null && TJAPlayer3.Tx.Taiko_Don_Right != null && TJAPlayer3.Tx.Taiko_Ka_Left != null && TJAPlayer3.Tx.Taiko_Ka_Right != null )
@@ -129,10 +129,10 @@ namespace TJAPlayer3
                 TJAPlayer3.Tx.Taiko_Don_Left.Opacity = this.stパッド状態[6].n明るさ * 73;
                 TJAPlayer3.Tx.Taiko_Don_Right.Opacity = this.stパッド状態[7].n明るさ * 73;
 
-                TJAPlayer3.Tx.Taiko_Don_Left.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 133, TJAPlayer3.Tx.Taiko_Don_Left.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Don_Left.szテクスチャサイズ.Height / 5));
-                TJAPlayer3.Tx.Taiko_Don_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 266, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Height / 5));
-                TJAPlayer3.Tx.Taiko_Ka_Left.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 399, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Height / 5));
-                TJAPlayer3.Tx.Taiko_Ka_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 532, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Height / 5));
+                TJAPlayer3.Tx.Taiko_Don_Left.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 133, TJAPlayer3.Tx.Taiko_Don_Left.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Don_Left.szテクスチャサイズ.Height / 5));
+                TJAPlayer3.Tx.Taiko_Don_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 266, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Height / 5));
+                TJAPlayer3.Tx.Taiko_Ka_Left.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 399, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Height / 5));
+                TJAPlayer3.Tx.Taiko_Ka_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 532, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Height / 5));
 
             }
 
