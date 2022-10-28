@@ -385,11 +385,6 @@ namespace TJAPlayer3
 				return 1;
 			return 0;
 		}
-		public static bool P1IsBlue()
-		{
-			return (TJAPlayer3.PlayerSide == 1 && TJAPlayer3.ConfigIni.nPlayerCount == 1);
-		}
-
 		// コンストラクタ
 
 		public TJAPlayer3()
@@ -719,7 +714,7 @@ namespace TJAPlayer3
 								EnumSongs.StartEnumFromDisk();		// 曲検索スレッドの起動_開始
 							}
 							#endregion
-							
+							/*
 							#region [ 曲検索の中断と再開 ]
 							if ( r現在のステージ.eステージID == CStage.Eステージ.選曲 && !EnumSongs.IsSongListEnumCompletelyDone )
 							{
@@ -747,6 +742,7 @@ namespace TJAPlayer3
 								}
 							}
 							#endregion
+							*/
 
 							#region [ 曲探索中断待ち待機 ]
 							if ( r現在のステージ.eステージID == CStage.Eステージ.曲読み込み && !EnumSongs.IsSongListEnumCompletelyDone &&
@@ -844,21 +840,6 @@ namespace TJAPlayer3
 								//-----------------------------
 								#endregion
 								break;
-
-							#region [ OPTION: 廃止済 ]
-//							case 2:									// #24525 OPTIONとCONFIGの統合に伴い、OPTIONは廃止
-//								#region [ *** ]
-//								//-----------------------------
-//								r現在のステージ.On非活性化();
-//								Trace.TraceInformation( "----------------------" );
-//								Trace.TraceInformation( "■ オプション" );
-//								stageオプション.On活性化();
-//								r直前のステージ = r現在のステージ;
-//								r現在のステージ = stageオプション;
-//								//-----------------------------
-//								#endregion
-							//								break;
-							#endregion
 
 							case (int)CStageタイトル.E戻り値.CONFIG:
 								#region [ *** ]
@@ -1008,27 +989,6 @@ namespace TJAPlayer3
 							//-----------------------------
 								#endregion
 
-//							case (int) CStage選曲.E戻り値.オプション呼び出し:
-								#region [ *** ]
-//								//-----------------------------
-//								r現在のステージ.On非活性化();
-//								Trace.TraceInformation( "----------------------" );
-//								Trace.TraceInformation( "■ オプション" );
-//								stageオプション.On活性化();
-//								r直前のステージ = r現在のステージ;
-//								r現在のステージ = stageオプション;
-//
-//								foreach( STPlugin pg in this.listプラグイン )
-//								{
-//									Directory.SetCurrentDirectory( pg.strプラグインフォルダ );
-//									pg.plugin.Onステージ変更();
-//									Directory.SetCurrentDirectory( CDTXMania.strEXEのあるフォルダ );
-//								}
-//
-//								this.tガベージコレクションを実行する();
-//								break;
-//							//-----------------------------
-								#endregion
 
 							case (int) CStage選曲.E戻り値.コンフィグ呼び出し:
 								#region [ *** ]
@@ -1194,18 +1154,7 @@ for (int i = 0; i < 3; i++) {
 
 					case CStage.Eステージ.演奏:
 						#region [ *** ]
-						//-----------------------------
-						//long n1 = FDK.CSound管理.rc演奏用タイマ.nシステム時刻ms;
-						//long n2 = FDK.CSound管理.SoundDevice.n経過時間ms;
-						//long n3 = FDK.CSound管理.SoundDevice.tmシステムタイマ.nシステム時刻ms;
-						//long n4 = FDK.CSound管理.rc演奏用タイマ.n現在時刻;
-						//long n5 = FDK.CSound管理.SoundDevice.n経過時間を更新したシステム時刻ms;
 
-						//swlist1.Add( Convert.ToInt32(n1) );
-						//swlist2.Add( Convert.ToInt32(n2) );
-						//swlist3.Add( Convert.ToInt32( n3 ) );
-						//swlist4.Add( Convert.ToInt32( n4 ) );
-						//swlist5.Add( Convert.ToInt32( n5 ) );
 
 						#region [ DTXVモード中にDTXCreatorから指示を受けた場合の処理 ]
 						if ( DTXVmode.Enabled && DTXVmode.Refreshed )
@@ -1221,37 +1170,7 @@ for (int i = 0; i < 3; i++) {
 									this.previewSound.Dispose();
 									this.previewSound = null;
 								}
-								//{
-								//    int lastd = 0;
-								//    int f = 0;
-								//    for ( int i = 0; i < swlist1.Count; i++ )
-								//    {
-								//        int d1 = swlist1[ i ];
-								//        int d2 = swlist2[ i ];
-								//        int d3 = swlist3[ i ];
-								//        int d4 = swlist4[ i ];
-								//        int d5 = swlist5[ i ];
 
-								//        int dif = d1 - lastd;
-								//        string s = "";
-								//        if ( 16 <= dif && dif <= 17 )
-								//        {
-								//        }
-								//        else
-								//        {
-								//            s = "★";
-								//        }
-								//        Trace.TraceInformation( "frame {0:D4}: {1:D3} ( {2:D3}, {3:D3} - {7:D3}, {4:D3} ) {5}, n現在時刻={6}", f, dif, d1, d2, d3, s, d4, d5 );
-								//        lastd = d1;
-								//        f++;
-								//    }
-								//    swlist1.Clear();
-								//    swlist2.Clear();
-								//    swlist3.Clear();
-								//    swlist4.Clear();
-								//    swlist5.Clear();
-
-								//}
 							}
 							else if ( DTXVmode.Command == CDTXVmode.ECommand.Play )
 							{
@@ -1662,31 +1581,7 @@ for (int i = 0; i < 3; i++) {
 		{
 			TJAPlayer3.t安全にDisposeする( ref tx );
 		}
-        public static void tテクスチャの解放( ref CTextureAf tx )
-		{
-			TJAPlayer3.t安全にDisposeする( ref tx );
-		}
-		public static CTexture tテクスチャの生成( byte[] txData )
-		{
-			return tテクスチャの生成( txData, false );
-		}
-		public static CTexture tテクスチャの生成( byte[] txData, bool b黒を透過する )
-		{
-			if ( app == null )
-			{
-				return null;
-			}
-			try
-			{
-				return new CTexture( app.Device, txData, TextureFormat, b黒を透過する );
-			}
-			catch ( CTextureCreateFailedException e )
-			{
-				Trace.TraceError( e.ToString() );
-				Trace.TraceError( "テクスチャの生成に失敗しました。(txData)" );
-				return null;
-			}
-		}
+
 		public static CTexture tテクスチャの生成( Bitmap bitmap )
 		{
 			return tテクスチャの生成( bitmap, false );
@@ -1741,36 +1636,6 @@ for (int i = 0; i < 3; i++) {
 				return null;
 			}
 		}
-        public static CDirectShow t失敗してもスキップ可能なDirectShowを生成する(string fileName, IntPtr hWnd, bool bオーディオレンダラなし)
-        {
-            CDirectShow ds = null;
-            if( File.Exists( fileName ) )
-            {
-                try
-                {
-                    ds = new CDirectShow(fileName, hWnd, bオーディオレンダラなし);
-                }
-                catch (FileNotFoundException e)
-                {
-                    Trace.TraceError( e.ToString() );
-                    Trace.TraceError("動画ファイルが見つかりませんでした。({0})", fileName);
-                    ds = null;      // Dispose はコンストラクタ内で実施済み
-                }
-                catch (Exception e)
-                {
-                    Trace.TraceError( e.ToString() );
-                    Trace.TraceError("DirectShow の生成に失敗しました。[{0}]", fileName);
-                    ds = null;      // Dispose はコンストラクタ内で実施済み
-                }
-            }
-            else
-            {
-                Trace.TraceError("動画ファイルが見つかりませんでした。({0})", fileName);
-                return null;
-            }
-
-            return ds;
-        }
 
         /// <summary>プロパティ、インデクサには ref は使用できないので注意。</summary>
         public static void t安全にDisposeする<T>(ref T obj)
@@ -1785,20 +1650,6 @@ for (int i = 0; i < 3; i++) {
 
             obj = default(T);
         }
-
-		public static void t安全にDisposeする<T>(ref T[] array) where T : class, IDisposable //2020.08.01 Mr-Ojii twopointzero氏のソースコードをもとに追加
-		{
-			if (array == null)
-			{
-				return;
-			}
-
-			for (var i = 0; i < array.Length; i++)
-			{
-				array[i]?.Dispose();
-				array[i] = null;
-			}
-		}
 
 		/// <summary>
 		/// そのフォルダの連番画像の最大値を返す。
@@ -1872,20 +1723,7 @@ for (int i = 0; i < 3; i++) {
 		private List<CActivity> listトップレベルActivities;
 		private int n進行描画の戻り値;
 		private MouseButtons mb = System.Windows.Forms.MouseButtons.Left;
-		private string strWindowTitle
-		{
-			get
-			{
-				if ( DTXVmode.Enabled )
-				{
-					return "DTXViewer release " + VERSION;
-				}
-				else
-				{
-					return "TJAPlayer3 feat.DTXMania";
-				}
-			}
-		}
+
 		private CSound previewSound;
         public static long StartupTime
         {

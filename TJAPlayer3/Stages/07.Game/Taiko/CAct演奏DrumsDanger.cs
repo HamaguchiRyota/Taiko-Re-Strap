@@ -8,7 +8,6 @@ namespace TJAPlayer3
 	{
 		// コンストラクタ
 		// CActivity 実装
-
 		public override void OnManagedリソースの作成()
 		{
 			if( !base.b活性化してない )

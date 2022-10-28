@@ -852,12 +852,12 @@ namespace TJAPlayer3
             return new Rectangle(leftPosition, topPosition,
                 rightPosition - leftPosition, bottomPosition - topPosition);
         }
-
+        /*
         private Rectangle MeasureForegroundArea(Bitmap bmp)
         {
             return MeasureForegroundArea(bmp, bmp.GetPixel(0, 0));
         }
-
+        */
         //------------------------------------------------
 
 		/// <summary>

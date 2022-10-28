@@ -25,6 +25,7 @@ namespace TJAPlayer3
 			this.n現在の値 = 0;
 			this.b値がフォーカスされている = false;
 		}
+		/*
 		public CItemInteger( string str項目名, int n最小値, int n最大値, int n初期値 )
 			: this()
 		{
@@ -34,12 +35,13 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, n最小値, n最大値, n初期値, str説明文jp);
 		}
+		*/
 		public CItemInteger(string str項目名, int n最小値, int n最大値, int n初期値, string str説明文jp, string str説明文en)
 			: this() {
 			this.t初期化(str項目名, n最小値, n最大値, n初期値, str説明文jp, str説明文en);
 		}
 
-	
+		/*
 		public CItemInteger( string str項目名, int n最小値, int n最大値, int n初期値, CItemBase.Eパネル種別 eパネル種別 )
 			: this()
 		{
@@ -53,7 +55,7 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, n最小値, n最大値, n初期値, eパネル種別, str説明文jp, str説明文en);
 		}
-
+		*/
 
 		// CItemBase 実装
 
@@ -75,6 +77,7 @@ namespace TJAPlayer3
 				this.n現在の値 = this.n最小値;
 			}
 		}
+		/*
 		public void t初期化( string str項目名, int n最小値, int n最大値, int n初期値 )
 		{
 			this.t初期化( str項目名, n最小値, n最大値, n初期値, CItemBase.Eパネル種別.通常, "", "" );
@@ -82,11 +85,11 @@ namespace TJAPlayer3
 		public void t初期化(string str項目名, int n最小値, int n最大値, int n初期値, string str説明文jp) {
 			this.t初期化(str項目名, n最小値, n最大値, n初期値, CItemBase.Eパネル種別.通常, str説明文jp, str説明文jp);
 		}
+		*/
 		public void t初期化(string str項目名, int n最小値, int n最大値, int n初期値, string str説明文jp, string str説明文en) {
 			this.t初期化(str項目名, n最小値, n最大値, n初期値, CItemBase.Eパネル種別.通常, str説明文jp, str説明文en);
 		}
-
-	
+		/*
 		public void t初期化( string str項目名, int n最小値, int n最大値, int n初期値, CItemBase.Eパネル種別 eパネル種別 )
 		{
 			this.t初期化( str項目名, n最小値, n最大値, n初期値, eパネル種別, "", "" );
@@ -94,6 +97,7 @@ namespace TJAPlayer3
 		public void t初期化(string str項目名, int n最小値, int n最大値, int n初期値, CItemBase.Eパネル種別 eパネル種別, string str説明文jp) {
 			this.t初期化(str項目名, n最小値, n最大値, n初期値, eパネル種別, str説明文jp, str説明文jp);
 		}
+		*/
 		public void t初期化(string str項目名, int n最小値, int n最大値, int n初期値, CItemBase.Eパネル種別 eパネル種別, string str説明文jp, string str説明文en) {
 			base.t初期化(str項目名, eパネル種別, str説明文jp, str説明文en);
 			this.n最小値 = n最小値;

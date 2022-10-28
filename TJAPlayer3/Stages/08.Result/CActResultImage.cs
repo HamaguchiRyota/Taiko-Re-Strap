@@ -11,6 +11,8 @@ namespace TJAPlayer3
 		/// リザルト画像を表示させるクラス。XG化するにあたって動画は廃止。
 		/// また、中央の画像も表示する。(STAGE表示、STANDARD_CLASSICなど)
 		/// </summary>
+		/// 
+		/*
 		public CActResultImage()
 		{
 			base.b活性化してない = true;
@@ -23,7 +25,7 @@ namespace TJAPlayer3
 		{
 			this.ct登場用.n現在の値 = (int)this.ct登場用.n終了値;
 		}
-
+		*/
 
 		// CActivity 実装
 
@@ -84,7 +86,7 @@ namespace TJAPlayer3
 		private CCounter ct登場用;
 		private CTexture r表示するリザルト画像;
 		private CTexture txリザルト画像;
-
+		/*
 		private bool tプレビュー画像の指定があれば構築する()
 		{
 			if (string.IsNullOrEmpty(TJAPlayer3.DTX.PREIMAGE))
@@ -103,6 +105,7 @@ namespace TJAPlayer3
 			this.r表示するリザルト画像 = this.txリザルト画像;
 			return (this.r表示するリザルト画像 != null);
 		}
+		*/
 		//-----------------
 		#endregion
 	}

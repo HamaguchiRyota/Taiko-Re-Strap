@@ -68,6 +68,10 @@ namespace TJAPlayer3
 
         private static readonly List<IntPtr> _buffers = new List<IntPtr>(10);
 
+        /// <summary>
+        /// Discord Rich Presenceの初期化をします。
+        /// </summary>
+        /// <param name="clientId">Discord APIのクライアントID。</param>
         public static void Initialize(string clientId)
         {
             var handlers = new DiscordRpc.EventHandlers();
@@ -79,6 +83,15 @@ namespace TJAPlayer3
 
         }
 
+        /// <summary>
+        /// Discord Rich Presenceの更新をします。
+        /// </summary>
+        /// <param name="details">現在の説明。</param>
+        /// <param name="state">現在の状態。</param>
+        /// <param name="startTimeStamp">開始時間(Unix時間)</param>
+        /// <param name="endTimeStamp">終了時間(Unix時間)</param>
+        /// <param name="smallImageKey">小さなアイコン用キー。</param>
+        /// <param name="smallImageText">小さなアイコンのツールチップに表示するテキスト。</param>
         public static void UpdatePresence(string details, string state, long startTimeStamp = 0, long endTimeStamp = 0, string smallImageKey = null, string smallImageText = null)
         {
             var presence = new DiscordRpc.RichPresence();
@@ -96,6 +109,10 @@ namespace TJAPlayer3
             FreeMem();
         }
 
+        /// <summary>
+        /// Discord Rich Presenceのシャットダウンを行います。
+        /// 終了時に必ず呼び出す必要があります。
+        /// </summary>
         public static void Shutdown()
         {
             DiscordRpc.Shutdown();
@@ -107,16 +124,27 @@ namespace TJAPlayer3
             Trace.TraceInformation("[Discord] Ready.");
         }
 
+        /// <summary>
+        /// Discordとの接続が切断された場合呼び出されます。
+        /// </summary>
+        /// <param name="errorCode">エラーコード。</param>
+        /// <param name="message">エラーメッセージ。</param>
         private static void DisconnectedCallback(int errorCode, string message)
         {
             Trace.TraceInformation("[Discord] Disconnected.");
         }
 
+        /// <summary>
+        /// Discordとの接続でエラーが発生した場合呼び出されます。
+        /// </summary>
+        /// <param name="errorCode">エラーコード。</param>
+        /// <param name="message">エラーメッセージ。</param>
         private static void ErrorCallback(int errorCode, string message)
         {
             Trace.TraceInformation("[Discord] Error occured: {0} {1}", errorCode, message);
         }
 
+        // string型の文字列をポインタで参照させるようにするためのメソッド。
         private static IntPtr StrToPtr(string input)
         {
             if (string.IsNullOrEmpty(input)) return IntPtr.Zero;
@@ -140,6 +168,10 @@ namespace TJAPlayer3
             }
         }
 
+        /// <summary>
+        /// 現在のUnix時間をlong型で返します。
+        /// </summary>
+        /// <returns>Unix時間。</returns>
         public static long GetUnixTime()
         {
             return (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).Ticks / 10000000;

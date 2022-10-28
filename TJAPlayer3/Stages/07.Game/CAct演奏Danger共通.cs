@@ -10,7 +10,7 @@ namespace TJAPlayer3
 		{
 			base.b活性化してない = true;
 		}
-
+	
 
 		// CActivity 実装
 
@@ -46,6 +46,7 @@ namespace TJAPlayer3
 
 
 		// その他
+
 
 		#region [ private ]
 		//-----------------

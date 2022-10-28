@@ -12,6 +12,7 @@ namespace TJAPlayer3
 {
 	internal class CActSelectPreimageパネル : CActivity
 	{
+		/*
 		// メソッド
 
 		public CActSelectPreimageパネル()
@@ -132,9 +133,9 @@ namespace TJAPlayer3
 						this.pAVIBmp = this.avi.GetFramePtr( frameNoFromTime );
 					}
 				}
-				this.t描画処理_パネル本体();
+				//this.t描画処理_パネル本体();
 				//this.t描画処理_ジャンル文字列();
-				this.t描画処理_プレビュー画像();
+				//this.t描画処理_プレビュー画像();
 				//this.t描画処理_センサ光();
 				//this.t描画処理_センサ本体();
 			}
@@ -143,7 +144,7 @@ namespace TJAPlayer3
 
 
 		// その他
-
+		*/
 		#region [ private ]
 		//-----------------
 		private CAvi avi;

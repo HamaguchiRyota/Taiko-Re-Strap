@@ -404,7 +404,7 @@ namespace TJAPlayer3
 
 
 		// その他
-
+		
 		#region [ private ]
 		//-----------------
 		private bool bキー入力待ち;

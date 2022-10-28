@@ -37,6 +37,7 @@ namespace TJAPlayer3
                 act曲リスト.bIsEnumeratingSongs = value;
             }
         }
+        /*
         public bool bIsPlayingPremovie
         {
             get
@@ -44,6 +45,7 @@ namespace TJAPlayer3
                 return this.actPreimageパネル.bIsPlayingPremovie;
             }
         }
+        */
         public bool bスクロール中
         {
             get
@@ -139,7 +141,7 @@ namespace TJAPlayer3
 
         public void t選択曲変更通知()
         {
-            this.actPreimageパネル.t選択曲が変更された();
+            //this.actPreimageパネル.t選択曲が変更された();
             this.actPresound.t選択曲が変更された();
             this.act演奏履歴パネル.t選択曲が変更された();
             this.actステータスパネル.t選択曲が変更された();

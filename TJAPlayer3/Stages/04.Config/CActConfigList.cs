@@ -76,12 +76,6 @@ namespace TJAPlayer3
 				"Reload song data." );
 			this.list項目リスト.Add( this.iSystemReloadDTX );
 
-            //this.iCommonDark = new CItemList( "Dark", CItemBase.Eパネル種別.通常, (int) CDTXMania.ConfigIni.eDark,
-            //    "HALF: 背景、レーン、ゲージが表示\nされなくなります。\nFULL: さらに小節線、拍線、判定ラ\nイン、パッドも表示されなくなります。",
-            //    "OFF: all display parts are shown.\nHALF: wallpaper, lanes and gauge are\n disappeared.\nFULL: additionaly to HALF, bar/beat\n lines, hit bar, pads are disappeared.",
-            //    new string[] { "OFF", "HALF", "FULL" } );
-            //this.list項目リスト.Add( this.iCommonDark );
-
             this.iTaikoPlayerCount = new CItemInteger( "プレイ人数", 1, 2, TJAPlayer3.ConfigIni.nPlayerCount,
                 "プレイ人数切り替え：\n2にすると演奏画面が2人プレイ専用のレイアウトになり、2P専用譜面を読み込むようになります。",
                 "" );
@@ -144,26 +138,6 @@ namespace TJAPlayer3
 				"Turn ON to use child BOX (subfolders)\n at RANDOM SELECT." );
 			this.list項目リスト.Add( this.iSystemRandomFromSubBox );
 
-
-	
-			//this.iSystemAdjustWaves = new CItemToggle( "AdjustWaves", CDTXMania.ConfigIni.bWave再生位置自動調整機能有効,
-			//    "サウンド再生位置自動補正：\n" +
-			//	"ハードウェアやOSに起因するサウン\n" +
-			//	"ドのずれを強制的に補正します。\n" +
-			//	"BGM のように再生時間の長い音声\n" +
-			//	"データが使用されている曲で効果が\n" +
-			//	"あります。" +
-			//	"\n" +
-			//	"※ DirectSound使用時のみ有効です。",
-			//    "Automatic wave playing position\n" +
-			//	" adjustment feature. If you turn it ON,\n" +
-			//	" it decrease the lag which comes from\n" +
-			//	" the difference of hardware/OS.\n" +
-			//	"Usually, you should turn it ON." +
-			//	"\n"+
-			//	"Note: This setting is effetive\n" +
-			//	" only when DirectSound is used.");
-			//this.list項目リスト.Add( this.iSystemAdjustWaves );
 			this.iSystemVSyncWait = new CItemToggle( "VSyncWait", TJAPlayer3.ConfigIni.b垂直帰線待ちを行う,
 				"垂直帰線同期：\n画面の描画をディスプレイの垂直帰\n線中に行なう場合には ON を指定し\nます。ON にすると、ガタつきのない\n滑らかな画面描画が実現されます。",
 				"Turn ON to wait VSync (Vertical\n Synchronizing signal) at every\n drawings. (so FPS becomes 60)\nIf you have enough CPU/GPU power,\n the scroll would become smooth." );
@@ -196,15 +170,7 @@ namespace TJAPlayer3
 				"BGMの再生：\nこれをOFFにすると、BGM を再生しな\nくなります。",
 				"Turn OFF if you don't want to play\n BGM." );
 			this.list項目リスト.Add( this.iSystemBGMSound );
-            //this.iSystemAudienceSound = new CItemToggle( "Audience", CDTXMania.ConfigIni.b歓声を発声する,
-            //    "歓声の再生：\nこれをOFFにすると、歓声を再生しな\nくなります。",
-            //    "Turn ON if you want to be cheered\n at the end of fill-in zone or not." );
-            //this.list項目リスト.Add( this.iSystemAudienceSound );
-            //this.iSystemDamageLevel = new CItemList( "DamageLevel", CItemBase.Eパネル種別.通常, (int) CDTXMania.ConfigIni.eダメージレベル,
-            //    "ゲージ減少割合：\nMiss ヒット時のゲージの減少度合い\nを指定します。\nRiskyが1以上の場合は無効となります",
-            //    "Damage level at missing (and\n recovering level) at playing.\nThis setting is ignored when Risky >= 1.",
-            //    new string[] { "Small", "Normal", "Large" } );
-            //this.list項目リスト.Add( this.iSystemDamageLevel );
+
 			this.iSystemSaveScore = new CItemToggle( "SaveScore", TJAPlayer3.ConfigIni.bScoreIniを出力する,
 				"演奏記録の保存：\nON で演奏記録を ～.score.ini ファイ\nルに保存します。\n",
 				"To save high-scores/skills, turn it ON.\nTurn OFF in case your song data are\n in read-only media (CD-ROM etc).\nNote that the score files also contain\n 'BGM Adjust' parameter. So if you\n want to keep adjusting parameter,\n you need to set SaveScore=ON." );
@@ -250,15 +216,6 @@ namespace TJAPlayer3
                 "Blank time before music source to play. (ms)\n");
             this.list項目リスト.Add(this.MusicPreTimeMs);
 
-            //this.iSystemStoicMode = new CItemToggle( "StoicMode", CDTXMania.ConfigIni.bストイックモード,
-            //    "ストイック（禁欲）モード：\n以下をまとめて表示ON/OFFします。\n_プレビュー画像/動画\n_リザルト画像/動画\n_NowLoading画像\n_演奏画面の背景画像\n_BGA 画像 / AVI 動画\n_グラフ画像\n",
-            //    "Turn ON to disable drawing\n * preview image / movie\n * result image / movie\n * nowloading image\n * wallpaper (in playing screen)\n * BGA / AVI (in playing screen)" );
-            //this.list項目リスト.Add( this.iSystemStoicMode );
-            //this.iSystemShowLag = new CItemList( "ShowLagTime", CItemBase.Eパネル種別.通常, CDTXMania.ConfigIni.nShowLagType,
-            //    "ズレ時間表示：\nジャストタイミングからのズレ時間(ms)\nを表示します。\n  OFF: ズレ時間を表示しません。\n  ON: ズレ時間を表示します。\n  GREAT-: PERFECT以外の時のみ\n表示します。",
-            //    "About displaying the lag from\n the \"just timing\".\n  OFF: Don't show it.\n  ON: Show it.\n  GREAT-: Show it except you've\n  gotten PERFECT.",
-            //    new string[] { "OFF", "ON", "GREAT-" } );
-            //this.list項目リスト.Add( this.iSystemShowLag );
             this.iSystemAutoResultCapture = new CItemToggle( "Autosaveresult", TJAPlayer3.ConfigIni.bIsAutoResultCapture,
 				"リザルト画像自動保存機能：\nONにすると、ハイスコア/ハイスキル時に\n自動でリザルト画像を曲データと同じ\nフォルダに保存します。",
 				"AutoSaveResult:\nTurn ON to save your result screen\n image automatically when you get\n hiscore/hiskill." );
@@ -269,20 +226,6 @@ namespace TJAPlayer3
                 "Discordに再生中の譜面情報を送信する",
                 "Share Playing .tja file infomation on Discord.");
             list項目リスト.Add(SendDiscordPlayingInformation);
-
-            //this.iSystemJudgeDispPriority = new CItemList( "JudgePriority", CItemBase.Eパネル種別.通常, (int) CDTXMania.ConfigIni.e判定表示優先度,
-            //    "判定文字列とコンボ表示の優先順位を\n" +
-            //    "指定します。\n" +
-            //    "\n" +
-            //    " Under: チップの下に表示します。\n" +
-            //    " Over:  チップの上に表示します。",
-            //    "The display prioity between chips\n" +
-            //    " and judge mark/combo.\n" +
-            //    "\n" +
-            //    " Under: Show them under the chips.\n" +
-            //    " Over:  Show them over the chips.",
-            //    new string[] { "Under", "Over" } );
-            //this.list項目リスト.Add( this.iSystemJudgeDispPriority );	
 
             this.iSystemBufferedInput = new CItemToggle( "BufferedInput", TJAPlayer3.ConfigIni.bバッファ入力を行う,
 				"バッファ入力モード：\nON にすると、FPS を超える入力解像\n度を実現します。\nOFF にすると、入力解像度は FPS に\n等しくなります。",
@@ -361,32 +304,6 @@ namespace TJAPlayer3
 				"     the setting take effect.",
 				asiodevs );
 			this.list項目リスト.Add( this.iSystemASIODevice );
-
-			// #24820 2013.1.3 yyagi
-			//this.iSystemASIOBufferSizeMs = new CItemInteger("ASIOBuffSize", 0, 99999, CDTXMania.ConfigIni.nASIOBufferSizeMs,
-			//    "ASIO使用時のバッファサイズ:\n" +
-			//    "0～99999ms を指定可能です。\n" +
-			//    "推奨値は0で、サウンドデバイスでの\n" +
-			//    "設定値をそのまま使用します。\n" +
-			//    "(サウンドデバイスのASIO設定は、\n" +
-			//    " ASIO capsなどで行います)\n" +
-			//    "値を小さくするほど発音ラグが\n" +
-			//    "減少しますが、音割れや異常動作を\n" +
-			//    "引き起こす場合があります。\n" +
-			//    "\n" +
-			//    "※ 設定はCONFIGURATION画面の\n" +
-			//    "　終了時に有効になります。",
-			//    "Sound buffer size for ASIO:\n" +
-			//    "You can set from 0 to 99999ms.\n" +
-			//    "You should set it to 0, to use\n" +
-			//    "a default value specified to\n" +
-			//    "the sound device.\n" +
-			//    "Smaller value makes smaller lag,\n" +
-			//    "but it may cause sound troubles.\n" +
-			//    "\n" +
-			//    "Note: Exit CONFIGURATION to make\n" +
-			//    "     the setting take effect." );
-			//this.list項目リスト.Add( this.iSystemASIOBufferSizeMs );
 
 			// #33689 2014.6.17 yyagi
 			this.iSystemSoundTimerType = new CItemToggle( "UseOSTimer", TJAPlayer3.ConfigIni.bUseOSTimer,
@@ -467,19 +384,6 @@ namespace TJAPlayer3
                 "Change skin.",
                 skinNames);
             this.list項目リスト.Add(this.iSystemSkinSubfolder);
-            //this.iSystemUseBoxDefSkin = new CItemToggle( "Skin (Box)", CDTXMania.ConfigIni.bUseBoxDefSkin,
-            //	"Music boxスキンの利用：\n" +
-            //	"特別なスキンが設定されたMusic box\n" +
-            //	"に出入りしたときに、自動でスキンを\n" +
-            //	"切り替えるかどうかを設定します。\n",
-            //	//"\n" +
-            //	//"(Music Boxスキンは、box.defファイル\n" +
-            //	//" で指定できます)\n",
-            //	"Box skin:\n" +
-            //	"Automatically change skin\n" +
-            //	"specified in box.def file." );
-            //this.list項目リスト.Add( this.iSystemUseBoxDefSkin );
-
 
             this.iSystemGoToKeyAssign = new CItemBase( "System Keys", CItemBase.Eパネル種別.通常,
 			"システムのキー入力に関する項目を設\n定します。",

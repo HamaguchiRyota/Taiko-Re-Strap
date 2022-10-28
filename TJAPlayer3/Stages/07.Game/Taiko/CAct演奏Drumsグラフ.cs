@@ -13,7 +13,7 @@ namespace TJAPlayer3
 	{
 	
 		// コンストラクタ
-
+		/*
 		public CAct演奏Drumsグラフ()
 		{
 			base.b活性化してない = true;
@@ -58,7 +58,7 @@ namespace TJAPlayer3
 
 
 		// その他
-
+		*/
 		#region [ private ]
 		//----------------
 		//-----------------

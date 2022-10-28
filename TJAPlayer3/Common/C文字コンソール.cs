@@ -16,13 +16,6 @@ namespace TJAPlayer3
 			赤細,
 			灰細
 		}
-		public enum E配置
-		{
-			左詰,
-			中央,
-			右詰
-		}
-
 
 		// メソッド
 

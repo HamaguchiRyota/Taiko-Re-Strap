@@ -155,11 +155,12 @@ namespace TJAPlayer3
 
 
 		// メソッド
-
+		/*
 		public void tアニメを完了させる()
 		{
 			this.ct表示用.n現在の値 = (int)this.ct表示用.n終了値;
 		}
+		*/
 
 		public void tSkipResultAnimations()
 		{
@@ -669,10 +670,12 @@ namespace TJAPlayer3
 				x += 22;
 			}
 		}
+		/*
 		private void t大文字表示(int x, int y, string str)
 		{
 			this.t大文字表示(x, y, str, false);
 		}
+		*/
 		private void t大文字表示(int x, int y, string str, bool b強調)
 		{
 			foreach (char ch in str)

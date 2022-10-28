@@ -2603,11 +2603,11 @@ namespace TJAPlayer3
         public int SongSelect_BoxExplanation_Interval = 30;
         public int SongSelect_Title_X = 0;
         public int SongSelect_Title_Y = 0;
-        public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームバラエティ", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲","創作譜面"};
+        public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームバラエティ", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲", "創作譜面" };
         public int[] SongSelect_NamePlate_X = new int[] { 36, 1020 };
         public int[] SongSelect_NamePlate_Y = new int[] { 615, 615 };
-        public int[] SongSelect_Auto_X = new int[] { 60, 950 };
-        public int[] SongSelect_Auto_Y = new int[] { 650, 650 };
+        public int[] SongSelect_Auto_X = new int[] { 36, 1019 };
+        public int[] SongSelect_Auto_Y = new int[] { 642, 642 };
         public Color SongSelect_ForeColor_JPOP = ColorTranslator.FromHtml("#FFFFFF");
         public Color SongSelect_ForeColor_Anime = ColorTranslator.FromHtml("#FFFFFF");
         public Color SongSelect_ForeColor_VOCALOID = ColorTranslator.FromHtml("#FFFFFF");
@@ -2702,8 +2702,8 @@ namespace TJAPlayer3
             Game_Mob_Ptn_Beat = 1;
         #endregion
         #region CourseSymbol
-        public int[] Game_CourseSymbol_X = new int[] { 64, 64 };
-        public int[] Game_CourseSymbol_Y = new int[] { 232, 582 };
+        public int[] Game_CourseSymbol_X = new int[] { 20, 20 };
+        public int[] Game_CourseSymbol_Y = new int[] { 233, 426 };
         #endregion
         #region PanelFont
         public int Game_MusicName_X = 1265;
@@ -2727,18 +2727,18 @@ namespace TJAPlayer3
 
         #endregion
         #region Score
-        public int[] Game_Score_X = new int[] { 20, 20, 0, 0 };
-        public int[] Game_Score_Y = new int[] { 226, 530, 0, 0 };
-        public int[] Game_Score_Add_X = new int[] { 20, 20, 0, 0 };
-        public int[] Game_Score_Add_Y = new int[] { 186, 570, 0, 0 };
+        public int[] Game_Score_X = new int[] { 29, 29, 0, 0 };
+        public int[] Game_Score_Y = new int[] { 227, 530, 0, 0 };
+        public int[] Game_Score_Add_X = new int[] { 29, 29, 0, 0 };
+        public int[] Game_Score_Add_Y = new int[] { 187, 569, 0, 0 };
         public int[] Game_Score_AddBonus_X = new int[] { 20, 20, 0, 0 };
         public int[] Game_Score_AddBonus_Y = new int[] { 136, 626, 0, 0 };
-        public int Game_Score_Padding = 20;
-        public int[] Game_Score_Size = new int[] { 24, 40 };
+        public int Game_Score_Padding = 21;
+        public int[] Game_Score_Size = new int[] { 26, 34 };
         #endregion
         #region Taiko
-        public int[] Game_Taiko_NamePlate_X = new int[] { 0, 0 };
-        public int[] Game_Taiko_NamePlate_Y = new int[] { 300, 380 };
+        public int[] Game_Taiko_NamePlate_X = new int[] { -3, -3 };
+        public int[] Game_Taiko_NamePlate_Y = new int[] { 297, 371 };
         public int[] Game_Taiko_PlayerNumber_X = new int[] { 4, 4 };
         public int[] Game_Taiko_PlayerNumber_Y = new int[] { 233, 435 };
         public int[] Game_Taiko_X = new int[] { 207, 207 };
@@ -2764,16 +2764,16 @@ namespace TJAPlayer3
         public int Game_Gauge_Rainbow_Timer = 50;
         #endregion
         #region Balloon
-        public int[] Game_Balloon_Combo_X = new int[] { 253, 253 };
-        public int[] Game_Balloon_Combo_Y = new int[] { -11, 538 };
-        public int[] Game_Balloon_Combo_Number_X = new int[] { 257, 257 };
-        public int[] Game_Balloon_Combo_Number_Y = new int[] { 54, 603 };
-        public int[] Game_Balloon_Combo_Number_Ex_X = new int[] { 297, 297 };
-        public int[] Game_Balloon_Combo_Number_Ex_Y = new int[] { 54, 603 };
-        public int[] Game_Balloon_Combo_Text_X = new int[] { 440, 440 };
-        public int[] Game_Balloon_Combo_Text_Y = new int[] { 85, 634 };
-        public int[] Game_Balloon_Combo_Text_Ex_X = new int[] { 440, 440 };
-        public int[] Game_Balloon_Combo_Text_Ex_Y = new int[] { 85, 594 };
+        public int[] Game_Balloon_Combo_X = new int[] { 294, 294 };
+        public int[] Game_Balloon_Combo_Y = new int[] { -14, 548 };
+        public int[] Game_Balloon_Combo_Number_X = new int[] { 295, 295 };
+        public int[] Game_Balloon_Combo_Number_Y = new int[] { 49, 610 };
+        public int[] Game_Balloon_Combo_Number_Ex_X = new int[] { 340, 340 };
+        public int[] Game_Balloon_Combo_Number_Ex_Y = new int[] { 49, 610 };
+        public int[] Game_Balloon_Combo_Text_X = new int[] { 480, 480 };
+        public int[] Game_Balloon_Combo_Text_Y = new int[] { 83, 645 };
+        public int[] Game_Balloon_Combo_Text_Ex_X = new int[] { 484, 484 };
+        public int[] Game_Balloon_Combo_Text_Ex_Y = new int[] { 83, 645 };
 
         public int[] Game_Balloon_Balloon_X = new int[] { 382, 382 };
         public int[] Game_Balloon_Balloon_Y = new int[] { 115, 290 };
@@ -2887,7 +2887,7 @@ namespace TJAPlayer3
 
         #endregion
         #region Training
-        
+
         public int Game_Training_ScrollTime = 350;
         public int[] Game_Training_ProgressBar_XY = { 340, 370 };
         public int Game_Training_GoGoPoint_Y = 390;
@@ -2897,7 +2897,7 @@ namespace TJAPlayer3
         public int[] Game_Training_SpeedDisplay_XY = { 110, 370 };
         public int Game_Training_SmallNumber_Width = 17;
         public int Game_Training_BigNumber_Width = 20;
-        
+
         #endregion
 
         #endregion

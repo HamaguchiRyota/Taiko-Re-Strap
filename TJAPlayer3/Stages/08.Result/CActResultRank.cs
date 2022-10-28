@@ -5,12 +5,12 @@ namespace TJAPlayer3
 	internal class CActResultRank : CActivity
 	{
 		// コンストラクタ
-
+		/*
 		public CActResultRank()
 		{
 			base.b活性化してない = true;
 		}
-
+		*/
 		// CActivity 実装
 
 		public override void On活性化()

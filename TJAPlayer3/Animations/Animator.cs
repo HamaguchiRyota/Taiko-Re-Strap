@@ -14,15 +14,7 @@ namespace TJAPlayer3.Animations
             IsLoop = isLoop;
             Counter = new CCounter();
         }
-        public Animator(double startValue, double endValue, double tickInterval, bool isLoop)
-        {
-            Type = CounterType.Double;
-            StartValue = startValue;
-            EndValue = endValue;
-            TickInterval = tickInterval;
-            IsLoop = isLoop;
-            Counter = new CCounter();
-        }
+
         public void Start()
         {
             if (Counter == null) throw new NullReferenceException();

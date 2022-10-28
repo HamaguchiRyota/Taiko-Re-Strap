@@ -23,6 +23,7 @@ namespace TJAPlayer3
 		{
 			public class CKeyAssignPad
 			{
+				/*
 				public CConfigIni.CKeyAssign.STKEYASSIGN[] HH
 				{
 					get
@@ -34,6 +35,7 @@ namespace TJAPlayer3
 						this.padHH_R = value;
 					}
 				}
+				
 				public CConfigIni.CKeyAssign.STKEYASSIGN[] R
 				{
 					get
@@ -232,6 +234,7 @@ namespace TJAPlayer3
 						this.padLBD = value;
 					}
 				}
+				*/
 				public CConfigIni.CKeyAssign.STKEYASSIGN[] Capture
 				{
 					get
@@ -866,7 +869,6 @@ namespace TJAPlayer3
 		public STAUTOPLAY bAutoPlay;
 		public int nSoundDeviceType;				// #24820 2012.12.23 yyagi 出力サウンドデバイス(0=ACM(にしたいが設計がきつそうならDirectShow), 1=ASIO, 2=WASAPI)
 		public int nWASAPIBufferSizeMs;				// #24820 2013.1.15 yyagi WASAPIのバッファサイズ
-//		public int nASIOBufferSizeMs;				// #24820 2012.12.28 yyagi ASIOのバッファサイズ
 		public int nASIODevice;						// #24820 2013.1.17 yyagi ASIOデバイス
 		public bool bUseOSTimer;					// #33689 2014.6.6 yyagi 演奏タイマーの種類
 		public bool bDynamicBassMixerManagement;	// #24820
@@ -879,7 +881,6 @@ namespace TJAPlayer3
 		public bool bViewerShowDebugStatus;
 		public bool bViewerTimeStretch;
 		public bool bViewerDrums有効, bViewerGuitar有効;
-		//public bool bNoMP3Streaming;				// 2014.4.14 yyagi; mp3のシーク位置がおかしくなる場合は、これをtrueにすることで、wavにデコードしてからオンメモリ再生する
 		public int nMasterVolume;
         public bool ShinuchiMode; // 真打モード
         public bool FastRender; // 事前画像描画モード
@@ -1109,7 +1110,7 @@ namespace TJAPlayer3
 			this.nウインドウheight = SampleFramework.GameWindowSize.Height;			// 
 			this.nフレーム毎スリープms = -1;			// #xxxxx 2011.11.27 yyagi add
 			this.n非フォーカス時スリープms = 1;			// #23568 2010.11.04 ikanick add
-			this._bGuitar有効 = true;
+			//this._bGuitar有効 = true;
 			this._bDrums有効 = true;
 			this.nBGAlpha = 100;
 			this.eダメージレベル = Eダメージレベル.普通;
@@ -1286,12 +1287,6 @@ namespace TJAPlayer3
             this.bDirectShowMode = false;
             #endregion
         }
-		public CConfigIni( string iniファイル名 )
-			: this()
-		{
-			this.tファイルから読み込み( iniファイル名 );
-		}
-
 
 		// メソッド
 
@@ -2340,8 +2335,6 @@ namespace TJAPlayer3
                                     //-----------------------------
                                     #endregion
 
-
-
                                     #region [ [Log] ]
                                     //-----------------------------
                                     case Eセクション種別.Log:
@@ -2712,20 +2705,6 @@ namespace TJAPlayer3
 		/// <summary>
 		/// ギターとベースのキーアサイン入れ替え
 		/// </summary>
-		//public void SwapGuitarBassKeyAssign()		// #24063 2011.1.16 yyagi
-		//{
-		//    for ( int j = 0; j <= (int)EKeyConfigPad.Capture; j++ )
-		//    {
-		//        CKeyAssign.STKEYASSIGN t; //= new CConfigIni.CKeyAssign.STKEYASSIGN();
-		//        for ( int k = 0; k < 16; k++ )
-		//        {
-		//            t = this.KeyAssign[ (int)EKeyConfigPart.GUITAR ][ j ][ k ];
-		//            this.KeyAssign[ (int)EKeyConfigPart.GUITAR ][ j ][ k ] = this.KeyAssign[ (int)EKeyConfigPart.BASS ][ j ][ k ];
-		//            this.KeyAssign[ (int)EKeyConfigPart.BASS ][ j ][ k ] = t;
-		//        }
-		//    }
-		//    this.bIsSwappedGuitarBass = !bIsSwappedGuitarBass;
-		//}
 
 
 		// その他
@@ -2748,7 +2727,7 @@ namespace TJAPlayer3
 		}
 
 		private bool _bDrums有効;
-		private bool _bGuitar有効;
+		//private bool _bGuitar有効;
 		private bool bConfigIniが存在している;
 		private string ConfigIniファイル名;
 

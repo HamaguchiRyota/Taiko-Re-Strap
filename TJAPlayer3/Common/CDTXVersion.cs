@@ -40,18 +40,6 @@ namespace TJAPlayer3
 
 		// コンストラクタ
 
-		public CDTXVersion()
-		{
-			this.n整数部 = 0;
-			this.n小数部 = 0;
-			this.Unknown = true;
-		}
-		public CDTXVersion( int n整数部 )
-		{
-			this.n整数部 = n整数部;
-			this.n小数部 = 0;
-			this.Unknown = false;
-		}
 		public CDTXVersion( string Version )
 		{
 			this.n整数部 = 0;
@@ -111,92 +99,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
-		public CDTXVersion( int n整数部, int n小数部 )
-		{
-			this.n整数部 = n整数部;
-			this.n小数部 = n小数部;
-			this.Unknown = false;
-		}
-
 	
 		// メソッド
-		
-		public string toString()
-		{
-			var result = new StringBuilder( 32 );
-
-			// 整数部
-			result.Append( this.n整数部.ToString( "000" ) );
-
-			// 英字部分（あれば）
-			if( this.n小数部 >= 1000000 )
-			{
-				int n英字 = Math.Min( this.n小数部 / 1000000, 26 );	// 1～26
-				result.Append( CDTXVersion.DIG36[ 10 + ( n英字 - 1 ) ] );
-			}
-
-			// 日付部分（あれば）
-			int n日付 = this.n小数部 % 1000000;
-			if( n日付 > 0 )
-			{
-				result.Append( '(' );
-				result.Append( n日付.ToString( "000000" ) );
-				result.Append( ')' );
-			}
-
-			return result.ToString();
-		}
-
-		public static bool operator ==( CDTXVersion x, CDTXVersion y )
-		{
-			return ( ( ( x.n整数部 == y.n整数部 ) && ( x.n小数部 == y.n小数部 ) ) && ( x.Unknown == y.Unknown ) );
-		}
-		public static bool operator >( CDTXVersion x, CDTXVersion y )
-		{
-			return ( ( x.n整数部 > y.n整数部 ) || ( ( x.n整数部 == y.n整数部 ) && ( x.n小数部 > y.n小数部 ) ) );
-		}
-		public static bool operator >=( CDTXVersion x, CDTXVersion y )
-		{
-			return ( ( x.n整数部 > y.n整数部 ) || ( ( x.n整数部 == y.n整数部 ) && ( x.n小数部 >= y.n小数部 ) ) );
-		}
-		public static bool operator !=( CDTXVersion x, CDTXVersion y )
-		{
-			if( ( x.n整数部 == y.n整数部 ) && ( x.n小数部 == y.n小数部 ) )
-			{
-				return ( x.Unknown != y.Unknown );
-			}
-			return true;
-		}
-		public static bool operator <( CDTXVersion x, CDTXVersion y )
-		{
-			return ( ( x.n整数部 < y.n整数部 ) || ( ( x.n整数部 == y.n整数部 ) && ( x.n小数部 < y.n小数部 ) ) );
-		}
-		public static bool operator <=( CDTXVersion x, CDTXVersion y )
-		{
-			return ( ( x.n整数部 < y.n整数部 ) || ( ( x.n整数部 == y.n整数部 ) && ( x.n小数部 <= y.n小数部 ) ) );
-		}
-		public override bool Equals(object obj)			// 2011.1.3 yyagi: warningを無くすために追加
-		{
-			if (obj == null)
-			{
-				return false;
-			}
-			if (this.GetType() != obj.GetType())
-			{
-				return false;
-			}
-			CDTXVersion objCDTXVersion = (CDTXVersion)obj;
-			if (!int.Equals(this.n整数部, objCDTXVersion.n整数部) || !int.Equals(this.n小数部, objCDTXVersion.n小数部))
-			{
-				return false;
-			}
-			return true;
-		}
-		public override int GetHashCode()				// 2011.1.3 yyagi: warningを無くすために追加
-		{
-			string v = this.toString();
-			return v.GetHashCode();
-		}
 
 		// その他
 

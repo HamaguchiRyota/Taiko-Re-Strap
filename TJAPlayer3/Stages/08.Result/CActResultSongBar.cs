@@ -13,11 +13,12 @@ namespace TJAPlayer3
 		}
 
 		// メソッド
-
+		/*
 		public void tアニメを完了させる()
 		{
 			this.ct登場用.n現在の値 = (int)this.ct登場用.n終了値;
 		}
+		*/
 
 		// CActivity 実装
 

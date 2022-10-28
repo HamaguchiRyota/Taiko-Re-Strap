@@ -29,6 +29,7 @@ namespace TJAPlayer3
 		{
 			get { return (TJAPlayer3.app != null ) ? TJAPlayer3.app.Device.UnderlyingDevice : null; }
 		}
+		/*
 		public Format TextureFormat
 		{
 			get { return TJAPlayer3.TextureFormat; }
@@ -37,6 +38,7 @@ namespace TJAPlayer3
 		{
 			get { return TJAPlayer3.Timer; }
 		}
+		*/
 		public CSound管理 Sound管理
 		{
 			get { return TJAPlayer3.Sound管理; }

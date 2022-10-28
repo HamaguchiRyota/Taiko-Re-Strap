@@ -21,6 +21,7 @@ namespace TJAPlayer3
 			this.n現在選択されている項目番号 = 0;
 			this.list項目値 = new List<string>();
 		}
+		/*
 		public CItemList( string str項目名 )
 			: this()
 		{
@@ -36,6 +37,7 @@ namespace TJAPlayer3
 		{
 			this.t初期化( str項目名, eパネル種別, n初期インデックス値, arg項目リスト );
 		}
+		*/
 		public CItemList(string str項目名, CItemBase.Eパネル種別 eパネル種別, int n初期インデックス値, string str説明文jp, params string[] arg項目リスト)
 			: this() {
 			this.t初期化(str項目名, eパネル種別, n初期インデックス値, str説明文jp, arg項目リスト);
@@ -114,6 +116,7 @@ namespace TJAPlayer3
 			this.n現在選択されている項目番号 = 0;
 			this.list項目値 = new List<string>();
 		}
+		/*
 		public CSwitchItemList( string str項目名 )
 			: this()
 		{
@@ -133,6 +136,7 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, eパネル種別, n初期インデックス値, str説明文jp, arg項目リスト);
 		}
+		*/
 		public CSwitchItemList( string str項目名, CItemBase.Eパネル種別 eパネル種別, int n初期インデックス値, string str説明文jp, string str説明文en, params string[] arg項目リスト )
 			: this()
 		{

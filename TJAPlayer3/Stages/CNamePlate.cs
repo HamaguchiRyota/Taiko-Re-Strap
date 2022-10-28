@@ -81,6 +81,7 @@ namespace TJAPlayer3
 
                 tNamePlateDraw(player, x, y);
 
+                
                 if (TJAPlayer3.NamePlateConfig.data.Dan[player] != "" && TJAPlayer3.NamePlateConfig.data.Dan[player] != null)
                 {
                     if (txName[player].szテクスチャサイズ.Width >= 120.0f)
@@ -91,7 +92,7 @@ namespace TJAPlayer3
                     if (txName[player].szテクスチャサイズ.Width >= 220.0f)
                         txName[player].vc拡大縮小倍率.X = 220.0f / txName[player].szテクスチャサイズ.Width;
                 }
-
+                
                 /*
                 if (txdan[player].szテクスチャサイズ.Width >= 66.0f)
                     txdan[player].vc拡大縮小倍率.X = 66.0f / txdan[player].szテクスチャサイズ.Width;
@@ -341,7 +342,7 @@ namespace TJAPlayer3
 
         private CPrivateFastFont pfName;
         private CPrivateFastFont pfTitle;
-        private CPrivateFastFont pfdan;
+        //private CPrivateFastFont pfdan;
         private CCounter ctNamePlateEffect;
         private CTexture[] txName = new CTexture[2];
         private CTexture[] txTitle = new CTexture[2];

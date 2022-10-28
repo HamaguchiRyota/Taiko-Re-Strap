@@ -18,12 +18,14 @@ namespace TJAPlayer3
 		}
 
 		// コンストラクタ
-
+		/*
 		public CItemThreeState()
 		{
 			base.e種別 = CItemBase.E種別.ONorOFFor不定スリーステート;
 			this.e現在の状態 = E状態.不定;
 		}
+		*/
+		/*
 		public CItemThreeState( string str項目名, E状態 e初期状態 )
 			: this()
 		{
@@ -51,6 +53,7 @@ namespace TJAPlayer3
 			: this() {
 			this.t初期化(str項目名, e初期状態, eパネル種別, str説明文jp, str説明文en);
 		}
+		*/
 
 		// CItemBase 実装
 
@@ -92,6 +95,7 @@ namespace TJAPlayer3
 					return;
 			}
 		}
+		/*
 		public void t初期化( string str項目名, E状態 e初期状態 )
 		{
 			this.t初期化( str項目名, e初期状態, CItemBase.Eパネル種別.通常 );
@@ -102,7 +106,8 @@ namespace TJAPlayer3
 		public void t初期化(string str項目名, E状態 e初期状態, string str説明文jp, string str説明文en) {
 			this.t初期化(str項目名, e初期状態, CItemBase.Eパネル種別.通常, str説明文jp, str説明文en);
 		}
-
+		*/
+		/*
 		public void t初期化( string str項目名, E状態 e初期状態, CItemBase.Eパネル種別 eパネル種別 )
 		{
 			this.t初期化(str項目名, e初期状態, CItemBase.Eパネル種別.通常, "", "");
@@ -110,10 +115,13 @@ namespace TJAPlayer3
 		public void t初期化(string str項目名, E状態 e初期状態, CItemBase.Eパネル種別 eパネル種別, string str説明文jp) {
 			this.t初期化(str項目名, e初期状態, CItemBase.Eパネル種別.通常, str説明文jp, str説明文jp);
 		}
+		*/
+		/*
 		public void t初期化(string str項目名, E状態 e初期状態, CItemBase.Eパネル種別 eパネル種別, string str説明文jp, string str説明文en) {
 			base.t初期化(str項目名, eパネル種別, str説明文jp, str説明文en);
 			this.e現在の状態 = e初期状態;
 		}
+		*/
 		public override object obj現在値()
 		{
 			if ( this.e現在の状態 == E状態.不定 )
