@@ -22,7 +22,7 @@ namespace TJAPlayer3
 
 		public STDGBVALUE<int> nランク値;
 		public STDGBVALUE<int> n演奏回数;
-		public STDGBVALUE<int> nScoreRank;
+		//public STDGBVALUE<int> nScoreRank;
 		public int n総合ランク値;
 		public int nクリア;        //0:未クリア 1:クリア 2:フルコンボ 3:ドンダフルコンボ
 		public int nスコアランク;  //0:未取得 1:白粋 2:銅粋 3:銀粋 4:金雅 5:桃雅 6:紫雅 7:虹極

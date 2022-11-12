@@ -84,29 +84,7 @@ namespace TJAPlayer3
 		#region [ private ]
 		//-----------------
 		private CCounter ct登場用;
-		private CTexture r表示するリザルト画像;
-		private CTexture txリザルト画像;
-		/*
-		private bool tプレビュー画像の指定があれば構築する()
-		{
-			if (string.IsNullOrEmpty(TJAPlayer3.DTX.PREIMAGE))
-			{
-				return false;
-			}
-			TJAPlayer3.t安全にDisposeする(ref this.txリザルト画像);
-			this.r表示するリザルト画像 = null;
-			string path = TJAPlayer3.DTX.strフォルダ名 + TJAPlayer3.DTX.PREIMAGE;
-			if (!File.Exists(path))
-			{
-				Trace.TraceWarning("ファイルが存在しません。({0})", new object[] { path });
-				return false;
-			}
-			this.txリザルト画像 = TJAPlayer3.tテクスチャの生成(path);
-			this.r表示するリザルト画像 = this.txリザルト画像;
-			return (this.r表示するリザルト画像 != null);
-		}
-		*/
-		//-----------------
-		#endregion
-	}
+        #endregion
+
+    }
 }

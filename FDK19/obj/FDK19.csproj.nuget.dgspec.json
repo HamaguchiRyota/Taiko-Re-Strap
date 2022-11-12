@@ -1,38 +1,42 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj": {}
+    "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {}
   },
   "projects": {
-    "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj": {
+    "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj",
-        "projectName": "FDK19",
-        "projectPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\FDK19.csproj",
-        "packagesPath": "C:\\Users\\xxryo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\xxryo\\Desktop\\TJAPlayer3-Develop-ReWrite-master\\FDK19\\obj\\",
+        "projectUniqueName": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+        "projectName": "FDK",
+        "projectPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+        "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hama\\Desktop\\Taiko-Re-Strap-master\\FDK19\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\xxryo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net48"
+          "net472"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net48": {
+          "net472": {
             "projectReferences": {}
           }
         }
       },
       "frameworks": {
-        "net48": {
+        "net472": {
           "dependencies": {
             "ReadJEnc": {
               "target": "Package",

@@ -7,10 +7,8 @@ using System.Runtime.InteropServices;
 using SharpDX;
 using SlimDX;
 using FDK;
-
 using Rectangle = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -62,7 +60,7 @@ namespace TJAPlayer3
 			st文字位置10.ch = '9';
 			st文字位置10.pt = new Point(234, 0);
 			st文字位置Array[9] = st文字位置10;
-			this.st小文字位置 = st文字位置Array;
+			st小文字位置 = st文字位置Array;
 
 			base.b活性化してない = true;
 		}
@@ -80,23 +78,23 @@ namespace TJAPlayer3
 					{
 						if ((cスコア.譜面情報.演奏履歴[i] != null) && (cスコア.譜面情報.演奏履歴[i].Length > 0))
 						{
-							graphics.DrawString(cスコア.譜面情報.演奏履歴[i], this.ft表示用フォント, Brushes.Yellow, (float)0f, (float)(i * 36f));
+							graphics.DrawString(cスコア.譜面情報.演奏履歴[i], ft表示用フォント, Brushes.Yellow, (float)0f, (float)(i * 36f));
 						}
 					}
 					graphics.Dispose();
-					if (this.tx文字列パネル != null)
+					if (tx文字列パネル != null)
 					{
-						this.tx文字列パネル.Dispose();
+						tx文字列パネル.Dispose();
 					}
-					this.tx文字列パネル = new CTexture(TJAPlayer3.app.Device, image, TJAPlayer3.TextureFormat);
-					this.tx文字列パネル.vc拡大縮小倍率 = new Vector3(0.5f, 0.5f, 1f);
+					tx文字列パネル = new CTexture(TJAPlayer3.app.Device, image, TJAPlayer3.TextureFormat);
+					tx文字列パネル.vc拡大縮小倍率 = new Vector3(0.5f, 0.5f, 1f);
 					image.Dispose();
 				}
 				catch (CTextureCreateFailedException e)
 				{
 					Trace.TraceError(e.ToString());
 					Trace.TraceError("演奏履歴文字列テクスチャの作成に失敗しました。");
-					this.tx文字列パネル = null;
+					tx文字列パネル = null;
 				}
 			}
 		}
@@ -106,56 +104,56 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-			this.n本体X = 810;
-			this.n本体Y = 558;
-			this.ft表示用フォント = new Font("Arial", 30f, FontStyle.Bold, GraphicsUnit.Pixel);
+			n本体X = 810;
+			n本体Y = 558;
+			ft表示用フォント = new Font("Arial", 30f, FontStyle.Bold, GraphicsUnit.Pixel);
 			base.On活性化();
 		}
 		public override void On非活性化()
 		{
-			if (this.ft表示用フォント != null)
+			if (ft表示用フォント != null)
 			{
-				this.ft表示用フォント.Dispose();
-				this.ft表示用フォント = null;
+				ft表示用フォント.Dispose();
+				ft表示用フォント = null;
 			}
-			this.ct登場アニメ用 = null;
+			ct登場アニメ用 = null;
 			base.On非活性化();
 		}
 		public override void OnManagedリソースの作成()
 		{
-			if (!base.b活性化してない)
+			if (!b活性化してない)
 			{
-				this.t選択曲が変更された();
+				t選択曲が変更された();
 				base.OnManagedリソースの作成();
 			}
 		}
 		public override void OnManagedリソースの解放()
 		{
-			if (!base.b活性化してない)
+			if (!b活性化してない)
 			{
 				base.OnManagedリソースの解放();
 			}
 		}
 		public override int On進行描画()
 		{
-			if (!base.b活性化してない)
+			if (!b活性化してない)
 			{
-				if (base.b初めての進行描画)
+				if (b初めての進行描画)
 				{
-					this.ct登場アニメ用 = new CCounter(0, 3000, 1, TJAPlayer3.Timer);
-					base.b初めての進行描画 = false;
+					ct登場アニメ用 = new CCounter(0, 3, 1, TJAPlayer3.Timer);
+					b初めての進行描画 = false;
 				}
-				this.ct登場アニメ用.t進行();
+				ct登場アニメ用.t進行();
 				int x = 980;
 				int y = 350;
-				if (TJAPlayer3.stage選曲.r現在選択中のスコア != null && this.ct登場アニメ用.n現在の値 >= 2000 && TJAPlayer3.stage選曲.r現在選択中の曲.eノード種別 == C曲リストノード.Eノード種別.SCORE)
+				if (TJAPlayer3.stage選曲.r現在選択中のスコア != null && ct登場アニメ用.n現在の値 >= 2000 && TJAPlayer3.stage選曲.r現在選択中の曲.eノード種別 == C曲リストノード.Eノード種別.SCORE)
 				{
 					//CDTXMania.Tx.SongSelect_ScoreWindow_Text.n透明度 = ct登場アニメ用.n現在の値 - 1745;
 					if (TJAPlayer3.Tx.SongSelect_ScoreWindow[TJAPlayer3.stage選曲.n現在選択中の曲の難易度] != null)
 					{
 						//CDTXMania.Tx.SongSelect_ScoreWindow[CDTXMania.stage選曲.n現在選択中の曲の難易度].n透明度 = ct登場アニメ用.n現在の値 - 1745;
 						TJAPlayer3.Tx.SongSelect_ScoreWindow[TJAPlayer3.stage選曲.n現在選択中の曲の難易度].t2D描画(TJAPlayer3.app.Device, x, y);
-						this.t小文字表示(x + 56, y + 160, string.Format("{0,7:######0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[3].ToString()));
+						t小文字表示(x + 56, y + 160, string.Format("{0,7:######0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[3].ToString()));
 						TJAPlayer3.Tx.SongSelect_ScoreWindow_Text.t2D描画(TJAPlayer3.app.Device, x + 236, y + 166, new Rectangle(0, 36, 32, 30));
 					}
 				}

@@ -65,7 +65,7 @@ namespace FDK
 			Byte[] _txData = File.ReadAllBytes( strファイル名 );
 			bool b条件付きでサイズは２の累乗でなくてもOK = ( device.Capabilities.TextureCaps & TextureCaps.NonPow2Conditional ) != 0;
 			bool bサイズは２の累乗でなければならない = ( device.Capabilities.TextureCaps & TextureCaps.Pow2 ) != 0;
-			bool b正方形でなければならない = ( device.Capabilities.TextureCaps & TextureCaps.SquareOnly ) != 0;
+			//bool b正方形でなければならない = ( device.Capabilities.TextureCaps & TextureCaps.SquareOnly ) != 0;
 
 			// そもそもこんな最適化をしなくてよいのなら、さっさとbaseに処理を委ねて終了
 			if ( !bサイズは２の累乗でなければならない && b条件付きでサイズは２の累乗でなくてもOK )
@@ -140,18 +140,18 @@ namespace FDK
 				bmpNew.MakeTransparent( Color.Black );
 			}
 			g.Dispose();
-			g = null;
+			//g = null;
 			bmpOrg.Dispose();
-			bmpOrg = null;
+			//bmpOrg = null;
 			base.MakeTexture( device, bmpNew, format, b黒を透過する, pool );
-			bmpNew.Dispose();
-			bmpNew = null;
+			Dispose();
+			//bmpNew = null;
 			#endregion
 
 			_orgWidth = orgWidth;
 			_orgHeight = orgHeight;
 			_foldtimes = foldtimes;
-			this.sz画像サイズ = new Size( orgWidth, orgHeight );
+			sz画像サイズ = new Size( orgWidth, orgHeight );
 		}
 
 		/// <summary>
@@ -189,7 +189,7 @@ namespace FDK
 			#endregion
 			#region [ width > height ではなくなるまで、折りたたみ続ける ]
 			width = pow;
-			height = orgHeight * 2;		// 初期値＝1回折りたたんだ状態
+			//height = orgHeight * 2;		// 初期値＝1回折りたたんだ状態
 			do
 			{
 				width /= 2;
@@ -212,6 +212,9 @@ namespace FDK
 		/// <param name="device">Direct3D9 デバイス。</param>
 		/// <param name="x">描画位置（テクスチャの左上位置の X 座標[dot]）。</param>
 		/// <param name="y">描画位置（テクスチャの左上位置の Y 座標[dot]）。</param>
+		/// 
+
+        /*
 		public new void t2D描画( Device device, int x, int y )
 		{
 #if TEST_FOLDTEXTURE
@@ -223,35 +226,37 @@ namespace FDK
 				if ( b横長のテクスチャである )
 				{
 					int currentHeight = n * _orgHeight;
-					r = new Rectangle( 0, currentHeight, this.rc全画像.Width, _orgHeight );
-					base.t2D描画( device, x + n * this.rc全画像.Width, y, 1f, r );
+					r = new Rectangle( 0, currentHeight, rc全画像.Width, _orgHeight );
+					t2D描画( device, x + n * rc全画像.Width, y, 1f, r );
 				}
 				else
 				{
 					int currentWidth = n * _orgWidth;
-					r = new Rectangle( currentWidth, 0, _orgWidth, this.rc全画像.Height );
-					base.t2D描画( device, x, y + n * this.rc全画像.Height, 1f, r );
+					r = new Rectangle( currentWidth, 0, _orgWidth, rc全画像.Height );
+					t2D描画( device, x, y + n * rc全画像.Height, 1f, r );
 				}
 			}
 #endif
 		}
-		public new void t2D描画( Device device, int x, int y, Rectangle rc )
+		*/
+		/*
+		public void t2D描画( Device device, int x, int y, Rectangle rc )
 		{
 			Rectangle r;
 			if ( b横長のテクスチャである )
 			{
-				int beginFold = rc.X / this.rc全画像.Width;
+				int beginFold = rc.X / rc全画像.Width;
 				int endFold = ( rc.X + rc.Width ) / rc全画像.Width;
 				for ( int i = beginFold; i <= endFold; i++ )
 				{
 					if ( i > _foldtimes ) break;
 
 					int newRcY = i * _orgHeight + rc.Y;
-					int newRcX = ( i == beginFold ) ? ( rc.X % this.rc全画像.Width ) : 0;
+					int newRcX = ( i == beginFold ) ? ( rc.X % rc全画像.Width ) : 0;
 					int newRcWidth = ( newRcX + rc.Width > rc全画像.Width ) ? rc全画像.Width - newRcX : rc.Width;
 
 					r = new Rectangle( newRcX, newRcY, newRcWidth, rc.Height );
-					base.t2D描画( device, x, y, 1f, r );
+					t2D描画( device, x, y, 1f, r );
 
 					int deltaX = ( i == beginFold ) ? ( i + 1 ) * rc全画像.Width - rc.X : rc全画像.Width;
 					int newWidth = rc.Width - deltaX;
@@ -261,18 +266,18 @@ namespace FDK
 			}
 			else
 			{
-				int beginFold = rc.Y / this.rc全画像.Height;
+				int beginFold = rc.Y / rc全画像.Height;
 				int endFold = ( rc.Y + rc.Height ) / rc全画像.Height;
 				for ( int i = beginFold; i <= endFold; i++ )
 				{
 					if ( i > _foldtimes ) break;
 
 					int newRcX = i * _orgWidth + rc.X;
-					int newRcY = ( i == beginFold ) ? ( rc.Y % this.rc全画像.Height ) : 0;
+					int newRcY = ( i == beginFold ) ? ( rc.Y % rc全画像.Height ) : 0;
 					int newRcHeight = ( newRcY + rc.Height > rc全画像.Height ) ? rc全画像.Height - newRcY : rc.Height;
 
 					r = new Rectangle( newRcX, newRcY, rc.Width, newRcHeight );
-					base.t2D描画( device, x, y, 1f, r );
+					t2D描画( device, x, y, 1f, r );
 
 					int deltaY = ( i == beginFold ) ? ( i + 1 ) * rc全画像.Height - rc.Y : rc全画像.Height;
 					int newHeight = rc.Height - deltaY;
@@ -282,6 +287,8 @@ namespace FDK
 			}
 
 		}
+		*/
+		/*
 		public new void t2D描画( Device device, float x, float y )
 		{
 			t2D描画( device, (int) x, (int) y );
@@ -290,6 +297,7 @@ namespace FDK
 		{
 			t2D描画( device, (int) x, (int) y, rc );
 		}
+		*/
 
         /// <summary>
 		/// テクスチャを 2D 画像と見なして描画する。
@@ -297,6 +305,9 @@ namespace FDK
 		/// <param name="device">Direct3D9 デバイス。</param>
 		/// <param name="x">描画位置（テクスチャの左上位置の X 座標[dot]）。</param>
 		/// <param name="y">描画位置（テクスチャの左上位置の Y 座標[dot]）。</param>
+		/// 
+
+		/*
 		public void t3D描画( Device device, Matrix mat, float x, float y )
 		{
 #if TEST_FOLDTEXTURE
@@ -320,6 +331,8 @@ namespace FDK
 			}
 #endif
 		}
+		*/
+		/*
 		public void t3D描画( Device device, Matrix mat, float x, float y, Rectangle rc )
 		{
 			Rectangle r;
@@ -367,6 +380,7 @@ namespace FDK
 			}
 
 		}
+		*/
 
 		#region [ private ]
 		//-----------------

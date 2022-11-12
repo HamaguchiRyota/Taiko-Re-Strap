@@ -83,6 +83,7 @@ namespace FDK
             protected set;
         }
         public Vector3 vc拡大縮小倍率;
+        public Vector3 vcScaling;
 
         // 画面が変わるたび以下のプロパティを設定し治すこと。
 
@@ -159,10 +160,14 @@ namespace FDK
         /// <param name="n高さ">テクスチャの高さ（希望値）。</param>
         /// <param name="format">テクスチャのフォーマット。</param>
         /// <exception cref="CTextureCreateFailedException">テクスチャの作成に失敗しました。</exception>
+        /// 
+
+        /*
         public CTexture(Device device, int n幅, int n高さ, Format format)
             : this(device, n幅, n高さ, format, Pool.Managed)
         {
         }
+        */
 
         /// <summary>
         /// <para>指定された画像ファイルから Managed テクスチャを作成する。</para>
@@ -177,10 +182,12 @@ namespace FDK
             : this(device, strファイル名, format, b黒を透過する, Pool.Managed)
         {
         }
+        /*
         public CTexture(Device device, byte[] txData, Format format, bool b黒を透過する)
             : this(device, txData, format, b黒を透過する, Pool.Managed)
         {
         }
+        */
         public CTexture(Device device, Bitmap bitmap, Format format, bool b黒を透過する)
             : this(device, bitmap, format, b黒を透過する, Pool.Managed)
         {
@@ -411,6 +418,7 @@ namespace FDK
         {
             this.t2D描画(device, x - ((rc画像内の描画領域.Width / 2)), y - (rc画像内の描画領域.Height * this.vc拡大縮小倍率.Y), 1f, rc画像内の描画領域);
         }
+        /*
         public void t2D拡大率考慮下中心基準描画(Device device, float x, float y, Rectangle rc画像内の描画領域)
         {
             this.t2D拡大率考慮下中心基準描画(device, (int)x, (int)y, rc画像内の描画領域);
@@ -419,6 +427,7 @@ namespace FDK
         {
             this.t2D描画(device, x - (this.szテクスチャサイズ.Width / 2), y - (szテクスチャサイズ.Height), this.rc全画像);
         }
+        */
         public void t2D下中央基準描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
         {
             this.t2D描画(device, x - (rc画像内の描画領域.Width / 2), y - (rc画像内の描画領域.Height), rc画像内の描画領域);
@@ -438,10 +447,12 @@ namespace FDK
         {
             this.t2D描画(device, x - (rc.Width / 2 * this.vc拡大縮小倍率.X), y, 1f, rc);
         }
+        /*
         public void t2D拡大率考慮上中央基準描画(Device device, int x, int y)
         {
             this.t2D描画(device, x - (rc全画像.Width / 2 * this.vc拡大縮小倍率.X), y, 1f, rc全画像);
         }
+        */
         public void t2D拡大率考慮中央基準描画(Device device, float x, float y)
         {
             this.t2D描画(device, x - (this.szテクスチャサイズ.Width / 2 * this.vc拡大縮小倍率.X), y - (szテクスチャサイズ.Height / 2 * this.vc拡大縮小倍率.Y), 1f, this.rc全画像);
@@ -790,178 +801,134 @@ namespace FDK
         }
         public void t2D上下反転描画(Device device, int x, int y)
         {
-            this.t2D上下反転描画(device, x, y, 1f, this.rc全画像);
+            t2D上下反転描画(device, x, y, 1f, this.rc全画像);
         }
         public void t2D上下反転描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
         {
-            this.t2D上下反転描画(device, x, y, 1f, rc画像内の描画領域);
+            t2D上下反転描画(device, x, y, 1f, rc画像内の描画領域);
         }
         public void t2D左右反転描画(Device device, int x, int y)
         {
-            this.t2D左右反転描画(device, x, y, 1f, this.rc全画像);
-        }
-        public void t2D左右反転描画(Device device, float x, float y)
-        {
-            this.t2D左右反転描画(device, x, y, 1f, this.rc全画像);
-        }
-        public void t2D左右反転描画(Device device, int x, int y, Rectangle rc画像内の描画領域)
-        {
-            this.t2D左右反転描画(device, x, y, 1f, rc画像内の描画領域);
+            t2D左右反転描画(device, x, y, 1f, this.rc全画像);
         }
         public void t2D左右反転描画(Device device, float x, float y, float depth, Rectangle rc画像内の描画領域)
         {
-            if (this.texture == null)
+            if (texture == null)
                 throw new InvalidOperationException("テクスチャは生成されていません。");
 
-            this.tレンダリングステートの設定(device);
+            tレンダリングステートの設定(device);
 
-            float fx = x * CTexture.f画面比率 + CTexture.rc物理画面描画領域.X - 0.5f;   // -0.5 は座標とピクセルの誤差を吸収するための座標補正値。(MSDN参照)
-            float fy = y * CTexture.f画面比率 + CTexture.rc物理画面描画領域.Y - 0.5f;   //
-            float w = rc画像内の描画領域.Width * this.vc拡大縮小倍率.X * CTexture.f画面比率;
-            float h = rc画像内の描画領域.Height * this.vc拡大縮小倍率.Y * CTexture.f画面比率;
-            float f左U値 = ((float)rc画像内の描画領域.Left) / ((float)this.szテクスチャサイズ.Width);
-            float f右U値 = ((float)rc画像内の描画領域.Right) / ((float)this.szテクスチャサイズ.Width);
-            float f上V値 = ((float)rc画像内の描画領域.Top) / ((float)this.szテクスチャサイズ.Height);
-            float f下V値 = ((float)rc画像内の描画領域.Bottom) / ((float)this.szテクスチャサイズ.Height);
-            this.color4.Alpha = ((float)this._opacity) / 255f;
-            int color = this.color4.ToArgb();
+            float fx = x * f画面比率 + rc物理画面描画領域.X - 0.5f;   // -0.5 は座標とピクセルの誤差を吸収するための座標補正値。(MSDN参照)
+            float fy = y * f画面比率 + rc物理画面描画領域.Y - 0.5f;   //
+            float w = rc画像内の描画領域.Width * vc拡大縮小倍率.X * f画面比率;
+            float h = rc画像内の描画領域.Height * vc拡大縮小倍率.Y * f画面比率;
+            float f左U値 = rc画像内の描画領域.Left / ((float)szテクスチャサイズ.Width);
+            float f右U値 = rc画像内の描画領域.Right / ((float)szテクスチャサイズ.Width);
+            float f上V値 = rc画像内の描画領域.Top / ((float)szテクスチャサイズ.Height);
+            float f下V値 = rc画像内の描画領域.Bottom / ((float)szテクスチャサイズ.Height);
+            color4.Alpha = _opacity / 255f;
+            int color = color4.ToArgb();
 
 
-            if (this.cvTransformedColoredVertexies == null)
-                this.cvTransformedColoredVertexies = new TransformedColoredTexturedVertex[4];
+            if (cvTransformedColoredVertexies == null)
+                cvTransformedColoredVertexies = new TransformedColoredTexturedVertex[4];
 
             // 以下、マネージドオブジェクトの量産を抑えるため new は使わない。
 
-            this.cvTransformedColoredVertexies[0].TextureCoordinates.X = f右U値;  // 左上	→ 左下
-            this.cvTransformedColoredVertexies[0].TextureCoordinates.Y = f上V値;
-            this.cvTransformedColoredVertexies[0].Position.X = fx;
-            this.cvTransformedColoredVertexies[0].Position.Y = fy;
-            this.cvTransformedColoredVertexies[0].Position.Z = depth;
-            this.cvTransformedColoredVertexies[0].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[0].Color = color;
+            cvTransformedColoredVertexies[0].TextureCoordinates.X = f右U値;  // 左上	→ 左下
+            cvTransformedColoredVertexies[0].TextureCoordinates.Y = f上V値;
+            cvTransformedColoredVertexies[0].Position.X = fx;
+            cvTransformedColoredVertexies[0].Position.Y = fy;
+            cvTransformedColoredVertexies[0].Position.Z = depth;
+            cvTransformedColoredVertexies[0].Position.W = 1.0f;
+            cvTransformedColoredVertexies[0].Color = color;
 
-            this.cvTransformedColoredVertexies[1].TextureCoordinates.X = f左U値;  // 右上 → 右下
-            this.cvTransformedColoredVertexies[1].TextureCoordinates.Y = f上V値;
-            this.cvTransformedColoredVertexies[1].Position.X = fx + w;
-            this.cvTransformedColoredVertexies[1].Position.Y = fy;
-            this.cvTransformedColoredVertexies[1].Position.Z = depth;
-            this.cvTransformedColoredVertexies[1].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[1].Color = color;
+            cvTransformedColoredVertexies[1].TextureCoordinates.X = f左U値;  // 右上 → 右下
+            cvTransformedColoredVertexies[1].TextureCoordinates.Y = f上V値;
+            cvTransformedColoredVertexies[1].Position.X = fx + w;
+            cvTransformedColoredVertexies[1].Position.Y = fy;
+            cvTransformedColoredVertexies[1].Position.Z = depth;
+            cvTransformedColoredVertexies[1].Position.W = 1.0f;
+            cvTransformedColoredVertexies[1].Color = color;
 
-            this.cvTransformedColoredVertexies[2].TextureCoordinates.X = f右U値;  // 左下 → 左上
-            this.cvTransformedColoredVertexies[2].TextureCoordinates.Y = f下V値;
-            this.cvTransformedColoredVertexies[2].Position.X = fx;
-            this.cvTransformedColoredVertexies[2].Position.Y = fy + h;
-            this.cvTransformedColoredVertexies[2].Position.Z = depth;
-            this.cvTransformedColoredVertexies[2].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[2].Color = color;
+            cvTransformedColoredVertexies[2].TextureCoordinates.X = f右U値;  // 左下 → 左上
+            cvTransformedColoredVertexies[2].TextureCoordinates.Y = f下V値;
+            cvTransformedColoredVertexies[2].Position.X = fx;
+            cvTransformedColoredVertexies[2].Position.Y = fy + h;
+            cvTransformedColoredVertexies[2].Position.Z = depth;
+            cvTransformedColoredVertexies[2].Position.W = 1.0f;
+            cvTransformedColoredVertexies[2].Color = color;
 
-            this.cvTransformedColoredVertexies[3].TextureCoordinates.X = f左U値;  // 右下 → 右上
-            this.cvTransformedColoredVertexies[3].TextureCoordinates.Y = f下V値;
-            this.cvTransformedColoredVertexies[3].Position.X = fx + w;
-            this.cvTransformedColoredVertexies[3].Position.Y = fy + h;
-            this.cvTransformedColoredVertexies[3].Position.Z = depth;
-            this.cvTransformedColoredVertexies[3].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[3].Color = color;
+            cvTransformedColoredVertexies[3].TextureCoordinates.X = f左U値;  // 右下 → 右上
+            cvTransformedColoredVertexies[3].TextureCoordinates.Y = f下V値;
+            cvTransformedColoredVertexies[3].Position.X = fx + w;
+            cvTransformedColoredVertexies[3].Position.Y = fy + h;
+            cvTransformedColoredVertexies[3].Position.Z = depth;
+            cvTransformedColoredVertexies[3].Position.W = 1.0f;
+            cvTransformedColoredVertexies[3].Color = color;
 
             device.SetTexture(0, this.texture);
             device.VertexFormat = TransformedColoredTexturedVertex.Format;
-            device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, this.cvTransformedColoredVertexies);
+            device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, cvTransformedColoredVertexies);
         }
         public void t2D上下反転描画(Device device, int x, int y, float depth, Rectangle rc画像内の描画領域)
         {
-            if (this.texture == null)
+            if (texture == null)
                 throw new InvalidOperationException("テクスチャは生成されていません。");
 
-            this.tレンダリングステートの設定(device);
+            tレンダリングステートの設定(device);
 
-            float fx = x * CTexture.f画面比率 + CTexture.rc物理画面描画領域.X - 0.5f;   // -0.5 は座標とピクセルの誤差を吸収するための座標補正値。(MSDN参照)
-            float fy = y * CTexture.f画面比率 + CTexture.rc物理画面描画領域.Y - 0.5f;   //
-            float w = rc画像内の描画領域.Width * this.vc拡大縮小倍率.X * CTexture.f画面比率;
-            float h = rc画像内の描画領域.Height * this.vc拡大縮小倍率.Y * CTexture.f画面比率;
-            float f左U値 = ((float)rc画像内の描画領域.Left) / ((float)this.szテクスチャサイズ.Width);
-            float f右U値 = ((float)rc画像内の描画領域.Right) / ((float)this.szテクスチャサイズ.Width);
-            float f上V値 = ((float)rc画像内の描画領域.Top) / ((float)this.szテクスチャサイズ.Height);
-            float f下V値 = ((float)rc画像内の描画領域.Bottom) / ((float)this.szテクスチャサイズ.Height);
-            this.color4.Alpha = ((float)this._opacity) / 255f;
-            int color = this.color4.ToArgb();
+            float fx = x * f画面比率 + rc物理画面描画領域.X - 0.5f;   // -0.5 は座標とピクセルの誤差を吸収するための座標補正値。(MSDN参照)
+            float fy = y * f画面比率 + rc物理画面描画領域.Y - 0.5f;   //
+            float w = rc画像内の描画領域.Width * vc拡大縮小倍率.X * f画面比率;
+            float h = rc画像内の描画領域.Height * vc拡大縮小倍率.Y * f画面比率;
+            float f左U値 = rc画像内の描画領域.Left / ((float)szテクスチャサイズ.Width);
+            float f右U値 = rc画像内の描画領域.Right / ((float)szテクスチャサイズ.Width);
+            float f上V値 = rc画像内の描画領域.Top / ((float)szテクスチャサイズ.Height);
+            float f下V値 = rc画像内の描画領域.Bottom / ((float)szテクスチャサイズ.Height);
+            color4.Alpha = _opacity / 255f;
+            int color = color4.ToArgb();
 
-            if (this.cvTransformedColoredVertexies == null)
-                this.cvTransformedColoredVertexies = new TransformedColoredTexturedVertex[4];
+            if (cvTransformedColoredVertexies == null)
+                cvTransformedColoredVertexies = new TransformedColoredTexturedVertex[4];
 
             // 以下、マネージドオブジェクトの量産を抑えるため new は使わない。
 
-            this.cvTransformedColoredVertexies[0].TextureCoordinates.X = f左U値;  // 左上	→ 左下
-            this.cvTransformedColoredVertexies[0].TextureCoordinates.Y = f下V値;
-            this.cvTransformedColoredVertexies[0].Position.X = fx;
-            this.cvTransformedColoredVertexies[0].Position.Y = fy;
-            this.cvTransformedColoredVertexies[0].Position.Z = depth;
-            this.cvTransformedColoredVertexies[0].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[0].Color = color;
+            cvTransformedColoredVertexies[0].TextureCoordinates.X = f左U値;  // 左上	→ 左下
+            cvTransformedColoredVertexies[0].TextureCoordinates.Y = f下V値;
+            cvTransformedColoredVertexies[0].Position.X = fx;
+            cvTransformedColoredVertexies[0].Position.Y = fy;
+            cvTransformedColoredVertexies[0].Position.Z = depth;
+            cvTransformedColoredVertexies[0].Position.W = 1.0f;
+            cvTransformedColoredVertexies[0].Color = color;
 
-            this.cvTransformedColoredVertexies[1].TextureCoordinates.X = f右U値;  // 右上 → 右下
-            this.cvTransformedColoredVertexies[1].TextureCoordinates.Y = f下V値;
-            this.cvTransformedColoredVertexies[1].Position.X = fx + w;
-            this.cvTransformedColoredVertexies[1].Position.Y = fy;
-            this.cvTransformedColoredVertexies[1].Position.Z = depth;
-            this.cvTransformedColoredVertexies[1].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[1].Color = color;
+            cvTransformedColoredVertexies[1].TextureCoordinates.X = f右U値;  // 右上 → 右下
+            cvTransformedColoredVertexies[1].TextureCoordinates.Y = f下V値;
+            cvTransformedColoredVertexies[1].Position.X = fx + w;
+            cvTransformedColoredVertexies[1].Position.Y = fy;
+            cvTransformedColoredVertexies[1].Position.Z = depth;
+            cvTransformedColoredVertexies[1].Position.W = 1.0f;
+            cvTransformedColoredVertexies[1].Color = color;
 
-            this.cvTransformedColoredVertexies[2].TextureCoordinates.X = f左U値;  // 左下 → 左上
-            this.cvTransformedColoredVertexies[2].TextureCoordinates.Y = f上V値;
-            this.cvTransformedColoredVertexies[2].Position.X = fx;
-            this.cvTransformedColoredVertexies[2].Position.Y = fy + h;
-            this.cvTransformedColoredVertexies[2].Position.Z = depth;
-            this.cvTransformedColoredVertexies[2].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[2].Color = color;
+            cvTransformedColoredVertexies[2].TextureCoordinates.X = f左U値;  // 左下 → 左上
+            cvTransformedColoredVertexies[2].TextureCoordinates.Y = f上V値;
+            cvTransformedColoredVertexies[2].Position.X = fx;
+            cvTransformedColoredVertexies[2].Position.Y = fy + h;
+            cvTransformedColoredVertexies[2].Position.Z = depth;
+            cvTransformedColoredVertexies[2].Position.W = 1.0f;
+            cvTransformedColoredVertexies[2].Color = color;
 
-            this.cvTransformedColoredVertexies[3].TextureCoordinates.X = f右U値;  // 右下 → 右上
-            this.cvTransformedColoredVertexies[3].TextureCoordinates.Y = f上V値;
-            this.cvTransformedColoredVertexies[3].Position.X = fx + w;
-            this.cvTransformedColoredVertexies[3].Position.Y = fy + h;
-            this.cvTransformedColoredVertexies[3].Position.Z = depth;
-            this.cvTransformedColoredVertexies[3].Position.W = 1.0f;
-            this.cvTransformedColoredVertexies[3].Color = color;
+            cvTransformedColoredVertexies[3].TextureCoordinates.X = f右U値;  // 右下 → 右上
+            cvTransformedColoredVertexies[3].TextureCoordinates.Y = f上V値;
+            cvTransformedColoredVertexies[3].Position.X = fx + w;
+            cvTransformedColoredVertexies[3].Position.Y = fy + h;
+            cvTransformedColoredVertexies[3].Position.Z = depth;
+            cvTransformedColoredVertexies[3].Position.W = 1.0f;
+            cvTransformedColoredVertexies[3].Color = color;
 
-            device.SetTexture(0, this.texture);
+            device.SetTexture(0,texture);
             device.VertexFormat = TransformedColoredTexturedVertex.Format;
-            device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in this.cvTransformedColoredVertexies);
-        }
-        public void t2D上下反転描画(Device device, Point pt)
-        {
-            this.t2D上下反転描画(device, pt.X, pt.Y, 1f, this.rc全画像);
-        }
-        public void t2D上下反転描画(Device device, Point pt, Rectangle rc画像内の描画領域)
-        {
-            this.t2D上下反転描画(device, pt.X, pt.Y, 1f, rc画像内の描画領域);
-        }
-        public void t2D上下反転描画(Device device, Point pt, float depth, Rectangle rc画像内の描画領域)
-        {
-            this.t2D上下反転描画(device, pt.X, pt.Y, depth, rc画像内の描画領域);
-        }
-
-        public static Vector3 t論理画面座標をワールド座標へ変換する(int x, int y)
-        {
-            return CTexture.t論理画面座標をワールド座標へ変換する(new Vector3((float)x, (float)y, 0f));
-        }
-        public static Vector3 t論理画面座標をワールド座標へ変換する(float x, float y)
-        {
-            return CTexture.t論理画面座標をワールド座標へ変換する(new Vector3(x, y, 0f));
-        }
-        public static Vector3 t論理画面座標をワールド座標へ変換する(Point pt論理画面座標)
-        {
-            return CTexture.t論理画面座標をワールド座標へ変換する(new Vector3(pt論理画面座標.X, pt論理画面座標.Y, 0.0f));
-        }
-        public static Vector3 t論理画面座標をワールド座標へ変換する(Vector2 v2論理画面座標)
-        {
-            return CTexture.t論理画面座標をワールド座標へ変換する(new Vector3(v2論理画面座標, 0f));
-        }
-        public static Vector3 t論理画面座標をワールド座標へ変換する(Vector3 v3論理画面座標)
-        {
-            return new Vector3(
-                (v3論理画面座標.X - (CTexture.sz論理画面.Width / 2.0f)) * CTexture.f画面比率,
-                (-(v3論理画面座標.Y - (CTexture.sz論理画面.Height / 2.0f)) * CTexture.f画面比率),
-                v3論理画面座標.Z);
+            device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in cvTransformedColoredVertexies);
         }
 
         /// <summary>
@@ -969,145 +936,78 @@ namespace FDK
         /// </summary>
         public void t3D描画(Device device, Matrix mat)
         {
-            this.t3D描画(device, mat, this.rc全画像);
+            t3D描画(device, mat, rc全画像);
         }
         public void t3D描画(Device device, Matrix mat, Rectangle rc画像内の描画領域)
         {
-            if (this.texture == null)
+            if (texture == null)
                 return;
 
-            float x = ((float)rc画像内の描画領域.Width) / 2f;
-            float y = ((float)rc画像内の描画領域.Height) / 2f;
+            float x = rc画像内の描画領域.Width / 2f;
+            float y = rc画像内の描画領域.Height / 2f;
             float z = 0.0f;
-            float f左U値 = ((float)rc画像内の描画領域.Left) / ((float)this.szテクスチャサイズ.Width);
-            float f右U値 = ((float)rc画像内の描画領域.Right) / ((float)this.szテクスチャサイズ.Width);
-            float f上V値 = ((float)rc画像内の描画領域.Top) / ((float)this.szテクスチャサイズ.Height);
-            float f下V値 = ((float)rc画像内の描画領域.Bottom) / ((float)this.szテクスチャサイズ.Height);
-            this.color4.Alpha = ((float)this._opacity) / 255f;
-            int color = this.color4.ToArgb();
+            float f左U値 = rc画像内の描画領域.Left / ((float)szテクスチャサイズ.Width);
+            float f右U値 = rc画像内の描画領域.Right / ((float)szテクスチャサイズ.Width);
+            float f上V値 = rc画像内の描画領域.Top / ((float)szテクスチャサイズ.Height);
+            float f下V値 = rc画像内の描画領域.Bottom / ((float)szテクスチャサイズ.Height);
+            color4.Alpha = _opacity / 255f;
+            int color = color4.ToArgb();
 
-            if (this.cvPositionColoredVertexies == null)
-                this.cvPositionColoredVertexies = new PositionColoredTexturedVertex[4];
+            if (cvPositionColoredVertexies == null)
+                cvPositionColoredVertexies = new PositionColoredTexturedVertex[4];
 
             // #27122 2012.1.13 from: 以下、マネージドオブジェクト（＝ガベージ）の量産を抑えるため、new は使わず、メンバに値を１つずつ直接上書きする。
 
-            this.cvPositionColoredVertexies[0].Position.X = -x;
-            this.cvPositionColoredVertexies[0].Position.Y = y;
-            this.cvPositionColoredVertexies[0].Position.Z = z;
-            this.cvPositionColoredVertexies[0].Color = color;
-            this.cvPositionColoredVertexies[0].TextureCoordinates.X = f左U値;
-            this.cvPositionColoredVertexies[0].TextureCoordinates.Y = f上V値;
+            cvPositionColoredVertexies[0].Position.X = -x;
+            cvPositionColoredVertexies[0].Position.Y = y;
+            cvPositionColoredVertexies[0].Position.Z = z;
+            cvPositionColoredVertexies[0].Color = color;
+            cvPositionColoredVertexies[0].TextureCoordinates.X = f左U値;
+            cvPositionColoredVertexies[0].TextureCoordinates.Y = f上V値;
 
-            this.cvPositionColoredVertexies[1].Position.X = x;
-            this.cvPositionColoredVertexies[1].Position.Y = y;
-            this.cvPositionColoredVertexies[1].Position.Z = z;
-            this.cvPositionColoredVertexies[1].Color = color;
-            this.cvPositionColoredVertexies[1].TextureCoordinates.X = f右U値;
-            this.cvPositionColoredVertexies[1].TextureCoordinates.Y = f上V値;
+            cvPositionColoredVertexies[1].Position.X = x;
+            cvPositionColoredVertexies[1].Position.Y = y;
+            cvPositionColoredVertexies[1].Position.Z = z;
+            cvPositionColoredVertexies[1].Color = color;
+            cvPositionColoredVertexies[1].TextureCoordinates.X = f右U値;
+            cvPositionColoredVertexies[1].TextureCoordinates.Y = f上V値;
 
-            this.cvPositionColoredVertexies[2].Position.X = -x;
-            this.cvPositionColoredVertexies[2].Position.Y = -y;
-            this.cvPositionColoredVertexies[2].Position.Z = z;
-            this.cvPositionColoredVertexies[2].Color = color;
-            this.cvPositionColoredVertexies[2].TextureCoordinates.X = f左U値;
-            this.cvPositionColoredVertexies[2].TextureCoordinates.Y = f下V値;
+            cvPositionColoredVertexies[2].Position.X = -x;
+            cvPositionColoredVertexies[2].Position.Y = -y;
+            cvPositionColoredVertexies[2].Position.Z = z;
+            cvPositionColoredVertexies[2].Color = color;
+            cvPositionColoredVertexies[2].TextureCoordinates.X = f左U値;
+            cvPositionColoredVertexies[2].TextureCoordinates.Y = f下V値;
 
-            this.cvPositionColoredVertexies[3].Position.X = x;
-            this.cvPositionColoredVertexies[3].Position.Y = -y;
-            this.cvPositionColoredVertexies[3].Position.Z = z;
-            this.cvPositionColoredVertexies[3].Color = color;
-            this.cvPositionColoredVertexies[3].TextureCoordinates.X = f右U値;
-            this.cvPositionColoredVertexies[3].TextureCoordinates.Y = f下V値;
+            cvPositionColoredVertexies[3].Position.X = x;
+            cvPositionColoredVertexies[3].Position.Y = -y;
+            cvPositionColoredVertexies[3].Position.Z = z;
+            cvPositionColoredVertexies[3].Color = color;
+            cvPositionColoredVertexies[3].TextureCoordinates.X = f右U値;
+            cvPositionColoredVertexies[3].TextureCoordinates.Y = f下V値;
 
-            this.tレンダリングステートの設定(device);
-
-            device.SetTransform(TransformState.World, mat);
-            device.SetTexture(0, this.texture);
-            device.VertexFormat = PositionColoredTexturedVertex.Format;
-            device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in this.cvPositionColoredVertexies);
-        }
-
-        public void t3D左上基準描画(Device device, Matrix mat)
-        {
-            this.t3D左上基準描画(device, mat, this.rc全画像);
-        }
-        /// <summary>
-        /// ○覚書
-        ///   SlimDX.Matrix mat = SlimDX.Matrix.Identity;
-        ///   mat *= SlimDX.Matrix.Translation( x, y, z );
-        /// 「mat =」ではなく「mat *=」であることを忘れないこと。
-        /// </summary>
-        public void t3D左上基準描画(Device device, Matrix mat, Rectangle rc画像内の描画領域)
-        {
-            //とりあえず補正値などは無し。にしても使う機会少なさそうだなー
-            if (this.texture == null)
-                return;
-
-            float x = 0.0f;
-            float y = 0.0f;
-            float z = 0.0f;
-            float f左U値 = ((float)rc画像内の描画領域.Left) / ((float)this.szテクスチャサイズ.Width);
-            float f右U値 = ((float)rc画像内の描画領域.Right) / ((float)this.szテクスチャサイズ.Width);
-            float f上V値 = ((float)rc画像内の描画領域.Top) / ((float)this.szテクスチャサイズ.Height);
-            float f下V値 = ((float)rc画像内の描画領域.Bottom) / ((float)this.szテクスチャサイズ.Height);
-            this.color4.Alpha = ((float)this._opacity) / 255f;
-            int color = this.color4.ToArgb();
-
-            if (this.cvPositionColoredVertexies == null)
-                this.cvPositionColoredVertexies = new PositionColoredTexturedVertex[4];
-
-            // #27122 2012.1.13 from: 以下、マネージドオブジェクト（＝ガベージ）の量産を抑えるため、new は使わず、メンバに値を１つずつ直接上書きする。
-
-            this.cvPositionColoredVertexies[0].Position.X = -x;
-            this.cvPositionColoredVertexies[0].Position.Y = y;
-            this.cvPositionColoredVertexies[0].Position.Z = z;
-            this.cvPositionColoredVertexies[0].Color = color;
-            this.cvPositionColoredVertexies[0].TextureCoordinates.X = f左U値;
-            this.cvPositionColoredVertexies[0].TextureCoordinates.Y = f上V値;
-
-            this.cvPositionColoredVertexies[1].Position.X = x;
-            this.cvPositionColoredVertexies[1].Position.Y = y;
-            this.cvPositionColoredVertexies[1].Position.Z = z;
-            this.cvPositionColoredVertexies[1].Color = color;
-            this.cvPositionColoredVertexies[1].TextureCoordinates.X = f右U値;
-            this.cvPositionColoredVertexies[1].TextureCoordinates.Y = f上V値;
-
-            this.cvPositionColoredVertexies[2].Position.X = -x;
-            this.cvPositionColoredVertexies[2].Position.Y = -y;
-            this.cvPositionColoredVertexies[2].Position.Z = z;
-            this.cvPositionColoredVertexies[2].Color = color;
-            this.cvPositionColoredVertexies[2].TextureCoordinates.X = f左U値;
-            this.cvPositionColoredVertexies[2].TextureCoordinates.Y = f下V値;
-
-            this.cvPositionColoredVertexies[3].Position.X = x;
-            this.cvPositionColoredVertexies[3].Position.Y = -y;
-            this.cvPositionColoredVertexies[3].Position.Z = z;
-            this.cvPositionColoredVertexies[3].Color = color;
-            this.cvPositionColoredVertexies[3].TextureCoordinates.X = f右U値;
-            this.cvPositionColoredVertexies[3].TextureCoordinates.Y = f下V値;
-
-            this.tレンダリングステートの設定(device);
+            tレンダリングステートの設定(device);
 
             device.SetTransform(TransformState.World, mat);
-            device.SetTexture(0, this.texture);
+            device.SetTexture(0, texture);
             device.VertexFormat = PositionColoredTexturedVertex.Format;
-            device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in this.cvPositionColoredVertexies);
+            device.DrawUserPrimitives(PrimitiveType.TriangleStrip, 2, in cvPositionColoredVertexies);
         }
 
         #region [ IDisposable 実装 ]
         //-----------------
         public void Dispose()
         {
-            if (!this.bDispose完了済み)
+            if (!bDispose完了済み)
             {
                 // テクスチャの破棄
-                if (this.texture != null)
+                if (texture != null)
                 {
-                    this.texture.Dispose();
-                    this.texture = null;
+                    texture.Dispose();
+                    texture = null;
                 }
 
-                this.bDispose完了済み = true;
+                bDispose完了済み = true;
             }
         }
         //-----------------
@@ -1135,7 +1035,7 @@ namespace FDK
             Pool.Managed;
 #endif
         //		byte[] _txData;
-        static object lockobj = new object();
+        //static object lockobj = new object();
 
         /// <summary>
         /// どれか一つが有効になります。
@@ -1145,34 +1045,34 @@ namespace FDK
         {
             if (this.b加算合成)
             {
-                device.SetRenderState(RenderState.SourceBlend, SlimDX.Direct3D9.Blend.SourceAlpha);             // 5
-                device.SetRenderState(RenderState.DestinationBlend, SlimDX.Direct3D9.Blend.One);                    // 2
+                device.SetRenderState(RenderState.SourceBlend, Blend.SourceAlpha);             // 5
+                device.SetRenderState(RenderState.DestinationBlend, Blend.One);                    // 2
             }
             else if (this.b乗算合成)
             {
                 //参考:http://sylphylunar.seesaa.net/article/390331341.html
                 //C++から引っ張ってきたのでちょっと不安。
-                device.SetRenderState(RenderState.SourceBlend, SlimDX.Direct3D9.Blend.DestinationColor);
-                device.SetRenderState(RenderState.DestinationBlend, SlimDX.Direct3D9.Blend.Zero);
+                device.SetRenderState(RenderState.SourceBlend, Blend.DestinationColor);
+                device.SetRenderState(RenderState.DestinationBlend, Blend.Zero);
             }
             else if (this.b減算合成)
             {
                 //参考:http://www3.pf-x.net/~chopper/home2/DirectX/MD20.html
-                device.SetRenderState(RenderState.BlendOperation, SlimDX.Direct3D9.BlendOperation.Subtract);
-                device.SetRenderState(RenderState.SourceBlend, SlimDX.Direct3D9.Blend.One);
-                device.SetRenderState(RenderState.DestinationBlend, SlimDX.Direct3D9.Blend.One);
+                device.SetRenderState(RenderState.BlendOperation, BlendOperation.Subtract);
+                device.SetRenderState(RenderState.SourceBlend, Blend.One);
+                device.SetRenderState(RenderState.DestinationBlend, Blend.One);
             }
             else if (this.bスクリーン合成)
             {
                 //参考:http://sylphylunar.seesaa.net/article/390331341.html
                 //C++から引っ張ってきたのでちょっと不安。
-                device.SetRenderState(RenderState.SourceBlend, SlimDX.Direct3D9.Blend.InverseDestinationColor);
-                device.SetRenderState(RenderState.DestinationBlend, SlimDX.Direct3D9.Blend.One);
+                device.SetRenderState(RenderState.SourceBlend, Blend.InverseDestinationColor);
+                device.SetRenderState(RenderState.DestinationBlend, Blend.One);
             }
             else
             {
-                device.SetRenderState(RenderState.SourceBlend, SlimDX.Direct3D9.Blend.SourceAlpha);             // 5
-                device.SetRenderState(RenderState.DestinationBlend, SlimDX.Direct3D9.Blend.InverseSourceAlpha); // 6
+                device.SetRenderState(RenderState.SourceBlend, Blend.SourceAlpha);             // 5
+                device.SetRenderState(RenderState.DestinationBlend, Blend.InverseSourceAlpha); // 6
             }
         }
         private Size t指定されたサイズを超えない最適なテクスチャサイズを返す(Device device, Size sz指定サイズ)
