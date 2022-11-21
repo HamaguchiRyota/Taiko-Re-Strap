@@ -108,20 +108,6 @@ namespace TJAPlayer3
             public Point pt表示側終了位置 = new Point(0, 0);
             public Size sz開始サイズ = new Size(0, 0);
             public Size sz終了サイズ = new Size(0, 0);
-
-            public override string ToString()
-            {
-                return string.Format("CAVIPAN{0}: AVI:{14}, 開始サイズ:{1}x{2}, 終了サイズ:{3}x{4}, 動画側開始位置:{5}x{6}, 動画側終了位置:{7}x{8}, 表示側開始位置:{9}x{10}, 表示側終了位置:{11}x{12}, 移動時間:{13}ct",
-                    CDTX.tZZ(this.n番号),
-                    this.sz開始サイズ.Width, this.sz開始サイズ.Height,
-                    this.sz終了サイズ.Width, this.sz終了サイズ.Height,
-                    this.pt動画側開始位置.X, this.pt動画側開始位置.Y,
-                    this.pt動画側終了位置.X, this.pt動画側終了位置.Y,
-                    this.pt表示側開始位置.X, this.pt表示側開始位置.Y,
-                    this.pt表示側終了位置.X, this.pt表示側終了位置.Y,
-                    this.n移動時間ct,
-                    CDTX.tZZ(this.nAVI番号));
-            }
         }
         public class CDirectShow : IDisposable
         {
@@ -162,10 +148,6 @@ namespace TJAPlayer3
                     Trace.TraceError("DirectShowの生成に失敗しました。({0})({1})", this.strコメント文, str動画ファイル名);
                     this.dshow = null;
                 }
-            }
-            public override string ToString()
-            {
-                return string.Format("CAVI{0}: File:{1}, Comment:{2}", CDTX.tZZ(this.n番号), this.strファイル名, this.strコメント文);
             }
 
             #region [ IDisposable 実装 ]
@@ -230,20 +212,6 @@ namespace TJAPlayer3
             public int n内部番号;
             public int n表記上の番号;
 
-            public override string ToString()
-            {
-                StringBuilder builder = new StringBuilder(0x80);
-                if (this.n内部番号 != this.n表記上の番号)
-                {
-                    builder.Append(string.Format("CSCROLL{0}(内部{1})", CDTX.tZZ(this.n表記上の番号), this.n内部番号));
-                }
-                else
-                {
-                    builder.Append(string.Format("CSCROLL{0}", CDTX.tZZ(this.n表記上の番号)));
-                }
-                builder.Append(string.Format(", SCROLL:{0}", this.dbSCROLL値));
-                return builder.ToString();
-            }
         }
         /// <summary>
         /// 判定ライン移動命令
@@ -256,20 +224,6 @@ namespace TJAPlayer3
             public int n内部番号;
             public int n表記上の番号;
 
-            public override string ToString()
-            {
-                StringBuilder builder = new StringBuilder(0x80);
-                if (this.n内部番号 != this.n表記上の番号)
-                {
-                    builder.Append(string.Format("CJPOSSCROLL{0}(内部{1})", CDTX.tZZ(this.n表記上の番号), this.n内部番号));
-                }
-                else
-                {
-                    builder.Append(string.Format("CJPOSSCROLL{0}", CDTX.tZZ(this.n表記上の番号)));
-                }
-                builder.Append(string.Format(", JPOSSCROLL:{0}", this.db移動時間));
-                return builder.ToString();
-            }
         }
 
         public class CDELAY
@@ -282,20 +236,6 @@ namespace TJAPlayer3
             public double delay_bpm;
             public ECourse delay_course = ECourse.eNormal;
 
-            public override string ToString()
-            {
-                StringBuilder builder = new StringBuilder(0x80);
-                if (this.n内部番号 != this.n表記上の番号)
-                {
-                    builder.Append(string.Format("CDELAY{0}(内部{1})", CDTX.tZZ(this.n表記上の番号), this.n内部番号));
-                }
-                else
-                {
-                    builder.Append(string.Format("CDELAY{0}", CDTX.tZZ(this.n表記上の番号)));
-                }
-                builder.Append(string.Format(", DELAY:{0}", this.nDELAY値));
-                return builder.ToString();
-            }
         }
         public enum E分岐種類
         {
@@ -321,20 +261,6 @@ namespace TJAPlayer3
             public int n表記上の番号;
             public int n内部番号;
 
-            public override string ToString()
-            {
-                StringBuilder builder = new StringBuilder(0x80);
-                if (this.n内部番号 != this.n表記上の番号)
-                {
-                    builder.Append(string.Format("CBRANCH{0}(内部{1})", CDTX.tZZ(this.n表記上の番号), this.n内部番号));
-                }
-                else
-                {
-                    builder.Append(string.Format("CBRANCH{0}", CDTX.tZZ(this.n表記上の番号)));
-                }
-                builder.Append(string.Format(", BRANCH:{0}", this.e分岐の種類));
-                return builder.ToString();
-            }
         }
 
 
@@ -451,6 +377,7 @@ namespace TJAPlayer3
                     Taiko = 0
                 };
             }
+            /*
             public void t初期化()
             {
                 this.bBranch = false;
@@ -488,6 +415,7 @@ namespace TJAPlayer3
                 this.dbSCROLL = 1.0;
                 this.dbSCROLL_Y = 0.0f;
             }
+            */
             public override string ToString()
             {
 
@@ -658,16 +586,19 @@ namespace TJAPlayer3
                 // 位置が同じなら優先度で比較。
                 return n優先度[this.nチャンネル番号].CompareTo(n優先度[other.nチャンネル番号]);
             }
+
+            public object Clone()
+            {
+                throw new NotImplementedException();
+            }
             //-----------------
             #endregion
             /// <summary>
             /// shallow copyです。
             /// </summary>
             /// <returns></returns>
-            public object Clone()
-            {
-                return MemberwiseClone();
-            }
+            /// 
+
         }
         public class CWAV : IDisposable
         {
@@ -685,17 +616,7 @@ namespace TJAPlayer3
             public CSound[] rSound = new CSound[TJAPlayer3.ConfigIni.nPoliphonicSounds];     // 4
             public string strコメント文 = "";
             public string strファイル名 = "";
-            public bool bBGMとして使わない
-            {
-                get
-                {
-                    return !this.bBGMとして使う;
-                }
-                set
-                {
-                    this.bBGMとして使う = !value;
-                }
-            }
+
             public bool bIsBassSound = false;
             public bool bIsGuitarSound = false;
             public bool bIsDrumsSound = false;
@@ -954,81 +875,6 @@ namespace TJAPlayer3
                 }
             }
         }
-        public struct STRESULT
-        {
-            public string SS;
-            public string S;
-            public string A;
-            public string B;
-            public string C;
-            public string D;
-            public string E;
-
-            public string this[int index]
-            {
-                get
-                {
-                    switch (index)
-                    {
-                        case 0:
-                            return this.SS;
-
-                        case 1:
-                            return this.S;
-
-                        case 2:
-                            return this.A;
-
-                        case 3:
-                            return this.B;
-
-                        case 4:
-                            return this.C;
-
-                        case 5:
-                            return this.D;
-
-                        case 6:
-                            return this.E;
-                    }
-                    throw new IndexOutOfRangeException();
-                }
-                set
-                {
-                    switch (index)
-                    {
-                        case 0:
-                            this.SS = value;
-                            return;
-
-                        case 1:
-                            this.S = value;
-                            return;
-
-                        case 2:
-                            this.A = value;
-                            return;
-
-                        case 3:
-                            this.B = value;
-                            return;
-
-                        case 4:
-                            this.C = value;
-                            return;
-
-                        case 5:
-                            this.D = value;
-                            return;
-
-                        case 6:
-                            this.E = value;
-                            return;
-                    }
-                    throw new IndexOutOfRangeException();
-                }
-            }
-        }
         public struct STチップがある
         {
             public bool Drums;
@@ -1043,84 +889,6 @@ namespace TJAPlayer3
 
             public bool Branch;
 
-            public bool this[int index]
-            {
-                get
-                {
-                    switch (index)
-                    {
-                        case 0:
-                            return this.Drums;
-
-                        case 1:
-                            return this.Guitar;
-
-                        case 2:
-                            return this.Bass;
-
-                        case 3:
-                            return this.HHOpen;
-
-                        case 4:
-                            return this.Ride;
-
-                        case 5:
-                            return this.LeftCymbal;
-
-                        case 6:
-                            return this.OpenGuitar;
-
-                        case 7:
-                            return this.OpenBass;
-
-                        case 8:
-                            return this.Branch;
-                    }
-                    throw new IndexOutOfRangeException();
-                }
-                set
-                {
-                    switch (index)
-                    {
-                        case 0:
-                            this.Drums = value;
-                            return;
-
-                        case 1:
-                            this.Guitar = value;
-                            return;
-
-                        case 2:
-                            this.Bass = value;
-                            return;
-
-                        case 3:
-                            this.HHOpen = value;
-                            return;
-
-                        case 4:
-                            this.Ride = value;
-                            return;
-
-                        case 5:
-                            this.LeftCymbal = value;
-                            return;
-
-                        case 6:
-                            this.OpenGuitar = value;
-                            return;
-
-                        case 7:
-                            this.OpenBass = value;
-                            return;
-
-                        case 8:
-                            this.Branch = value;
-                            return;
-                    }
-                    throw new IndexOutOfRangeException();
-                }
-            }
         }
         public enum ECourse
         {
@@ -1441,24 +1209,6 @@ namespace TJAPlayer3
             pDan_LastChip = new CChip[1];
             DanSongs.Number = 0;
         }
-        public CDTX(string str全入力文字列, int difficulty)
-            : this()
-        {
-            this.On活性化();
-            this.t入力_全入力文字列から(str全入力文字列, difficulty);
-        }
-        public CDTX(string strファイル名, bool bヘッダのみ, int difficulty)
-            : this()
-        {
-            this.On活性化();
-            this.t入力(strファイル名, bヘッダのみ, difficulty);
-        }
-        public CDTX(string str全入力文字列, double db再生速度, int nBGMAdjust, int difficulty)
-            : this()
-        {
-            this.On活性化();
-            this.t入力_全入力文字列から(str全入力文字列, str全入力文字列, db再生速度, nBGMAdjust, difficulty);
-        }
         public CDTX(string strファイル名, bool bヘッダのみ, double db再生速度, int nBGMAdjust, int difficulty)
             : this()
         {
@@ -1668,9 +1418,6 @@ namespace TJAPlayer3
 
             string str = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             return new string(new char[] { str[n / 36], str[n % 36] });
-        }
-        public void tギターとベースのランダム化(E楽器パート part, Eランダムモード eRandom)
-        {
         }
         public void t太鼓チップのランダム化(Eランダムモード eRandom)
         {
@@ -1922,10 +1669,6 @@ namespace TJAPlayer3
         }
         #endregion
 
-        public void t入力(string strファイル名, bool bヘッダのみ, int difficulty)
-        {
-            this.t入力(strファイル名, bヘッダのみ, 1.0, 0, 0, 0, false, difficulty);
-        }
         public void t入力(string strファイル名, bool bヘッダのみ, double db再生速度, int nBGMAdjust, int nReadVersion, int nPlayerSide, bool bSession, int difficulty)
         {
             this.bヘッダのみ = bヘッダのみ;
@@ -1991,10 +1734,6 @@ namespace TJAPlayer3
                     Trace.TraceError("例外が発生しましたが処理を継続します。 (79ff8639-9b3c-477f-bc4a-f2eea9784860)");
                 }
             }
-        }
-        public void t入力_全入力文字列から(string str全入力文字列, int difficulty)
-        {
-            this.t入力_全入力文字列から(str全入力文字列, str全入力文字列, 1.0, 0, difficulty);
         }
         public void t入力_全入力文字列から(string str全入力文字列, string str1, double db再生速度, int nBGMAdjust, int Difficulty)
         {
@@ -2787,11 +2526,6 @@ namespace TJAPlayer3
             return strOutput;
         }
 
-        private string[] tコマンド行を削除したTJAを返す(string[] input)
-        {
-            return this.tコマンド行を削除したTJAを返す(input, 0);
-        }
-
         private string[] tコマンド行を削除したTJAを返す(string[] input, int nMode)
         {
             var sb = new StringBuilder();
@@ -2872,10 +2606,7 @@ namespace TJAPlayer3
             return strOutput;
         }
 
-        private string StringArrayToString(string[] input)
-        {
-            return this.StringArrayToString(input, "");
-        }
+
         private string StringArrayToString(string[] input, string strデリミタ文字)
         {
             var sb = new StringBuilder();
@@ -2893,10 +2624,6 @@ namespace TJAPlayer3
         /// </summary>
         /// <param name="InputText"></param>
         /// <returns>1小節内の文字数</returns>
-        private int t1小節の文字数をカウントする(string InputText)
-        {
-            return InputText.Length - 1;
-        }
 
         /// <summary>
         /// 
@@ -3273,20 +3000,6 @@ namespace TJAPlayer3
                 //}
                 #endregion
             }
-        }
-
-        private CChip t発声位置から過去方向で一番近くにある指定チャンネルのチップを返す(int n発声時刻, int nチャンネル番号)
-        {
-            //過去方向への検索
-            for (int i = this.listChip.Count - 1; i >= 0; i--)
-            {
-                if (this.listChip[i].nチャンネル番号 == nチャンネル番号)
-                {
-                    return this.listChip[i];
-                }
-            }
-
-            return null;
         }
 
         //現在、以下のような行には対応できていません。
@@ -7046,14 +6759,6 @@ namespace TJAPlayer3
             listChip.AddRange(listRemoveTiming);
             listChip.Sort();
         }
-        private void DebugOut_CChipList(List<CChip> c)
-        {
-            //Debug.WriteLine( "Count=" + c.Count );
-            for (int i = 0; i < c.Count; i++)
-            {
-                Debug.WriteLine(i + ": ch=" + c[i].nチャンネル番号.ToString("x2") + ", WAV番号=" + c[i].n整数値 + ", time=" + c[i].n発声時刻ms);
-            }
-        }
         private bool t発声時刻msと発声位置を取得する(int n希望発声時刻ms, out int n新発声時刻ms, out int n新発声位置)
         {
             // 発声時刻msから発声位置を逆算することはできないため、近似計算する。
@@ -7097,10 +6802,6 @@ namespace TJAPlayer3
             n新発声位置 = (listChip[index_max].n発声位置 + listChip[index_min].n発声位置) / 2;
 
             return true;
-        }
-
-        public void SwapGuitarBassInfos()
-        {
         }
 
         // SwapGuitarBassInfos_AutoFlags()は、CDTXからCConfigIniに移動。

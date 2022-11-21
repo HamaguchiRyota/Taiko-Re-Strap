@@ -258,7 +258,7 @@ namespace TJAPlayer3
         {
             if (!b活性化してない)
             {
-                ct背景スクロール用タイマー = new CCounter(0, TJAPlayer3.Tx.SongSelect_Background.szテクスチャサイズ.Width, 20, TJAPlayer3.Timer);
+                ct背景スクロール用タイマー = new CCounter(0, TJAPlayer3.Tx.SongSelect_Background.szテクスチャサイズ.Width, 18, TJAPlayer3.Timer);
                 base.OnManagedリソースの作成();
             }
         }
@@ -357,8 +357,7 @@ namespace TJAPlayer3
                     bBGM再生済み = true;
                 }
 
-                if (ctDiffSelect移動待ち != null)
-                    ctDiffSelect移動待ち.t進行();
+                ctDiffSelect移動待ち?.t進行();
 
                 // キー入力
                 if (eフェーズID == CStage.Eフェーズ.共通_通常状態 && TJAPlayer3.act現在入力を占有中のプラグイン == null)

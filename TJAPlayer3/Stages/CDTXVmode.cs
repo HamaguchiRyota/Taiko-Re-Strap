@@ -25,15 +25,6 @@ namespace TJAPlayer3
 		}
 
 		/// <summary>
-		/// プレビューサウンドの再生が発生した
-		/// </summary>
-		public bool Preview
-		{
-			get;
-			set;
-		}
-
-		/// <summary>
 		/// 外部から再指示が発生したか
 		/// </summary>
 		public bool Refreshed
@@ -395,7 +386,6 @@ Trace.TraceInformation( "Command: " + s[ (int) this.Command ] );
 						Trace.TraceError( "例外が発生しましたが処理を継続します。 (825f9ba6-9164-4f2e-8c41-edf4d73c06c9)" );
 					}
 				}
-				fi = null;
 			}
 
 			cc.nViewerScrollSpeed     = TJAPlayer3.ConfigIni.n譜面スクロール速度;

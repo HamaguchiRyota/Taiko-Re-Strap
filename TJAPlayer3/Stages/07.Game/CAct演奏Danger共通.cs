@@ -6,12 +6,6 @@ namespace TJAPlayer3
 	{
 		// コンストラクタ
 
-		public CAct演奏Danger共通()
-		{
-			base.b活性化してない = true;
-		}
-	
-
 		// CActivity 実装
 
 		public override void On活性化()
@@ -20,8 +14,7 @@ namespace TJAPlayer3
 			{
 				this.bDanger中[i] = false;
 			}
-//			this.ct移動用 = new CCounter();
-//			this.ct透明度用 = new CCounter();
+
 			this.ct移動用 = null;
 			this.ct透明度用 = null;
 

@@ -285,16 +285,6 @@ namespace TJAPlayer3
 
 		// コンストラクタ
 
-		public CAct演奏Combo共通()
-		{
-			this.b活性化してない = true;
-
-			// 180度分のジャンプY座標差分を取得。(0度: 0 → 90度:-15 → 180度: 0)
-			for (int i = 0; i < 180; i++)
-				this.nジャンプ差分値[i] = (int)(-15.0 * Math.Sin((Math.PI * i) / 180.0));
-			演奏判定ライン座標 = new C演奏判定ライン座標共通();
-		}
-
 
 		// メソッド
 
@@ -310,7 +300,7 @@ namespace TJAPlayer3
 			//-----------------
 			if (nCombo値 == 0)
 				return;     // コンボゼロは表示しない。
-			//-----------------
+							//-----------------
 			#endregion
 
 			int[] n位の数 = new int[10];   // 表示は10桁もあれば足りるだろう
@@ -333,14 +323,14 @@ namespace TJAPlayer3
 
 			#region [ n位の数[] を、"COMBO" → 1の位 → 10の位 … の順に、右から左へ向かって順番に表示する。]
 			//-----------------
-			const int n1桁ごとのジャンプの遅れ = 30;   // 1桁につき 50 インデックス遅れる
+			//const int n1桁ごとのジャンプの遅れ = 30;   // 1桁につき 50 インデックス遅れる
 
 
 			//X右座標を元にして、右座標 - ( コンボの幅 * 桁数 ) でX座標を求めていく?
 
-			int nY上辺位置px = TJAPlayer3.ConfigIni.bReverse.Drums ? 350 : 10;
-			int n数字とCOMBOを合わせた画像の全長px = ((44) * n桁数);
-			int x = 245 + (n数字とCOMBOを合わせた画像の全長px / 2);
+			//int nY上辺位置px = TJAPlayer3.ConfigIni.bReverse.Drums ? 350 : 10;
+			//int n数字とCOMBOを合わせた画像の全長px = ((44) * n桁数);
+			//int x = 245 + (n数字とCOMBOを合わせた画像の全長px / 2);
 
 			#region[ コンボ文字 ]
 			if (n桁数 <= 2)
@@ -378,7 +368,7 @@ namespace TJAPlayer3
 			else
 			{
 				// 五桁以上の場合
-				int rightDigit = 0;
+				int rightDigit;
 				switch (n桁数 % 2)
 				{
 					case 0:
@@ -563,22 +553,7 @@ namespace TJAPlayer3
 			//-----------------
 			#endregion
 		}
-
-		protected virtual void tコンボ表示_ギター(int nCombo値, int nジャンプインデックス)
-		{
-		}
 		protected virtual void tコンボ表示_ベース(int nCombo値, int nジャンプインデックス)
-		{
-		}
-		protected void tコンボ表示_ギター(int nCombo値, int n表示中央X, int n表示中央Y, int nジャンプインデックス)
-		{
-
-		}
-		protected void tコンボ表示_ベース(int nCombo値, int n表示中央X, int n表示中央Y, int nジャンプインデックス)
-		{
-
-		}
-		protected void tコンボ表示_ギターベース(int nCombo値, int n表示中央X, int n表示中央Y, int nジャンプインデックス)
 		{
 		}
 
@@ -587,9 +562,12 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-			this.n現在のコンボ数 = new STCOMBO() { act = this };
-			this.n現在のコンボ数.最高値 = new int[4];
-			this.status = new CSTATUS();
+            this.n現在のコンボ数 = new STCOMBO
+            {
+                act = this,
+                最高値 = new int[4]
+            };
+            this.status = new CSTATUS();
 			this.ctコンボ加算 = new CCounter[4];
 			for (int i = 0; i < 4; i++)
 			{

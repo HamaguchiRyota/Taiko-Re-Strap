@@ -85,20 +85,6 @@ namespace TJAPlayer3
 			}
 			return 0;
 		}
-		//public void tChangeSkinMain()
-		//{
-		//	Trace.TraceInformation( "スキン変更:" + CDTXMania.Skin.GetCurrentSkinSubfolderFullName( false ) );
 
-		//	CDTXMania.act文字コンソール.On非活性化();
-
-		//	CDTXMania.Skin.PrepareReloadSkin();
-		//	CDTXMania.Skin.ReloadSkin();
-
-
-  //          CDTXMania.Tx.DisposeTexture();
-  //          CDTXMania.Tx.LoadTexture();
-
-		//	CDTXMania.act文字コンソール.On活性化();
-		//}
 	}
 }

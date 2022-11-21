@@ -257,6 +257,7 @@ namespace TJAPlayer3
                 if (this.b風船連打中[i] != true && CharaAction_Balloon_Delay[i].b終了値に達した)
                 {
                     TJAPlayer3.stage演奏ドラム画面.PuchiChara.On進行描画(TJAPlayer3.Skin.Game_PuchiChara_X[i], TJAPlayer3.Skin.Game_PuchiChara_Y[i], TJAPlayer3.stage演奏ドラム画面.bIsAlreadyMaxed[i], i);
+
                 }
             }
             return base.On進行描画();

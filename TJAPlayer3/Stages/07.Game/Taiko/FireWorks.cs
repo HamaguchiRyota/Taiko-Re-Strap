@@ -35,7 +35,8 @@ namespace TJAPlayer3
                     FireWork[i].Player = nPlayer;
                     FireWork[i].X = x;
                     FireWork[i].Y = y;
-                    FireWork[i].Counter = new CCounter(0, TJAPlayer3.Skin.Game_Effect_FireWorks[2] - 1, TJAPlayer3.Skin.Game_Effect_FireWorks_Timer, TJAPlayer3.Timer);
+                    FireWork[i].Counter = new CCounter(0, TJAPlayer3.Skin.Game_Effect_FireWorks[2] - 1, 20, TJAPlayer3.Timer);
+                    //FireWork[i].Counter = new CCounter(0, TJAPlayer3.Skin.Game_Effect_FireWorks[2] - 1, TJAPlayer3.Skin.Game_Effect_FireWorks_Timer, TJAPlayer3.Timer);
                     break;
                 }
             }

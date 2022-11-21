@@ -21,10 +21,6 @@ namespace TJAPlayer3
 			this.mode = EFIFOモード.フェードイン;
 			this.counter = new CCounter(0, 300, 2, TJAPlayer3.Timer);
 		}
-		public void tフェードイン完了()
-		{
-			this.counter.n現在の値 = (int)counter.n開始値;
-		}
 
 
 		// CActivity 実装

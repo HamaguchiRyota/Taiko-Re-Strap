@@ -63,11 +63,13 @@ namespace TJAPlayer3
                     {
                         foreach (var item in Directory.GetFiles(currentDir))
                         {
-                            var comboVoice = new CComboVoice();
-                            comboVoice.bFileFound = true;
-                            comboVoice.nPlayer = i;
-                            comboVoice.strFilePath = item;
-                            comboVoice.soundComboVoice = TJAPlayer3.Sound管理.tサウンドを生成する(item, ESoundGroup.Voice);
+                            var comboVoice = new CComboVoice
+                            {
+                                bFileFound = true,
+                                nPlayer = i,
+                                strFilePath = item,
+                                soundComboVoice = TJAPlayer3.Sound管理.tサウンドを生成する(item, ESoundGroup.Voice)
+                            };
                             if (TJAPlayer3.ConfigIni.nPlayerCount >= 2) //2020.05.06 Mr-Ojii 左右に出したかったから追加。
                             {
                                 if (i == 0)

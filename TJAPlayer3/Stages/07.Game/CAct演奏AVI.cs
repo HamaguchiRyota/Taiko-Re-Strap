@@ -173,17 +173,9 @@ namespace TJAPlayer3
 
             if( this.dsBGV != null )
             {
-                if( this.dsBGV.dshow != null )
-                    this.dsBGV.dshow.MediaCtrl.Stop();
+                this.dsBGV.dshow?.MediaCtrl.Stop();
                 this.bDShowクリップを再生している = false;
             }
-		}
-		public void Cont( int n再開時刻ms )
-		{
-			if ( ( this.rAVI != null ) && ( this.rAVI.avi != null ) )
-			{
-				this.n移動開始時刻ms = n再開時刻ms;
-			}
 		}
 		public unsafe int t進行描画( int x, int y )
 		{
@@ -228,7 +220,7 @@ namespace TJAPlayer3
 				}
 
                 //2014.11.17 kairera0467 AVIが無い状態でAVIのフレームカウントをさせるとエラーを吐くため、かなり雑ではあるが対策。
-                if( ( this.n総移動時間ms == 0 ) && this.rAVI.avi != null ? ( frameNoFromTime >= this.rAVI.avi.GetMaxFrameCount() ) : false )
+                if( ( this.n総移動時間ms == 0 ) && this.rAVI.avi != null && ( frameNoFromTime >= this.rAVI.avi.GetMaxFrameCount() ) )
                 {
                     this.n移動開始時刻ms = -1L;
                 }
@@ -438,9 +430,10 @@ namespace TJAPlayer3
                 float fRet = this.dsBGV.dshow.n幅px / this.dsBGV.dshow.n高さpx;
 
                 //横幅,縦幅,X,Y
-                float[] fRatio = new float[] { 320.0f, 180.0f, 6, 450 }; //左下表示
-                if( this.tx窓描画用 != null && fRet == 1.0 )
+                _ = new float[] { 320.0f, 180.0f, 6, 450 }; //左下表示
+                if ( this.tx窓描画用 != null && fRet == 1.0 )
                 {
+                    float[] fRatio;
                     //if(  )
                     {
                         fRatio = new float[] { 640.0f - 4.0f, 360.0f - 4.0f, 322, 362 }; //中央下表示
@@ -463,20 +456,12 @@ namespace TJAPlayer3
         {
             if( this.b再生トグル == true )
             {
-                if( this.dsBGV != null )
-                {
-                    if( this.dsBGV.dshow != null )
-                        this.dsBGV.dshow.MediaCtrl.Pause();
-                }
+                this.dsBGV?.dshow?.MediaCtrl.Pause();
                 this.b再生トグル = false;
             }
             else if( this.b再生トグル == false )
             {
-                if(this.dsBGV != null )
-                {
-                    if( this.dsBGV.dshow != null )
-                        this.dsBGV.dshow.MediaCtrl.Run();
-                }
+                this.dsBGV?.dshow?.MediaCtrl.Run();
                 this.b再生トグル = true;
             }
         }

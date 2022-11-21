@@ -31,7 +31,7 @@ namespace TJAPlayer3
 			base.Initialize( lci[ nCurrentConfigSet ][ 0 ], true, QuickCfgTitle, 0 );	// ConfSet=0, nInst=Drums
 		}
 
-		private List<CItemBase> MakeListCItemBase( int nConfigSet, int nInst )
+		private List<CItemBase> MakeListCItemBase(int nConfigSet, int nInst)
 		{
 			List<CItemBase> l = new List<CItemBase>();
 
@@ -158,7 +158,6 @@ namespace TJAPlayer3
 			Default = 99
 		};
 
-		private bool b選択した;
 		private CTexture txパネル本体;
 		private CTexture tx文字列パネル;
         private Stopwatch sw;

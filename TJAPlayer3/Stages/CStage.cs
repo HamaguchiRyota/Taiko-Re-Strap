@@ -6,17 +6,6 @@ namespace TJAPlayer3
 	{
 		// プロパティ
 
-		internal enum Eヒット判定
-		{
-			PERFECT,
-			GREAT,
-			GOOD,
-			POOR,
-			MISS,
-			BAD,
-			AUTO
-		}
-
 		internal Eステージ eステージID;
 		public enum Eステージ
 		{

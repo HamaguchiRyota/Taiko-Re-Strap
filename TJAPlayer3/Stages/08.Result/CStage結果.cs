@@ -293,10 +293,7 @@ namespace TJAPlayer3
 					this.ct登場用 = new CCounter(0, 100, 5, TJAPlayer3.Timer);
 					this.actFI.tフェードイン開始();
 					base.eフェーズID = CStage.Eフェーズ.共通_フェードイン;
-					if (this.rResultSound != null)
-					{
-						this.rResultSound.t再生を開始する();
-					}
+					this.rResultSound?.t再生を開始する();
 					base.b初めての進行描画 = false;
 				}
 				this.bアニメが完了 = true;
@@ -321,10 +318,7 @@ namespace TJAPlayer3
 					b音声再生 = true;
 				}
 
-				if (TJAPlayer3.Tx.Result_Background != null)
-				{
-					TJAPlayer3.Tx.Result_Background[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
-				}
+				TJAPlayer3.Tx.Result_Background?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
 
 
 
@@ -541,12 +535,12 @@ namespace TJAPlayer3
 		public bool EndAnime;
 		private CCounter ct登場用;
 		private E戻り値 eフェードアウト完了時の戻り値;
-		private CActFIFOResult actFI;
-		private CActFIFOBlack actFO;
-		private CActオプションパネル actOption;
+		private readonly CActFIFOResult actFI;
+		private readonly CActFIFOBlack actFO;
+		private readonly CActオプションパネル actOption;
 		//public CActResultParameterPanel actParameterPanel;
-		private CActResultParameterPanel actParameterPanel;
-		private CActResultSongBar actSongBar;
+		private readonly CActResultParameterPanel actParameterPanel;
+		private readonly CActResultSongBar actSongBar;
 		private bool bアニメが完了;
 		private bool bIsCheckedWhetherResultScreenShouldSaveOrNot;              // #24509 2011.3.14 yyagi
 		private readonly int[] nチャンネル0Atoレーン07;
@@ -556,7 +550,7 @@ namespace TJAPlayer3
 		//private CTexture txオプションパネル;
 		private const int MaxSong = 3;
 		public int NowSong = 1;
-		private STNumber[] stSongNumber = new STNumber[10];
+		private readonly STNumber[] stSongNumber = new STNumber[10];
 		public struct STNumber
 		{
 			public char ch;
@@ -587,7 +581,7 @@ namespace TJAPlayer3
 		/// <param name="bIsAutoSave">true=自動保存モード, false=手動保存モード</param>
 		private void CheckAndSaveResultScreen(bool bIsAutoSave)
 		{
-			string path = Path.GetDirectoryName(TJAPlayer3.DTX.strファイル名の絶対パス);
+			//string path = Path.GetDirectoryName(TJAPlayer3.DTX.strファイル名の絶対パス);
 			string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");
 			if (bIsAutoSave)
 			{

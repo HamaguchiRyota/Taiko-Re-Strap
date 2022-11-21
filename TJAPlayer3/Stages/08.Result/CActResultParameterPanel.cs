@@ -298,15 +298,15 @@ namespace TJAPlayer3
 
 				#region [ キャラクター & ぷち ]
 
-				if (TJAPlayer3.Tx.Result_Donchan_Normal != null)
-					TJAPlayer3.Tx.Result_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -210, 320);
-				if (TJAPlayer3.Tx.PuchiChara[0] != null)
-					TJAPlayer3.Tx.PuchiChara[0].t2D描画(TJAPlayer3.app.Device, 20, 485, new RectangleF(0, 0, 240, 240));
+				TJAPlayer3.Tx.Result_Donchan_Normal?[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
+				TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, 20, 485, new RectangleF(0, 0, 240, 240));
+				TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.60f;
+                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.60f;
 
-				#endregion
+                #endregion
 
-				#region [ オプションアイコン・ModIcons ]
-				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
+                #region [ オプションアイコン・ModIcons ]
+                for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
 				{
 					ModIcons.tDisplayModsMenu(185 + i * 980, 130, i);
 				}

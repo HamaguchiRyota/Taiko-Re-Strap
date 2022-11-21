@@ -472,57 +472,30 @@ namespace TJAPlayer3
 			st文字領域92.ch = '}';
 			st文字領域92.rc = new Rectangle( 1, 0xe3, 15, 0x1b );
 			st文字領域Array[ 0x5b ] = st文字領域92;
-			ST文字領域 st文字領域93 = new ST文字領域();
-			st文字領域93.ch = '~';
-			st文字領域93.rc = new Rectangle( 0x12, 0xe3, 0x12, 0x1b );
-			st文字領域Array[ 0x5c ] = st文字領域93;
+            ST文字領域 st文字領域93 = new ST文字領域
+            {
+                ch = '~',
+                rc = new Rectangle(0x12, 0xe3, 0x12, 0x1b)
+            };
+            st文字領域Array[ 0x5c ] = st文字領域93;
 
-			st文字領域Array[ 0x5d ] = new ST文字領域();						// #24954 2011.4.23 yyagi
-			st文字領域Array[ 0x5d ].ch = '@';
-			st文字領域Array[ 0x5d ].rc = new Rectangle( 38, 227, 28, 28 );
-			st文字領域Array[ 0x5e ] = new ST文字領域();
-			st文字領域Array[ 0x5e ].ch = '`';
-			st文字領域Array[ 0x5e ].rc = new Rectangle( 69, 226, 14, 29 );
+            st文字領域Array[0x5d] = new ST文字領域
+            {
+                ch = '@',
+                rc = new Rectangle(38, 227, 28, 28)
+            };						// #24954 2011.4.23 yyagi
+            st文字領域Array[0x5e] = new ST文字領域
+            {
+                ch = '`',
+                rc = new Rectangle(69, 226, 14, 29)
+            };
 
-	
-			this.st文字領域 = st文字領域Array;
+
+            this.st文字領域 = st文字領域Array;
 		}
 
 
 		// メソッド
-
-		public int n文字列長dot( string str )
-		{
-			return this.n文字列長dot( str, 1f );
-		}
-		public int n文字列長dot( string str, float fScale )
-		{
-			if( string.IsNullOrEmpty( str ) )
-			{
-				return 0;
-			}
-			int num = 0;
-			foreach( char ch in str )
-			{
-				foreach( ST文字領域 st文字領域 in this.st文字領域 )
-				{
-					if( st文字領域.ch == ch )
-					{
-						num += (int) ( ( st文字領域.rc.Width - 5 ) * fScale );
-						break;
-					}
-				}
-			}
-			return num;
-		}
-		public void t文字列描画( int x, int y, string str )
-		{
-			this.t文字列描画( x, y, str, false, 1f );
-		}
-		public void t文字列描画( int x, int y, string str, bool b強調 )
-		{
-			this.t文字列描画( x, y, str, b強調, 1f );
-		}
 		public void t文字列描画( int x, int y, string str, bool b強調, float fScale )
 		{
 			if( !base.b活性化してない && !string.IsNullOrEmpty( str ) )

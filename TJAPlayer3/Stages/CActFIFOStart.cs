@@ -32,10 +32,6 @@ namespace TJAPlayer3
 			else
 				this.counter = new CCounter(0, 3580, 1, TJAPlayer3.Timer);
 		}
-		public void tフェードイン完了()     // #25406 2011.6.9 yyagi
-		{
-			this.counter.n現在の値 = (int)this.counter.n終了値;
-		}
 
 		// CActivity 実装
 
@@ -176,7 +172,7 @@ namespace TJAPlayer3
 
 		public void DrawChara(double time, float opacity, float X = -1, float Y = -1)
 		{
-			if (TJAPlayer3.Tx.SongLoading_Plate is null || (X == -1 && Y == -1 ? time <= 680 : false)) return;
+			if (TJAPlayer3.Tx.SongLoading_Plate is null || (X == -1 && Y == -1 && time <= 680)) return;
 			var SizeXHarf = TJAPlayer3.Tx.SongLoading_Chara.szテクスチャサイズ.Width / 2f;
 			var SizeY = TJAPlayer3.Tx.SongLoading_Chara.szテクスチャサイズ.Height;
 

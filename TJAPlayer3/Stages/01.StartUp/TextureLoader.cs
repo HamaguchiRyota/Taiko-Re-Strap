@@ -92,7 +92,6 @@ namespace TJAPlayer3
             #region 1_タイトル画面
             Title_Background = TxC(TITLE + @"Background.png");
             Entry_Overlay = TxC(TITLE + @"Overlay.png");
-            Title_Header = TxC(TITLE + @"Header.png");
             Entry_Bar = TxC(TITLE + @"Entry_Bar.png");
             Entry_Bar_Text = TxC(TITLE + @"Entry_Bar_Text.png");
 
@@ -885,7 +884,6 @@ namespace TJAPlayer3
         #endregion
         #region 1_タイトル画面
         public CTexture Title_Background,
-            Title_Header,
             Entry_Overlay,
             Entry_Bar,
             Entry_Bar_Text;
@@ -945,7 +943,7 @@ namespace TJAPlayer3
             SongSelect_ScoreWindow = new CTexture[(int)Difficulty.Total],
             SongSelect_Donchan_Select = new CTexture[65],
             SongSelect_Donchan_Normal = new CTexture[61],
-            SongSelect_Donchan_Jump = new CTexture[16],
+            SongSelect_Donchan_Jump = new CTexture[25],
             SongSelect_NamePlate = new CTexture[1];
 
         #region [ 難易度選択画面 ]
