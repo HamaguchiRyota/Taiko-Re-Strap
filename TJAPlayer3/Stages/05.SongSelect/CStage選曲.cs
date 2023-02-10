@@ -95,7 +95,6 @@ namespace TJAPlayer3
             list子Activities.Add(actFOtoNowLoading = new CActFIFOStart());
             list子Activities.Add(act曲リスト = new CActSelect曲リスト());
             list子Activities.Add(actステータスパネル = new CActSelectステータスパネル());
-            list子Activities.Add(act演奏履歴パネル = new CActSelect演奏履歴パネル());
             list子Activities.Add(actPreimageパネル = new CActSelectPreimageパネル());
             list子Activities.Add(actPresound = new CActSelectPresound());
             list子Activities.Add(actArtistComment = new CActSelectArtistComment());
@@ -103,6 +102,7 @@ namespace TJAPlayer3
             list子Activities.Add(actSortSongs = new CActSortSongs());
             list子Activities.Add(actShowCurrentPosition = new CActSelectShowCurrentPosition());
             list子Activities.Add(actQuickConfig = new CActSelectQuickConfig());
+            list子Activities.Add(act演奏履歴パネル = new CActSelect演奏履歴パネル());
             list子Activities.Add(act難易度選択画面 = new CActSelect難易度選択画面());
             list子Activities.Add(actPlayOption = new CActPlayOption());
 
@@ -134,9 +134,9 @@ namespace TJAPlayer3
         {
             //this.actPreimageパネル.t選択曲が変更された();
             actPresound.t選択曲が変更された();
-            act演奏履歴パネル.t選択曲が変更された();
             actステータスパネル.t選択曲が変更された();
             actArtistComment.t選択曲が変更された();
+            act演奏履歴パネル.t選択曲が変更された();
 
             #region [ プラグインにも通知する（BOX, RANDOM, BACK なら通知しない）]
             //---------------------
@@ -346,8 +346,6 @@ namespace TJAPlayer3
                 actInformation.On進行描画();
 
                 actPresound.On進行描画();
-
-                act演奏履歴パネル.On進行描画();
 
                 actShowCurrentPosition.On進行描画(); // #27648 2011.3.28 yyagi
 
@@ -626,7 +624,6 @@ namespace TJAPlayer3
 
 
 
-
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 1)
                 {
                     var opacity = 0;
@@ -690,7 +687,6 @@ namespace TJAPlayer3
                 actSortSongs.t進行描画();
                 actQuickConfig.t進行描画();
 
-
                 #region [ ネームプレート ]
                 for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                 {
@@ -751,6 +747,7 @@ namespace TJAPlayer3
                 tTimerDraw((100 - ctTimer.n現在の値).ToString());
                 tSongNumberDraw(1097, 167, NowSong.ToString());
                 tSongNumberDraw(1190, 167, MaxSong.ToString());
+                act演奏履歴パネル.On進行描画();
 
                 if (act難易度選択画面.bOption[0]) actPlayOption.On進行描画(0);
                 if (act難易度選択画面.bOption[1]) actPlayOption.On進行描画(1);
@@ -879,7 +876,7 @@ namespace TJAPlayer3
         private CCounter ct背景スクロール用タイマー;
         private E戻り値 eフェードアウト完了時の戻り値;
         private Font ftフォント;
-        private CCounter ctDiffSelect移動待ち;
+        private readonly CCounter ctDiffSelect移動待ち;
 
         private STNumber[] stTimer = new STNumber[10];
         private STNumber[] stSongNumber = new STNumber[10];

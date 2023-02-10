@@ -185,7 +185,7 @@ namespace TJAPlayer3
 						{1.04f,-2},
 						{1.0f,0},
 		};
-		private float[] ComboScale = new float[]
+		private readonly float[] ComboScale = new float[]
 		{
 			 0.000f,
 			 0.042f,
@@ -201,7 +201,7 @@ namespace TJAPlayer3
 			 0.011f,
 			 0.000f
 		};
-		private float[,] ComboScale_Ex = new float[,]
+		private readonly float[,] ComboScale_Ex = new float[,]
 		{
 			{ 0.000f, 0},
 			{ 0.042f, 0},

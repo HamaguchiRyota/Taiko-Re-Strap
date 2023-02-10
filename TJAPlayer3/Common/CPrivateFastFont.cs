@@ -77,7 +77,7 @@ namespace TJAPlayer3
 			return DrawPrivateFont(drawstr, DrawMode.Normal, fontColor, Color.White, Color.White, Color.White);
 		}
 
-		public new Bitmap DrawPrivateFont(string drawstr, Color fontColor, Color edgeColor, int edgePt)
+		public Bitmap DrawPrivateFont(string drawstr, Color fontColor, Color edgeColor, int edgePt)
 		{
 			return DrawPrivateFont_E(drawstr, DrawMode.Edge, fontColor, edgeColor, Color.White, Color.White, edgePt);
 		}

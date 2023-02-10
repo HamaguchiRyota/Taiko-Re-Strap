@@ -192,7 +192,7 @@ namespace TJAPlayer3
                 SongSelect_Donchan_Jump[i] = TxC(SONGSELECT + @"Donchan\Start\" + i.ToString() + ".png");
             }
 
-            SongSelect_ScoreWindow_Text = TxC(SONGSELECT + @"ScoreWindow_Text.png");
+            SongSelect_ScoreNumber = TxC(SONGSELECT + @"ScoreNumber.png");
 
             TJAPlayer3.Skin.SongSelect_Bar_Genre_Count = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + SONGSELECT + @"Bar_Genre\"), "Bar_Genre_");
 
@@ -518,6 +518,7 @@ namespace TJAPlayer3
             //Background_Up_Clear_HM1 = TxC(GAME + BACKGROUND + @"0\" + @"HM1.png");
             Background_Down_Clear = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear.png");
 
+            /*
             Background_Down_BG_1 = TxC(GAME + BACKGROUND + @"0\" + @"BG1.png");
             Background_Down_Sc_0 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Sc0.png");
             Background_Down_Sc_1 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Sc1.png");
@@ -526,13 +527,14 @@ namespace TJAPlayer3
             Background_Down_Fune = TxC(GAME + BACKGROUND + @"0\" + @"Down_Fune.png");
             Background_Down_FuneX2 = TxC(GAME + BACKGROUND + @"0\" + @"Down_FuneX2.png");
             Background_Down_Splash = TxC(GAME + BACKGROUND + @"0\" + @"Down_Splash.png");
+            */
 
             //Background_Down_Clear_Light = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light.png");
             Background_Down_Light_B = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light_B.png");
             Background_Down_Scroll = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll.png");
-            //Background_Down_Scroll_Matu = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll_Matu.png");
-            //Background_Down_Scroll_Kumo = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll_Kumo.png");
-            //Background_Down_Koma = TxC(GAME + BACKGROUND + @"0\" + @"Down_Koma.png");
+            Background_Down_Scroll_Matu = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll_Matu.png");
+            Background_Down_Scroll_Kumo = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll_Kumo.png");
+            Background_Down_Koma = TxC(GAME + BACKGROUND + @"0\" + @"Down_Koma.png");
 
             #endregion
             #region 太鼓
@@ -554,7 +556,6 @@ namespace TJAPlayer3
             Taiko_Don_Right = TxC(GAME + TAIKO + @"Taiko_M.png");
             Taiko_Ka_Left = TxC(GAME + TAIKO + @"Taiko_M.png");
             Taiko_Ka_Right = TxC(GAME + TAIKO + @"Taiko_M.png");
-
 
             Taiko_LevelUp = TxC(GAME + TAIKO + @"Level.png");
             Taiko_LevelDown = TxC(GAME + TAIKO + @"Level.png");
@@ -936,7 +937,7 @@ namespace TJAPlayer3
             SongSelect_ScoreRank,
             SongSelect_Song_Number,
             SongSelect_BoardNumber,
-            SongSelect_ScoreWindow_Text;
+            SongSelect_ScoreNumber;
         public CTexture[] SongSelect_GenreBack,
             SongSelect_Bar_Genre,
             SongSelect_Box_Chara,
@@ -993,8 +994,8 @@ namespace TJAPlayer3
             ChipEffect,
             ScoreRank,
             Judge;
-        public CTexture Judge_Meter,
-            Bar,
+        public CTexture Bar,
+            Judge_Meter,
             Bar_Branch;
         #endregion
         #region キャラクター
@@ -1010,7 +1011,7 @@ namespace TJAPlayer3
             Chara_GoGoStart_Maxed,
             Chara_Become_Cleared,
             Chara_Become_Maxed,
-            Chara_MAX,
+            //Chara_MAX,
             Chara_Balloon_Breaking,
             Chara_Balloon_Broke,
             Chara_Balloon_Miss;
@@ -1029,28 +1030,28 @@ namespace TJAPlayer3
         //Background_Up_Clear_HM1,
           Background_Down,
             Background_Down_Clear,
-            Background_Down_BG_0,
-            Background_Down_BG_1,
-            Background_Down_Sc_0,
-            Background_Down_Sc_1,
-            Background_Down_M0,
-            Background_Down_M1,
-            Background_Down_Splash,
-            Background_Down_Fune,
-            Background_Down_FuneX2,
-        //Background_Down_Clear_Light,
+            //Background_Down_BG_0,
+            //Background_Down_BG_1,
+            //Background_Down_Sc_0,
+            //Background_Down_Sc_1,
+            //Background_Down_M0,
+            //Background_Down_M1,
+            //Background_Down_Splash,
+            //Background_Down_Fune,
+            //Background_Down_FuneX2,
+            //Background_Down_Clear_Light,
             Background_Down_Light_B,
-            Background_Down_Scroll;
-            //Background_Down_Scroll_Matu,
-            //Background_Down_Scroll_Kumo,
-            //Background_Down_Koma;
+            Background_Down_Scroll,
+            Background_Down_Scroll_Matu,
+            Background_Down_Scroll_Kumo,
+            Background_Down_Koma;
         public CTexture[] Background_Up,
             //Background_Up_1st,
             //Background_Up_2nd,
             //Background_Up_3rd,
             //Background_Up_Chara,
             //Background_Up_Kumo0,
-            // Background_Up_Kumo1,
+            //Background_Up_Kumo1,
             Background_Up_Clear,
             Background_Up_YMove,
             Background_Up_YMove_Clear,

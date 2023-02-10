@@ -326,10 +326,11 @@ namespace TJAPlayer3
             }
             for (int i = 0; i < CBranchScore.Length; i++)
             {
-                this.CBranchScore[i] = new CBRANCHSCORE();
-
-                //大音符分岐時の情報をまとめるため
-                this.CBranchScore[i].cBigNotes = new CBRANCHSCORE();
+                this.CBranchScore[i] = new CBRANCHSCORE
+                {
+                    //大音符分岐時の情報をまとめるため
+                    cBigNotes = new CBRANCHSCORE()
+                };
             }
             this.nレーン用表示コース = new CDTX.ECourse[4];
             this.b連打中 = new bool[] { false, false, false, false };
@@ -343,7 +344,7 @@ namespace TJAPlayer3
             this.nJPOSSCROLL = new int[4];
             this.bLEVELHOLD = new bool[] { false, false, false, false };
 
-            this.bDoublePlay = TJAPlayer3.ConfigIni.nPlayerCount >= 2 ? true : false;
+            this.bDoublePlay = TJAPlayer3.ConfigIni.nPlayerCount >= 2;
 
             this.nLoopCount_Clear = 1;
 
@@ -374,7 +375,7 @@ namespace TJAPlayer3
             {
                 db再生速度 = ((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0;
             }
-            bValidScore = (TJAPlayer3.DTXVmode.Enabled) ? false : true;
+            bValidScore = !TJAPlayer3.DTXVmode.Enabled;
 
             #region [ 演奏開始前にmixer登録しておくべきサウンド(開幕してすぐに鳴らすことになるチップ音)を登録しておく ]
             foreach (CDTX.CChip pChip in listChip[0])
@@ -1192,8 +1193,10 @@ namespace TJAPlayer3
                 this.b連打中[nPlayer] = true;
                 if (this.actRoll.ct連打アニメ[nPlayer].b終了値に達してない)
                 {
-                    this.actRoll.ct連打アニメ[nPlayer] = new CCounter(0, 9, 14, TJAPlayer3.Timer);
-                    this.actRoll.ct連打アニメ[nPlayer].n現在の値 = 1;
+                    this.actRoll.ct連打アニメ[nPlayer] = new CCounter(0, 9, 14, TJAPlayer3.Timer)
+                    {
+                        n現在の値 = 1
+                    };
                 }
                 else
                 {
@@ -1342,8 +1345,10 @@ namespace TJAPlayer3
 
                 if (this.actBalloon.ct風船アニメ[player].b終了値に達してない)
                 {
-                    this.actBalloon.ct風船アニメ[player] = new CCounter(0, 9, 14, TJAPlayer3.Timer);
-                    this.actBalloon.ct風船アニメ[player].n現在の値 = 1;
+                    this.actBalloon.ct風船アニメ[player] = new CCounter(0, 9, 14, TJAPlayer3.Timer)
+                    {
+                        n現在の値 = 1
+                    };
                 }
                 else
                 {
@@ -1599,7 +1604,7 @@ namespace TJAPlayer3
                             TJAPlayer3.stage演奏ドラム画面.actLaneTaiko.Start(pChip.nチャンネル番号, eJudgeResult, true, nPlayer);
                             TJAPlayer3.stage演奏ドラム画面.actChipFireD.Start(pChip.nチャンネル番号, eJudgeResult, nPlayer);
 
-                            if (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay ? true : (nNowInput == 2 || nNowInput == 3))
+                            if (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay || (nNowInput == 2 || nNowInput == 3))
                             {
                                 //if( pChip.nチャンネル番号 == 0x13 || pChip.nチャンネル番号 == 0x1A )
                                 //    //CDTXMania.stage演奏ドラム画面.actChipFireD.Start( 0, nPlayer );
@@ -1805,9 +1810,8 @@ namespace TJAPlayer3
                             this.actComboBalloon.Start(this.actCombo.n現在のコンボ数[nPlayer], nPlayer);
                         }
                         this.actComboVoice.t再生(this.actCombo.n現在のコンボ数[nPlayer], nPlayer);
-
-                        double dbUnit = (((60.0 / (TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM))));
-                        dbUnit = (((60.0 / pChip.dbBPM)));
+                        _ = (((60.0 / (TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM))));
+                        double dbUnit = (((60.0 / pChip.dbBPM)));
 
                         //CDTXMania.act文字コンソール.tPrint(620, 80, C文字コンソール.Eフォント種別.白, "BPM: " + dbUnit.ToString());
 
@@ -2545,7 +2549,7 @@ namespace TJAPlayer3
             {
                 if (pastNote < 0)
                 {
-                    pastChip = afterChip != null ? afterChip : null; // afterChipに過去の判定があるかもしれないので
+                    pastChip = afterChip ?? null; // afterChipに過去の判定があるかもしれないので
                     break;
                 }
                 var processingChip = chips[pastNote];
@@ -2832,21 +2836,9 @@ namespace TJAPlayer3
             IInputDevice keyboard = TJAPlayer3.Input管理.Keyboard;
             if (keyboard.bキーが押された((int)SlimDXKeys.Key.F1) &&
                 (keyboard.bキーが押されている((int)SlimDXKeys.Key.RightShift) || keyboard.bキーが押されている((int)SlimDXKeys.Key.LeftShift)))
-            {   // shift+f1 (pause)
-                //this.bPAUSE = !this.bPAUSE;
-                //if ( this.bPAUSE )
-                //{
-                //    CSound管理.rc演奏用タイマ.t一時停止();
-                //    CDTXMania.Timer.t一時停止();
-                //    CDTXMania.DTX.t全チップの再生一時停止();
-                //}
-                //else
-                //{
-                //    CSound管理.rc演奏用タイマ.t再開();
-                //    CDTXMania.Timer.t再開();
-                //    CDTXMania.DTX.t全チップの再生再開();
-                //}
+            { 
             }
+
             if ((!this.bPAUSE && (base.eフェーズID != CStage.Eフェーズ.演奏_STAGE_FAILED)) && (base.eフェーズID != CStage.Eフェーズ.演奏_STAGE_FAILED_フェードアウト))
             {
                 this.t入力処理_ドラム();
@@ -2996,8 +2988,6 @@ namespace TJAPlayer3
                 }
             }
 
-#if DEBUG
-
             if (keyboard.bキーが押された((int)SlimDXKeys.Key.F7))
             {
                 if (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P == false)
@@ -3005,7 +2995,7 @@ namespace TJAPlayer3
                 else
                     TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P = false;
             }
-#endif
+
             if (!this.actPauseMenu.bIsActivePopupMenu && this.bPAUSE && ((base.eフェーズID != CStage.Eフェーズ.演奏_STAGE_FAILED)) && (base.eフェーズID != CStage.Eフェーズ.演奏_STAGE_FAILED_フェードアウト))
             {
                 if (keyboard.bキーが押された((int)SlimDXKeys.Key.UpArrow))
@@ -3181,7 +3171,7 @@ namespace TJAPlayer3
 
             if (this.n分岐した回数[nPlayer] == 0)
             {
-                this.bUseBranch[nPlayer] = dTX.bHIDDENBRANCH ? false : dTX.bチップがある.Branch;
+                this.bUseBranch[nPlayer] = !dTX.bHIDDENBRANCH && dTX.bチップがある.Branch;
             }
 
 
@@ -4031,14 +4021,13 @@ namespace TJAPlayer3
             CConfigIni configIni = TJAPlayer3.ConfigIni;
 
             CDTX dTX = TJAPlayer3.DTX;
-            bool bAutoPlay = false;
             switch (nPlayer) //2017.08.11 kairera0467
             {
                 case 0:
-                    bAutoPlay = configIni.b太鼓パートAutoPlay;
+                    _ = configIni.b太鼓パートAutoPlay;
                     break;
                 case 1:
-                    bAutoPlay = configIni.b太鼓パートAutoPlay2P;
+                    _ = configIni.b太鼓パートAutoPlay2P;
                     dTX = TJAPlayer3.DTX_2P;
                     break;
                 default:
@@ -4313,11 +4302,11 @@ namespace TJAPlayer3
 
         protected float GetNowPBMTime(CDTX tja, float play_time)
         {
-            float bpm_time = 0;
             int last_input = 0;
             float last_bpm_change_time;
             play_time = CSound管理.rc演奏用タイマ.n現在時刻ms * (((float)TJAPlayer3.ConfigIni.n演奏速度) / 20.0f) - tja.nOFFSET;
 
+            float bpm_time;
             for (int i = 1; ; i++)
             {
                 //BPMCHANGEの数越えた
@@ -4732,10 +4721,7 @@ namespace TJAPlayer3
         }
         protected void t進行描画_背景()
         {
-            if (this.tx背景 != null)
-            {
-                this.tx背景.t2D描画(TJAPlayer3.app.Device, 0, 0);
-            }
+            this.tx背景?.t2D描画(TJAPlayer3.app.Device, 0, 0);
         }
 
         protected void t進行描画_判定ライン()
@@ -4744,10 +4730,7 @@ namespace TJAPlayer3
             {
                 int y = TJAPlayer3.ConfigIni.bReverse.Drums ? 53 - 演奏判定ライン座標.nJudgeLinePosY_delta.Drums : 567 + 演奏判定ライン座標.nJudgeLinePosY_delta.Drums;
                 // #31602 2013.6.23 yyagi 描画遅延対策として、判定ラインの表示位置をオフセット調整できるようにする
-                if (this.txヒットバー != null)
-                {
-                    this.txヒットバー.t2D描画(TJAPlayer3.app.Device, 295, y, new Rectangle(0, 0, 558, 6));
-                }
+                this.txヒットバー?.t2D描画(TJAPlayer3.app.Device, 295, y, new Rectangle(0, 0, 558, 6));
             }
         }
         protected void t進行描画_判定文字列()

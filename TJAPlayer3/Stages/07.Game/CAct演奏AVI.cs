@@ -566,9 +566,8 @@ namespace TJAPlayer3
         private int i1;
         private int i2;
         private int position;
-        private int position2;
         private float ratio1;
-        private float ratio2;
+        private readonly float ratio2;
         private Rectangle rec;
         private Rectangle rec2;
         private Rectangle rec3;

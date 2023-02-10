@@ -952,7 +952,7 @@ namespace TJAPlayer3
         #region[ private ]
         //-----------------
         bool b再生済み;
-        bool bリザルトボイス再生済み;
+        private bool bリザルトボイス再生済み;
         CCounter ct進行メイン;
 
         CCounter ctEnd_ClearFailed;

@@ -2148,6 +2148,9 @@ namespace TJAPlayer3
                 this.t小文字表示(102, 529, string.Format("{0,4:###0}", this.nヒット数_Auto含まない.Drums.Great.ToString()), false);
                 this.t小文字表示(102, 567, string.Format("{0,4:###0}", this.nヒット数_Auto含まない.Drums.Miss.ToString()), false);
                 this.t小文字表示(102, 624, string.Format("{0,4:###0}", GetRoll(0)), false);
+                this.t小文字表示(102, 662, string.Format("{0,4:###0}", TJAPlayer3.DTX.BASEBPM), false);
+                //this.t小文字表示(102, 50, string.Format("{0,4:###0}", n連打数[0]), false);
+
 
                 int nNowTotal = this.nヒット数_Auto含まない.Drums.Perfect + this.nヒット数_Auto含まない.Drums.Great + this.nヒット数_Auto含まない.Drums.Miss;
                 double dbたたけた率 = Math.Round((100.0 * (TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Perfect + TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Great)) / (double)nNowTotal);

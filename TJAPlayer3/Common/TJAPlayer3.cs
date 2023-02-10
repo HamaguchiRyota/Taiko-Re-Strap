@@ -759,7 +759,7 @@ namespace TJAPlayer3
 								actEnumSongs.On非活性化();
 								TJAPlayer3.stage選曲.bIsEnumeratingSongs = false;
 
-								bool bRemakeSongTitleBar = ( r現在のステージ.eステージID == CStage.Eステージ.選曲 ) ? true : false;
+								bool bRemakeSongTitleBar = (r現在のステージ.eステージID == CStage.Eステージ.選曲);
 								TJAPlayer3.stage選曲.Refresh( EnumSongs.Songs管理, bRemakeSongTitleBar );
 								EnumSongs.SongListEnumCompletelyDone();
 							}
@@ -1896,7 +1896,7 @@ for (int i = 0; i < 3; i++) {
 				TJAPlayer3.ConfigIni.strSystemSkinSubfolderFullName = TJAPlayer3.Skin.GetCurrentSkinSubfolderFullName( true );	// 旧指定のSkinフォルダが消滅していた場合に備える
 				Trace.TraceInformation( "スキンの初期化を完了しました。" );
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				Trace.TraceInformation( "スキンの初期化に失敗しました。" );
 				throw;
@@ -2000,8 +2000,8 @@ for (int i = 0; i < 3; i++) {
 				}
 				Trace.TraceInformation( "DirectInput の初期化を完了しました。" );
 			}
-			catch( Exception exception2 )
-			{
+			catch (Exception)
+            {
 				Trace.TraceError( "DirectInput, MIDI入力の初期化に失敗しました。" );
 				throw;
 			}

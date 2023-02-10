@@ -1061,7 +1061,8 @@ namespace TJAPlayer3
         public int NowCymbolShowingNumber;
         private CCounter Counter_In, Counter_Wait, Counter_Out, Counter_Text;
         private double[] ScreenPoint;
-        private int Counter_In_Old, Counter_Out_Old, Counter_Text_Old;
+        private int Counter_In_Old;
+        private int Counter_Text_Old;
         public bool IsAnimating;
 
         //音声関連

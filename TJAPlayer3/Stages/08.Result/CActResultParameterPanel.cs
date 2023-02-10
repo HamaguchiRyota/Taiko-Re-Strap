@@ -13,50 +13,72 @@ namespace TJAPlayer3
 		public CActResultParameterPanel()
 		{
 			ST文字位置[] st文字位置Array = new ST文字位置[11];
-			ST文字位置 st文字位置 = new ST文字位置();
-			st文字位置.ch = '0';
-			st文字位置.pt = new Point(0, 0);
-			st文字位置Array[0] = st文字位置;
-			ST文字位置 st文字位置2 = new ST文字位置();
-			st文字位置2.ch = '1';
-			st文字位置2.pt = new Point(32, 0);
-			st文字位置Array[1] = st文字位置2;
-			ST文字位置 st文字位置3 = new ST文字位置();
-			st文字位置3.ch = '2';
-			st文字位置3.pt = new Point(64, 0);
-			st文字位置Array[2] = st文字位置3;
-			ST文字位置 st文字位置4 = new ST文字位置();
-			st文字位置4.ch = '3';
-			st文字位置4.pt = new Point(96, 0);
-			st文字位置Array[3] = st文字位置4;
-			ST文字位置 st文字位置5 = new ST文字位置();
-			st文字位置5.ch = '4';
-			st文字位置5.pt = new Point(128, 0);
-			st文字位置Array[4] = st文字位置5;
-			ST文字位置 st文字位置6 = new ST文字位置();
-			st文字位置6.ch = '5';
-			st文字位置6.pt = new Point(160, 0);
-			st文字位置Array[5] = st文字位置6;
-			ST文字位置 st文字位置7 = new ST文字位置();
-			st文字位置7.ch = '6';
-			st文字位置7.pt = new Point(192, 0);
-			st文字位置Array[6] = st文字位置7;
-			ST文字位置 st文字位置8 = new ST文字位置();
-			st文字位置8.ch = '7';
-			st文字位置8.pt = new Point(224, 0);
-			st文字位置Array[7] = st文字位置8;
-			ST文字位置 st文字位置9 = new ST文字位置();
-			st文字位置9.ch = '8';
-			st文字位置9.pt = new Point(256, 0);
-			st文字位置Array[8] = st文字位置9;
-			ST文字位置 st文字位置10 = new ST文字位置();
-			st文字位置10.ch = '9';
-			st文字位置10.pt = new Point(288, 0);
-			st文字位置Array[9] = st文字位置10;
-			ST文字位置 st文字位置11 = new ST文字位置();
-			st文字位置11.ch = ' ';
-			st文字位置11.pt = new Point(0, 0);
-			st文字位置Array[10] = st文字位置11;
+            ST文字位置 st文字位置 = new ST文字位置
+            {
+                ch = '0',
+                pt = new Point(0, 0)
+            };
+            st文字位置Array[0] = st文字位置;
+            ST文字位置 st文字位置2 = new ST文字位置
+            {
+                ch = '1',
+                pt = new Point(32, 0)
+            };
+            st文字位置Array[1] = st文字位置2;
+            ST文字位置 st文字位置3 = new ST文字位置
+            {
+                ch = '2',
+                pt = new Point(64, 0)
+            };
+            st文字位置Array[2] = st文字位置3;
+            ST文字位置 st文字位置4 = new ST文字位置
+            {
+                ch = '3',
+                pt = new Point(96, 0)
+            };
+            st文字位置Array[3] = st文字位置4;
+            ST文字位置 st文字位置5 = new ST文字位置
+            {
+                ch = '4',
+                pt = new Point(128, 0)
+            };
+            st文字位置Array[4] = st文字位置5;
+            ST文字位置 st文字位置6 = new ST文字位置
+            {
+                ch = '5',
+                pt = new Point(160, 0)
+            };
+            st文字位置Array[5] = st文字位置6;
+            ST文字位置 st文字位置7 = new ST文字位置
+            {
+                ch = '6',
+                pt = new Point(192, 0)
+            };
+            st文字位置Array[6] = st文字位置7;
+            ST文字位置 st文字位置8 = new ST文字位置
+            {
+                ch = '7',
+                pt = new Point(224, 0)
+            };
+            st文字位置Array[7] = st文字位置8;
+            ST文字位置 st文字位置9 = new ST文字位置
+            {
+                ch = '8',
+                pt = new Point(256, 0)
+            };
+            st文字位置Array[8] = st文字位置9;
+            ST文字位置 st文字位置10 = new ST文字位置
+            {
+                ch = '9',
+                pt = new Point(288, 0)
+            };
+            st文字位置Array[9] = st文字位置10;
+            ST文字位置 st文字位置11 = new ST文字位置
+            {
+                ch = ' ',
+                pt = new Point(0, 0)
+            };
+            st文字位置Array[10] = st文字位置11;
 			this.st小文字位置 = st文字位置Array;
 
 			ST文字位置[] st文字位置Array2 = new ST文字位置[11];
@@ -143,24 +165,18 @@ namespace TJAPlayer3
 			stScore文字位置9.ch = '8';
 			stScore文字位置9.pt = new Point(408, 0);
 			stScore文字位置Array[8] = stScore文字位置9;
-			ST文字位置 stScore文字位置10 = new ST文字位置();
-			stScore文字位置10.ch = '9';
-			stScore文字位置10.pt = new Point(459, 0);
-			stScore文字位置Array[9] = stScore文字位置10;
+            ST文字位置 stScore文字位置10 = new ST文字位置
+            {
+                ch = '9',
+                pt = new Point(459, 0)
+            };
+            stScore文字位置Array[9] = stScore文字位置10;
 			this.stScoreFont = stScore文字位置Array;
 
 			this.ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
 			base.b活性化してない = true;
 		}
 
-
-		// メソッド
-		/*
-		public void tアニメを完了させる()
-		{
-			this.ct表示用.n現在の値 = (int)this.ct表示用.n終了値;
-		}
-		*/
 
 		public void tSkipResultAnimations()
 		{
@@ -280,8 +296,7 @@ namespace TJAPlayer3
 
 				if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500)
 				{
-					if (TJAPlayer3.Tx.Result_Background != null)
-						TJAPlayer3.Tx.Result_Background[1].t2D描画(TJAPlayer3.app.Device, 0, 0);
+					TJAPlayer3.Tx.Result_Background?[1].t2D描画(TJAPlayer3.app.Device, 0, 0);
 
                 }
 
@@ -291,7 +306,7 @@ namespace TJAPlayer3
 					TJAPlayer3.Tx.Result_Mountain[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
 					TJAPlayer3.Tx.Result_Panel.t2D描画(TJAPlayer3.app.Device, 0, 0);
 				}
-				bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
+				//bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
 				//bool is2PSide = TJAPlayer3.P1IsBlue();
 				TJAPlayer3.Tx.Result_Diff_Bar.t2D描画(TJAPlayer3.app.Device, 18, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[0] * 54, 185, 54));
 				TJAPlayer3.Tx.Result_Gauge_Base.t2D描画(TJAPlayer3.app.Device, 55, 141);
@@ -607,8 +622,6 @@ namespace TJAPlayer3
 			return 1;
 		}
 
-
-
 		// その他
 
 		#region [ private ]
@@ -642,7 +655,7 @@ namespace TJAPlayer3
 		private CSound sdDTXで指定されたフルコンボ音;
 		private readonly ST文字位置[] st小文字位置;
 		private readonly ST文字位置[] st大文字位置;
-		private ST文字位置[] stScoreFont;
+		private readonly ST文字位置[] stScoreFont;
 
 		private CTexture Dan_Plate;
 
@@ -660,44 +673,11 @@ namespace TJAPlayer3
 					if (this.st小文字位置[i].ch == ch)
 					{
 						Rectangle rectangle = new Rectangle(this.st小文字位置[i].pt.X, this.st小文字位置[i].pt.Y, 32, 38);
-						if (TJAPlayer3.Tx.Result_Number != null)
-						{
-							TJAPlayer3.Tx.Result_Number.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x + 16, y + 19, rectangle);
-						}
+						TJAPlayer3.Tx.Result_Number?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x + 16, y + 19, rectangle);
 						break;
 					}
 				}
 				x += 22;
-			}
-		}
-		/*
-		private void t大文字表示(int x, int y, string str)
-		{
-			this.t大文字表示(x, y, str, false);
-		}
-		*/
-		private void t大文字表示(int x, int y, string str, bool b強調)
-		{
-			foreach (char ch in str)
-			{
-				for (int i = 0; i < this.st大文字位置.Length; i++)
-				{
-					if (this.st大文字位置[i].ch == ch)
-					{
-						Rectangle rectangle = new Rectangle(this.st大文字位置[i].pt.X, this.st大文字位置[i].pt.Y, 11, 0x10);
-						if (ch == '.')
-						{
-							rectangle.Width -= 2;
-							rectangle.Height -= 2;
-						}
-						if (TJAPlayer3.Tx.Result_Number != null)
-						{
-							TJAPlayer3.Tx.Result_Number.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
-						}
-						break;
-					}
-				}
-				x += 8;
 			}
 		}
 
@@ -710,10 +690,7 @@ namespace TJAPlayer3
 					if (this.stScoreFont[i].ch == ch)
 					{
 						Rectangle rectangle = new Rectangle(this.stScoreFont[i].pt.X, 0, 51, 60);
-						if (TJAPlayer3.Tx.Result_Score_Number != null)
-						{
-							TJAPlayer3.Tx.Result_Score_Number.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x - (str.Length * 33) + 25, y + 30, rectangle);
-						}
+						TJAPlayer3.Tx.Result_Score_Number?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x - (str.Length * 33) + 25, y + 30, rectangle);
 						break;
 					}
 				}

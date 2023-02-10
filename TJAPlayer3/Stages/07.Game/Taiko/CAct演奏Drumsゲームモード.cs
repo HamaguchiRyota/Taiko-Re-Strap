@@ -33,7 +33,7 @@ namespace TJAPlayer3
         //_最大コンボ数
         //その他諸々
 
-        private long n叩ききりまショー_残り時間タイマー;
+        private readonly long n叩ききりまショー_残り時間タイマー;
         public ST叩ききりまショー st叩ききりまショー;
         public struct ST叩ききりまショー
         {
@@ -91,7 +91,6 @@ namespace TJAPlayer3
         private STボーナス[] n全体最大ズレ時間ボーナス;
         private STボーナス[] n全体コンボ率ボーナス;
         private STボーナス[] n全体ミス率ボーナス;
-        private int n加算時間;
 
         public void t叩ききりまショー_初期化()
         {
@@ -119,7 +118,7 @@ namespace TJAPlayer3
             this.st叩ききりまショー.b超激辛 = false;
             this.st叩ききりまショー.nおまけ加算が発生した回数 = 0;
             this.st叩ききりまショー.n延長アニメ速度 = 0;
-            this.n加算時間 = 0;
+            //this.n加算時間 = 0;
             this.n前回の延長時間 = 0;
             
             this.st叩ききりまショー.ct針アニメ = new CCounter( 0, 1000, 1, TJAPlayer3.Timer );

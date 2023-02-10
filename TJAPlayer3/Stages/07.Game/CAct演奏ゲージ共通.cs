@@ -16,11 +16,6 @@ namespace TJAPlayer3
         public CActLVLNFont actLVLNFont { get; protected set; }
 
         // コンストラクタ
-        public CAct演奏ゲージ共通()
-        {
-            //actLVLNFont = new CActLVLNFont();		// On活性化()に移動
-            //actLVLNFont.On活性化();
-        }
 
         // CActivity 実装
 
@@ -107,8 +102,6 @@ namespace TJAPlayer3
                 this.db現在のゲージ値[i] = 0;
             }
 
-            //ゲージのMAXまでの最低コンボ数を計算
-            float dbGaugeMaxComboValue = 0;
             float[] dbGaugeMaxComboValue_branch = new float[3];
             float dbDamageRate = 2.0f;
 
@@ -119,6 +112,9 @@ namespace TJAPlayer3
                 this.nRiskyTimes_Initial = TJAPlayer3.ConfigIni.nRisky;
             }
 
+
+            //ゲージのMAXまでの最低コンボ数を計算
+            float dbGaugeMaxComboValue;
             switch (this.DTX[nPlayer].LEVELtaiko[TJAPlayer3.stage選曲.n確定された曲の難易度[nPlayer]])
             {
                 case 1:
@@ -203,8 +199,9 @@ namespace TJAPlayer3
 
             }
 
-            double nGaugeRankValue = 0D;
             double[] nGaugeRankValue_branch = new double[] { 0D, 0D, 0D };
+
+            double nGaugeRankValue;
             if (this.DTX[nPlayer].GaugeIncreaseMode == GaugeIncreaseMode.Normal)
             {
                 nGaugeRankValue = Math.Floor(10000.0f / dbGaugeMaxComboValue);
@@ -503,7 +500,7 @@ namespace TJAPlayer3
         //-----------------
         #endregion
 
-        private CDTX[] DTX = new CDTX[2];
+        private readonly CDTX[] DTX = new CDTX[2];
         public double[] db現在のゲージ値 = new double[4];
         protected CCounter ct炎;
         protected CCounter ct虹アニメ;
