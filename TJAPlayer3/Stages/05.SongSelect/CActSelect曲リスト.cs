@@ -1437,7 +1437,10 @@ namespace TJAPlayer3
 														TJAPlayer3.Tx.SongSelect_Frame_Score.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
 
 													TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (3 * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(122 * i, 0, 122, 360));
-												}
+
+                                                    //if (TJAPlayer3.Tx.SongSelect_Branch != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[i])
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.t2D描画(TJAPlayer3.app.Device, 775, TJAPlayer3.Skin.SongSelect_Overall_Y + 263);
+                                                }
 												else if (i != 4)
 												{
 													if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
@@ -1446,26 +1449,43 @@ namespace TJAPlayer3
 														TJAPlayer3.Tx.SongSelect_Frame_Score.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
 
 													TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (i * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(122 * i, 0, 122, 360));
-												}
+
+                                                    //if (TJAPlayer3.Tx.SongSelect_Branch != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[i])
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.t2D描画(TJAPlayer3.app.Device, 775, TJAPlayer3.Skin.SongSelect_Overall_Y + 263);
+                                                }
 
 												if (i == 4)
 												{
 													if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
 														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = BarAnimeCount < 62 ? 0 : opacity;
-													else if (ctDifficultyIn.n現在の値 >= 1000)
+                                                    //if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.Opacity = (int)(BarAnimeCount * 4.25f);
+                                                    else if (ctDifficultyIn.n現在の値 >= 1000)
 														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
+                                                    //else if (ctDifficultyIn.n現在の値 >= 1000)
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
 
-													t小文字表示(TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[4] < 10 ? 497 + (3 * 122) - 5 : 492 + (3 * 122) - 5, TJAPlayer3.Skin.SongSelect_Overall_Y + 277, TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[4].ToString());
-												}
+                                                    t小文字表示(TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[4] < 10 ? 497 + (3 * 122) - 5 : 492 + (3 * 122) - 5, TJAPlayer3.Skin.SongSelect_Overall_Y + 277, TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[4].ToString());
+
+                                                    //if (TJAPlayer3.Tx.SongSelect_Branch != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[i])
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.t2D描画(TJAPlayer3.app.Device, 670, TJAPlayer3.Skin.SongSelect_Overall_Y + 263);
+                                                }
 												else if (i != 4)
 												{
 													if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
 														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = (int)(BarAnimeCount * 4.25f);
-													else if (ctDifficultyIn.n現在の値 >= 1000)
+                                                    //if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.Opacity = (int)(BarAnimeCount * 4.25f);
+                                                    else if (ctDifficultyIn.n現在の値 >= 1000)
 														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
+                                                    //else if (ctDifficultyIn.n現在の値 >= 1000)
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
 
-													t小文字表示(TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i] < 10 ? 497 + (i * 122) - 5 : 492 + (i * 122) - 5, TJAPlayer3.Skin.SongSelect_Overall_Y + 277, TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i].ToString());
-												}
+                                                    t小文字表示(TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i] < 10 ? 497 + (i * 122) - 5 : 492 + (i * 122) - 5, TJAPlayer3.Skin.SongSelect_Overall_Y + 277, TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i].ToString());
+
+                                                    //if (TJAPlayer3.Tx.SongSelect_Branch != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[i])
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.t2D描画(TJAPlayer3.app.Device, 775, TJAPlayer3.Skin.SongSelect_Overall_Y + 263);
+                                                }
 
 											}
 											else
@@ -1480,7 +1500,10 @@ namespace TJAPlayer3
 														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
 													// エディット
 													TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (3 * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(122 * i, 0, 122, 360));
-												}
+
+                                                    //if (TJAPlayer3.Tx.SongSelect_Branch != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[i])
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.t2D描画(TJAPlayer3.app.Device, 775, TJAPlayer3.Skin.SongSelect_Overall_Y + 263);
+                                                }
 												else if (i != 4)
 												{
 													if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
@@ -1489,7 +1512,10 @@ namespace TJAPlayer3
 														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
 
 													TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (i * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(122 * i, 0, 122, 360));
-												}
+
+                                                    //if (TJAPlayer3.Tx.SongSelect_Branch != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[i])
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.t2D描画(TJAPlayer3.app.Device, 775, TJAPlayer3.Skin.SongSelect_Overall_Y + 263);
+                                                }
 											}
 										}
 									}
@@ -1509,13 +1535,19 @@ namespace TJAPlayer3
 										TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (3 * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(0, 360 + (360 * (TJAPlayer3.stage選曲.n現在選択中の曲の難易度 - (int)Difficulty.Tower)), TJAPlayer3.Tx.SongSelect_Frame_Score.szテクスチャサイズ.Width, 360));
 									}
 								}
-							}
+
+
+
+                            }
 						}
 						break;
 
-					case C曲リストノード.Eノード種別.BOX:
+
+
+
+                    case C曲リストノード.Eノード種別.BOX:
 						{
-							for (int j = 0; j < 3; j++)
+                            for (int j = 0; j < 3; j++)
 							{
 								if (!ctBoxOpen.b終了値に達した && ctBoxOpen.n現在の値 != 0)
 								{
@@ -1560,18 +1592,13 @@ namespace TJAPlayer3
 						break;
 
 					case C曲リストノード.Eノード種別.BACKBOX:
-						if (TJAPlayer3.Tx.SongSelect_Frame_BackBox != null)
-							TJAPlayer3.Tx.SongSelect_Frame_BackBox.t2D描画(TJAPlayer3.app.Device, 450, TJAPlayer3.Skin.SongSelect_Overall_Y);
+						TJAPlayer3.Tx.SongSelect_Frame_BackBox?.t2D描画(TJAPlayer3.app.Device, 450, TJAPlayer3.Skin.SongSelect_Overall_Y);
 						break;
 
 					case C曲リストノード.Eノード種別.RANDOM:
-						if (TJAPlayer3.Tx.SongSelect_Frame_Random != null)
-							TJAPlayer3.Tx.SongSelect_Frame_Random.t2D描画(TJAPlayer3.app.Device, 450, TJAPlayer3.Skin.SongSelect_Overall_Y);
+						TJAPlayer3.Tx.SongSelect_Frame_Random?.t2D描画(TJAPlayer3.app.Device, 450, TJAPlayer3.Skin.SongSelect_Overall_Y);
 						break;
 				}
-
-				if (TJAPlayer3.Tx.SongSelect_Branch_Text != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[TJAPlayer3.stage選曲.n現在選択中の曲の難易度])
-					TJAPlayer3.Tx.SongSelect_Branch_Text.t2D描画(TJAPlayer3.app.Device, 483, TJAPlayer3.Skin.SongSelect_Overall_Y + 21);
 
 			}
 

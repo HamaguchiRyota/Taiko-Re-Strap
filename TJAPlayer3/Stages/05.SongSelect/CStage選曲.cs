@@ -727,18 +727,9 @@ namespace TJAPlayer3
                 else if (TJAPlayer3.ConfigIni.eScrollMode == EScrollMode.HBSCROLL)
                     TJAPlayer3.act文字コンソール.tPrint(0, 48, C文字コンソール.Eフォント種別.赤, "HBSCROLL : ON");
 
-                if (TJAPlayer3.Tx.SongSelect_Header != null)
-                    TJAPlayer3.Tx.SongSelect_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
-
-                if (TJAPlayer3.Tx.SongSelect_HighScore != null)
-                    TJAPlayer3.Tx.SongSelect_HighScore.t2D描画(TJAPlayer3.app.Device, 11, 375);
-
+                TJAPlayer3.Tx.SongSelect_Header?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
                 #endregion
-
-                //TJAPlayer3.act文字コンソール.tPrint(4, 4, C文字コンソール.Eフォント種別.白, TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nハイスコア);
-
-                //if (TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nハイスコア != null)
 
                 for (int i = 0; i < 10; i++)
                 {

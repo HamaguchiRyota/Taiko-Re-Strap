@@ -78,7 +78,7 @@ namespace TJAPlayer3
             Scanning_Loudness = TxC(@"Scanning_Loudness.png");
             Overlay = TxC(@"Overlay.png");
             Network_Connection = TxC(@"Network_Connection.png");
-            Readme = TxC(@"Readme.png");
+            //Readme = TxC(@"Readme.png");
             NamePlate = new CTexture[2];
             NamePlateBase = TxC(@"NamePlate.png");
             NamePlate[0] = TxC(@"1P_NamePlate.png");
@@ -157,7 +157,7 @@ namespace TJAPlayer3
             SongSelect_Auto = TxC(SONGSELECT + @"Auto.png");
             SongSelect_Level = TxC(SONGSELECT + @"Level.png");
             SongSelect_Branch = TxC(SONGSELECT + @"Branch.png");
-            SongSelect_Branch_Text = TxC(SONGSELECT + @"Branch_Text.png");
+            //SongSelect_Branch_Text = TxC(SONGSELECT + @"Branch_Text.png");
             SongSelect_Bar_Center = TxC(SONGSELECT + @"Bar_Center.png");
             SongSelect_Frame_Score = TxC(SONGSELECT + @"Frame_Score.png");
             SongSelect_Frame_Box = TxC(SONGSELECT + @"Frame_Box.png");
@@ -174,7 +174,10 @@ namespace TJAPlayer3
             SongSelect_Crown = TxC(SONGSELECT + @"SongSelect_Crown.png");
             SongSelect_ScoreRank = TxC(SONGSELECT + @"ScoreRank.png");
             SongSelect_BoardNumber = TxC(SONGSELECT + @"BoardNumber.png");
-            
+            SongSelect_ScoreNumber = TxC(SONGSELECT + @"ScoreNumber.png");
+            SongSelect_HighScore_Difficult = TxC(SONGSELECT + @"High_Score_Difficult.png");
+            SongSelect_Counter = TxC(SONGSELECT + @"Counter.png");
+
             for (int i = 0; i < (int)Difficulty.Total; i++)
             {
                 SongSelect_ScoreWindow[i] = TxC(SONGSELECT + @"ScoreWindow_" + i.ToString() + ".png");
@@ -191,8 +194,6 @@ namespace TJAPlayer3
             {
                 SongSelect_Donchan_Jump[i] = TxC(SONGSELECT + @"Donchan\Start\" + i.ToString() + ".png");
             }
-
-            SongSelect_ScoreNumber = TxC(SONGSELECT + @"ScoreNumber.png");
 
             TJAPlayer3.Skin.SongSelect_Bar_Genre_Count = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + SONGSELECT + @"Bar_Genre\"), "Bar_Genre_");
 
@@ -877,7 +878,7 @@ namespace TJAPlayer3
             Scanning_Loudness,
             NamePlateBase,
             Overlay,
-            Readme,
+            //Readme,
             Network_Connection;
         public CTexture[] NamePlate;
 
@@ -917,10 +918,11 @@ namespace TJAPlayer3
         public CTexture SongSelect_Background,
             SongSelect_Header,
             SongSelect_HighScore,
+            SongSelect_HighScore_Difficult,
             SongSelect_Auto,
             SongSelect_Level,
             SongSelect_Branch,
-            SongSelect_Branch_Text,
+            //SongSelect_Branch_Text,
             SongSelect_Frame_Score,
             SongSelect_Frame_Box,
             SongSelect_Frame_BackBox,
@@ -937,6 +939,7 @@ namespace TJAPlayer3
             SongSelect_ScoreRank,
             SongSelect_Song_Number,
             SongSelect_BoardNumber,
+            SongSelect_Counter,
             SongSelect_ScoreNumber;
         public CTexture[] SongSelect_GenreBack,
             SongSelect_Bar_Genre,

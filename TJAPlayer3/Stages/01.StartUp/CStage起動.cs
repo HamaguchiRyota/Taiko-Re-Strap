@@ -149,6 +149,7 @@ namespace TJAPlayer3
 				//-----------------
 				#endregion
 
+				
 				if(eフェーズID != Eフェーズ.起動7_完了)
                 {
 					#region [ this.list進行文字列＋this.現在進行中 の表示 ]
@@ -167,21 +168,29 @@ namespace TJAPlayer3
 					//-----------------
 					#endregion
 				}
+				
+				/*
                 else
                 {
 					TJAPlayer3.Tx.Readme.t2D描画(TJAPlayer3.app.Device, 0, 0);
 				}
+				*/
 
+				
 				if ( es != null && es.IsSongListEnumCompletelyDone )							// 曲リスト作成が終わったら
 				{
-					TJAPlayer3.Songs管理 = ( es != null ) ? es.Songs管理 : null;		// 最後に、曲リストを拾い上げる
+					TJAPlayer3.Songs管理 = ( es != null ) ? es.Songs管理 : null;        // 最後に、曲リストを拾い上げる
 
-					if(TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return))
+                    return 1;
+					/*
+                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return))
                     {
 						TJAPlayer3.Skin.sound決定音.t再生する();
-						return 1;
+						
                     }
+					*/
 				}
+				
 			}
 			return 0;
 		}

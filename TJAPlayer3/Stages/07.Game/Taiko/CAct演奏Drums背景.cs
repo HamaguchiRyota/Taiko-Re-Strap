@@ -119,8 +119,8 @@ namespace TJAPlayer3
             this.ct上背景スクロール用タイマー1stDan[3] = new CCounter(0, TJAPlayer3.Tx.Background_Up_Dan[5].szテクスチャサイズ.Width, 33.88f, TJAPlayer3.Timer);
             this.ct上背景スクロール用タイマー2stDan = new CCounter(0, TJAPlayer3.Tx.Background_Up_Dan[4].szテクスチャサイズ.Width + 200, 10, TJAPlayer3.Timer);
 
-            //this.ct点滅0 = new CCounter(0, 100, 20, TJAPlayer3.Timer);
-            //this.ct点滅1 = new CCounter(0, 100, 1, TJAPlayer3.Timer);
+            this.ct点滅0 = new CCounter(0, 100, 20, TJAPlayer3.Timer);
+            this.ct点滅1 = new CCounter(0, 100, 1, TJAPlayer3.Timer);
             this.ct点滅2 = new CCounter(0, 100, 60, TJAPlayer3.Timer);
 
             /*
@@ -626,8 +626,8 @@ namespace TJAPlayer3
             #region [ 1P-下背景 ]
             if (!TJAPlayer3.stage演奏ドラム画面.bDoublePlay)
             {
-                //this.ct点滅0.t進行Loop();
-                //this.ct点滅1.t進行Loop();
+                this.ct点滅0.t進行Loop();
+                this.ct点滅1.t進行Loop();
                 this.ct点滅2.t進行Loop();
 
 
