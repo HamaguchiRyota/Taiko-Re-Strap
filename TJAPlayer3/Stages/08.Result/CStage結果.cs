@@ -388,9 +388,14 @@ namespace TJAPlayer3
 							t後処理();
 
 
-							#region [ Skip animations ]
 
-							if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] < (int)Difficulty.Tower
+
+
+
+
+                            #region [ Skip animations ]
+
+                            if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] < (int)Difficulty.Tower
 								&& this.actParameterPanel.ct全体進行.n現在の値 < this.actParameterPanel.MountainAppearValue)
 							{
 								this.actParameterPanel.tSkipResultAnimations();
