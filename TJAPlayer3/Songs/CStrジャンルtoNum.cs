@@ -11,7 +11,6 @@
                 case "ポップス":
                     return 1;
                 case "ゲームミュージック":
-                case "ゲーム":
                     return 2;
                 case "ナムコオリジナル":
                     return 3;
@@ -47,7 +46,6 @@
                 case "クラシック":
                     return 5;
                 case "ゲームミュージック":
-                case "ゲーム":
                     return 6;
                 case "ナムコオリジナル":
                     return 7;

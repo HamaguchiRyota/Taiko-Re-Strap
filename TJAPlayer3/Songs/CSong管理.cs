@@ -154,7 +154,7 @@ namespace TJAPlayer3
 											c曲リストノード.strジャンル = "ポップス";
 											break;
 										case "ゲームミュージック":
-											c曲リストノード.strジャンル = "ゲームバラエティ";
+											c曲リストノード.strジャンル = "ゲームミュージック";
 											break;
 										case "どうよう":
 											c曲リストノード.strジャンル = "キッズ";
@@ -271,7 +271,7 @@ namespace TJAPlayer3
 										c曲リストノード.strジャンル = "ポップス";
 										break;
 									case "ゲームミュージック":
-										c曲リストノード.strジャンル = "ゲームバラエティ";
+										c曲リストノード.strジャンル = "ゲームミュージック";
 										break;
 									case "どうよう":
 										c曲リストノード.strジャンル = "キッズ";
@@ -284,7 +284,7 @@ namespace TJAPlayer3
 										c曲リストノード.str本当のジャンル = "ポップス";
 										break;
 									case "ゲームミュージック":
-										c曲リストノード.str本当のジャンル = "ゲームバラエティ";
+										c曲リストノード.str本当のジャンル = "ゲームミュージック";
 										break;
 									case "どうよう":
 										c曲リストノード.str本当のジャンル = "キッズ";
@@ -469,9 +469,7 @@ namespace TJAPlayer3
 							c曲リストノード.strジャンル = "ポップス";
 							break;
 						case "ゲームミュージック":
-						case "バラエティー":
-						case "バラエティ":
-							c曲リストノード.strジャンル = "ゲームバラエティ";
+							c曲リストノード.strジャンル = "ゲームミュージック";
 							break;
 						case "どうよう":
 							c曲リストノード.strジャンル = "キッズ";
@@ -528,7 +526,7 @@ namespace TJAPlayer3
 							c曲リストノード.strジャンル = "ポップス";
 							break;
 						case "ゲームミュージック":
-							c曲リストノード.strジャンル = "ゲームバラエティ";
+							c曲リストノード.strジャンル = "ゲームミュージック";
 							break;
 						case "どうよう":
 							c曲リストノード.strジャンル = "キッズ";
@@ -1053,6 +1051,8 @@ namespace TJAPlayer3
 		/// <param name="ノードリスト"></param>
 		/// <param name="part"></param>
 		/// <param name="order">1=Ascend -1=Descend</param>
+
+		/*
 		public static void t曲リストのソート3_演奏回数の多い順( List<C曲リストノード> ノードリスト, E楽器パート part, int order, params object[] p )
 		{
 			order = -order;
@@ -1100,6 +1100,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		*/
+		/*
 		public static void t曲リストのソート4_LEVEL順( List<C曲リストノード> ノードリスト, E楽器パート part, int order, params object[] p )
 		{
 			order = -order;
@@ -1141,6 +1143,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		*/
+		/*
 		public static void t曲リストのソート5_BestRank順( List<C曲リストノード> ノードリスト, E楽器パート part, int order, params object[] p )
 		{
 			order = -order;
@@ -1189,6 +1193,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		*/
+		/*
 		public static void t曲リストのソート6_SkillPoint順( List<C曲リストノード> ノードリスト, E楽器パート part, int order, params object[] p )
 		{
 			order = -order;
@@ -1230,6 +1236,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		*/
+		/*
 		public static void t曲リストのソート7_更新日時順( List<C曲リストノード> ノードリスト, E楽器パート part, int order, params object[] p )
 		{
 			int nL12345 = (int) p[ 0 ];
@@ -1271,6 +1279,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		*/
+		/*
 		public static void t曲リストのソート8_アーティスト名順( List<C曲リストノード> ノードリスト, E楽器パート part, int order, params object[] p )
 		{
 			int nL12345 = (int) p[ 0 ]; 
@@ -1298,6 +1308,7 @@ namespace TJAPlayer3
 Debug.WriteLine( s + ":" + c曲リストノード.strタイトル );
 			}
 		}
+		*/
 
 	    public static void t曲リストのソート9_ジャンル順(List<C曲リストノード> ノードリスト, E楽器パート part, int order, params object[] p)
 	    {

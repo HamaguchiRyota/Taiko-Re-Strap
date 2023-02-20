@@ -97,7 +97,7 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Anime");
                     }
-                    else if (genreName.Equals("ゲームバラエティ") )
+                    else if (genreName.Equals("ゲームミュージック") )
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Game");
                     }
@@ -236,10 +236,8 @@ namespace TJAPlayer3
 			if( !base.b活性化してない && !this.bMute )
 			{
 				this.ct進行用.t進行Loop();
-                if( this.txGENRE != null )
-                    this.txGENRE.t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y );
-                if( this.txStage != null )
-                    this.txStage.t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y );
+                this.txGENRE?.t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y );
+                this.txStage?.t2D描画( TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y );
 
                 if( TJAPlayer3.Skin.b現在のステージ数を表示しない )
                 {

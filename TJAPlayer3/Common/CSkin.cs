@@ -1187,10 +1187,12 @@ namespace TJAPlayer3
                             {
                                 SongSelect_ForeColor_GameMusic = ColorTranslator.FromHtml(strParam);
                             }
+                            /*
                             else if (strCommand == nameof(SongSelect_ForeColor_Namco))
                             {
                                 SongSelect_ForeColor_GameMusic = ColorTranslator.FromHtml(strParam);
                             }
+                            */
                             else if (strCommand == "SongSelect_BackColor_JPOP")
                             {
                                 SongSelect_BackColor_JPOP = ColorTranslator.FromHtml(strParam);
@@ -2603,7 +2605,7 @@ namespace TJAPlayer3
         public int SongSelect_BoxExplanation_Interval = 30;
         public int SongSelect_Title_X = 0;
         public int SongSelect_Title_Y = 0;
-        public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームバラエティ", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲", "創作譜面" };
+        public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームミュージック", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲"};
         public int[] SongSelect_NamePlate_X = new int[] { 36, 1020 };
         public int[] SongSelect_NamePlate_Y = new int[] { 615, 615 };
         public int[] SongSelect_Auto_X = new int[] { 36, 1019 };
@@ -2618,14 +2620,13 @@ namespace TJAPlayer3
         public Color SongSelect_ForeColor_Namco = ColorTranslator.FromHtml("#FFFFFF");
         public Color SongSelect_ForeColor_創作譜面 = ColorTranslator.FromHtml("#FFFFFF");
         public Color SongSelect_BackColor_JPOP = ColorTranslator.FromHtml("#01455B");
-        public Color SongSelect_BackColor_Anime = ColorTranslator.FromHtml("#99001F");
+        public Color SongSelect_BackColor_Anime = ColorTranslator.FromHtml("#961864");
         public Color SongSelect_BackColor_VOCALOID = ColorTranslator.FromHtml("#303546");
-        public Color SongSelect_BackColor_Children = ColorTranslator.FromHtml("#9D3800");
-        public Color SongSelect_BackColor_Variety = ColorTranslator.FromHtml("#366600");
-        public Color SongSelect_BackColor_Classic = ColorTranslator.FromHtml("#875600");
+        public Color SongSelect_BackColor_Children = ColorTranslator.FromHtml("#a03400");
+        public Color SongSelect_BackColor_Variety = ColorTranslator.FromHtml("#174e19");
+        public Color SongSelect_BackColor_Classic = ColorTranslator.FromHtml("#523c1e");
         public Color SongSelect_BackColor_GameMusic = ColorTranslator.FromHtml("#412080");
         public Color SongSelect_BackColor_Namco = ColorTranslator.FromHtml("#980E00");
-        public Color SongSelect_BackColor_創作譜面 = ColorTranslator.FromHtml("#16ff88");
         public int SongSelect_Bar_Genre_Count,
             SongSelect_Genre_Background_Count,
             SongSelect_Box_Chara_Count,
