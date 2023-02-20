@@ -531,14 +531,18 @@ namespace TJAPlayer3
 					{
 						TJAPlayer3.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, ctBarMove.n現在の値.ToString());
 
-						for (int i = 0; i < 2; i++)
+                        for (int i = 0; i < 2; i++)
                         {
 							if(this.stModeBar[i].n現在存在している行 == 1 && ctBarMove.n現在の値 >= 150)
 							{
-								int BarAnime = ctBarAnimeIn.n現在の値 >= (int)(26 * 16.6f) + 100 ? 0 : ctBarAnimeIn.n現在の値 >= (int)(26 * 16.6f) && ctBarAnimeIn.n現在の値 <= (int)(26 * 16.6f) + 100 ? 40 + (int)((ctBarAnimeIn.n現在の値 - (26 * 16.6)) / 100f * 71f) : ctBarAnimeIn.n現在の値 < (int)(26 * 16.6f) ? 40 : 111;
+                                int BarAnime = ctBarAnimeIn.n現在の値 >= (int)(26 * 16.6f) + 100 ? 0 : ctBarAnimeIn.n現在の値 >= (int)(26 * 16.6f) && ctBarAnimeIn.n現在の値 <= (int)(26 * 16.6f) + 100 ? 40 + (int)((ctBarAnimeIn.n現在の値 - (26 * 16.6)) / 100f * 71f) : ctBarAnimeIn.n現在の値 < (int)(26 * 16.6f) ? 40 : 111;
 								int BarAnime1 = BarAnime == 0 ? ctBarMove.n現在の値 >= 150 ? 40 + (int)((ctBarMove.n現在の値 - 150) / 100f * 71f) : ctBarMove.n現在の値 < 150 ? 40 : 111 : 0;
 
-								this.stModeBar[i].BarTexture.Opacity = (int)((ctBarAnimeIn.n現在の値 - (16 * 16.6f)) * 1.23f);
+
+                                TJAPlayer3.Tx.Entry_Bar_Select.Opacity = (int)((ctBarAnimeIn.n現在の値 - (16 * 16.6f)) * 1.23f);
+                                TJAPlayer3.Tx.Entry_Bar_Select?.t2D描画(TJAPlayer3.app.Device, 303, 218);
+
+                                this.stModeBar[i].BarTexture.Opacity = (int)((ctBarAnimeIn.n現在の値 - (16 * 16.6f)) * 1.23f);
 
 								this.stModeBar[i].BarTexture.vc拡大縮小倍率.Y = 1.0f;
 								this.stModeBar[i].BarTexture.t2D描画(TJAPlayer3.app.Device, 320, 347 - BarAnime - BarAnime1, new Rectangle(0, 0, 641, 27));
@@ -564,10 +568,10 @@ namespace TJAPlayer3
 
 								TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].Opacity = (int)(BarAnimeCount * 2.55f) + (int)(BarAnime * 2.5f);
 								//130
-								TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].t2D中心基準描画(TJAPlayer3.app.Device, 640 - TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Width / 4 + 114 - anime, 360,
+								TJAPlayer3.Tx.ModeSelect_Bar_Chara[i]?.t2D中心基準描画(TJAPlayer3.app.Device, 640 - TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Width / 4 + 114 - anime, 360,
 									new Rectangle(0, 0, TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Width / 2, TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Height));
 
-								TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].t2D中心基準描画(TJAPlayer3.app.Device, 640 + TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Width / 4 - 114 + anime, 360,
+								TJAPlayer3.Tx.ModeSelect_Bar_Chara[i]?.t2D中心基準描画(TJAPlayer3.app.Device, 640 + TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Width / 4 - 114 + anime, 360,
 									new Rectangle(TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Width / 2, 0, TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Width / 2, TJAPlayer3.Tx.ModeSelect_Bar_Chara[i].szテクスチャサイズ.Height));
 
 								TJAPlayer3.Tx.ModeSelect_Bar_Text[i].Opacity = 255;
@@ -609,6 +613,7 @@ namespace TJAPlayer3
 								this.stModeBar[i].BarTexture.t2D描画(TJAPlayer3.app.Device, this.ptモード選択バー座標[stModeBar[i].n現在存在している行].X + BarAnimeX - BarMoveX, this.ptモード選択バー座標[stModeBar[i].n現在存在している行].Y + BarAnimeY - BarMoveY);
 								TJAPlayer3.Tx.ModeSelect_Bar[2].t2D描画(TJAPlayer3.app.Device, this.ptモード選択バー座標[stModeBar[i].n現在存在している行].X + BarAnimeX - BarMoveX, this.ptモード選択バー座標[stModeBar[i].n現在存在している行].Y + BarAnimeY - BarMoveY);
 								TJAPlayer3.Tx.ModeSelect_Bar_Text[i]?.t2D描画(TJAPlayer3.app.Device, this.ptモード選択バー座標[stModeBar[i].n現在存在している行].X + BarAnimeX - BarMoveX, this.ptモード選択バー座標[stModeBar[i].n現在存在している行].Y + BarAnimeY - BarMoveY - 13, new Rectangle(0, 0, 642, 122));
+
 							}
                         }
 					}

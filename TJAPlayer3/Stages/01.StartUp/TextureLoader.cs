@@ -94,6 +94,7 @@ namespace TJAPlayer3
             Entry_Overlay = TxC(TITLE + @"Overlay.png");
             Entry_Bar = TxC(TITLE + @"Entry_Bar.png");
             Entry_Bar_Text = TxC(TITLE + @"Entry_Bar_Text.png");
+            Entry_Bar_Select = TxC(TITLE + @"Bar_Select.png");
 
             Banapas_Load[0] = TxC(TITLE + @"Banapas_Load.png");
             Banapas_Load[1] = TxC(TITLE + @"Banapas_Load_Text.png");
@@ -166,6 +167,7 @@ namespace TJAPlayer3
             SongSelect_Bar_Genre_Back = TxC(SONGSELECT + @"Bar_Genre_Back.png");
             SongSelect_Bar_Genre_RecentryPlaySong = TxC(SONGSELECT + @"Bar_Genre_RecentryPlaySong.png");
             SongSelect_Bar_Select = TxC(SONGSELECT + @"Bar_Select.png");
+            SongSelect_Bar_Shadow = TxC(SONGSELECT + @"Bar_Shadow.png");
             SongSelect_Level_Number = TxC(SONGSELECT + @"Level_Number.png");
             SongSelect_Credit = TxC(SONGSELECT + @"Credit.png");
             SongSelect_Timer = TxC(SONGSELECT + @"Timer.png");
@@ -886,6 +888,7 @@ namespace TJAPlayer3
         #endregion
         #region 1_タイトル画面
         public CTexture Title_Background,
+            Entry_Bar_Select,
             Entry_Overlay,
             Entry_Bar,
             Entry_Bar_Text;
@@ -932,6 +935,7 @@ namespace TJAPlayer3
             SongSelect_Bar_Genre_RecentryPlaySong,
             SongSelect_Level_Number,
             SongSelect_Bar_Select,
+            SongSelect_Bar_Shadow,
             SongSelect_Bar_Genre_Overlay,
             SongSelect_Credit,
             SongSelect_Timer,

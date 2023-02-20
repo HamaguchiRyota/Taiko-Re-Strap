@@ -120,6 +120,8 @@ namespace TJAPlayer3
                 this.ct虹透明度 = new CCounter(0, TJAPlayer3.Skin.Game_Gauge_Rainbow_Timer-1, 1, TJAPlayer3.Timer);
                 this.ctGaugeFlash = new CCounter(0, 532, 1, TJAPlayer3.Timer);
                 this.ctCharaEf = new CCounter(0, 100, 17, TJAPlayer3.Timer);
+                this.ctSoulFlash = new CCounter(0, 8, 33, TJAPlayer3.Timer);
+
                 base.OnManagedリソースの作成();
 			}
 		}
@@ -145,6 +147,7 @@ namespace TJAPlayer3
 
                 this.ctGaugeFlash.t進行Loop();
                 this.ctCharaEf.t進行Loop();
+                this.ctSoulFlash.t進行Loop();
 
                 int nRectX2P = (int)(this.db現在のゲージ値[1] / 2) * 14;
                 int nRectX = (int)( this.db現在のゲージ値[ 0 ] / 2 ) * 14;
@@ -312,17 +315,20 @@ namespace TJAPlayer3
                 if(TJAPlayer3.Tx.Gauge_Soul != null )
                 {
                     //仮置き
-                    int[] nSoulY = new int[] { 125, 516, 0, 0 };
+                    int[] nSoulY = new int[] { 138, 529, 0, 0 };//+13
                     for( int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++ )
                     {
-                        if( this.db現在のゲージ値[ i ] >= 80.0 )
+                   
+                        if ( this.db現在のゲージ値[ i ] >= 80.0 )
                         {
-                            TJAPlayer3.Tx.Gauge_Soul.t2D描画( TJAPlayer3.app.Device, 1184, nSoulY[ i ], new Rectangle( 0, 0, 80, 80 ) );
+                            TJAPlayer3.Tx.Gauge_Soul.t2D描画(TJAPlayer3.app.Device, 1196, nSoulY[i], new Rectangle(0, 0, 57, 52));
                         }
-                        else
+                        if (this.db現在のゲージ値[i] >= 100.0)
                         {
-                            TJAPlayer3.Tx.Gauge_Soul.t2D描画( TJAPlayer3.app.Device, 1184, nSoulY[ i ], new Rectangle( 0, 80, 80, 80 ) );
+                            if (ctSoulFlash.n現在の値 % 2 == 0)
+                                TJAPlayer3.Tx.Gauge_Soul.t2D描画(TJAPlayer3.app.Device, 1196, nSoulY[i], new Rectangle(0, 52, 57, 52));
                         }
+
                     }
                 }
 
@@ -394,6 +400,7 @@ namespace TJAPlayer3
         }
         private CCounter ctSoul;
         private CCounter ctCharaEf;
+        private CCounter ctSoulFlash;
         //-----------------
         #endregion
     }
