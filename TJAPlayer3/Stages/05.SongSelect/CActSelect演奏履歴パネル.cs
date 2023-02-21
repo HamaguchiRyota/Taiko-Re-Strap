@@ -160,7 +160,7 @@ namespace TJAPlayer3
 				{
                     TJAPlayer3.Tx.SongSelect_Counter?.t2D描画(TJAPlayer3.app.Device, x - 80, y - 75);
                     t小文字表示(x - 119, y - 60, string.Format("{0,9}", ((uint)TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.Bpm).ToString()));
-                    t小文字表示(x + 10, y - 60, string.Format("{0,7:##0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.演奏回数.Drums.ToString()));
+                    t小文字表示(x + 20, y - 60, string.Format("{0,7:##0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.演奏回数.Drums.ToString()));
 
                     TJAPlayer3.Tx.SongSelect_HighScore?.t2D描画(TJAPlayer3.app.Device, 11, 375);
 
