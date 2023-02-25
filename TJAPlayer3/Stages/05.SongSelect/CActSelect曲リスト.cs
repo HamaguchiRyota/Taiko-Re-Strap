@@ -1311,21 +1311,22 @@ namespace TJAPlayer3
 						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.X = 0.8f + BarAnimeCount / 620f;
 						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.Y = 0.8f + BarAnimeCount / 620f;
 
-						if (クリア[3] != 0)
+						if (クリア[3] != 0 && クリア[4] == 0)
 							TJAPlayer3.Tx.SongSelect_Crown.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 354, 344 - BarAnimeCount / 1.1f, new RectangleF(9 * 43.2f + (クリア[3] - 1) * 43.2f, 0, 43.2f, 39));
 						else if (クリア[4] != 0)
 							TJAPlayer3.Tx.SongSelect_Crown.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 354, 344 - BarAnimeCount / 1.1f, new RectangleF(12 * 43.2f + (クリア[4] - 1) * 43.2f, 0, 43.2f, 39));
 
-						if (スコアランク[3] != 0)
+						if (スコアランク[3] != 0 && スコアランク[4] == 0)
 							TJAPlayer3.Tx.SongSelect_ScoreRank.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 354, 374 - BarAnimeCount / 1.15f, new RectangleF(0, (スコアランク[3] - 1) * 42.71f, 50, 42.71f));
 						else if (スコアランク[4] != 0)
 							TJAPlayer3.Tx.SongSelect_ScoreRank.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 354, 374 - BarAnimeCount / 1.15f, new RectangleF(0, (スコアランク[4] - 1) * 42.71f, 50, 42.71f));
-					}
 
-					#endregion
+                    }
 
-					#endregion
-				}
+                    #endregion
+
+                    #endregion
+                }
                 if (r現在選択中の曲.eノード種別 == C曲リストノード.Eノード種別.BOX)
                 {
 					#region [ Box ]
@@ -1962,9 +1963,7 @@ namespace TJAPlayer3
 				if (this.nStrジャンルtoNum(strジャンル) == 0)
 				{
                     TJAPlayer3.Tx.SongSelect_Bar_Shadow?.t2D描画(TJAPlayer3.app.Device, x + 2, y + 2);
-
-                    if (TJAPlayer3.Tx.SongSelect_Bar_Genre[0] != null)
-						TJAPlayer3.Tx.SongSelect_Bar_Genre[0].t2D描画(TJAPlayer3.app.Device, x, y);
+                    TJAPlayer3.Tx.SongSelect_Bar_Genre[0]?.t2D描画(TJAPlayer3.app.Device, x, y);
 				}
 				else
 				{
@@ -1975,18 +1974,13 @@ namespace TJAPlayer3
 							if (i + 1 >= TJAPlayer3.Skin.SongSelect_Bar_Genre_Count)
 							{
                                 TJAPlayer3.Tx.SongSelect_Bar_Shadow?.t2D描画(TJAPlayer3.app.Device, x + 2, y + 2);
-
-                                if (TJAPlayer3.Tx.SongSelect_Bar_Genre[0] != null)
-									TJAPlayer3.Tx.SongSelect_Bar_Genre[0].t2D描画(TJAPlayer3.app.Device, x, y);
-
+                                TJAPlayer3.Tx.SongSelect_Bar_Genre[0]?.t2D描画(TJAPlayer3.app.Device, x, y);
                                 break;
 							}
 							else
 							{
                                 TJAPlayer3.Tx.SongSelect_Bar_Shadow?.t2D描画(TJAPlayer3.app.Device, x + 2, y + 2);
-
-                                if (TJAPlayer3.Tx.SongSelect_Bar_Genre[i + 1] != null)
-									TJAPlayer3.Tx.SongSelect_Bar_Genre[i + 1].t2D描画(TJAPlayer3.app.Device, x, y);
+                                TJAPlayer3.Tx.SongSelect_Bar_Genre[i + 1]?.t2D描画(TJAPlayer3.app.Device, x, y);
 								break;
 							}
 						}
@@ -2018,9 +2012,10 @@ namespace TJAPlayer3
 				if (スコアランク[4] != 0)
 					TJAPlayer3.Tx.SongSelect_ScoreRank.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x + 30, y + 60, new RectangleF(0, (スコアランク[4] - 1) * 42.71f, 50, 42.71f));
 			}
-		}
 
-		public int nStrジャンルtoNum(string strジャンル)
+        }
+
+        public int nStrジャンルtoNum(string strジャンル)
 		{
 			int nGenre = 8;
 			for (int i = 0; i < TJAPlayer3.Skin.SongSelect_GenreName.Length; i++)
