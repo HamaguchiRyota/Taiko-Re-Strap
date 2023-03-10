@@ -43,10 +43,19 @@ namespace TJAPlayer3
                 ct上背景桜用タイマー[i] = null;
                 ct上背景桜スクロール用タイマー[i] = null;
             }
+            TJAPlayer3.t安全にDisposeする(ref this.ct上背景スクロール用タイマー);
+            TJAPlayer3.t安全にDisposeする(ref this.ct上背景サブスクロール用タイマー);
+            TJAPlayer3.t安全にDisposeする(ref this.ct上背景上下用タイマー);
+            TJAPlayer3.t安全にDisposeする(ref this.ct上背景桜用タイマー);
+            TJAPlayer3.t安全にDisposeする(ref this.ct上背景桜スクロール用タイマー);
             TJAPlayer3.t安全にDisposeする(ref this.ct下背景スクロール用タイマー1);
             TJAPlayer3.t安全にDisposeする(ref this.ct下背景スクロール用タイマー2);
             TJAPlayer3.t安全にDisposeする(ref this.ct下背景スクロール用タイマー3);
             TJAPlayer3.t安全にDisposeする(ref this.ct下背景上下用タイマー);
+
+            TJAPlayer3.t安全にDisposeする(ref this.ct点滅0);
+            TJAPlayer3.t安全にDisposeする(ref this.ct点滅1);
+            TJAPlayer3.t安全にDisposeする(ref this.ct点滅2);
             //TJAPlayer3.t安全にDisposeする(ref this.ct桜X移動用タイマー1);
             //TJAPlayer3.t安全にDisposeする(ref this.ct桜Y移動用タイマー1);
             //TJAPlayer3.t安全にDisposeする(ref this.ct桜X移動用タイマー2);
@@ -144,7 +153,7 @@ namespace TJAPlayer3
 
         public override void OnManagedリソースの解放()
         {
-            base.OnManagedリソースの解放();
+
         }
 
         public override int On進行描画()

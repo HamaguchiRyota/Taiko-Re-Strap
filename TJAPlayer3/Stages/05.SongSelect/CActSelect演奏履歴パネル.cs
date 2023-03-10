@@ -152,10 +152,6 @@ namespace TJAPlayer3
 				int x = 80;
 				int y = 410;
 
-                //int OcF = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ctDiff_fe.n現在の値 * 2 / 100.0)));//176.0 + 80.0
-
-
-
                 if (TJAPlayer3.stage選曲.r現在選択中のスコア != null && ct登場アニメ用.n現在の値 >= 1 && TJAPlayer3.stage選曲.r現在選択中の曲.eノード種別 == C曲リストノード.Eノード種別.SCORE)
 				{
                     TJAPlayer3.Tx.SongSelect_Counter?.t2D描画(TJAPlayer3.app.Device, x - 80, y - 75);

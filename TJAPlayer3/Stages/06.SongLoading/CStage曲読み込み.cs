@@ -11,14 +11,12 @@ namespace TJAPlayer3
 	internal class CStage曲読み込み : CStage
 	{
 		// コンストラクタ
-
 		public CStage曲読み込み()
 		{
 			eステージID = Eステージ.曲読み込み;
 			eフェーズID = Eフェーズ.共通_通常状態;
 			b活性化してない = true;
 		}
-
 
 		// CStage 実装
 
@@ -145,18 +143,16 @@ namespace TJAPlayer3
 				    if( !string.IsNullOrEmpty(タイトル) )
 					{
 					    using (var bmpSongTitle = pfTITLE.DrawPrivateFont( タイトル, TJAPlayer3.Skin.SongLoading_Title_ForeColor, TJAPlayer3.Skin.SongLoading_Title_BackColor ))
-
 					    {
 					        txタイトル = new CTexture( TJAPlayer3.app.Device, bmpSongTitle, TJAPlayer3.TextureFormat, false );
 					        txタイトル.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txタイトル, 710);
 					    }
 
 					    using (var bmpSongSubTitle = pfSUBTITLE.DrawPrivateFont( サブタイトル, TJAPlayer3.Skin.SongLoading_SubTitle_ForeColor, TJAPlayer3.Skin.SongLoading_SubTitle_BackColor ))
-
-
 					    {
 					        txサブタイトル = new CTexture( TJAPlayer3.app.Device, bmpSongSubTitle, TJAPlayer3.TextureFormat, false );
-					    }
+                            txサブタイトル.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txサブタイトル, 720);
+                        }
                     }
 					else
 					{

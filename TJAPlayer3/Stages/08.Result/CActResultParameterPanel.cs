@@ -263,8 +263,8 @@ namespace TJAPlayer3
 		{
 			if (!base.b活性化してない)
 			{
-				Dan_Plate?.Dispose();
-				base.OnManagedリソースの解放();
+                TJAPlayer3.t安全にDisposeする(ref Dan_Plate);
+                base.OnManagedリソースの解放();
 			}
 		}
 		public override int On進行描画()
@@ -302,14 +302,14 @@ namespace TJAPlayer3
 
                 if (TJAPlayer3.Tx.Result_Header != null && TJAPlayer3.Tx.Result_Mountain[0] != null && TJAPlayer3.Tx.Result_Panel != null)
                 {
-					TJAPlayer3.Tx.Result_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
-					TJAPlayer3.Tx.Result_Mountain[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
-					TJAPlayer3.Tx.Result_Panel.t2D描画(TJAPlayer3.app.Device, 0, 0);
+					TJAPlayer3.Tx.Result_Header?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+					TJAPlayer3.Tx.Result_Mountain?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
+					TJAPlayer3.Tx.Result_Panel?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 				}
 				//bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
 				//bool is2PSide = TJAPlayer3.P1IsBlue();
-				TJAPlayer3.Tx.Result_Diff_Bar.t2D描画(TJAPlayer3.app.Device, 18, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[0] * 54, 185, 54));
-				TJAPlayer3.Tx.Result_Gauge_Base.t2D描画(TJAPlayer3.app.Device, 55, 141);
+				TJAPlayer3.Tx.Result_Diff_Bar?.t2D描画(TJAPlayer3.app.Device, 18, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[0] * 54, 185, 54));
+				TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
 				#region [ キャラクター & ぷち ]
 
@@ -341,7 +341,7 @@ namespace TJAPlayer3
 					if (!ctゲージアニメ.b進行中)
 						ctゲージアニメ.t開始(0, (int)TJAPlayer3.stage結果.st演奏記録.Drums.fゲージ / 2, 59, TJAPlayer3.Timer);
 
-					TJAPlayer3.Tx.Result_Gauge.t2D描画(TJAPlayer3.app.Device, 58, 141, new RectangleF(0, 0, 9.74f * ctゲージアニメ.n現在の値, 36));
+					TJAPlayer3.Tx.Result_Gauge?.t2D描画(TJAPlayer3.app.Device, 58, 141, new RectangleF(0, 0, 9.74f * ctゲージアニメ.n現在の値, 36));
 
 					if (ctゲージアニメ.b終了値に達した)
 					{
@@ -361,14 +361,14 @@ namespace TJAPlayer3
 							ct虹ゲージアニメ.t進行Loop();
 							ctSoul.t進行Loop();
 
-							TJAPlayer3.Tx.Result_Rainbow[ct虹ゲージアニメ.n現在の値].t2D描画(TJAPlayer3.app.Device, 58, 145);
+							TJAPlayer3.Tx.Result_Rainbow?[ct虹ゲージアニメ.n現在の値].t2D描画(TJAPlayer3.app.Device, 58, 145);
 
-							TJAPlayer3.Tx.Result_Soul_Fire.t2D中心基準描画(TJAPlayer3.app.Device, 568, 160, new Rectangle(150 * ctSoul.n現在の値, 0, 150, 131));
+							TJAPlayer3.Tx.Result_Soul_Fire?.t2D中心基準描画(TJAPlayer3.app.Device, 568, 160, new Rectangle(150 * ctSoul.n現在の値, 0, 150, 131));
 
-							TJAPlayer3.Tx.Result_Soul_Text.t2D中心基準描画(TJAPlayer3.app.Device, 568, 159, new Rectangle(37 * 1, 0, 37, 37));
+							TJAPlayer3.Tx.Result_Soul_Text?.t2D中心基準描画(TJAPlayer3.app.Device, 568, 159, new Rectangle(37 * 1, 0, 37, 37));
 
 							if (ctSoul.n現在の値 % 2 == 0)
-								TJAPlayer3.Tx.Result_Soul_Text.t2D中心基準描画(TJAPlayer3.app.Device, 568, 159, new Rectangle(37 * 2, 0, 37, 37));
+								TJAPlayer3.Tx.Result_Soul_Text?.t2D中心基準描画(TJAPlayer3.app.Device, 568, 159, new Rectangle(37 * 2, 0, 37, 37));
 						}
 					}
 
@@ -466,9 +466,9 @@ namespace TJAPlayer3
 
 				if (ctゲージアニメ.n現在の値 != 50)
 				{
-					TJAPlayer3.Tx.Result_Gauge.t2D描画(TJAPlayer3.app.Device, 441, 142, new RectangleF(ctゲージアニメ.n現在の値 < 40 ? 0 : 42, 35, 42, 20));
+					TJAPlayer3.Tx.Result_Gauge?.t2D描画(TJAPlayer3.app.Device, 441, 142, new RectangleF(ctゲージアニメ.n現在の値 < 40 ? 0 : 42, 35, 42, 20));
 
-					TJAPlayer3.Tx.Result_Soul_Text.t2D中心基準描画(TJAPlayer3.app.Device, 568, 159, new Rectangle(37 * (ctゲージアニメ.n現在の値 <= 30 ? 0 : 1), 0, 37, 37));
+					TJAPlayer3.Tx.Result_Soul_Text?.t2D中心基準描画(TJAPlayer3.app.Device, 568, 159, new Rectangle(37 * (ctゲージアニメ.n現在の値 <= 30 ? 0 : 1), 0, 37, 37));
 				}
 
 				#region [ スコアランク ]
@@ -504,7 +504,7 @@ namespace TJAPlayer3
 						CurrentFlash = 3;
 
 
-					TJAPlayer3.Tx.Result_ScoreRankEffect.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 135, 340, new Rectangle((TJAPlayer3.stage結果.nスコアランク - 1) * 229, CurrentFlash * 194, 229, 194));
+					TJAPlayer3.Tx.Result_ScoreRankEffect?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 135, 340, new Rectangle((TJAPlayer3.stage結果.nスコアランク - 1) * 229, CurrentFlash * 194, 229, 194));
 
 					if (!b音声再生[7] && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 1180)
 					{
@@ -575,7 +575,7 @@ namespace TJAPlayer3
 						else if (ctFlash_Icon.n現在の値 >= FlashTimes[2] && ctFlash_Icon.n現在の値 <= FlashTimes[3] || ctFlash_Icon.n現在の値 >= FlashTimes[6] && ctFlash_Icon.n現在の値 <= FlashTimes[7])
 							CurrentFlash = 3;
 
-						TJAPlayer3.Tx.Result_CrownEffect.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 262, 339, new Rectangle(ClearType * 113, CurrentFlash * 112, 113, 112));
+						TJAPlayer3.Tx.Result_CrownEffect?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 262, 339, new Rectangle(ClearType * 113, CurrentFlash * 112, 113, 112));
 
 						if (!b音声再生[8] && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 2680)
 						{
@@ -593,8 +593,9 @@ namespace TJAPlayer3
 			}
 			else
 			{
-				#region [ 段位時リザルト ]
-
+                #region [ 段位時リザルト ]
+                TJAPlayer3.Tx.Result_Background_Dan?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                Dan_Plate?.t2D描画(TJAPlayer3.app.Device, 50, 50);
 				switch (TJAPlayer3.stage演奏ドラム画面.actDan.GetExamStatus(TJAPlayer3.stage結果.st演奏記録.Drums.Dan_C))
 				{
 					case Exam.Status.Failure:
@@ -609,8 +610,6 @@ namespace TJAPlayer3
 					default:
 						break;
 				}
-
-				Dan_Plate?.t2D中心基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_Plate_XY[0], TJAPlayer3.Skin.Result_Dan_Plate_XY[1]);
 
 				#endregion
 			}

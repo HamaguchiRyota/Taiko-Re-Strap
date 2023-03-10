@@ -826,7 +826,7 @@ namespace TJAPlayer3
                 }
             }
         }
-        private CCounter ctTimer;
+        public CCounter ctTimer;
         private CCounter ctCreditAnime;
         private Random[] r = new Random[3];
         public CCounter ctBackgroundFade;

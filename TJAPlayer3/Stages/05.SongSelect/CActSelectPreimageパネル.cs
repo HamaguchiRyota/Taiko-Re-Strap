@@ -12,139 +12,7 @@ namespace TJAPlayer3
 {
 	internal class CActSelectPreimageパネル : CActivity
 	{
-		/*
-		// メソッド
 
-		public CActSelectPreimageパネル()
-		{
-			base.b活性化してない = true;
-		}
-		public void t選択曲が変更された()
-		{
-			this.ct遅延表示 = new CCounter( -TJAPlayer3.ConfigIni.n曲が選択されてからプレビュー画像が表示開始されるまでのウェイトms, 100, 1, TJAPlayer3.Timer );
-			this.b新しいプレビューファイルを読み込んだ = false;
-		}
-
-		public bool bIsPlayingPremovie		// #27060
-		{
-			get
-			{
-				return (this.avi != null);
-			}
-		}
-
-		// CActivity 実装
-
-		public override void On活性化()
-		{
-			this.n本体X = 8;
-			this.n本体Y = 0x39;
-			this.r表示するプレビュー画像 = this.txプレビュー画像がないときの画像;
-			this.str現在のファイル名 = "";
-			this.b新しいプレビューファイルを読み込んだ = false;
-			base.On活性化();
-		}
-		public override void On非活性化()
-		{
-			this.ct登場アニメ用 = null;
-			this.ct遅延表示 = null;
-			if( this.avi != null )
-			{
-				this.avi.Dispose();
-				this.avi = null;
-			}
-			base.On非活性化();
-		}
-		public override void OnManagedリソースの作成()
-		{
-			if( !base.b活性化してない )
-			{
-				this.txパネル本体 = TJAPlayer3.tテクスチャの生成( CSkin.Path( @"Graphics\5_preimage panel.png" ), false );
-				this.txセンサ = TJAPlayer3.tテクスチャの生成( CSkin.Path( @"Graphics\5_sensor.png" ), false );
-				//this.txセンサ光 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\5_sensor light.png" ), false );
-				this.txプレビュー画像 = null;
-				this.txプレビュー画像がないときの画像 = TJAPlayer3.tテクスチャの生成( CSkin.Path( @"Graphics\5_preimage default.png" ), false );
-				this.sfAVI画像 = Surface.CreateOffscreenPlain( TJAPlayer3.app.Device.UnderlyingDevice, 0xcc, 0x10d, TJAPlayer3.app.GraphicsDeviceManager.CurrentSettings.BackBufferFormat, Pool.SystemMemory );
-				this.nAVI再生開始時刻 = -1;
-				this.n前回描画したフレーム番号 = -1;
-				this.b動画フレームを作成した = false;
-				this.pAVIBmp = IntPtr.Zero;
-				this.tプレビュー画像_動画の変更();
-				base.OnManagedリソースの作成();
-			}
-		}
-		public override void OnManagedリソースの解放()
-		{
-			if( !base.b活性化してない )
-			{
-				TJAPlayer3.tテクスチャの解放( ref this.txパネル本体 );
-				TJAPlayer3.tテクスチャの解放( ref this.txセンサ );
-				TJAPlayer3.tテクスチャの解放( ref this.txセンサ光 );
-				TJAPlayer3.tテクスチャの解放( ref this.txプレビュー画像 );
-				TJAPlayer3.tテクスチャの解放( ref this.txプレビュー画像がないときの画像 );
-				if( this.sfAVI画像 != null )
-				{
-					this.sfAVI画像.Dispose();
-					this.sfAVI画像 = null;
-				}
-				base.OnManagedリソースの解放();
-			}
-		}
-		public override int On進行描画()
-		{
-			if( !base.b活性化してない )
-			{
-				if( base.b初めての進行描画 )
-				{
-					this.ct登場アニメ用 = new CCounter( 0, 100, 5, TJAPlayer3.Timer );
-					this.ctセンサ光 = new CCounter( 0, 100, 30, TJAPlayer3.Timer );
-					this.ctセンサ光.n現在の値 = 70;
-					base.b初めての進行描画 = false;
-				}
-				this.ct登場アニメ用.t進行();
-				this.ctセンサ光.t進行Loop();
-				if( ( !TJAPlayer3.stage選曲.bスクロール中 && ( this.ct遅延表示 != null ) ) && this.ct遅延表示.b進行中 )
-				{
-					this.ct遅延表示.t進行();
-					if ( ( this.ct遅延表示.n現在の値 >= 0 ) && this.b新しいプレビューファイルをまだ読み込んでいない )
-					{
-						this.tプレビュー画像_動画の変更();
-						TJAPlayer3.Timer.t更新();
-						this.ct遅延表示.n現在の経過時間ms = TJAPlayer3.Timer.n現在時刻;
-						this.b新しいプレビューファイルを読み込んだ = true;
-					}
-					else if ( this.ct遅延表示.b終了値に達した && this.ct遅延表示.b進行中 )
-					{
-						this.ct遅延表示.t停止();
-					}
-				}
-				else if( ( ( this.avi != null ) && ( this.sfAVI画像 != null ) ) && ( this.nAVI再生開始時刻 != -1 ) )
-				{
-					int time = (int) ( ( TJAPlayer3.Timer.n現在時刻 - this.nAVI再生開始時刻 ) * ( ( (double) TJAPlayer3.ConfigIni.n演奏速度 ) / 20.0 ) );
-					int frameNoFromTime = this.avi.GetFrameNoFromTime( time );
-					if( frameNoFromTime >= this.avi.GetMaxFrameCount() )
-					{
-						this.nAVI再生開始時刻 = TJAPlayer3.Timer.n現在時刻;
-					}
-					else if( ( this.n前回描画したフレーム番号 != frameNoFromTime ) && !this.b動画フレームを作成した )
-					{
-						this.b動画フレームを作成した = true;
-						this.n前回描画したフレーム番号 = frameNoFromTime;
-						this.pAVIBmp = this.avi.GetFramePtr( frameNoFromTime );
-					}
-				}
-				//this.t描画処理_パネル本体();
-				//this.t描画処理_ジャンル文字列();
-				//this.t描画処理_プレビュー画像();
-				//this.t描画処理_センサ光();
-				//this.t描画処理_センサ本体();
-			}
-			return 0;
-		}
-
-
-		// その他
-		*/
 		#region [ private ]
 		//-----------------
 		private CAvi avi;
@@ -169,6 +37,7 @@ namespace TJAPlayer3
 		private CTexture txプレビュー画像;
 		private CTexture txプレビュー画像がないときの画像;
 		private bool b新しいプレビューファイルを読み込んだ;
+		/*
 		private bool b新しいプレビューファイルをまだ読み込んでいない
 		{
 			get
@@ -180,6 +49,7 @@ namespace TJAPlayer3
 				this.b新しいプレビューファイルを読み込んだ = !value;
 			}
 		}
+		*/
 
 		private unsafe void tサーフェイスをクリアする( Surface sf )
 		{
@@ -214,6 +84,7 @@ namespace TJAPlayer3
 			}
 			sf.UnlockRectangle();
 		}
+		/*
 		private void tプレビュー画像_動画の変更()
 		{
 			if( this.avi != null )
@@ -241,6 +112,7 @@ namespace TJAPlayer3
 			this.r表示するプレビュー画像 = this.txプレビュー画像がないときの画像;
 			this.str現在のファイル名 = "";
 		}
+		*/
 		private bool tプレビュー画像の指定があれば構築する()
 		{
 			Cスコア cスコア = TJAPlayer3.stage選曲.r現在選択中のスコア;
@@ -379,6 +251,9 @@ namespace TJAPlayer3
         /// <summary>
         /// 一時的に使用禁止。
         /// </summary>
+		/// 
+
+		/*
 		private void t描画処理_ジャンル文字列()
 		{
 			C曲リストノード c曲リストノード = TJAPlayer3.stage選曲.r現在選択中の曲;
@@ -451,6 +326,8 @@ namespace TJAPlayer3
 				TJAPlayer3.act文字コンソール.tPrint( this.n本体X + 0x12, this.n本体Y - 1, C文字コンソール.Eフォント種別.赤細, str );
 			}
 		}
+		*/
+		/*
 		private void t描画処理_センサ光()
 		{
 			int num = (int)this.ctセンサ光.n現在の値;
@@ -482,6 +359,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		*/
+		/*
 		private void t描画処理_センサ本体()
 		{
 			int x = this.n本体X + 0xcd;
@@ -495,23 +374,25 @@ namespace TJAPlayer3
 		}
 		private void t描画処理_パネル本体()
 		{
-			if( this.ct登場アニメ用.b終了値に達した || ( this.txパネル本体 != null ) )
+			if (this.ct登場アニメ用.b終了値に達した || (this.txパネル本体 != null))
 			{
 				this.n本体X = 16;
 				this.n本体Y = 86;
 			}
 			else
 			{
-				double num = ( (double) this.ct登場アニメ用.n現在の値 ) / 100.0;
-				double num2 = Math.Cos( ( 1.5 + ( 0.5 * num ) ) * Math.PI );
+				double num = ((double)this.ct登場アニメ用.n現在の値) / 100.0;
+				double num2 = Math.Cos((1.5 + (0.5 * num)) * Math.PI);
 				this.n本体X = 8;
-				this.n本体Y = 0x39 - ( (int) ( this.txパネル本体.sz画像サイズ.Height * ( 1.0 - ( num2 * num2 ) ) ) );
+				this.n本体Y = 0x39 - ((int)(this.txパネル本体.sz画像サイズ.Height * (1.0 - (num2 * num2))));
 			}
-			if( this.txパネル本体 != null )
+			if (this.txパネル本体 != null)
 			{
-				this.txパネル本体.t2D描画( TJAPlayer3.app.Device, this.n本体X, this.n本体Y );
+				this.txパネル本体.t2D描画(TJAPlayer3.app.Device, this.n本体X, this.n本体Y);
 			}
 		}
+		*/
+		/*
 		private unsafe void t描画処理_プレビュー画像()
 		{
 			if( !TJAPlayer3.stage選曲.bスクロール中 && ( ( ( this.ct遅延表示 != null ) && ( this.ct遅延表示.n現在の値 > 0 ) ) && !this.b新しいプレビューファイルをまだ読み込んでいない ) )
@@ -580,6 +461,7 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		*/
 		//-----------------
 		#endregion
 	}

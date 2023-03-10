@@ -106,6 +106,7 @@ namespace TJAPlayer3
             if (!ctOpen.b進行中) ctOpen.t開始(0, 50, 6, TJAPlayer3.Timer);
 
             var act難易度 = TJAPlayer3.stage選曲.act難易度選択画面;
+            var danAct = TJAPlayer3.stage段位選択.段位挑戦選択画面;
 
             #region [ Open & Close ]
 
@@ -122,15 +123,15 @@ namespace TJAPlayer3
             #endregion
 
             // Temporary textures, to reimplement to fit the new menu
-            TJAPlayer3.Tx.Difficulty_Option.t2D描画(TJAPlayer3.app.Device, 0, y);
+            TJAPlayer3.Tx.Difficulty_Option?.t2D描画(TJAPlayer3.app.Device, 0, y);
 
 
-            TJAPlayer3.Tx.Difficulty_Option_Select.t2D描画(TJAPlayer3.app.Device, 0, y + NowCount * 40.7f);
+            TJAPlayer3.Tx.Difficulty_Option_Select?.t2D描画(TJAPlayer3.app.Device, 0, y + NowCount * 40.7f);
 
 
             for (int i = 0; i < OptionType.Length; i++)
             {
-                OptionType[i].t2D描画(TJAPlayer3.app.Device, 16, 375 + i * 40.7f + y);
+                OptionType?[i].t2D描画(TJAPlayer3.app.Device, 16, 375 + i * 40.7f + y);
             }
 
             txSpeed[nSpeedCount].t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y);
@@ -155,6 +156,7 @@ namespace TJAPlayer3
                 ctClose.n現在の値 = 0;
                 bEnd = false;
                 act難易度.bOption[player] = false;
+                danAct.bOption = false;
             }
 
             #region [ Key ]
@@ -359,7 +361,6 @@ namespace TJAPlayer3
             #endregion
 
         }
-
         public void Decision(int player)
         {
             int actual = TJAPlayer3.GetActualPlayer(player);

@@ -262,8 +262,9 @@ namespace TJAPlayer3
                                 TJAPlayer3.stage選曲.ctDonchan_Jump[0].t開始(0, TJAPlayer3.Tx.SongSelect_Donchan_Jump.Length - 1, 1000 / 45, TJAPlayer3.Timer);
                                 this.bSelect[0] = true;
                                 TJAPlayer3.Skin.sound曲決定音.t再生する();
+                                this.ct点滅.t停止();
 
-                                if(TJAPlayer3.ConfigIni.nPlayerCount == 2)
+                                if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
                                 {
                                     if (bSelect[1])
                                     {
@@ -275,6 +276,7 @@ namespace TJAPlayer3
                                 {
                                     TJAPlayer3.stage選曲.t曲を選択する(n現在の選択行[0] - 2, 0);
                                 }
+
                             }
                         }
                     }
@@ -426,8 +428,8 @@ namespace TJAPlayer3
 
             this.ct点滅.t進行Loop();
             if ( TJAPlayer3.Tx.Ctr != null && TJAPlayer3.Tx.Ctr_Ef != null)
-                TJAPlayer3.Tx.Ctr.t2D描画(TJAPlayer3.app.Device, 399, 611);
-                TJAPlayer3.Tx.Ctr_Ef.t2D描画(TJAPlayer3.app.Device, 399, 611);
+                TJAPlayer3.Tx.Ctr.t2D描画(TJAPlayer3.app.Device, 517, 622);//399, 611
+                TJAPlayer3.Tx.Ctr_Ef.t2D描画(TJAPlayer3.app.Device, 517, 622);//399, 611
                 TJAPlayer3.Tx.Ctr_Ef.Opacity = (int)(200 * Math.Sin((double)(2 * Math.PI * this.ct点滅.n現在の値 * 2 / 100.0)));//176.0 + 80.0
 
             #region [ バーの描画 ]

@@ -127,14 +127,10 @@ namespace TJAPlayer3
         {
             if (!base.b活性化してない)
             {
-                if (this.soundClear != null)
-                    this.soundClear.t解放する();
-                if (this.soundFailed != null)
-                    this.soundFailed.t解放する();
-                if (this.soundFullCombo != null)
-                    this.soundFullCombo.t解放する();
-                if (this.soundDondaFullCombo != null)
-                    this.soundDondaFullCombo.t解放する();
+                this.soundClear?.t解放する();
+                this.soundFailed?.t解放する();
+                this.soundFullCombo?.t解放する();
+                this.soundDondaFullCombo?.t解放する();
                 base.OnManagedリソースの解放();
             }
         }

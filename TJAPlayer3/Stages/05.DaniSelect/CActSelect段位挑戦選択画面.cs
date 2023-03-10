@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FDK;
-using SlimDX.DirectInput;
 
 namespace TJAPlayer3
 {
@@ -16,6 +17,7 @@ namespace TJAPlayer3
             ctBarOut = new CCounter();
             ctBarOut.n現在の値 = 255;
             TJAPlayer3.stage段位選択.bDifficultyIn = false;
+            bOption = false;
 
             base.On活性化();
         }
@@ -27,19 +29,26 @@ namespace TJAPlayer3
 
         public override int On進行描画()
         {
-            if(TJAPlayer3.stage段位選択.bDifficultyIn || ctBarOut.n現在の値 < ctBarOut.n終了値)
+            if (TJAPlayer3.stage段位選択.bDifficultyIn || ctBarOut.n現在の値 < ctBarOut.n終了値)
             {
                 ctBarIn.t進行();
                 ctBarOut.t進行();
 
                 TJAPlayer3.Tx.Challenge_Select[0].Opacity = TJAPlayer3.stage段位選択.bDifficultyIn ? ctBarIn.n現在の値 : 255 - ctBarOut.n現在の値;
                 TJAPlayer3.Tx.Challenge_Select[1].Opacity = TJAPlayer3.stage段位選択.bDifficultyIn ? ctBarIn.n現在の値 : 255 - ctBarOut.n現在の値;
+                TJAPlayer3.Tx.Challenge_Select[2].Opacity = TJAPlayer3.stage段位選択.bDifficultyIn ? ctBarIn.n現在の値 : 255 - ctBarOut.n現在の値;
                 TJAPlayer3.Tx.Challenge_Select[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
+                TJAPlayer3.Tx.Challenge_Select[2].t2D描画(TJAPlayer3.app.Device, 228 + 228 * (2 - n現在の選択行), 0, new Rectangle(228 + 228 * (2 - n現在の選択行), 0, 228, 720));
                 TJAPlayer3.Tx.Challenge_Select[1].t2D描画(TJAPlayer3.app.Device, 0, 0);
 
-                if (ctBarIn.b終了値に達した && !TJAPlayer3.stage段位選択.b選択した)
+                if (TJAPlayer3.stage段位選択.ct待機.b開始した)
+                    return base.On進行描画();
+
+                #region [ キー入力 ]
+
+                if (ctBarIn.b終了値に達した && !TJAPlayer3.stage段位選択.b選択した && bOption == false)
                 {
-                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)Key.RightArrow) ||
+                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.RightArrow) ||
                         TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RBlue))
                     {
                         if (n現在の選択行 - 1 >= 0)
@@ -49,7 +58,7 @@ namespace TJAPlayer3
                         }
                     }
 
-                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)Key.LeftArrow) ||
+                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.LeftArrow) ||
                     TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LBlue))
                     {
                         if (n現在の選択行 + 1 <= 2)
@@ -59,9 +68,10 @@ namespace TJAPlayer3
                         }
                     }
 
-                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)Key.Return) ||
+                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return) ||
                         TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LRed) ||
                         TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RRed))
+                   
                     {
                         if (n現在の選択行 == 0)
                         {
@@ -72,10 +82,19 @@ namespace TJAPlayer3
                         else if (n現在の選択行 == 1)
                         {
                             TJAPlayer3.Skin.soundDanSongSelect.t再生する();
+                            TJAPlayer3.Skin.sound決定音.t再生する();
                             TJAPlayer3.stage段位選択.ct待機.t開始(0, 3000, 1, TJAPlayer3.Timer);
+                        }
+                        else if (n現在の選択行 == 2)
+                        {
+                            TJAPlayer3.Skin.sound決定音.t再生する();
+                            TJAPlayer3.Skin.soundオプション.t再生する();
+                            bOption = true;
                         }
                     }
                 }
+
+                #endregion
             }
 
             return base.On進行描画();
@@ -83,7 +102,7 @@ namespace TJAPlayer3
 
         public CCounter ctBarIn;
         public CCounter ctBarOut;
-
+        public bool bOption;
         private int n現在の選択行;
     }
 }

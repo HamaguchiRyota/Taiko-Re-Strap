@@ -159,6 +159,9 @@ namespace TJAPlayer3
 		/// </summary>
 		/// <param name="order">設定項目リストの順番</param>
 		/// <param name="index">設定値(index)</param>
+		/// 
+
+		/*
 		private void SetValueToAllTarget( int order, int index )
 		{
 			for ( int i = 0; i < 3; i++ )
@@ -166,7 +169,7 @@ namespace TJAPlayer3
 				lci[ nCurrentConfigSet ][ i ][ order ].SetIndex( index );
 			}
 		}
-		
+		*/
 
 		/// <summary>
 		/// ConfigIni.bAutoPlayに簡易CONFIGの状態を反映する

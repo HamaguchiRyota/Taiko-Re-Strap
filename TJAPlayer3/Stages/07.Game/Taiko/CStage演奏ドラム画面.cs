@@ -19,11 +19,11 @@ namespace TJAPlayer3
             base.b活性化してない = true;
             base.list子Activities.Add(this.actPad = new CAct演奏Drumsパッド());
             base.list子Activities.Add(this.actCombo = new CAct演奏DrumsコンボDGB());
-            base.list子Activities.Add(this.actDANGER = new CAct演奏DrumsDanger());
+            //base.list子Activities.Add(this.actDANGER = new CAct演奏DrumsDanger());
             base.list子Activities.Add(this.actChipFireD = new CAct演奏DrumsチップファイアD());
             base.list子Activities.Add(this.Rainbow = new Rainbow());
             base.list子Activities.Add(this.actGauge = new CAct演奏Drumsゲージ());
-            base.list子Activities.Add(this.actGraph = new CAct演奏Drumsグラフ()); // #24074 2011.01.23 add ikanick
+            //base.list子Activities.Add(this.actGraph = new CAct演奏Drumsグラフ()); // #24074 2011.01.23 add ikanick
             base.list子Activities.Add(this.actJudgeString = new CAct演奏Drums判定文字列());
             base.list子Activities.Add(this.actTaikoLaneFlash = new TaikoLaneFlash());
             base.list子Activities.Add(this.actLaneFlushGB = new CAct演奏DrumsレーンフラッシュGB());
@@ -320,18 +320,12 @@ namespace TJAPlayer3
             if (!base.b活性化してない)
             {
 
-                if (this.soundRed != null)
-                    this.soundRed.t解放する();
-                if (this.soundBlue != null)
-                    this.soundBlue.t解放する();
-                if (this.soundAdlib != null)
-                    this.soundAdlib.t解放する();
-                if (this.soundRed2 != null)
-                    this.soundRed2.t解放する();
-                if (this.soundBlue2 != null)
-                    this.soundBlue2.t解放する();
-                if (this.soundAdlib2 != null)
-                    this.soundAdlib2.t解放する();
+                this.soundRed?.t解放する();
+                this.soundBlue?.t解放する();
+                this.soundAdlib?.t解放する();
+                this.soundRed2?.t解放する();
+                this.soundBlue2?.t解放する();
+                this.soundAdlib2?.t解放する();
                 base.OnManagedリソースの解放();
             }
         }
@@ -578,7 +572,7 @@ namespace TJAPlayer3
         }
         public CAct演奏DrumsチップファイアD actChipFireD;
 
-        private CAct演奏Drumsグラフ actGraph;   // #24074 2011.01.23 add ikanick
+        //private CAct演奏Drumsグラフ actGraph;   // #24074 2011.01.23 add ikanick
         private CAct演奏Drumsパッド actPad;
         public CAct演奏Drumsレーン actLane;
         public CAct演奏DrumsMtaiko actMtaiko;
@@ -775,6 +769,7 @@ namespace TJAPlayer3
             this.actDANGER.t進行描画(this.actGauge.IsDanger(E楽器パート.DRUMS), false, false);
         }
 
+        /*
         private void t進行描画_グラフ()
         {
             if (TJAPlayer3.ConfigIni.bGraph.Drums)
@@ -782,6 +777,7 @@ namespace TJAPlayer3
                 this.actGraph.On進行描画();
             }
         }
+        */
 
         private void t進行描画_チップファイアD()
         {

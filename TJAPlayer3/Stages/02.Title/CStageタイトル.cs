@@ -93,8 +93,11 @@ namespace TJAPlayer3
 		}
 		public override void OnManagedリソースの解放()
 		{
-
-		}
+            if (!base.b活性化してない)
+            {
+                base.OnManagedリソースの解放();
+            }
+        }
 		public override int On進行描画()
 		{
 			if( !base.b活性化してない )
@@ -312,13 +315,13 @@ namespace TJAPlayer3
 
 				TJAPlayer3.Tx.Title_Background?.t2D描画( TJAPlayer3.app.Device, 0, 0 );
 
-				TJAPlayer3.Tx.Entry_Overlay?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                TJAPlayer3.Tx.Entry_Overlay?.t2D描画(TJAPlayer3.app.Device, 723, 0);
 
-				#endregion
+                #endregion
 
-				#region [ バナパス読み込み ]
+                #region [ バナパス読み込み ]
 
-				if (!bバナパス読み込み && !bバナパス読み込み失敗)
+                if (!bバナパス読み込み && !bバナパス読み込み失敗)
                 {
 					TJAPlayer3.Tx.Entry_Bar.t2D描画(TJAPlayer3.app.Device, 0, 0);
 

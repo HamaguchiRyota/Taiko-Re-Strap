@@ -340,7 +340,7 @@ namespace TJAPlayer3
                     {
                         if (this.db現在のゲージ値[i] >= 100.0)
 						{
-                            TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 10, nCharaEf[ i ]);
+                            TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 0, nCharaEf[ i ]);
                             TJAPlayer3.Tx.Chara_Ef.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ctCharaEf.n現在の値 * 2 / 100.0)));
                         }
 

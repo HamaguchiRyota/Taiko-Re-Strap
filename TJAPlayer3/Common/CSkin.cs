@@ -220,8 +220,7 @@ namespace TJAPlayer3
                     r最後に再生した排他システムサウンド = this;
                 }
                 CSound sound = this.rSound[this.n次に鳴るサウンド番号];
-                if (sound != null)
-                    sound.t再生を開始する(this.bループ);
+                sound?.t再生を開始する(this.bループ);
 
                 this.bPlayed = true;
                 this.n次に鳴るサウンド番号 = 1 - this.n次に鳴るサウンド番号;
@@ -311,6 +310,7 @@ namespace TJAPlayer3
         public Cシステムサウンド sound曲決定音 = null;
         public Cシステムサウンド bgmリザルトイン音 = null;
         public Cシステムサウンド bgmリザルト音 = null;
+        public Cシステムサウンド bgm段位リザルト音 = null;
 
         public Cシステムサウンド bgmタイトル = null;
         public Cシステムサウンド bgmタイトルイン = null;
@@ -332,6 +332,7 @@ namespace TJAPlayer3
         public Cシステムサウンド soundGauge = null;
         public Cシステムサウンド soundScoreDon = null;
         public Cシステムサウンド soundChallengeVoice = null;
+        public Cシステムサウンド soundDanSongSelectIn = null;
         public Cシステムサウンド soundDanSelectStart = null;
         public Cシステムサウンド soundDanSongSelectCheck = null;
         public Cシステムサウンド soundDanSelectBGM = null;
@@ -672,6 +673,7 @@ namespace TJAPlayer3
             this.bgm選曲画面 = new Cシステムサウンド(@"Sounds\BGM\SongSelect.ogg", true, false, true, ESoundGroup.SongPlayback);
             this.bgmリザルトイン音 = new Cシステムサウンド(@"Sounds\BGM\Result_In.ogg", false, false, true, ESoundGroup.SongPlayback);
             this.bgmリザルト音 = new Cシステムサウンド(@"Sounds\BGM\Result.ogg", true, false, true, ESoundGroup.SongPlayback);
+            this.bgm段位リザルト音 = new Cシステムサウンド(@"Sounds\BGM\DanResult.ogg", true, false, true, ESoundGroup.SongPlayback);
             this.sound裏 = new Cシステムサウンド(@"Sounds\Ura.ogg", false, false, true, ESoundGroup.SoundEffect);
             this.soundオプション = new Cシステムサウンド(@"Sounds\EnsoOp.ogg", false, false, true, ESoundGroup.SoundEffect);
 
@@ -687,6 +689,8 @@ namespace TJAPlayer3
             this.soundGauge = new Cシステムサウンド(@"Sounds\Gauge.ogg", false, false, false, ESoundGroup.SoundEffect);
             this.soundScoreDon = new Cシステムサウンド(@"Sounds\ScoreDon.ogg", false, false, false, ESoundGroup.SoundEffect);
             this.soundChallengeVoice = new Cシステムサウンド(@"Sounds\Dan\ChallengeVoice.wav", false, false, false, ESoundGroup.SoundEffect);
+            this.soundDanSongSelectIn = new Cシステムサウンド(@"Sounds\Dan\Dan_In.ogg", false, false, false, ESoundGroup.SoundEffect);
+
             this.soundDanSelectStart = new Cシステムサウンド(@"Sounds\Dan\DanSelectStart.wav", false, false, false, ESoundGroup.SoundEffect);
             this.soundDanSongSelectCheck = new Cシステムサウンド(@"Sounds\Dan\DanSongSelectCheck.wav", false, false, false, ESoundGroup.SoundEffect);
             this.soundDanSelectBGM = new Cシステムサウンド(@"Sounds\Dan\DanSelectBGM.wav", true, false, false, ESoundGroup.SongPlayback);
@@ -2572,12 +2576,14 @@ namespace TJAPlayer3
             All, // 旧筐体(旧作含む)
             WithoutStart // 新筐体
         }
+        
         public enum ReferencePoint //テクスチャ描画の基準点を変更可能にするための値(rhimm)
         {
             Center,
             Left,
             Right
         }
+        
 
         #region 新・SkinConfig
         #region General
@@ -2707,9 +2713,9 @@ namespace TJAPlayer3
         public int[] Game_CourseSymbol_Y = new int[] { 233, 426 };
         #endregion
         #region PanelFont
-        public int Game_MusicName_X = 1265;
+        public int Game_MusicName_X = 1265;//1265
         public int Game_MusicName_Y = 15;
-        public int Game_MusicName_FontSize = 28;
+        public int Game_MusicName_FontSize = 27;
         public ReferencePoint Game_MusicName_ReferencePoint = ReferencePoint.Right;
         public int Game_Genre_X = 1011;
         public int Game_Genre_Y = 64;

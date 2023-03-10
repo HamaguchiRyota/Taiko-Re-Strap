@@ -310,17 +310,31 @@ namespace TJAPlayer3
 					}
 				}
 
-				// 描画
 
-				if (!b音声再生 && !TJAPlayer3.Skin.bgmリザルトイン音.b再生中)
+                if (!b音声再生 && !TJAPlayer3.Skin.bgmリザルトイン音.b再生中)
+                {
+                    TJAPlayer3.Skin.bgmリザルト音.t再生する();
+                    b音声再生 = true;
+                }
+
+                // 描画
+
+				/*
+                if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
 				{
-					TJAPlayer3.Skin.bgmリザルト音.t再生する();
-					b音声再生 = true;
+					if (!b音声再生 && !TJAPlayer3.Skin.bgmリザルトイン音.b再生中)
+					{
+						TJAPlayer3.Skin.bgmリザルト音.t再生する();
+						b音声再生 = true;
+					}
 				}
-
+				else
+				{
+                    TJAPlayer3.Skin.bgm段位リザルト音.t再生する();
+                    b音声再生 = true;
+                }
+				*/
 				TJAPlayer3.Tx.Result_Background?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
-
-
 
 				if (this.actParameterPanel.On進行描画() == 0)
 				{
@@ -386,12 +400,6 @@ namespace TJAPlayer3
 							TJAPlayer3.Skin.sound決定音.t再生する();
 
 							t後処理();
-
-
-
-
-
-
 
                             #region [ Skip animations ]
 

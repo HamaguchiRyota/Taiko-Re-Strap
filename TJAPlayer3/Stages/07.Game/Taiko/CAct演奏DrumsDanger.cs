@@ -4,8 +4,9 @@ using FDK;
 
 namespace TJAPlayer3
 {
-	internal class CAct演奏DrumsDanger : CAct演奏Danger共通
+	internal class CAct演奏DrumsDanger// : CAct演奏Danger共通
 	{
+		/*
 		// コンストラクタ
 		// CActivity 実装
 		public override void OnManagedリソースの作成()
@@ -48,5 +49,6 @@ namespace TJAPlayer3
 		private CTexture txDANGER;
 		//-----------------
 		#endregion
+		*/
 	}
 }

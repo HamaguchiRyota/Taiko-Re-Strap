@@ -159,7 +159,7 @@ namespace TJAPlayer3
         public void t枠表示時間延長(int player, bool first)
         {
             if ((this.ct連打枠カウンター[player].n現在の値 >= 6 && !first) || first)
-                this.ct連打枠カウンター[player] = new CCounter(0, 60, 40, TJAPlayer3.Timer);
+                this.ct連打枠カウンター[player] = new CCounter(0, 60, 35, TJAPlayer3.Timer);//0, 60, 40
 
             if(!first)
                 this.ct連打枠カウンター[player].n現在の値 = 5;

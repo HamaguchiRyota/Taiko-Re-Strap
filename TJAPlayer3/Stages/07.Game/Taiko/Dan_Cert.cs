@@ -6,6 +6,14 @@ using System.IO;
 
 namespace TJAPlayer3
 {
+    static internal class CExamInfo
+    {
+        // Includes the gauge exam, DanCert max number of exams is 6
+        public static readonly int cMaxExam = 4;
+
+        // Max number of songs for a Dan chart
+        public static readonly int cExamMaxSongs = 3;
+    }
     internal class Dan_Cert : CActivity
     {
         /// <summary>
@@ -267,7 +275,7 @@ namespace TJAPlayer3
 
         public override void OnManagedリソースの解放()
         {
-            Dan_Plate?.Dispose();
+            TJAPlayer3.t安全にDisposeする(ref Dan_Plate);
             Sound_Section_First?.Dispose();
             Sound_Section?.t解放する();
             Sound_Failed?.t解放する();

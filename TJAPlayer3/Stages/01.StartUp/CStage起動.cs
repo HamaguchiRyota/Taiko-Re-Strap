@@ -93,7 +93,7 @@ namespace TJAPlayer3
                     this.list進行文字列.Add("");
                     this.list進行文字列.Add("Taiko-Re-Strap forked TJAP3DRW(@TouhouRenren)");
                     this.list進行文字列.Add("TRS edited by Jamix");
-                    this.list進行文字列.Add("2023_02/10 Release Version.");
+                    this.list進行文字列.Add("2023_03/10 Release Version.");
 					this.list進行文字列.Add("");
 
 					es = new CEnumSongs();
@@ -177,7 +177,7 @@ namespace TJAPlayer3
 				*/
 
 				
-				if ( es != null && es.IsSongListEnumCompletelyDone )							// 曲リスト作成が終わったら
+				if ( es != null && es.IsSongListEnumCompletelyDone && TJAPlayer3.Tx.IsLoaded)							// 曲リスト作成が終わったら
 				{
 					TJAPlayer3.Songs管理 = ( es != null ) ? es.Songs管理 : null;        // 最後に、曲リストを拾い上げる
 
