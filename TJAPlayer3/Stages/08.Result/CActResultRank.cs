@@ -15,7 +15,6 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-
 			base.On活性化();
 		}
 		public override void On非活性化()
@@ -25,29 +24,27 @@ namespace TJAPlayer3
 		}
 		public override void OnManagedリソースの作成()
 		{
-			if (!base.b活性化してない)
+			if (!b活性化してない)
 			{
-
 				base.OnManagedリソースの作成();
 			}
 		}
 		public override void OnManagedリソースの解放()
 		{
-			if (!base.b活性化してない)
+			if (!b活性化してない)
 			{
-
 				base.OnManagedリソースの解放();
 			}
 		}
 		public override int On進行描画()
 		{
-			if (base.b活性化してない)
+			if (b活性化してない)
 			{
 				return 0;
 			}
-			if (base.b初めての進行描画)
+			if (b初めての進行描画)
 			{
-				base.b初めての進行描画 = false;
+				b初めての進行描画 = false;
 			}
 
 			return 1;

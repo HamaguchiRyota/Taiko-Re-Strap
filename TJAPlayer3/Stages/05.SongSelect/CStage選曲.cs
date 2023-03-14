@@ -1,5 +1,4 @@
 ﻿using FDK;
-using SlimDX.Direct2D;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -87,8 +86,8 @@ namespace TJAPlayer3
         // コンストラクタ
         public CStage選曲()
         {
-            eステージID = CStage.Eステージ.選曲;
-            eフェーズID = CStage.Eフェーズ.共通_通常状態;
+            eステージID = Eステージ.選曲;
+            eフェーズID = Eフェーズ.共通_通常状態;
             b活性化してない = true;
             list子Activities.Add(actオプションパネル = new CActオプションパネル());
             list子Activities.Add(actFIFO = new CActFIFOBlack());
@@ -284,12 +283,12 @@ namespace TJAPlayer3
                     if (TJAPlayer3.r直前のステージ == TJAPlayer3.stage結果)
                     {
                         actFIfrom結果画面.tフェードイン開始();
-                        eフェーズID = CStage.Eフェーズ.選曲_結果画面からのフェードイン;
+                        eフェーズID = Eフェーズ.選曲_結果画面からのフェードイン;
                     }
                     else
                     {
                         actFIFO.tフェードイン開始();
-                        eフェーズID = CStage.Eフェーズ.共通_フェードイン;
+                        eフェーズID = Eフェーズ.共通_フェードイン;
                     }
                     t選択曲変更通知();
                     b初めての進行描画 = false;
@@ -344,7 +343,7 @@ namespace TJAPlayer3
                 actPresound.On進行描画();
                 actShowCurrentPosition.On進行描画(); // #27648 2011.3.28 yyagi
     
-                if (TJAPlayer3.ConfigIni.bBGM音を発声する && !bBGM再生済み && (eフェーズID == CStage.Eフェーズ.共通_通常状態) && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
+                if (TJAPlayer3.ConfigIni.bBGM音を発声する && !bBGM再生済み && (eフェーズID == Eフェーズ.共通_通常状態) && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                 {
                     TJAPlayer3.Skin.bgm選曲画面.t再生する();
                     bBGM再生済み = true;
@@ -353,7 +352,7 @@ namespace TJAPlayer3
                 ctDiffSelect移動待ち?.t進行();
 
                 #region [ キー入力 ]
-                if (eフェーズID == CStage.Eフェーズ.共通_通常状態 && TJAPlayer3.act現在入力を占有中のプラグイン == null)
+                if (eフェーズID == Eフェーズ.共通_通常状態 && TJAPlayer3.act現在入力を占有中のプラグイン == null)
                 {
                     #region [ 簡易CONFIGでMore、またはShift+F1: 詳細CONFIG呼び出し ]
                     if (actQuickConfig.bGotoDetailConfig)
@@ -362,7 +361,7 @@ namespace TJAPlayer3
                         actPresound.tサウンド停止();
                         eフェードアウト完了時の戻り値 = E戻り値.コンフィグ呼び出し;  // #24525 2011.3.16 yyagi: [SHIFT]-[F1]でCONFIG呼び出し
                         actFIFO.tフェードアウト開始();
-                        eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
+                        eフェーズID = Eフェーズ.共通_フェードアウト;
                         TJAPlayer3.Skin.sound取消音.t再生する();
                         return 0;
                     }
@@ -370,21 +369,21 @@ namespace TJAPlayer3
                     if (!actSortSongs.bIsActivePopupMenu && !actQuickConfig.bIsActivePopupMenu && !act難易度選択画面.bIsDifficltSelect)
                     {
                         #region [ ESC ]
-                        if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Escape) && (act曲リスト.r現在選択中の曲 != null))// && (  ) ) )
+                        if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Escape) && (act曲リスト.r現在選択中の曲 != null))
                             if (act曲リスト.r現在選択中の曲.r親ノード == null)
                             {   // [ESC]
-                                this.actPresound.tサウンド停止();
+                                actPresound.tサウンド停止();
                                 TJAPlayer3.Skin.sound取消音.t再生する();
                                 eフェードアウト完了時の戻り値 = E戻り値.タイトルに戻る;
                                 actFIFO.tフェードアウト開始();
-                                eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
+                                eフェーズID = Eフェーズ.共通_フェードアウト;
                                 return 0;
                             }
                             else
                             {
                                 if (act曲リスト.ctBoxOpen.b終了値に達した || act曲リスト.ctBoxOpen.n現在の値 == 0)
                                 {
-                                    this.actPresound.tサウンド停止();
+                                    actPresound.tサウンド停止();
                                     TJAPlayer3.Skin.sound取消音.t再生する();
                                     act曲リスト.ctBarFlash.t開始(0, 2700, 1, TJAPlayer3.Timer);
                                     act曲リスト.ctBoxOpen.t開始(200, 2700, 1.3f, TJAPlayer3.Timer);
@@ -400,7 +399,7 @@ namespace TJAPlayer3
                             actPresound.tサウンド停止();
                             eフェードアウト完了時の戻り値 = E戻り値.コンフィグ呼び出し;  // #24525 2011.3.16 yyagi: [SHIFT]-[F1]でCONFIG呼び出し
                             actFIFO.tフェードアウト開始();
-                            eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
+                            eフェーズID = Eフェーズ.共通_フェードアウト;
                             TJAPlayer3.Skin.sound取消音.t再生する();
                             return 0;
                         }
@@ -535,7 +534,7 @@ namespace TJAPlayer3
                                 #region [ Up ]
                                 if (!bスクロール中)
                                 {
-                                    ctキー反復用.Up.tキー反復(TJAPlayer3.Input管理.Keyboard.bキーが押されている((int)SlimDXKeys.Key.LeftArrow), new CCounter.DGキー処理(this.tカーソルを上へ移動する));
+                                    ctキー反復用.Up.tキー反復(TJAPlayer3.Input管理.Keyboard.bキーが押されている((int)SlimDXKeys.Key.LeftArrow), new CCounter.DGキー処理(tカーソルを上へ移動する));
                                     if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LBlue))
                                     {
                                         tカーソルを上へ移動する();
@@ -636,7 +635,7 @@ namespace TJAPlayer3
 
                     TJAPlayer3.Tx.SongSelect_Credit.Opacity = opacity;
 
-                    TJAPlayer3.Tx.SongSelect_Credit.t2D描画(TJAPlayer3.app.Device, 1008, 441);
+                    TJAPlayer3.Tx.SongSelect_Credit?.t2D描画(TJAPlayer3.app.Device, 1008, 441);
                 }
                 for (int i = 0; i < 2; i++)
                 {
@@ -746,30 +745,30 @@ namespace TJAPlayer3
                 if (act難易度選択画面.bOption[0]) actPlayOption.On進行描画(0);
                 if (act難易度選択画面.bOption[1]) actPlayOption.On進行描画(1);
 
-                switch (base.eフェーズID)
+                switch (eフェーズID)
                 {
-                    case CStage.Eフェーズ.共通_フェードイン:
+                    case Eフェーズ.共通_フェードイン:
                         if (actFIFO.On進行描画() != 0)
                         {
-                            eフェーズID = CStage.Eフェーズ.共通_通常状態;
+                            eフェーズID = Eフェーズ.共通_通常状態;
                         }
                         break;
 
-                    case CStage.Eフェーズ.共通_フェードアウト:
+                    case Eフェーズ.共通_フェードアウト:
                         if (actFIFO.On進行描画() == 0)
                         {
                             break;
                         }
                         return (int)eフェードアウト完了時の戻り値;
 
-                    case CStage.Eフェーズ.選曲_結果画面からのフェードイン:
+                    case Eフェーズ.選曲_結果画面からのフェードイン:
                         if (actFIfrom結果画面.On進行描画() != 0)
                         {
-                            eフェーズID = CStage.Eフェーズ.共通_通常状態;
+                            eフェーズID = Eフェーズ.共通_通常状態;
                         }
                         break;
 
-                    case CStage.Eフェーズ.選曲_NowLoading画面へのフェードアウト:
+                    case Eフェーズ.選曲_NowLoading画面へのフェードアウト:
                         if (actFOtoNowLoading.On進行描画() == 0)
                         {
                             break;
@@ -788,7 +787,6 @@ namespace TJAPlayer3
             コンフィグ呼び出し,
             スキン変更
         }
-
 
         // その他
 
@@ -831,7 +829,7 @@ namespace TJAPlayer3
         }
         public CCounter ctTimer;
         private CCounter ctCreditAnime;
-        private Random[] r = new Random[3];
+        private readonly Random[] r = new Random[3];
         public CCounter ctBackgroundFade;
         public string NowGenre;
         public string OldGenre;
@@ -1025,7 +1023,7 @@ namespace TJAPlayer3
 
         private void tカーソルを下へ移動する()
         {
-            if ((this.act曲リスト.r次の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.SCORE) || this.act曲リスト.r次の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.BACKBOX)
+            if ((act曲リスト.r次の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.SCORE) || act曲リスト.r次の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.BACKBOX)
             {
                 TJAPlayer3.stage選曲.bBGMIn再生した = false;
                 TJAPlayer3.Skin.bgm選曲画面イン.n位置_現在のサウンド = 0;
@@ -1043,15 +1041,15 @@ namespace TJAPlayer3
                     bBGMIn再生した = true;
                 }
             }
-            this.ctBackgroundFade.t開始(0, 600, 1, TJAPlayer3.Timer);
-            if (this.act曲リスト.ctBarOpen.n現在の値 >= 200 || this.ctBackgroundFade.n現在の値 >= 600 - 255)
+            ctBackgroundFade.t開始(0, 600, 1, TJAPlayer3.Timer);
+            if (act曲リスト.ctBarOpen.n現在の値 >= 200 || ctBackgroundFade.n現在の値 >= 600 - 255)
                 TJAPlayer3.stage選曲.OldGenre = this.r現在選択中の曲.strジャンル;
-            this.act曲リスト.t次に移動();
+            act曲リスト.t次に移動();
             TJAPlayer3.Skin.soundカーソル移動音.t再生する();
         }
         private void tカーソルを上へ移動する()
         {
-            if ((this.act曲リスト.r前の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.SCORE) || this.act曲リスト.r前の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.BACKBOX)
+            if ((act曲リスト.r前の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.SCORE) || act曲リスト.r前の曲(r現在選択中の曲).eノード種別 == C曲リストノード.Eノード種別.BACKBOX)
             {
                 TJAPlayer3.stage選曲.bBGMIn再生した = false;
                 TJAPlayer3.Skin.bgm選曲画面.t停止する();
@@ -1067,19 +1065,19 @@ namespace TJAPlayer3
                     bBGMIn再生した = true;
                 }
             }
-            this.ctBackgroundFade.t開始(0, 600, 1, TJAPlayer3.Timer);
-            if (this.act曲リスト.ctBarOpen.n現在の値 >= 200 || this.ctBackgroundFade.n現在の値 >= 600 - 255)                
-                TJAPlayer3.stage選曲.OldGenre = this.r現在選択中の曲.strジャンル;
-            this.act曲リスト.t前に移動();
+            ctBackgroundFade.t開始(0, 600, 1, TJAPlayer3.Timer);
+            if (act曲リスト.ctBarOpen.n現在の値 >= 200 || ctBackgroundFade.n現在の値 >= 600 - 255)                
+                TJAPlayer3.stage選曲.OldGenre = r現在選択中の曲.strジャンル;
+            act曲リスト.t前に移動();
             TJAPlayer3.Skin.soundカーソル移動音.t再生する();
         }
         private void tカーソルスキップ(bool Up)
         {
-            this.ctBackgroundFade.t開始(0, 600, 1, TJAPlayer3.Timer);
-            if (this.act曲リスト.ctBarOpen.n現在の値 >= 200 || this.ctBackgroundFade.n現在の値 >= 600 - 255)
-                TJAPlayer3.stage選曲.OldGenre = this.r現在選択中の曲.strジャンル;
-            if (Up) this.act曲リスト.t前に移動();
-            else this.act曲リスト.t次に移動();
+            ctBackgroundFade.t開始(0, 600, 1, TJAPlayer3.Timer);
+            if (act曲リスト.ctBarOpen.n現在の値 >= 200 || ctBackgroundFade.n現在の値 >= 600 - 255)
+                TJAPlayer3.stage選曲.OldGenre = r現在選択中の曲.strジャンル;
+            if (Up) act曲リスト.t前に移動();
+            else act曲リスト.t次に移動();
 
             TJAPlayer3.Skin.soundSkip.t再生する();
         }
@@ -1091,7 +1089,7 @@ namespace TJAPlayer3
             {
                 if (song.listランダム用ノードリスト == null)
                 {
-                    song.listランダム用ノードリスト = this.t指定された曲が存在する場所の曲を列挙する_子リスト含む(song);
+                    song.listランダム用ノードリスト = t指定された曲が存在する場所の曲を列挙する_子リスト含む(song);
                 }
                 int count = song.listランダム用ノードリスト.Count;
                 if (count == 0)
@@ -1130,7 +1128,7 @@ namespace TJAPlayer3
             str確定された曲のジャンル = r確定された曲.strジャンル;
             eフェードアウト完了時の戻り値 = E戻り値.選曲した;
             actFOtoNowLoading.tフェードアウト開始();                    // #27787 2012.3.10 yyagi 曲決定時の画面フェードアウトの省略
-            eフェーズID = CStage.Eフェーズ.選曲_NowLoading画面へのフェードアウト;
+            eフェーズID = Eフェーズ.選曲_NowLoading画面へのフェードアウト;
             if (TJAPlayer3.ConfigIni.bLogDTX詳細ログ出力)
             {
                 int[] numArray2 = song.stackランダム演奏番号.ToArray();
@@ -1161,7 +1159,7 @@ namespace TJAPlayer3
             {
                 eフェードアウト完了時の戻り値 = E戻り値.選曲した;
                 actFOtoNowLoading.tフェードアウト開始();                // #27787 2012.3.10 yyagi 曲決定時の画面フェードアウトの省略
-                eフェーズID = CStage.Eフェーズ.選曲_NowLoading画面へのフェードアウト;
+                eフェーズID = Eフェーズ.選曲_NowLoading画面へのフェードアウト;
             }
             TJAPlayer3.Skin.bgm選曲画面.t停止する();
         }
@@ -1175,7 +1173,7 @@ namespace TJAPlayer3
             {
                 eフェードアウト完了時の戻り値 = E戻り値.選曲した;
                 actFOtoNowLoading.tフェードアウト開始();                // #27787 2012.3.10 yyagi 曲決定時の画面フェードアウトの省略
-                eフェーズID = CStage.Eフェーズ.選曲_NowLoading画面へのフェードアウト;
+                eフェーズID = Eフェーズ.選曲_NowLoading画面へのフェードアウト;
             }
             TJAPlayer3.Skin.bgm選曲画面.t停止する();
         }

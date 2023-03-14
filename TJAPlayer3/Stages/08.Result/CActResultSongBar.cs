@@ -12,14 +12,6 @@ namespace TJAPlayer3
 			b活性化してない = true;
 		}
 
-		// メソッド
-		/*
-		public void tアニメを完了させる()
-		{
-			this.ct登場用.n現在の値 = (int)this.ct登場用.n終了値;
-		}
-		*/
-
 		// CActivity 実装
 
 		public override void On活性化()
@@ -105,7 +97,6 @@ namespace TJAPlayer3
 			}
 			return 1;
 		}
-
 
 		// その他
 

@@ -12,74 +12,52 @@ namespace TJAPlayer3
 
 		public CActResultParameterPanel()
 		{
-			ST文字位置[] st文字位置Array = new ST文字位置[11];
-            ST文字位置 st文字位置 = new ST文字位置
-            {
-                ch = '0',
-                pt = new Point(0, 0)
-            };
+            ST文字位置[] st文字位置Array = new ST文字位置[11];
+            ST文字位置 st文字位置 = new ST文字位置();
+            st文字位置.ch = '0';
+            st文字位置.pt = new Point(0, 0);
             st文字位置Array[0] = st文字位置;
-            ST文字位置 st文字位置2 = new ST文字位置
-            {
-                ch = '1',
-                pt = new Point(32, 0)
-            };
+            ST文字位置 st文字位置2 = new ST文字位置();
+            st文字位置2.ch = '1';
+            st文字位置2.pt = new Point(32, 0);
             st文字位置Array[1] = st文字位置2;
-            ST文字位置 st文字位置3 = new ST文字位置
-            {
-                ch = '2',
-                pt = new Point(64, 0)
-            };
+            ST文字位置 st文字位置3 = new ST文字位置();
+            st文字位置3.ch = '2';
+            st文字位置3.pt = new Point(64, 0);
             st文字位置Array[2] = st文字位置3;
-            ST文字位置 st文字位置4 = new ST文字位置
-            {
-                ch = '3',
-                pt = new Point(96, 0)
-            };
+            ST文字位置 st文字位置4 = new ST文字位置();
+            st文字位置4.ch = '3';
+            st文字位置4.pt = new Point(96, 0);
             st文字位置Array[3] = st文字位置4;
-            ST文字位置 st文字位置5 = new ST文字位置
-            {
-                ch = '4',
-                pt = new Point(128, 0)
-            };
+            ST文字位置 st文字位置5 = new ST文字位置();
+            st文字位置5.ch = '4';
+            st文字位置5.pt = new Point(128, 0);
             st文字位置Array[4] = st文字位置5;
-            ST文字位置 st文字位置6 = new ST文字位置
-            {
-                ch = '5',
-                pt = new Point(160, 0)
-            };
+            ST文字位置 st文字位置6 = new ST文字位置();
+            st文字位置6.ch = '5';
+            st文字位置6.pt = new Point(160, 0);
             st文字位置Array[5] = st文字位置6;
-            ST文字位置 st文字位置7 = new ST文字位置
-            {
-                ch = '6',
-                pt = new Point(192, 0)
-            };
+            ST文字位置 st文字位置7 = new ST文字位置();
+            st文字位置7.ch = '6';
+            st文字位置7.pt = new Point(192, 0);
             st文字位置Array[6] = st文字位置7;
-            ST文字位置 st文字位置8 = new ST文字位置
-            {
-                ch = '7',
-                pt = new Point(224, 0)
-            };
+            ST文字位置 st文字位置8 = new ST文字位置();
+            st文字位置8.ch = '7';
+            st文字位置8.pt = new Point(224, 0);
             st文字位置Array[7] = st文字位置8;
-            ST文字位置 st文字位置9 = new ST文字位置
-            {
-                ch = '8',
-                pt = new Point(256, 0)
-            };
+            ST文字位置 st文字位置9 = new ST文字位置();
+            st文字位置9.ch = '8';
+            st文字位置9.pt = new Point(256, 0);
             st文字位置Array[8] = st文字位置9;
-            ST文字位置 st文字位置10 = new ST文字位置
-            {
-                ch = '9',
-                pt = new Point(288, 0)
-            };
+            ST文字位置 st文字位置10 = new ST文字位置();
+            st文字位置10.ch = '9';
+            st文字位置10.pt = new Point(288, 0);
             st文字位置Array[9] = st文字位置10;
-            ST文字位置 st文字位置11 = new ST文字位置
-            {
-                ch = ' ',
-                pt = new Point(0, 0)
-            };
+            ST文字位置 st文字位置11 = new ST文字位置();
+            st文字位置11.ch = ' ';
+            st文字位置11.pt = new Point(0, 0);
             st文字位置Array[10] = st文字位置11;
-			this.st小文字位置 = st文字位置Array;
+            st小文字位置 = st文字位置Array;
 
 			ST文字位置[] st文字位置Array2 = new ST文字位置[11];
 			ST文字位置 st文字位置12 = new ST文字位置();
@@ -126,7 +104,7 @@ namespace TJAPlayer3
 			st文字位置22.ch = '%';
 			st文字位置22.pt = new Point(0x37, 0);
 			st文字位置Array2[10] = st文字位置22;
-			this.st大文字位置 = st文字位置Array2;
+			st大文字位置 = st文字位置Array2;
 
 			ST文字位置[] stScore文字位置Array = new ST文字位置[10];
 			ST文字位置 stScore文字位置 = new ST文字位置();
@@ -165,16 +143,14 @@ namespace TJAPlayer3
 			stScore文字位置9.ch = '8';
 			stScore文字位置9.pt = new Point(408, 0);
 			stScore文字位置Array[8] = stScore文字位置9;
-            ST文字位置 stScore文字位置10 = new ST文字位置
-            {
-                ch = '9',
-                pt = new Point(459, 0)
-            };
+            ST文字位置 stScore文字位置10 = new ST文字位置();
+            stScore文字位置10.ch = '9';
+            stScore文字位置10.pt = new Point(459, 0);
             stScore文字位置Array[9] = stScore文字位置10;
-			this.stScoreFont = stScore文字位置Array;
+            stScoreFont = stScore文字位置Array;
 
-			this.ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
-			base.b活性化してない = true;
+			ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
+			b活性化してない = true;
 		}
 
 
@@ -201,27 +177,27 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-			this.sdDTXで指定されたフルコンボ音 = null;
+			sdDTXで指定されたフルコンボ音 = null;
 			Counter = new CCounter(0, TJAPlayer3.Skin.Game_PuchiChara[2] - 1, TJAPlayer3.Skin.Game_PuchiChara_Timer, TJAPlayer3.Timer);
 			SineCounter = new CCounter(0, 360, TJAPlayer3.Skin.Game_PuchiChara_SineTimer, CSound管理.rc演奏用タイマ);
 			base.On活性化();
 		}
 		public override void On非活性化()
 		{
-			if (this.ct表示用 != null)
+			if (ct表示用 != null)
 			{
-				this.ct表示用 = null;
+				ct表示用 = null;
 			}
 
-			for(int i = 0; i < this.b音声再生.Length; i++)
+			for(int i = 0; i < b音声再生.Length; i++)
             {
 				b音声再生[i] = false;
             }
 
-			if (this.sdDTXで指定されたフルコンボ音 != null)
+			if (sdDTXで指定されたフルコンボ音 != null)
 			{
-				TJAPlayer3.Sound管理.tサウンドを破棄する(this.sdDTXで指定されたフルコンボ音);
-				this.sdDTXで指定されたフルコンボ音 = null;
+				TJAPlayer3.Sound管理.tサウンドを破棄する(sdDTXで指定されたフルコンボ音);
+				sdDTXで指定されたフルコンボ音 = null;
 			}
 			Counter = null;
 			SineCounter = null;
@@ -229,7 +205,7 @@ namespace TJAPlayer3
 		}
 		public override void OnManagedリソースの作成()
 		{
-			if (!base.b活性化してない)
+			if (!b活性化してない)
 			{
 				ct全体進行 = new CCounter(0, 50000, 1, TJAPlayer3.Timer);
 				ctゲージアニメ = new CCounter();
@@ -241,7 +217,6 @@ namespace TJAPlayer3
 				ctMountain_ClearIn = new CCounter();
 				ctFlash_Icon = new CCounter(0, 3000, 1, TJAPlayer3.Timer);
 				ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.Chara_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);//45
-
 
 				Dan_Plate = TJAPlayer3.tテクスチャの生成(Path.GetDirectoryName(TJAPlayer3.DTX.strファイル名の絶対パス) + @"\Dan_Plate.png");
 
@@ -260,7 +235,7 @@ namespace TJAPlayer3
 		}
 		public override void OnManagedリソースの解放()
 		{
-			if (!base.b活性化してない)
+			if (!b活性化してない)
 			{
                 TJAPlayer3.t安全にDisposeする(ref Dan_Plate);
                 base.OnManagedリソースの解放();
@@ -268,14 +243,14 @@ namespace TJAPlayer3
 		}
 		public override int On進行描画()
 		{
-			if (base.b活性化してない)
+			if (b活性化してない)
 			{
 				return 0;
 			}
-			if (base.b初めての進行描画)
+			if (b初めての進行描画)
 			{
-				this.ct表示用 = new CCounter(0, 0x3e7, 2, TJAPlayer3.Timer);
-				base.b初めての進行描画 = false;
+				ct表示用 = new CCounter(0, 0x3e7, 2, TJAPlayer3.Timer);
+				b初めての進行描画 = false;
 			}
 
 			ct全体進行.t進行();
@@ -296,7 +271,6 @@ namespace TJAPlayer3
 				if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500)
 				{
 					TJAPlayer3.Tx.Result_Background?[1].t2D描画(TJAPlayer3.app.Device, 0, 0);
-
                 }
 
                 if (TJAPlayer3.Tx.Result_Header != null && TJAPlayer3.Tx.Result_Mountain[0] != null && TJAPlayer3.Tx.Result_Panel != null)
@@ -379,62 +353,61 @@ namespace TJAPlayer3
 					#region [ 成績(スコアを除く)関連 ]
 
 						int Interval = 420;
-
 						float AddCount = 135;
 
 						if (ct全体進行.n現在の値 >= AnimeCount)
 						{
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.X = ct全体進行.n現在の値 <= AnimeCount + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
-							this.t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 0, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.nPerfect数.ToString()));
-							if (!this.b音声再生[1])
+							t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 0, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.nPerfect数.ToString()));
+							if (!b音声再生[1])
 							{
 								TJAPlayer3.Skin.soundPon.t再生する();
-								this.b音声再生[1] = true;
+								b音声再生[1] = true;
 							}
 						}
 						if (ct全体進行.n現在の値 >= AnimeCount + Interval)
 						{
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.X = ct全体進行.n現在の値 <= AnimeCount + Interval + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount + Interval + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
-							this.t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 1, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.nGreat数.ToString()));
-							if (!this.b音声再生[2])
+							t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 1, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.nGreat数.ToString()));
+							if (!b音声再生[2])
 							{
 								TJAPlayer3.Skin.soundPon.t再生する();
-								this.b音声再生[2] = true;
+								b音声再生[2] = true;
 							}
 						}
 						if (ct全体進行.n現在の値 >= AnimeCount + Interval * 2)
 						{
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.X = ct全体進行.n現在の値 <= AnimeCount + Interval * 2 + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval * 2)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount + Interval * 2 + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval * 2)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
-							this.t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 2, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.nMiss数.ToString()));
-							if (!this.b音声再生[3])
+							t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 2, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.nMiss数.ToString()));
+							if (!b音声再生[3])
 							{
 								TJAPlayer3.Skin.soundPon.t再生する();
-								this.b音声再生[3] = true;
+								b音声再生[3] = true;
 							}
 						}
 						if (ct全体進行.n現在の値 >= AnimeCount + Interval * 3)
 						{
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.X = ct全体進行.n現在の値 <= AnimeCount + Interval * 3 + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval * 3)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount + Interval * 3 + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval * 3)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
-							this.t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 3, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.n連打数.ToString()));
-							if (!this.b音声再生[4])
+							t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 3, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.n連打数.ToString()));
+							if (!b音声再生[4])
 							{
 								TJAPlayer3.Skin.soundPon.t再生する();
-								this.b音声再生[4] = true;
+								b音声再生[4] = true;
 							}
 						}
 						if (ct全体進行.n現在の値 >= AnimeCount + Interval * 4)
 						{
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.X = ct全体進行.n現在の値 <= AnimeCount + Interval * 4 + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval * 4)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
 							TJAPlayer3.Tx.Result_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount + Interval * 4 + AddCount ? 1.3f - (float)Math.Sin((ct全体進行.n現在の値 - (AnimeCount + Interval * 4)) / (AddCount / 90) * (Math.PI / 180)) * 0.3f : 1.0f;
-							this.t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 4, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.n最大コンボ数.ToString()));
-							if (!this.b音声再生[5])
+							t小文字表示(TJAPlayer3.Skin.nResultNumberP1X, TJAPlayer3.Skin.nResultNumberY + TJAPlayer3.Skin.nResultNumberYPadding * 4, string.Format("{0,4:###0}", TJAPlayer3.stage結果.st演奏記録.Drums.n最大コンボ数.ToString()));
+							if (!b音声再生[5])
 							{
 								TJAPlayer3.Skin.soundPon.t再生する();
-								this.b音声再生[5] = true;
+								b音声再生[5] = true;
 							}
 						}
 
@@ -451,7 +424,7 @@ namespace TJAPlayer3
 							TJAPlayer3.Tx.Result_Score_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount1 + 270 ? 1.0f + (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1) / 1.5f * (Math.PI / 180)) * 0.65f :
 																			  ct全体進行.n現在の値 <= AnimeCount1 + 360 ? 1.0f - (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1 - 270) * (Math.PI / 180)) * 0.1f : 1.0f;
 
-							this.tスコア文字表示(TJAPlayer3.Skin.nResultScoreP1X, TJAPlayer3.Skin.nResultScoreP1Y, string.Format("{0,7:######0}", TJAPlayer3.stage結果.st演奏記録.Drums.nスコア));
+							tスコア文字表示(TJAPlayer3.Skin.nResultScoreP1X, TJAPlayer3.Skin.nResultScoreP1Y, string.Format("{0,7:######0}", TJAPlayer3.stage結果.st演奏記録.Drums.nスコア));
 
 							if (!b音声再生[6])
 							{
@@ -466,7 +439,6 @@ namespace TJAPlayer3
 				if (ctゲージアニメ.n現在の値 != 50)
 				{
 					TJAPlayer3.Tx.Result_Gauge?.t2D描画(TJAPlayer3.app.Device, 441, 142, new RectangleF(ctゲージアニメ.n現在の値 < 40 ? 0 : 42, 35, 42, 20));
-
 					TJAPlayer3.Tx.Result_Soul_Text?.t2D中心基準描画(TJAPlayer3.app.Device, 568, 159, new Rectangle(37 * (ctゲージアニメ.n現在の値 <= 30 ? 0 : 1), 0, 37, 37));
 				}
 
@@ -612,7 +584,7 @@ namespace TJAPlayer3
 				#endregion
 			}
 
-			if (!this.ct表示用.b終了値に達した)
+			if (!ct表示用.b終了値に達した)
 			{
 				return 0;
 			}
@@ -644,7 +616,6 @@ namespace TJAPlayer3
 		private CCounter ctFlash_Icon;
 		private CCounter ctDonchan_Normal;
 
-
 		public bool[] b音声再生 = { false, false, false, false, false, false, false, false, false };
 		
 		private CCounter ct表示用;
@@ -667,9 +638,9 @@ namespace TJAPlayer3
 						break;
 					}
 
-					if (this.st小文字位置[i].ch == ch)
+					if (st小文字位置[i].ch == ch)
 					{
-						Rectangle rectangle = new Rectangle(this.st小文字位置[i].pt.X, this.st小文字位置[i].pt.Y, 32, 38);
+						Rectangle rectangle = new Rectangle(st小文字位置[i].pt.X, st小文字位置[i].pt.Y, 32, 38);
 						TJAPlayer3.Tx.Result_Number?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x + 16, y + 19, rectangle);
 						break;
 					}
@@ -682,11 +653,11 @@ namespace TJAPlayer3
 		{
 			foreach (char ch in str)
 			{
-				for (int i = 0; i < this.stScoreFont.Length; i++)
+				for (int i = 0; i < stScoreFont.Length; i++)
 				{
-					if (this.stScoreFont[i].ch == ch)
+					if (stScoreFont[i].ch == ch)
 					{
-						Rectangle rectangle = new Rectangle(this.stScoreFont[i].pt.X, 0, 51, 60);
+						Rectangle rectangle = new Rectangle(stScoreFont[i].pt.X, 0, 51, 60);
 						TJAPlayer3.Tx.Result_Score_Number?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x - (str.Length * 33) + 25, y + 30, rectangle);
 						break;
 					}

@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
-using FDK;
+﻿using FDK;
 
 namespace TJAPlayer3
 {
@@ -13,9 +11,9 @@ namespace TJAPlayer3
 		}
 		public override void On非活性化()
 		{
-			if (this.ct登場用 != null)
+			if (ct登場用 != null)
 			{
-				this.ct登場用 = null;
+				ct登場用 = null;
 			}
 			base.On非活性化();
 		}
@@ -37,18 +35,18 @@ namespace TJAPlayer3
 		}
 		public override unsafe int On進行描画()
 		{
-			if (base.b活性化してない)
+			if (b活性化してない)
 			{
 				return 0;
 			}
-			if (base.b初めての進行描画)
+			if (b初めての進行描画)
 			{
-				this.ct登場用 = new CCounter(0, 100, 5, TJAPlayer3.Timer);
-				base.b初めての進行描画 = false;
+				ct登場用 = new CCounter(0, 100, 5, TJAPlayer3.Timer);
+				b初めての進行描画 = false;
 			}
-			this.ct登場用.t進行();
+			ct登場用.t進行();
 
-			if (!this.ct登場用.b終了値に達した)
+			if (!ct登場用.b終了値に達した)
 			{
 				return 0;
 			}

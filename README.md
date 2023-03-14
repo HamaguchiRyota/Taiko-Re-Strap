@@ -65,18 +65,18 @@ v0.6.5.2(2023_02/20)　ゲームミュージックの文字列修正、ボカロ
 v0.6.6.0(2023_02/20)　モードバーにカーソルを追加、選曲バーに影を追加、魂点滅が動作していなかった点を修正。
 v0.6.6.1(2023_02/25)　BoxとBarで鬼,裏鬼の表示優先度が違っていたのを修正。
 v0.6.7.0(2023_03/06)　段位入場アニメーションの追加、挑戦画面のカーソルとオプション設定を追加。
-v0.6.8.0(2023_03/10)　演奏ゲーム右上の長いタイトル時と短いタイトル時に座標が変化するように。
+v0.6.8.0(2023_03/10)　演奏ゲーム右上の長いタイトル時と短いタイトル時に座標が変化するように。いくつかのテクスチャを最適化。
 v0.6.9.0(2023_03/13)　フォルダテキストのサイズ変更、一部テクスチャの軽量化、履歴パネルの数字関連を調整、バーの展開長さを調整。
+v0.6.9.1(2023_03/13)　一部簡素化、エントリーのネームプレートの名前ズレを修正
 ```
 
 # Thanks
-以下の開発者様のコードを参考に開発させていただいております。
-
->DTXMania(FROM様)
->TJAP2fPC(Kairera0467様)
->TJAPlayer3(Aioilight様)
->TJAPlayer3(TwoPointZero様)
->TJAPlayer3-Develop-ReWrite(touhou_renren様)
->DonSpire(CYakigasi様)
->TJAPlayer3-f(Mr.Ojii様)
->OpenTaiko(0auBSQ様)
+>以下の開発者様のコードを参考に開発させていただいております。
+> * DTXMania(FROM様)
+> * TJAP2fPC(Kairera0467様)
+> * TJAPlayer3(Aioilight様)
+> * TJAPlayer3(TwoPointZero様)
+> * TJAPlayer3-Develop-ReWrite(touhou_renren様)
+> * DonSpire(CYakigasi様)
+> * TJAPlayer3-f(Mr.Ojii様)
+> * OpenTaiko(0auBSQ様)

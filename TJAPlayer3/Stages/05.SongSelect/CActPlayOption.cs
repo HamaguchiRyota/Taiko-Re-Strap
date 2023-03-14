@@ -10,12 +10,12 @@ namespace TJAPlayer3
     {
         public CActPlayOption()
         {
-            base.b活性化してない = true;
+            b活性化してない = true;
         }
 
         public override void On活性化()
         {
-            if (this.b活性化してる)
+            if (b活性化してる)
                 return;
 
             ctOpen = new CCounter();
@@ -94,7 +94,7 @@ namespace TJAPlayer3
 
         public int On進行描画(int player)
         {
-            if (this.b活性化してない)
+            if (b活性化してない)
                 return 0;
 
             if (ctOpen.n現在の値 == 0)
@@ -125,9 +125,7 @@ namespace TJAPlayer3
             // Temporary textures, to reimplement to fit the new menu
             TJAPlayer3.Tx.Difficulty_Option?.t2D描画(TJAPlayer3.app.Device, 0, y);
 
-
             TJAPlayer3.Tx.Difficulty_Option_Select?.t2D描画(TJAPlayer3.app.Device, 0, y + NowCount * 40.7f);
-
 
             for (int i = 0; i < OptionType.Length; i++)
             {
@@ -143,7 +141,7 @@ namespace TJAPlayer3
 
             for (int i = 6; i < 8; i++)
             {
-                txNone.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + i * 40.7f);
+                txNone?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + i * 40.7f);
             }
 
             if (ctClose.n現在の値 >= 50)

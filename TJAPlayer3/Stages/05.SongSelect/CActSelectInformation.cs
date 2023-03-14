@@ -53,9 +53,7 @@ namespace TJAPlayer3
 					base.b初めての進行描画 = false;
 				}
 
-                if( this.txInfo_Back != null )
-                    this.txInfo_Back.t2D描画( TJAPlayer3.app.Device, 340, 600 );
-
+                this.txInfo_Back?.t2D描画( TJAPlayer3.app.Device, 340, 600 );
 
 				this.ct進行用.t進行Loop();
                 if( this.bFirst )

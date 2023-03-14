@@ -324,14 +324,11 @@ namespace TJAPlayer3
 					}
 				}
 				#region [ ポップアップメニュー 背景描画 ]
-				if ( TJAPlayer3.Tx.Menu_Title != null )
-				{
-                    TJAPlayer3.Tx.Menu_Title.t2D描画( TJAPlayer3.app.Device, 460, 48 );
-				}
+				TJAPlayer3.Tx.Menu_Title?.t2D描画( TJAPlayer3.app.Device, 460, 48 );
 				#endregion
 				#region [ ソートメニュータイトル描画 ]
 				int x = 530, y = 44;
-				stqMenuTitle.txName.t2D描画( TJAPlayer3.app.Device, x, y );
+				stqMenuTitle.txName?.t2D描画( TJAPlayer3.app.Device, x, y );
 				#endregion
 				#region [ カーソル描画 ]
 				if ( TJAPlayer3.Tx.Menu_Highlight != null )
@@ -391,7 +388,7 @@ namespace TJAPlayer3
                         {
                             using (var ctStr = TJAPlayer3.tテクスチャの生成(bmpStr, false))
                             {
-                                ctStr.t2D描画(TJAPlayer3.app.Device, 650, 77 + i * 32);
+                                ctStr?.t2D描画(TJAPlayer3.app.Device, 650, 77 + i * 32);
                             }
                         }
                     }
