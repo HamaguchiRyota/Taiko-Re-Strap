@@ -240,13 +240,12 @@ namespace TJAPlayer3
 				ctBackgroundAnime_Clear = new CCounter(0, 1000, 1, TJAPlayer3.Timer);
 				ctMountain_ClearIn = new CCounter();
 				ctFlash_Icon = new CCounter(0, 3000, 1, TJAPlayer3.Timer);
-				ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.Result_Donchan_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);//45
+				ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.Chara_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);//45
 
 
 				Dan_Plate = TJAPlayer3.tテクスチャの生成(Path.GetDirectoryName(TJAPlayer3.DTX.strファイル名の絶対パス) + @"\Dan_Plate.png");
 
-
-				gaugeValues = new int[2];
+                gaugeValues = new int[2];
 				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
 				{
 					gaugeValues[i] = (int)TJAPlayer3.stage演奏ドラム画面.actGauge.db現在のゲージ値[i];
@@ -312,12 +311,12 @@ namespace TJAPlayer3
 				TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
 				#region [ キャラクター & ぷち ]
-
-				TJAPlayer3.Tx.Result_Donchan_Normal?[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
-				TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, 20, 485, new RectangleF(0, 0, 240, 240));
-				TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.60f;
-                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.60f;
-
+                //TJAPlayer3.Tx.Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 0.85f;
+                //TJAPlayer3.Tx.Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 0.85f;
+				//TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.50f;
+                //TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.50f;
+				//TJAPlayer3.Tx.Chara_Normal?[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
+				//TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, 26, 485, new RectangleF(0, 0, 240, 240));
                 #endregion
 
                 #region [ オプションアイコン・ModIcons ]
@@ -586,7 +585,6 @@ namespace TJAPlayer3
 
 					#endregion
 				}
-
 
 				#endregion
 

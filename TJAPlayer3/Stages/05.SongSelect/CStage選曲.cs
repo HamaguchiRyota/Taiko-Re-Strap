@@ -1,4 +1,5 @@
 ﻿using FDK;
+using SlimDX.Direct2D;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -105,8 +106,9 @@ namespace TJAPlayer3
             list子Activities.Add(act演奏履歴パネル = new CActSelect演奏履歴パネル());
             list子Activities.Add(act難易度選択画面 = new CActSelect難易度選択画面());
             list子Activities.Add(actPlayOption = new CActPlayOption());
+            list子Activities.Add(PuchiChara = new PuchiChara());
 
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 stTimer[i].ch = i.ToString().ToCharArray()[0];
                 stTimer[i].pt = new Point(46 * i, 0);
@@ -194,7 +196,6 @@ namespace TJAPlayer3
                 ctCreditAnime = new CCounter(0, 4500, 1, TJAPlayer3.Timer);
                 ctTimer = new CCounter(0, 100, 1000, TJAPlayer3.Timer);
 
-
                 ctBackgroundFade.n現在の値 = 600;
 
                 if(TJAPlayer3.ConfigIni.bBGM音を発声する)
@@ -209,8 +210,6 @@ namespace TJAPlayer3
                 actステータスパネル.t選択曲が変更された();	// 最大ランクを更新
                 // Discord Presenceの更新
                 Discord.UpdatePresence("", Properties.Discord.Stage_SongSelect, TJAPlayer3.StartupTime);
-
-               
 
                 if(r現在選択中の曲 != null)
                     NowGenre = r現在選択中の曲.strジャンル;
@@ -246,6 +245,7 @@ namespace TJAPlayer3
                 {
                     ctキー反復用[i] = null;
                 }
+
                 base.On非活性化();
             }
             finally
@@ -307,9 +307,6 @@ namespace TJAPlayer3
 
                 ct登場時アニメ用共通.t進行();
 
-                TJAPlayer3.Tx.SongSelect_Background?.t2D描画(TJAPlayer3.app.Device, 0, 0);
-                    
-
                 if (r現在選択中の曲 != null)
                 {
                     if (nStrジャンルtoNum(r現在選択中の曲.strジャンル) != 0 || r現在選択中の曲.eノード種別 == C曲リストノード.Eノード種別.BOX || r現在選択中の曲.eノード種別 == C曲リストノード.Eノード種別.SCORE)
@@ -340,15 +337,13 @@ namespace TJAPlayer3
                 {
                     double db登場割合 = ((double)ct登場時アニメ用共通.n現在の値) / 100.0;   // 100が最終値
                     double dbY表示割合 = Math.Sin(Math.PI / 2 * db登場割合);
-                    y = ((int)(TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height * dbY表示割合)) - TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height;
+                    //y = ((int)(TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height * dbY表示割合)) - TJAPlayer3.Tx.SongSelect_Header.sz画像サイズ.Height;
                 }
 
                 actInformation.On進行描画();
-
                 actPresound.On進行描画();
-
                 actShowCurrentPosition.On進行描画(); // #27648 2011.3.28 yyagi
-
+    
                 if (TJAPlayer3.ConfigIni.bBGM音を発声する && !bBGM再生済み && (eフェーズID == CStage.Eフェーズ.共通_通常状態) && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                 {
                     TJAPlayer3.Skin.bgm選曲画面.t再生する();
@@ -357,7 +352,7 @@ namespace TJAPlayer3
 
                 ctDiffSelect移動待ち?.t進行();
 
-                // キー入力
+                #region [ キー入力 ]
                 if (eフェーズID == CStage.Eフェーズ.共通_通常状態 && TJAPlayer3.act現在入力を占有中のプラグイン == null)
                 {
                     #region [ 簡易CONFIGでMore、またはShift+F1: 詳細CONFIG呼び出し ]
@@ -378,6 +373,7 @@ namespace TJAPlayer3
                         if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Escape) && (act曲リスト.r現在選択中の曲 != null))// && (  ) ) )
                             if (act曲リスト.r現在選択中の曲.r親ノード == null)
                             {   // [ESC]
+                                this.actPresound.tサウンド停止();
                                 TJAPlayer3.Skin.sound取消音.t再生する();
                                 eフェードアウト完了時の戻り値 = E戻り値.タイトルに戻る;
                                 actFIFO.tフェードアウト開始();
@@ -388,6 +384,7 @@ namespace TJAPlayer3
                             {
                                 if (act曲リスト.ctBoxOpen.b終了値に達した || act曲リスト.ctBoxOpen.n現在の値 == 0)
                                 {
+                                    this.actPresound.tサウンド停止();
                                     TJAPlayer3.Skin.sound取消音.t再生する();
                                     act曲リスト.ctBarFlash.t開始(0, 2700, 1, TJAPlayer3.Timer);
                                     act曲リスト.ctBoxOpen.t開始(200, 2700, 1.3f, TJAPlayer3.Timer);
@@ -612,6 +609,8 @@ namespace TJAPlayer3
                     #endregion
 
                 }
+                #endregion
+
                 //------------------------------
                 if (act難易度選択画面.bIsDifficltSelect)
                 {
@@ -622,7 +621,7 @@ namespace TJAPlayer3
                 }
                 //------------------------------
 
-
+                #region [ キャラクター ]
 
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 1)
                 {
@@ -637,7 +636,7 @@ namespace TJAPlayer3
 
                     TJAPlayer3.Tx.SongSelect_Credit.Opacity = opacity;
 
-                    TJAPlayer3.Tx.SongSelect_Credit.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                    TJAPlayer3.Tx.SongSelect_Credit.t2D描画(TJAPlayer3.app.Device, 1008, 441);
                 }
                 for (int i = 0; i < 2; i++)
                 {
@@ -681,7 +680,9 @@ namespace TJAPlayer3
                         TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -320, 240);//330
                     }
                 }
+                //TJAPlayer3.stage演奏ドラム画面.PuchiChara.On進行描画(TJAPlayer3.Skin.Game_PuchiChara_X[0], TJAPlayer3.Skin.Game_PuchiChara_Y[0]);
 
+                #endregion
 
                 act曲リスト.On進行描画();
                 actSortSongs.t進行描画();
@@ -727,7 +728,9 @@ namespace TJAPlayer3
                 else if (TJAPlayer3.ConfigIni.eScrollMode == EScrollMode.HBSCROLL)
                     TJAPlayer3.act文字コンソール.tPrint(0, 48, C文字コンソール.Eフォント種別.赤, "HBSCROLL : ON");
 
-                TJAPlayer3.Tx.SongSelect_Header?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                TJAPlayer3.Tx.SongSelect_Other?.t2D描画(TJAPlayer3.app.Device, 1081, 163, new RectangleF(0, 129, 179, 40));
+                TJAPlayer3.Tx.SongSelect_Other?.t2D描画(TJAPlayer3.app.Device, 17, 209, new RectangleF(0, 0, 212, 129));
+                TJAPlayer3.Tx.Entry_Overlay?.t2D描画(TJAPlayer3.app.Device, 1050, 0, new RectangleF(327, 0, 230, 156));
 
                 #endregion
 
@@ -858,6 +861,7 @@ namespace TJAPlayer3
         private CCounter ctDonchan_Normal;
         private CCounter ctDonchan_Select;
         public CCounter[] ctDonchan_Jump = new CCounter[2];
+        private PuchiChara PuchiChara;
         private int nGenreBack;
         private int nOldGenreBack;
         public bool bBGM再生済み;
@@ -1025,7 +1029,7 @@ namespace TJAPlayer3
             {
                 TJAPlayer3.stage選曲.bBGMIn再生した = false;
                 TJAPlayer3.Skin.bgm選曲画面イン.n位置_現在のサウンド = 0;
-                TJAPlayer3.Skin.bgm選曲画面.n位置_現在のサウンド = 0;
+                TJAPlayer3.Skin.bgm選曲画面.n位置_現在のサウンド = 0; 
                 TJAPlayer3.Skin.bgm選曲画面イン.t停止する();
                 TJAPlayer3.Skin.bgm選曲画面.t停止する();
             }
@@ -1173,7 +1177,6 @@ namespace TJAPlayer3
                 actFOtoNowLoading.tフェードアウト開始();                // #27787 2012.3.10 yyagi 曲決定時の画面フェードアウトの省略
                 eフェーズID = CStage.Eフェーズ.選曲_NowLoading画面へのフェードアウト;
             }
-
             TJAPlayer3.Skin.bgm選曲画面.t停止する();
         }
         private List<C曲リストノード> t指定された曲が存在する場所の曲を列挙する_子リスト含む(C曲リストノード song)

@@ -1706,7 +1706,6 @@ for (int i = 0; i < 3; i++) {
                     throw new IndexOutOfRangeException();
             }
         }
-
         //-----------------
         #endregion
 
@@ -2802,7 +2801,8 @@ for (int i = 0; i < 3; i++) {
 			ConfigIni.nウインドウwidth = (ConfigIni.bウィンドウモード) ? base.Window.ClientSize.Width : currentClientSize.Width;	// #23510 2010.10.31 yyagi add
 			ConfigIni.nウインドウheight = (ConfigIni.bウィンドウモード) ? base.Window.ClientSize.Height : currentClientSize.Height;
 		}
-		#endregion
-		#endregion
-	}
+
+        #endregion
+        #endregion
+    }
 }

@@ -240,7 +240,6 @@ namespace TJAPlayer3
                 this.txGENRE?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y);
                 this.txStage?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y);
 
-
                 #region[ 透明度制御 ]
 
                     if (this.ct進行用.n現在の値 < 745)
@@ -275,10 +274,9 @@ namespace TJAPlayer3
                     if (this.txMusicName.szテクスチャサイズ.Width >= 225)
                         this.txMusicName.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_MusicName_X - (this.txMusicName.szテクスチャサイズ.Width * txMusicName.vc拡大縮小倍率.X), TJAPlayer3.Skin.Game_MusicName_Y);
                     else
-                        this.txMusicName.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_MusicName_X - 115, TJAPlayer3.Skin.Game_MusicName_Y + 40);
-
+                        this.txMusicName.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_MusicName_X - 108, TJAPlayer3.Skin.Game_MusicName_Y + 40);
                 }
-                
+
 
             }
             return 0;

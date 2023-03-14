@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace TJAPlayer3
 {
-    
+
     class PuchiChara : CActivity
     {
         public PuchiChara()
@@ -24,7 +24,7 @@ namespace TJAPlayer3
             SineCounter = null;
             base.On非活性化();
         }
-        
+
         public void ChangeBPM(double bpm)
         {
             Counter = new CCounter(0, TJAPlayer3.Skin.Game_PuchiChara[2] - 1, (int)(TJAPlayer3.Skin.Game_PuchiChara_Timer * bpm / TJAPlayer3.Skin.Game_PuchiChara[2]), TJAPlayer3.Timer);

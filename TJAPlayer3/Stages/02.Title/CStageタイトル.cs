@@ -314,7 +314,6 @@ namespace TJAPlayer3
 				#region [ 背景描画 ]
 
 				TJAPlayer3.Tx.Title_Background?.t2D描画( TJAPlayer3.app.Device, 0, 0 );
-
                 TJAPlayer3.Tx.Entry_Overlay?.t2D描画(TJAPlayer3.app.Device, 723, 0);
 
                 #endregion

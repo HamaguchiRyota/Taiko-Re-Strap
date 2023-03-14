@@ -344,7 +344,6 @@ namespace TJAPlayer3
 				song = this.r次の曲( song );
 			}
 
-
 			// 選曲ステージに変更通知を発出し、関係Activityの対応を行ってもらう。
 
 			TJAPlayer3.stage選曲.t選択曲変更通知();
@@ -501,9 +500,9 @@ namespace TJAPlayer3
 			}
 
 			if(!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.BoxFontName))
-				this.pfBoxText = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.BoxFontName), 14);
+				this.pfBoxText = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.BoxFontName), TJAPlayer3.Skin.SongSelect_BoxExplanation_FontSize);
 			else
-				this.pfBoxText = new CPrivateFastFont(new FontFamily("MS UI Gothic"), 14);
+				this.pfBoxText = new CPrivateFastFont(new FontFamily("MS UI Gothic"), TJAPlayer3.Skin.SongSelect_BoxExplanation_FontSize);
 
 
 			this.b登場アニメ全部完了 = false;
@@ -682,9 +681,9 @@ namespace TJAPlayer3
 			ctBarOpen.t進行();
 			ctDifficultyIn.t進行();
 
-			int BarAnimeCount = this.ctBarOpen.n現在の値 <= 200 ? 0 : (int)(Math.Sin(((this.ctBarOpen.n現在の値 - 200) * 1.5f) * (Math.PI / 180)) * 62.0f);
+			int BarAnimeCount = this.ctBarOpen.n現在の値 <= 200 ? 0 : (int)(Math.Sin(((this.ctBarOpen.n現在の値 - 200) * 1.5f) * (Math.PI / 180)) * 63.0f);//62
 
-			if (BarAnimeCount == 62)
+			if (BarAnimeCount == 63)//62
 				ctScoreFrameAnime.t進行Loop();
 
 			// まだ選択中の曲が決まってなければ、曲ツリールートの最初の曲にセットする。
@@ -1129,9 +1128,9 @@ namespace TJAPlayer3
 					ResolveTitleTexture(this.stバー情報[nパネル番号].ttkタイトル).Opacity = 255;
 
 				if (n現在のスクロールカウンタ != 0)
-					ResolveTitleTexture(this.stバー情報[nパネル番号].ttkタイトル).t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, xAnime + 316 - Box + TJAPlayer3.Skin.SongSelect_Title_X, y + 59 - (Box * 3) + TJAPlayer3.Skin.SongSelect_Title_Y);
+					ResolveTitleTexture(this.stバー情報[nパネル番号].ttkタイトル).t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, xAnime + 316 - Box + TJAPlayer3.Skin.SongSelect_Title_X, y + 62 - (Box * 3) + TJAPlayer3.Skin.SongSelect_Title_Y);//59
 				else if (n見た目の行番号 != 4)
-					ResolveTitleTexture(this.stバー情報[nパネル番号].ttkタイトル).t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, xAnime + 316 - Box + TJAPlayer3.Skin.SongSelect_Title_X, y + 62 - (Box * 3) + TJAPlayer3.Skin.SongSelect_Title_Y);
+					ResolveTitleTexture(this.stバー情報[nパネル番号].ttkタイトル).t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, xAnime + 316 - Box + TJAPlayer3.Skin.SongSelect_Title_X, y + 62 - (Box * 3) + TJAPlayer3.Skin.SongSelect_Title_Y);//62
 				#endregion
 
 				//-----------------					
@@ -1277,7 +1276,7 @@ namespace TJAPlayer3
 
                     TJAPlayer3.Tx.SongSelect_Bar_Genre[nStrジャンルtoNum(r現在選択中の曲.strジャンル)].t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 326 - BarAnimeCount, new Rectangle(0, 0, 632, 21));
 
-                    TJAPlayer3.Tx.SongSelect_Bar_Genre[nStrジャンルtoNum(r現在選択中の曲.strジャンル)].vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  23.6f;
+                    TJAPlayer3.Tx.SongSelect_Bar_Genre[nStrジャンルtoNum(r現在選択中の曲.strジャンル)].vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  23.6f;//23.6
 					TJAPlayer3.Tx.SongSelect_Bar_Genre[nStrジャンルtoNum(r現在選択中の曲.strジャンル)].t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 360, new Rectangle(0, 21, 632, 48));
 					TJAPlayer3.Tx.SongSelect_Bar_Genre[nStrジャンルtoNum(r現在選択中の曲.strジャンル)].vc拡大縮小倍率.Y = 1.0f;
 
@@ -1287,8 +1286,8 @@ namespace TJAPlayer3
 					{
 						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 326 - BarAnimeCount, new Rectangle(0, 0, 632, 21));
 
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  24.5f;
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 359, new Rectangle(0, 21, 632, 48));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  24.55f;//24.5
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 359, new Rectangle(0, 21, 632, 48));//359
 						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = 1.0f;
 
 						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 394 + BarAnimeCount, new Rectangle(0, 69, 632, 23));
@@ -1306,7 +1305,7 @@ namespace TJAPlayer3
                         var クリア = this.r現在選択中の曲.arスコア[3].譜面情報.nクリア;
 						var スコアランク = this.r現在選択中の曲.arスコア[3].譜面情報.nスコアランク;
 
-						TJAPlayer3.Tx.SongSelect_Crown.vc拡大縮小倍率.X = 0.8f + BarAnimeCount / 620f;
+						TJAPlayer3.Tx.SongSelect_Crown.vc拡大縮小倍率.X = 0.8f + BarAnimeCount / 620f;//620f
 						TJAPlayer3.Tx.SongSelect_Crown.vc拡大縮小倍率.Y = 0.8f + BarAnimeCount / 620f;
 						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.X = 0.8f + BarAnimeCount / 620f;
 						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.Y = 0.8f + BarAnimeCount / 620f;
@@ -1357,7 +1356,7 @@ namespace TJAPlayer3
 						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮上中央基準描画(TJAPlayer3.app.Device, 640, 336, new Rectangle(0, 21, 632, 48));
 						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = 1.0f;
 
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 394 + BarAnimeCount, new Rectangle(0, 69, 632, 23));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 393 + BarAnimeCount, new Rectangle(0, 69, 632, 23));
 					}
 					else
 					{
@@ -1530,9 +1529,6 @@ namespace TJAPlayer3
                             }
 						}
 						break;
-
-
-
 
                     case C曲リストノード.Eノード種別.BOX:
 						{
@@ -1709,11 +1705,11 @@ namespace TJAPlayer3
 			public CTexture Score;
 			public CTexture Box;
 			public CTexture Other;
-			public CTexture this[ int index ]
+			public CTexture this[int index]
 			{
 				get
 				{
-					switch( index )
+					switch (index)
 					{
 						case 0:
 							return this.Score;
@@ -1728,7 +1724,7 @@ namespace TJAPlayer3
 				}
 				set
 				{
-					switch( index )
+					switch (index)
 					{
 						case 0:
 							this.Score = value;
@@ -1746,6 +1742,7 @@ namespace TJAPlayer3
 				}
 			}
 		}
+		
 
 		private struct STバー情報
 		{
@@ -2068,7 +2065,7 @@ namespace TJAPlayer3
 
 		private TitleTextureKey ttk曲名テクスチャを生成する( string str文字, Color forecolor, Color backcolor, CPrivateFastFont pf)
         {
-            return new TitleTextureKey(str文字, pf, forecolor, backcolor, 550);
+            return new TitleTextureKey(str文字, pf, forecolor, backcolor, 550);//550
         }
 
 	    private TitleTextureKey ttkサブタイトルテクスチャを生成する( string str文字, Color forecolor, Color backcolor)
@@ -2113,7 +2110,6 @@ namespace TJAPlayer3
                 return tx文字テクスチャ;
             }
         }
-
 
         private static CTexture GenerateTitleTexture(TitleTextureKey titleTextureKey)
 	    {

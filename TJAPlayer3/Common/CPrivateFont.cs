@@ -334,9 +334,9 @@ namespace TJAPlayer3
                 }
                 g.FillPath(br, gp);
 
-                if (br != null) br.Dispose(); br = null;
-                if (p != null) p.Dispose(); p = null;
-                if (gp != null) gp.Dispose(); gp = null;
+                br?.Dispose(); br = null;
+                p?.Dispose(); p = null;
+                gp?.Dispose(); gp = null;
             }
             else
             {
@@ -349,8 +349,8 @@ namespace TJAPlayer3
 
 
             #region [ リソースを解放する ]
-            if (sf != null) sf.Dispose(); sf = null;
-            if (g != null) g.Dispose(); g = null;
+            sf?.Dispose(); sf = null;
+            g?.Dispose(); g = null;
             #endregion
 
             return bmp;
@@ -442,9 +442,9 @@ namespace TJAPlayer3
                 }
                 g.FillPath(br, gp);
 
-                if (br != null) br.Dispose(); br = null;
-                if (p != null) p.Dispose(); p = null;
-                if (gp != null) gp.Dispose(); gp = null;
+                br?.Dispose(); br = null;
+                p?.Dispose(); p = null;
+                gp?.Dispose(); gp = null;
             }
             else
             {
@@ -461,8 +461,8 @@ namespace TJAPlayer3
 
 
             #region [ リソースを解放する ]
-            if (sf != null) sf.Dispose(); sf = null;
-            if (g != null) g.Dispose(); g = null;
+            sf?.Dispose(); sf = null;
+            g?.Dispose(); g = null;
             #endregion
 
             return bmp;
@@ -622,10 +622,10 @@ namespace TJAPlayer3
                 }
                 gV.FillPath(brV, gpV);
 
-                if (brV != null) brV.Dispose(); brV = null;
-                if (pV != null) pV.Dispose(); pV = null;
-                if (gpV != null) gpV.Dispose(); gpV = null;
-                if (gV != null) gV.Dispose(); gV = null;
+                brV?.Dispose(); brV = null;
+                pV?.Dispose(); pV = null;
+                gpV?.Dispose(); gpV = null;
+                gV?.Dispose(); gV = null;
 
                 int n補正 = 0;
                 int nY補正 = 0;
@@ -692,8 +692,8 @@ namespace TJAPlayer3
                 Gcambus.DrawImage( bmpV, (bmpCambus.Width / 2) - (bmpV.Width / 2) + n補正, nNowPos + nY補正 );
                 nNowPos += bmpV.Size.Height - 6;
 
-                if( bmpV != null ) bmpV.Dispose(); bmpV = null;
-                if( gCal != null ) gCal.Dispose(); gCal = null;
+                bmpV?.Dispose(); bmpV = null;
+                gCal?.Dispose(); gCal = null;
 
                 //bmpCambus.Save( "test.png" );
                 //if( this._pt < 20 )

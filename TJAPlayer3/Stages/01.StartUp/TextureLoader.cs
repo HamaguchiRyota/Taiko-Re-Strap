@@ -157,7 +157,7 @@ namespace TJAPlayer3
 
             #region 3_選曲画面
             SongSelect_Background = TxC(SONGSELECT + @"Background.png");
-            SongSelect_Header = TxC(SONGSELECT + @"Header.png");
+            SongSelect_Other = TxC(SONGSELECT + @"Other.png");
             SongSelect_HighScore = TxC(SONGSELECT + @"High_Score.png");
             SongSelect_Auto = TxC(SONGSELECT + @"Auto.png");
             SongSelect_Level = TxC(SONGSELECT + @"Level.png");
@@ -853,11 +853,11 @@ namespace TJAPlayer3
             for (int i = 0; i < 2; i++)
                 Result_Mountain[i] = TxC(RESULT + @"Background_Mountain_" + i.ToString() + ".png");
 
-            for (int i = 0; i < Result_Donchan_Normal.Length; i++)
-                Result_Donchan_Normal[i] = TxC(RESULT + @"Result_Donchan_Normal\" + i.ToString() + ".png");
+            //for (int i = 0; i < Result_Donchan_Normal.Length; i++)
+            //    Result_Donchan_Normal[i] = TxC(RESULT + @"Result_Donchan_Normal\" + i.ToString() + ".png");
 
-            for (int i = 0; i < Result_Donchan_Clear.Length; i++)
-                Result_Donchan_Clear[i] = TxC(RESULT + @"Result_Donchan_Clear\" + i.ToString() + ".png");
+            //for (int i = 0; i < Result_Donchan_Clear.Length; i++)
+            //    Result_Donchan_Clear[i] = TxC(RESULT + @"Result_Donchan_Clear\" + i.ToString() + ".png");
             #endregion
 
             #region 7_終了画面
@@ -1028,7 +1028,7 @@ namespace TJAPlayer3
         #region 3_選曲画面
 
         public CTexture SongSelect_Background,
-            SongSelect_Header,
+            SongSelect_Other,
             SongSelect_HighScore,
             SongSelect_HighScore_Difficult,
             SongSelect_Auto,
@@ -1343,8 +1343,8 @@ namespace TJAPlayer3
         public CTexture[]
             Result_Rainbow = new CTexture[41],
             Result_Background = new CTexture[2],
-            Result_Donchan_Normal = new CTexture[30],
-            Result_Donchan_Clear = new CTexture[38],
+            //Result_Donchan_Normal = new CTexture[30],
+            //Result_Donchan_Clear = new CTexture[38],
             Result_Mountain = new CTexture[2];
         #endregion
 

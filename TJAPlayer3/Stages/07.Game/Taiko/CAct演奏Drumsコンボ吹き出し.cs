@@ -179,11 +179,11 @@ namespace TJAPlayer3
 						if(TJAPlayer3.Tx.Balloon_Number_Combo != null )
 						{
                             if (int.Parse(str) >= 1000)
-                                TJAPlayer3.Tx.Balloon_Number_Combo.vc拡大縮小倍率.X = 0.7f;
+                                TJAPlayer3.Tx.Balloon_Number_Combo.vc拡大縮小倍率.X = 0.77f;
                             else
                                 TJAPlayer3.Tx.Balloon_Number_Combo.vc拡大縮小倍率.X = 1.0f;
 
-                            TJAPlayer3.Tx.Balloon_Number_Combo.t2D描画( TJAPlayer3.app.Device, x, y, rectangle );
+                            TJAPlayer3.Tx.Balloon_Number_Combo?.t2D描画( TJAPlayer3.app.Device, x, y, rectangle );
 						}
 						break;
 					}
