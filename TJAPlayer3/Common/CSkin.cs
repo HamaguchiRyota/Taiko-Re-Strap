@@ -2735,13 +2735,13 @@ namespace TJAPlayer3
 
         #endregion
         #region Score
-        public int[] Game_Score_X = new int[] { 29, 29, 0, 0 };
+        public int[] Game_Score_X = new int[] { 33, 33, 0, 0 };
         public int[] Game_Score_Y = new int[] { 227, 530, 0, 0 };
-        public int[] Game_Score_Add_X = new int[] { 29, 29, 0, 0 };
+        public int[] Game_Score_Add_X = new int[] { 33, 33, 0, 0 };
         public int[] Game_Score_Add_Y = new int[] { 187, 569, 0, 0 };
         public int[] Game_Score_AddBonus_X = new int[] { 20, 20, 0, 0 };
         public int[] Game_Score_AddBonus_Y = new int[] { 136, 626, 0, 0 };
-        public int Game_Score_Padding = 21;
+        public int Game_Score_Padding = 20;
         public int[] Game_Score_Size = new int[] { 26, 34 };
         #endregion
         #region Taiko

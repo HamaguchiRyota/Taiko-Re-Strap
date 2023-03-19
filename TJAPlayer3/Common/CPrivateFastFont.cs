@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Diagnostics;
-
 namespace TJAPlayer3
 {
 	/// <summary>
@@ -337,18 +336,21 @@ namespace TJAPlayer3
 					//Debug.WriteLine( "Disposing CPrivateFastFont()" );
 					#region [ キャッシュしている画像を破棄する ]
 					foreach (FontCache bc in listFontCache)
-
 					{
-						if (bc.bmp != null)
-						{
-							bc.bmp.Dispose();
-						}
+						bc.bmp?.Dispose();
 					}
 					#endregion
 					listFontCache.Clear();
 					listFontCache = null;
 				}
-				this.bDispose完了済み_CPrivateFastFont = true;
+
+                if (this._font != null)
+                {
+                    this._font.Dispose();
+                    this._font = null;
+                }
+
+                this.bDispose完了済み_CPrivateFastFont = true;
 			}
 			base.Dispose();
 		}
