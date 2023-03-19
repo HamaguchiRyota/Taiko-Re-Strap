@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7swe6SF02jbOiZ3kwFJjxPB3GlsOvgjePw7axW35G5isCQClp9NoByfo0nqVSyMMjAm2GTb/sfgTQr+h0/Ggeg==",
+  "dgSpecHash": "ILi6W5dYh/YdXAixvw1iwYHN0qGuLLMVWlq1OfJDOqqW1ItFzb34+br6NpiWKQRWHxNNFjp7GBCu9OnYOPpAMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
   "expectedPackageFiles": [
@@ -10,7 +10,8 @@
     "C:\\Users\\hama\\.nuget\\packages\\sharpdx.direct3d9\\4.2.0\\sharpdx.direct3d9.4.2.0.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\sharpdx.directinput\\4.2.0\\sharpdx.directinput.4.2.0.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\sharpdx.directsound\\4.2.0\\sharpdx.directsound.4.2.0.nupkg.sha512",
-    "C:\\Users\\hama\\.nuget\\packages\\slimdx\\4.0.13.44\\slimdx.4.0.13.44.nupkg.sha512"
+    "C:\\Users\\hama\\.nuget\\packages\\sharpdx.dxgi\\4.2.0\\sharpdx.dxgi.4.2.0.nupkg.sha512",
+    "C:\\Users\\hama\\.nuget\\packages\\sharpdx.mathematics\\4.2.0\\sharpdx.mathematics.4.2.0.nupkg.sha512"
   ],
   "logs": []
 }

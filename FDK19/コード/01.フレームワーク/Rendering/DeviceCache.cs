@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Drawing;
 using SlimDX;
 using SlimDX.Direct3D9;
@@ -198,3 +199,4 @@ namespace SampleFramework
         public Capabilities Capabilities => _device.Capabilities;
     }
 }
+*/

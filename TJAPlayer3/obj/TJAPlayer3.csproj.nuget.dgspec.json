@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[4.2.0, )"
             },
+            "SharpDX.DXGI": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "SharpDX.Direct3D9": {
               "target": "Package",
               "version": "[4.2.0, )"
@@ -58,9 +62,9 @@
               "target": "Package",
               "version": "[4.2.0, )"
             },
-            "SlimDX": {
+            "SharpDX.Mathematics": {
               "target": "Package",
-              "version": "[4.0.13.44, )"
+              "version": "[4.2.0, )"
             }
           }
         }
@@ -127,6 +131,10 @@
               "target": "Package",
               "version": "[4.2.0, )"
             },
+            "SharpDX.DXGI": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
             "SharpDX.Direct3D9": {
               "target": "Package",
               "version": "[4.2.0, )"
@@ -136,6 +144,10 @@
               "version": "[4.2.0, )"
             },
             "SharpDX.DirectSound": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "SharpDX.Mathematics": {
               "target": "Package",
               "version": "[4.2.0, )"
             }
