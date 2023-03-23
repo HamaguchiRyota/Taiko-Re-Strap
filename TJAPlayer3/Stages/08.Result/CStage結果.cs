@@ -549,8 +549,7 @@ namespace TJAPlayer3
 			}
 		}
 
-
-		#region [ #24609 リザルト画像をpngで保存する ]		// #24609 2011.3.14 yyagi; to save result screen in case BestRank or HiSkill.
+		#region [ #24609 リザルト画像をpngで保存する ]
 		/// <summary>
 		/// リザルト画像のキャプチャと保存。
 		/// 自動保存モード時は、ランク更新or演奏型スキル更新時に自動保存。

@@ -10,13 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TJAPlayer3</RootNamespace>
     <AssemblyName>Taiko-Re-Strap</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>trs.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\trs.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Fumolat.pfx</AssemblyOriginatorKeyFile>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -24,6 +23,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
+    <LargeAddressAware>true</LargeAddressAware>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -38,7 +38,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <LargeAddressAware>true</LargeAddressAware>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,11 +52,12 @@
     <Optimize>false</Optimize>
     <LangVersion>7.3</LangVersion>
     <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>..\Test\</OutputPath>
     <DefineConstants>TRACE;TEST_ENGLISH_ TEST_Direct3D9Ex_ _WindowedFullscreen</DefineConstants>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -67,6 +67,7 @@
     <LangVersion>7.3</LangVersion>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
@@ -121,6 +122,7 @@
       <DependentUpon>Discord.resx</DependentUpon>
     </Compile>
     <None Include="app.config" />
+    <None Include="Fumolat.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -278,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\dtx.ico" />
+    <None Include="Resources\trs.ico" />
     <Content Include="trs.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -350,19 +353,35 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>move /y "$(TargetDir)FDK.dll" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)FDK.pdb" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)Hnx8.ReadJEnc.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)Newtonsoft.Json.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)SharpDX.Direct3D9.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)SharpDX.DirectInput.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)SharpDX.DirectSound.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)SharpDX.DXGI.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)SharpDX.Mathematics.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)SharpDX.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)Bass.Net.dll" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)DirectShowLib-2005.dll" "$(SolutionDir)Test\dll\"
+
+
 move /y "$(TargetDir)SlimDX.dll" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)CSharpTest.Net.Collections.*" "$(SolutionDir)Test\dll\"
+
+
 copy /y "$(SolutionDir)Readme.txt" "$(SolutionDir)Test\"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="packages\SharpDX.2.6.3\build\SharpDX.targets" Condition="Exists('packages\SharpDX.2.6.3\build\SharpDX.targets')" />

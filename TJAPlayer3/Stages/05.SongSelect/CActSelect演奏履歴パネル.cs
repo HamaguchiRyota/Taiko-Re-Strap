@@ -9,7 +9,6 @@ using FDK;
 
 using Rectangle = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -102,13 +101,10 @@ namespace TJAPlayer3
 			}
 		}
 
-
 		// CActivity 実装
 
 		public override void On活性化()
 		{
-			n本体X = 810;
-			n本体Y = 558;
 			ft表示用フォント = new Font("Arial", 30f, FontStyle.Bold, GraphicsUnit.Pixel);
 			base.On活性化();
 		}
@@ -129,9 +125,6 @@ namespace TJAPlayer3
 				t選択曲が変更された();
 				base.OnManagedリソースの作成();
 			}
-            this.ctDiff_fe = new CCounter(0, 100, 60, TJAPlayer3.Timer);
-
-
         }
 		public override void OnManagedリソースの解放()
 		{
@@ -166,7 +159,6 @@ namespace TJAPlayer3
                         //裏鬼
                         t小文字表示(x + 5, y, string.Format("{0,7:#######0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[4].ToString()));
                         TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(164, 0, TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Width / 5, TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Height));
-
                     }
                     else
                     {
@@ -186,17 +178,9 @@ namespace TJAPlayer3
 		#region [ private ]
 		//-----------------
 		private CCounter ct登場アニメ用;
-		private readonly CCounter ctスコアボード登場アニメ;
 		private Font ft表示用フォント;
-		private int n本体X;
-		private int n本体Y;
-		//private CTexture txパネル本体;
 		private CTexture tx文字列パネル;
-        //      private CTexture[] txスコアボード = new CTexture[4];
-        //      private CTexture tx文字;
         //-----------------
-
-        private CCounter ctDiff_fe;
 
         [StructLayout(LayoutKind.Sequential)]
 		
@@ -235,7 +219,6 @@ namespace TJAPlayer3
 		{
 			this.ct登場アニメ用 = new CCounter(0, 3000, 1, TJAPlayer3.Timer);
 		}
-
 
 		#endregion
 	}

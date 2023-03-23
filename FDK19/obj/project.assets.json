@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.8.1": {
+    ".NETFramework,Version=v4.8": {
       "ReadJEnc/1.3.1.2": {
         "type": "package",
         "compile": {
@@ -109,7 +109,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8.1/win": {
+    ".NETFramework,Version=v4.8/win": {
       "ReadJEnc/1.3.1.2": {
         "type": "package",
         "compile": {
@@ -217,7 +217,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8.1/win-x64": {
+    ".NETFramework,Version=v4.8/win-x64": {
       "ReadJEnc/1.3.1.2": {
         "type": "package",
         "compile": {
@@ -325,7 +325,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.8.1/win-x86": {
+    ".NETFramework,Version=v4.8/win-x86": {
       "ReadJEnc/1.3.1.2": {
         "type": "package",
         "compile": {
@@ -602,7 +602,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.8.1": [
+    ".NETFramework,Version=v4.8": [
       "ReadJEnc >= 1.3.1.2",
       "SharpDX >= 4.2.0",
       "SharpDX.DXGI >= 4.2.0",
@@ -613,42 +613,37 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hama\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Hamac\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+      "projectUniqueName": "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
       "projectName": "FDK",
-      "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
-      "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\obj\\",
+      "projectPath": "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+      "packagesPath": "C:\\Users\\Hamac\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\hama\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Hamac\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net481"
+        "net48"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net481": {
+        "net48": {
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "net481": {
+      "net48": {
         "dependencies": {
           "ReadJEnc": {
             "target": "Package",

@@ -560,16 +560,20 @@ namespace TJAPlayer3
 		}
 		public override void On非活性化()
 		{
-			if( this.b活性化してない )
+			if( b活性化してない )
 				return;
 
 		    TJAPlayer3.t安全にDisposeする(ref pfBoxName);
 		    TJAPlayer3.t安全にDisposeする(ref pfMusicName);
 		    TJAPlayer3.t安全にDisposeする(ref pfSubtitle);
+			TJAPlayer3.t安全にDisposeする(ref ft曲リスト用フォント );
 
-			TJAPlayer3.t安全にDisposeする( ref this.ft曲リスト用フォント );
-
-            this.ct三角矢印アニメ = null;
+			ctBarOpen = null;
+			ctBoxOpen = null;
+			ctDifficultyIn = null;
+            ct三角矢印アニメ = null;
+			ctBarFlash = null;
+			ctScoreFrameAnime = null;
 
 			base.On非活性化();
 		}
@@ -588,6 +592,7 @@ namespace TJAPlayer3
 			#region [ Songs not found画像 ]
 			try
 			{
+				/*
 				using( Bitmap image = new Bitmap( 640, 128 ) )
 				using( Graphics graphics = Graphics.FromImage( image ) )
 				{
@@ -605,6 +610,7 @@ namespace TJAPlayer3
 
 					this.txSongNotFound.vc拡大縮小倍率 = new Vector3( 0.5f, 0.5f, 1f );	// 半分のサイズで表示する。
 				}
+				*/
 			}
 			catch( CTextureCreateFailedException e )
 			{
@@ -616,6 +622,7 @@ namespace TJAPlayer3
 			#region [ "曲データを検索しています"画像 ]
 			try
 			{
+				/*
 				using ( Bitmap image = new Bitmap( 640, 96 ) )
 				using ( Graphics graphics = Graphics.FromImage( image ) )
 				{
@@ -630,6 +637,7 @@ namespace TJAPlayer3
 
 					this.txEnumeratingSongs.vc拡大縮小倍率 = new Vector3( 0.5f, 0.5f, 1f );	// 半分のサイズで表示する。
 				}
+				*/
 			}
 			catch ( CTextureCreateFailedException e )
 			{
@@ -2171,7 +2179,7 @@ namespace TJAPlayer3
 	    }
 
         //数字フォント
-        private CTexture txレベル数字フォント;
+        //private CTexture txレベル数字フォント;
         [StructLayout( LayoutKind.Sequential )]
         private struct STレベル数字
         {

@@ -1085,7 +1085,7 @@ namespace TJAPlayer3
 
         #region[Position]
         public Eレーンタイプ eLaneType;
-        public Eミラー eMirror;
+        //public Eミラー eMirror;
 
         #endregion
         #region[System]
@@ -2726,7 +2726,7 @@ namespace TJAPlayer3
 			Temp,
 		}
 
-		private bool _bDrums有効;
+		private readonly bool _bDrums有効;
 		//private bool _bGuitar有効;
 		private bool bConfigIniが存在している;
 		private string ConfigIniファイル名;
