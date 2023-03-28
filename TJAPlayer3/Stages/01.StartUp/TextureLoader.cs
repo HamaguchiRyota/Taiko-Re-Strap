@@ -1,5 +1,7 @@
 using FDK;
 using System.Collections.Generic;
+using Un4seen.Bass.AddOn.Vst;
+
 namespace TJAPlayer3
 {
     class TextureLoader
@@ -299,6 +301,7 @@ namespace TJAPlayer3
             Judge = TxC(GAME + @"Judge.png");
             ChipEffect = TxC(GAME + @"ChipEffect.png");
             ScoreRank = TxC(GAME + @"ScoreRank.png");
+            NowStages = TxC(GAME + @"NowStages");
 
             Judge_Meter = TxC(GAME + @"Judge_Meter.png");
             Bar = TxC(GAME + @"Bar.png");
@@ -568,6 +571,8 @@ namespace TJAPlayer3
             Taiko_Don_Right = TxC(GAME + TAIKO + @"Taiko_M.png");
             Taiko_Ka_Left = TxC(GAME + TAIKO + @"Taiko_M.png");
             Taiko_Ka_Right = TxC(GAME + TAIKO + @"Taiko_M.png");
+            STP = TxC(GAME + TAIKO + @"SectionTime_Panel.png");
+            STBF = TxC(GAME + TAIKO + @"SectionTime_Bar_Finish.png");
 
             Taiko_LevelUp = TxC(GAME + TAIKO + @"Level.png");
             Taiko_LevelDown = TxC(GAME + TAIKO + @"Level.png");
@@ -1114,7 +1119,8 @@ namespace TJAPlayer3
             Notes_Arm,
             ChipEffect,
             ScoreRank,
-            Judge;
+            Judge,
+            NowStages;
         public CTexture Bar,
             Judge_Meter,
             Bar_Branch;
@@ -1192,6 +1198,8 @@ namespace TJAPlayer3
             Taiko_Ka_Right,
             Taiko_LevelUp,
             Taiko_LevelDown,
+            STP,
+            STBF,
             Taiko_Combo_Effect,
             Taiko_Combo_Text;
         public CTexture[] Couse_Symbol,// コースシンボル

@@ -2615,8 +2615,21 @@ namespace TJAPlayer3
         public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームミュージック", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲"};
         public int[] SongSelect_NamePlate_X = new int[] { 37, 1020 };
         public int[] SongSelect_NamePlate_Y = new int[] { 612, 612 };
-        public int[] SongSelect_Auto_X = new int[] { 76, 1019 };
-        public int[] SongSelect_Auto_Y = new int[] { 640, 642 };
+        public int[] SongSelect_Auto_X = new int[] { 37, 1019 };
+        public int[] SongSelect_Auto_Y = new int[] { 640, 640 };
+
+        public int[] SongSelect_Frame_Score_X = new int[] { 400, 522, 644, 766 };
+        public int[] SongSelect_Frame_Score_Y = new int[] { 228, 228, 228, 228 };
+
+        public int[] SongSelect_Level_Number_X = new int[] { 485, 607, 729, 851 };
+        public int[] SongSelect_Level_Number_Y = new int[] { 400, 400, 400, 400 };
+
+        public int[] SongSelect_Level_X = new int[] { 485, 607, 729, 851 };
+        public int[] SongSelect_Level_Y = new int[] { 400, 400, 400, 400 };
+        public int[] SongSelect_Level_Move = new int[] { 0, -17 };
+
+        public int[] SongSelect_Level_Number_Interval = new int[] { 11, 0 };
+
         public Color SongSelect_ForeColor_JPOP = ColorTranslator.FromHtml("#FFFFFF");
         public Color SongSelect_ForeColor_Anime = ColorTranslator.FromHtml("#FFFFFF");
         public Color SongSelect_ForeColor_VOCALOID = ColorTranslator.FromHtml("#FFFFFF");

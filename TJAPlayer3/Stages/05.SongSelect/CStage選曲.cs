@@ -853,7 +853,7 @@ namespace TJAPlayer3
         public CActSortSongs actSortSongs;
         private CActSelectQuickConfig actQuickConfig;
 
-        private const int MaxSong = 3;
+        public int MaxSong = 3;
         public int NowSong = 1;
 
         private CCounter ctDonchan_Normal;
@@ -872,7 +872,7 @@ namespace TJAPlayer3
         private readonly CCounter ctDiffSelect移動待ち;
 
         private STNumber[] stTimer = new STNumber[10];
-        private STNumber[] stSongNumber = new STNumber[10];
+        public STNumber[] stSongNumber = new STNumber[10];
         private STNumber[] stBoardNumber = new STNumber[10];
 
         public struct STNumber
@@ -906,7 +906,7 @@ namespace TJAPlayer3
         }
 
          public void tSongNumberDraw(int x, int y, string str)
-        {
+         {
             for (int j = 0; j < str.Length; j++)
             {
                 for (int i = 0; i < 10; i++)
@@ -918,7 +918,7 @@ namespace TJAPlayer3
                     }
                 }
             }
-        }
+         }
 
         private void tTimerDraw(string str)
         {

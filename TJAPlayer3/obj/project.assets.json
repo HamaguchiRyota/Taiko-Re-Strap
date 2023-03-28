@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.8": {
+      "CSharpTest.Net.Collections/14.906.1403.1082": {
+        "type": "package",
+        "compile": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "LargeAddressAware/1.0.6": {
         "type": "package",
         "build": {
@@ -31,23 +44,6 @@
         "runtime": {
           "lib/net45/SharpDX.dll": {
             "related": ".pdb"
-          }
-        }
-      },
-      "SharpDX.Direct3D11/4.2.0": {
-        "type": "package",
-        "dependencies": {
-          "SharpDX": "4.2.0",
-          "SharpDX.DXGI": "4.2.0"
-        },
-        "compile": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
           }
         }
       },
@@ -152,6 +148,19 @@
       }
     },
     ".NETFramework,Version=v4.8/win": {
+      "CSharpTest.Net.Collections/14.906.1403.1082": {
+        "type": "package",
+        "compile": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "LargeAddressAware/1.0.6": {
         "type": "package",
         "build": {
@@ -181,23 +190,6 @@
         "runtime": {
           "lib/net45/SharpDX.dll": {
             "related": ".pdb"
-          }
-        }
-      },
-      "SharpDX.Direct3D11/4.2.0": {
-        "type": "package",
-        "dependencies": {
-          "SharpDX": "4.2.0",
-          "SharpDX.DXGI": "4.2.0"
-        },
-        "compile": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
           }
         }
       },
@@ -302,6 +294,19 @@
       }
     },
     ".NETFramework,Version=v4.8/win-x64": {
+      "CSharpTest.Net.Collections/14.906.1403.1082": {
+        "type": "package",
+        "compile": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "LargeAddressAware/1.0.6": {
         "type": "package",
         "build": {
@@ -331,23 +336,6 @@
         "runtime": {
           "lib/net45/SharpDX.dll": {
             "related": ".pdb"
-          }
-        }
-      },
-      "SharpDX.Direct3D11/4.2.0": {
-        "type": "package",
-        "dependencies": {
-          "SharpDX": "4.2.0",
-          "SharpDX.DXGI": "4.2.0"
-        },
-        "compile": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
           }
         }
       },
@@ -452,6 +440,19 @@
       }
     },
     ".NETFramework,Version=v4.8/win-x86": {
+      "CSharpTest.Net.Collections/14.906.1403.1082": {
+        "type": "package",
+        "compile": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net40/CSharpTest.Net.Collections.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "LargeAddressAware/1.0.6": {
         "type": "package",
         "build": {
@@ -481,23 +482,6 @@
         "runtime": {
           "lib/net45/SharpDX.dll": {
             "related": ".pdb"
-          }
-        }
-      },
-      "SharpDX.Direct3D11/4.2.0": {
-        "type": "package",
-        "dependencies": {
-          "SharpDX": "4.2.0",
-          "SharpDX.DXGI": "4.2.0"
-        },
-        "compile": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/SharpDX.Direct3D11.dll": {
-            "related": ".pdb;.xml"
           }
         }
       },
@@ -603,6 +587,21 @@
     }
   },
   "libraries": {
+    "CSharpTest.Net.Collections/14.906.1403.1082": {
+      "sha512": "31Pu0wcHG2c814AUVPSzyL/ijcfyvu4S524+uxOhx2d1dRiIJ9eMLLvRWUhhP7F0Q17cvQpnGnZk8+4DhdJPgg==",
+      "type": "package",
+      "path": "csharptest.net.collections/14.906.1403.1082",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "csharptest.net.collections.14.906.1403.1082.nupkg.sha512",
+        "csharptest.net.collections.nuspec",
+        "lib/net20/CSharpTest.Net.Collections.XML",
+        "lib/net20/CSharpTest.Net.Collections.dll",
+        "lib/net40/CSharpTest.Net.Collections.XML",
+        "lib/net40/CSharpTest.Net.Collections.dll"
+      ]
+    },
     "LargeAddressAware/1.0.6": {
       "sha512": "gepvcB1oO0Y8w9fWQRZ81+mgmvxn00Q5IBj2bHAh5s8Zi9z+B+GakdNvM/xlfYabdY84ZCb2kh9MDT44OoW7nQ==",
       "type": "package",
@@ -671,30 +670,6 @@
         "lib/uap10.0/SharpDX.pri",
         "sharpdx.4.2.0.nupkg.sha512",
         "sharpdx.nuspec"
-      ]
-    },
-    "SharpDX.Direct3D11/4.2.0": {
-      "sha512": "oTm/iT5X/IIuJ8kNYP+DTC/MhBhqtRF5dbgPPFgLBdQv0BKzNTzXQQXd7SveBFjQg6hXEAJ2jGCAzNYvGFc9LA==",
-      "type": "package",
-      "path": "sharpdx.direct3d11/4.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net40/SharpDX.Direct3D11.dll",
-        "lib/net40/SharpDX.Direct3D11.pdb",
-        "lib/net40/SharpDX.Direct3D11.xml",
-        "lib/net45/SharpDX.Direct3D11.dll",
-        "lib/net45/SharpDX.Direct3D11.pdb",
-        "lib/net45/SharpDX.Direct3D11.xml",
-        "lib/netstandard1.1/SharpDX.Direct3D11.dll",
-        "lib/netstandard1.1/SharpDX.Direct3D11.pdb",
-        "lib/netstandard1.1/SharpDX.Direct3D11.xml",
-        "lib/uap10.0/SharpDX.Direct3D11.dll",
-        "lib/uap10.0/SharpDX.Direct3D11.pdb",
-        "lib/uap10.0/SharpDX.Direct3D11.pri",
-        "lib/uap10.0/SharpDX.Direct3D11.xml",
-        "sharpdx.direct3d11.4.2.0.nupkg.sha512",
-        "sharpdx.direct3d11.nuspec"
       ]
     },
     "SharpDX.Direct3D9/4.2.0": {
@@ -813,12 +788,12 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
+      "CSharpTest.Net.Collections >= 14.906.1403.1082",
       "FDK >= 1.0.0",
       "LargeAddressAware >= 1.0.6",
       "ReadJEnc >= 1.3.1.2",
       "SharpDX >= 4.2.0",
       "SharpDX.DXGI >= 4.2.0",
-      "SharpDX.Direct3D11 >= 4.2.0",
       "SharpDX.Direct3D9 >= 4.2.0",
       "SharpDX.DirectInput >= 4.2.0",
       "SharpDX.DirectSound >= 4.2.0",
@@ -832,11 +807,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj",
+      "projectUniqueName": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
       "projectName": "Taiko-Re-Strap",
-      "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj",
+      "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
       "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\obj\\",
+      "outputPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -857,8 +832,8 @@
       "frameworks": {
         "net48": {
           "projectReferences": {
-            "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj": {
-              "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj"
+            "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
+              "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj"
             }
           }
         }
@@ -867,6 +842,10 @@
     "frameworks": {
       "net48": {
         "dependencies": {
+          "CSharpTest.Net.Collections": {
+            "target": "Package",
+            "version": "[14.906.1403.1082, )"
+          },
           "LargeAddressAware": {
             "target": "Package",
             "version": "[1.0.6, )"
@@ -880,10 +859,6 @@
             "version": "[4.2.0, )"
           },
           "SharpDX.DXGI": {
-            "target": "Package",
-            "version": "[4.2.0, )"
-          },
-          "SharpDX.Direct3D11": {
             "target": "Package",
             "version": "[4.2.0, )"
           },

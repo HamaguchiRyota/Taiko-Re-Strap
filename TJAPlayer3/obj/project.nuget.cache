@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "GtT6ACkpEVPhDuQk/V+nrP4TiQVU/OEI+56mX6SS9982/0Dq+jSx0s/J3WT8O4Oh+uFn9XkY4OywIiJzNTL/6A==",
+  "dgSpecHash": "7GYkSrPsihLcBY0jBXinN7mCtyiTYC0LXJsqBBxJQZeiIRikadtC3UD2kGwEwBVmAP8yvP0VfYeq1RK1fjCPyw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj",
+  "projectFilePath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hama\\.nuget\\packages\\csharptest.net.collections\\14.906.1403.1082\\csharptest.net.collections.14.906.1403.1082.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\largeaddressaware\\1.0.6\\largeaddressaware.1.0.6.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\readjenc\\1.3.1.2\\readjenc.1.3.1.2.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\sharpdx\\4.2.0\\sharpdx.4.2.0.nupkg.sha512",
-    "C:\\Users\\hama\\.nuget\\packages\\sharpdx.direct3d11\\4.2.0\\sharpdx.direct3d11.4.2.0.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\sharpdx.direct3d9\\4.2.0\\sharpdx.direct3d9.4.2.0.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\sharpdx.directinput\\4.2.0\\sharpdx.directinput.4.2.0.nupkg.sha512",
     "C:\\Users\\hama\\.nuget\\packages\\sharpdx.directsound\\4.2.0\\sharpdx.directsound.4.2.0.nupkg.sha512",

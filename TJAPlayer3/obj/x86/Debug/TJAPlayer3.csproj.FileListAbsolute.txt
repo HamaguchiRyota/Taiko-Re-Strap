@@ -15,3 +15,9 @@ C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.
 C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.Properties.Resources.resources
 C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.GenerateResource.cache
 C:\Users\hama\Desktop\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.CoreCompileInputs.cache
+C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.AssemblyReference.cache
+C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.SuggestedBindingRedirects.cache
+C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.Properties.Discord.resources
+C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.Properties.Resources.resources
+C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.GenerateResource.cache
+C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Debug\TJAPlayer3.csproj.CoreCompileInputs.cache

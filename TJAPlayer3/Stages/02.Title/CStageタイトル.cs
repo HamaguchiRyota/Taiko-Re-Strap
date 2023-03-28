@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using FDK;
+//using SharpDX;
 
 namespace TJAPlayer3
 {

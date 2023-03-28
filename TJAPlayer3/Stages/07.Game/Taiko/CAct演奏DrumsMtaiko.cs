@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
 using System.Runtime.InteropServices;
 using FDK;
 using SharpDX;
-
 using Rectangle = System.Drawing.Rectangle;
 
 namespace TJAPlayer3
@@ -14,7 +10,6 @@ namespace TJAPlayer3
     {
         /// <summary>
         /// mtaiko部分を描画するクラス。左側だけ。
-        /// 
         /// </summary>
         public CAct演奏DrumsMtaiko()
         {
@@ -46,7 +41,7 @@ namespace TJAPlayer3
             {
                 this.ctレベルアップダウン[ i ] = new CCounter();
             }
-
+            ct点滅 = new CCounter(0, 500, 1, TJAPlayer3.Timer);
 
             base.OnManagedリソースの作成();
         }
@@ -83,23 +78,23 @@ namespace TJAPlayer3
 				this.nフラッシュ制御タイマ += 20;
 		    }
 
-
-            this.nHS = TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums < 8 ? TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums : 7;
+            //this.nHS = TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums < 8 ? TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums : 7;
 
             if(TJAPlayer3.stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan)
             {
-                if (TJAPlayer3.Tx.Taiko_Background[2] != null)
-                    TJAPlayer3.Tx.Taiko_Background[2].t2D描画(TJAPlayer3.app.Device, 0, 184);
+                TJAPlayer3.Tx.Taiko_Background[2]?.t2D描画(TJAPlayer3.app.Device, 0, 184);
             }
             else
             {
-                if (TJAPlayer3.Tx.Taiko_Background[0] != null)
-                    TJAPlayer3.Tx.Taiko_Background[0].t2D描画(TJAPlayer3.app.Device, 0, 184);
+                TJAPlayer3.Tx.Taiko_Background[0]?.t2D描画(TJAPlayer3.app.Device, 0, 184);
+                ct点滅.t進行Loop();
+                TJAPlayer3.Tx.STP?.t2D描画(TJAPlayer3.app.Device, 202, 178);
+                TJAPlayer3.Tx.STBF?.t2D描画(TJAPlayer3.app.Device, 205, 193);
+                TJAPlayer3.Tx.STBF.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * ct点滅.n現在の値 * 2 / 500.0)));//176.0 + 80.0
 
                 if (TJAPlayer3.stage演奏ドラム画面.bDoublePlay)
                 {
-                    if (TJAPlayer3.Tx.Taiko_Background[1] != null)
-                        TJAPlayer3.Tx.Taiko_Background[1].t2D描画(TJAPlayer3.app.Device, 0, 360);
+                    TJAPlayer3.Tx.Taiko_Background[1]?.t2D描画(TJAPlayer3.app.Device, 0, 360);
                 }
             }
             
@@ -122,7 +117,6 @@ namespace TJAPlayer3
                 TJAPlayer3.Tx.Taiko_Don_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 266, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Height / 5));
                 TJAPlayer3.Tx.Taiko_Ka_Left.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 399, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Height / 5));
                 TJAPlayer3.Tx.Taiko_Ka_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 532, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Height / 5));
-
             }
             //2P
             if ( TJAPlayer3.Tx.Taiko_Don_Left != null && TJAPlayer3.Tx.Taiko_Don_Right != null && TJAPlayer3.Tx.Taiko_Ka_Left != null && TJAPlayer3.Tx.Taiko_Ka_Right != null )
@@ -136,7 +130,6 @@ namespace TJAPlayer3
                 TJAPlayer3.Tx.Taiko_Don_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 266, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Don_Right.szテクスチャサイズ.Height / 5));
                 TJAPlayer3.Tx.Taiko_Ka_Left.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 399, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Left.szテクスチャサイズ.Height / 5));
                 TJAPlayer3.Tx.Taiko_Ka_Right.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 532, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Ka_Right.szテクスチャサイズ.Height / 5));
-
             }
 
             int[] nLVUPY = new int[] { 127, 127, 0, 0 };
@@ -212,27 +205,13 @@ namespace TJAPlayer3
             }
 
             for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
-                {
+            {
                 ModIcons.tDisplayMods(80, 236 + i * 190, i);
-
-                if (TJAPlayer3.Tx.Couse_Symbol[TJAPlayer3.stage選曲.n確定された曲の難易度[i]] != null)
-                {
-                    TJAPlayer3.Tx.Couse_Symbol[TJAPlayer3.stage選曲.n確定された曲の難易度[i]].t2D描画(TJAPlayer3.app.Device,
-                       TJAPlayer3.Skin.Game_CourseSymbol_X[i],
-                       TJAPlayer3.Skin.Game_CourseSymbol_Y[i]
-                       );
-                }
+                TJAPlayer3.Tx.Couse_Symbol[TJAPlayer3.stage選曲.n確定された曲の難易度[i]]?.t2D描画(TJAPlayer3.app.Device,TJAPlayer3.Skin.Game_CourseSymbol_X[i],TJAPlayer3.Skin.Game_CourseSymbol_Y[i]);
 
                 if (TJAPlayer3.ConfigIni.ShinuchiMode)
                 {
-                    if (TJAPlayer3.Tx.Couse_Symbol[(int)Difficulty.Total] != null)
-                    {
-                       TJAPlayer3.Tx.Couse_Symbol[(int)Difficulty.Total].t2D描画(TJAPlayer3.app.Device,
-                                TJAPlayer3.Skin.Game_CourseSymbol_X[i],
-                                TJAPlayer3.Skin.Game_CourseSymbol_Y[i]
-                                );
-                    }
-
+                    TJAPlayer3.Tx.Couse_Symbol[(int)Difficulty.Total]?.t2D描画(TJAPlayer3.app.Device,TJAPlayer3.Skin.Game_CourseSymbol_X[i],TJAPlayer3.Skin.Game_CourseSymbol_Y[i]);
                 }
             }
             
@@ -243,10 +222,7 @@ namespace TJAPlayer3
                 TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.Game_Taiko_NamePlate_X[1], TJAPlayer3.Skin.Game_Taiko_NamePlate_Y[1], 1);
             }
 
-            if (TJAPlayer3.Tx.Taiko_PlayerNumber[0] != null)
-            {
-                TJAPlayer3.Tx.Taiko_PlayerNumber[0].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_PlayerNumber_X[0], TJAPlayer3.Skin.Game_Taiko_PlayerNumber_Y[0]);
-            }
+            TJAPlayer3.Tx.Taiko_PlayerNumber[0]?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_PlayerNumber_X[0], TJAPlayer3.Skin.Game_Taiko_PlayerNumber_Y[0]);
             if (TJAPlayer3.stage演奏ドラム画面.bDoublePlay && TJAPlayer3.Tx.Taiko_PlayerNumber[1] != null)
             {
                 TJAPlayer3.Tx.Taiko_PlayerNumber[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_PlayerNumber_X[1], TJAPlayer3.Skin.Game_Taiko_PlayerNumber_Y[1]);
@@ -336,16 +312,16 @@ namespace TJAPlayer3
         //太鼓
         private STパッド状態[] stパッド状態 = new STパッド状態[ 4 * 4 ];
         private long nフラッシュ制御タイマ;
+        private CCounter ct点滅;
 
         //private CTexture[] txコースシンボル = new CTexture[ 6 ];
-        private string[] strCourseSymbolFileName;
+        //private string[] strCourseSymbolFileName;
 
         //オプション
-        private CTexture txオプションパネル_HS;
-        private CTexture txオプションパネル_RANMIR;
-        private CTexture txオプションパネル_特殊;
-        private int nHS;
-
+        //private CTexture txオプションパネル_HS;
+        //private CTexture txオプションパネル_RANMIR;
+        //private CTexture txオプションパネル_特殊;
+        //private int nHS;
 
         //譜面分岐
         private CCounter[] ctレベルアップダウン;

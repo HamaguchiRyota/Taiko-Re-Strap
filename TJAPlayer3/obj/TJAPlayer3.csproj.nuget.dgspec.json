@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj": {}
+    "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj": {
+    "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj",
+        "projectUniqueName": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
         "projectName": "FDK",
-        "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj",
+        "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
         "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\obj\\",
+        "outputPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -81,14 +81,14 @@
         }
       }
     },
-    "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj": {
+    "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj",
+        "projectUniqueName": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
         "projectName": "Taiko-Re-Strap",
-        "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj",
+        "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
         "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\obj\\",
+        "outputPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -109,8 +109,8 @@
         "frameworks": {
           "net48": {
             "projectReferences": {
-              "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj": {
-                "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj"
+              "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
+                "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj"
               }
             }
           }
@@ -119,6 +119,10 @@
       "frameworks": {
         "net48": {
           "dependencies": {
+            "CSharpTest.Net.Collections": {
+              "target": "Package",
+              "version": "[14.906.1403.1082, )"
+            },
             "LargeAddressAware": {
               "target": "Package",
               "version": "[1.0.6, )"
@@ -132,10 +136,6 @@
               "version": "[4.2.0, )"
             },
             "SharpDX.DXGI": {
-              "target": "Package",
-              "version": "[4.2.0, )"
-            },
-            "SharpDX.Direct3D11": {
               "target": "Package",
               "version": "[4.2.0, )"
             },
