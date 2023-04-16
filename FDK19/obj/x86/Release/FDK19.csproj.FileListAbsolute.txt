@@ -89,7 +89,6 @@ C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\FDK19\bin\x86\Release\Sharp
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\FDK19\bin\x86\Release\SharpDX.DXGI.pdb
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\FDK19\bin\x86\Release\SharpDX.Mathematics.dll
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\FDK19\bin\x86\Release\SharpDX.Mathematics.pdb
-<<<<<<< HEAD
 C:\Users\Hamac\デスクトップ\Taiko-Re-Strap-master\FDK19\bin\x86\Release\FDK.dll
 C:\Users\Hamac\デスクトップ\Taiko-Re-Strap-master\FDK19\bin\x86\Release\FDK.pdb
 C:\Users\Hamac\デスクトップ\Taiko-Re-Strap-master\FDK19\bin\x86\Release\Hnx8.ReadJEnc.dll
@@ -140,5 +139,3 @@ C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK19.csproj
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK19.csproj.CopyComplete
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK.dll
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK.pdb
-=======
->>>>>>> parent of 199c2c7 (修正)

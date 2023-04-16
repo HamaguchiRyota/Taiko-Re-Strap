@@ -10,14 +10,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TJAPlayer3</RootNamespace>
     <AssemblyName>Taiko-Re-Strap</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-<<<<<<< HEAD
     <ApplicationIcon>
     </ApplicationIcon>
-=======
-    <ApplicationIcon>trs.ico</ApplicationIcon>
->>>>>>> parent of 199c2c7 (修正)
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>
@@ -29,6 +25,7 @@
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
+    <LargeAddressAware>true</LargeAddressAware>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -43,7 +40,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <LargeAddressAware>true</LargeAddressAware>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,7 +58,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>Test\</OutputPath>
     <DefineConstants>TRACE;TEST_ENGLISH_ TEST_Direct3D9Ex_ _WindowedFullscreen</DefineConstants>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
@@ -283,10 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\dtx.ico" />
-<<<<<<< HEAD
     <Content Include="Resources\trs.ico" />
-=======
->>>>>>> parent of 199c2c7 (修正)
     <Content Include="trs.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -362,37 +355,32 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>move /y "$(TargetDir)FDK.dll" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)FDK.pdb" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)Hnx8.ReadJEnc.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)Newtonsoft.Json.*" "$(SolutionDir)Test\dll\"
-<<<<<<< HEAD
 
 move /y "$(TargetDir)SharpDX.*" "$(SolutionDir)Test\dll\"
 
-=======
->>>>>>> parent of 199c2c7 (修正)
 move /y "$(TargetDir)SharpDX.Direct3D9.*" "$(SolutionDir)Test\dll\"
-move /y "$(TargetDir)SharpDX.DirectInput.*" "$(SolutionDir)Test\dll\"
-move /y "$(TargetDir)SharpDX.DirectSound.*" "$(SolutionDir)Test\dll\"
-move /y "$(TargetDir)SharpDX.DXGI.*" "$(SolutionDir)Test\dll\"
-move /y "$(TargetDir)SharpDX.Mathematics.*" "$(SolutionDir)Test\dll\"
-<<<<<<< HEAD
 
-=======
-move /y "$(TargetDir)SharpDX.*" "$(SolutionDir)Test\dll\"
->>>>>>> parent of 199c2c7 (修正)
+move /y "$(TargetDir)SharpDX.DirectInput.*" "$(SolutionDir)Test\dll\"
+
+move /y "$(TargetDir)SharpDX.DirectSound.*" "$(SolutionDir)Test\dll\"
+
+move /y "$(TargetDir)SharpDX.DXGI.*" "$(SolutionDir)Test\dll\"
+
+move /y "$(TargetDir)SharpDX.Mathematics.*" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)Bass.Net.dll" "$(SolutionDir)Test\dll\"
+
 move /y "$(TargetDir)DirectShowLib-2005.dll" "$(SolutionDir)Test\dll\"
-<<<<<<< HEAD
 
 move /y "$(TargetDir)CSharpTest.Net.Collections.*" "$(SolutionDir)Test\dll\"
 
 </PostBuildEvent>
-=======
-move /y "$(TargetDir)SlimDX.dll" "$(SolutionDir)Test\dll\"
-move /y "$(TargetDir)CSharpTest.Net.Collections.*" "$(SolutionDir)Test\dll\"
-copy /y "$(SolutionDir)Readme.txt" "$(SolutionDir)Test\"</PostBuildEvent>
->>>>>>> parent of 199c2c7 (修正)
   </PropertyGroup>
   <Import Project="packages\SharpDX.2.6.3\build\SharpDX.targets" Condition="Exists('packages\SharpDX.2.6.3\build\SharpDX.targets')" />
 </Project>
