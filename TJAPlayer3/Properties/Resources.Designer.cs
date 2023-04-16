@@ -73,9 +73,13 @@ namespace TJAPlayer3.Properties {
         /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
+<<<<<<< HEAD
         public static System.Drawing.Icon trs {
+=======
+        internal static System.Drawing.Icon tjap3 {
+>>>>>>> parent of 199c2c7 (修正)
             get {
-                object obj = ResourceManager.GetObject("trs", resourceCulture);
+                object obj = ResourceManager.GetObject("tjap3", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

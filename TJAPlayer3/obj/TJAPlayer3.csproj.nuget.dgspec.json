@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj",
         "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\obj\\",
+=======
+    "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+        "projectName": "FDK",
+        "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+        "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\obj\\",
+>>>>>>> parent of 199c2c7 (修正)
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -23,20 +37,20 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net48"
+          "net481"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net48": {
+          "net481": {
             "projectReferences": {}
           }
         }
       },
       "frameworks": {
-        "net48": {
+        "net481": {
           "dependencies": {
             "ReadJEnc": {
               "target": "Package",
@@ -81,6 +95,7 @@
         }
       }
     },
+<<<<<<< HEAD
     "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -89,6 +104,16 @@
         "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\TJAPlayer3.csproj",
         "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\TJAPlayer3\\obj\\",
+=======
+    "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
+        "projectName": "Taiko-Re-Strap",
+        "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\TJAPlayer3.csproj",
+        "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\TJAPlayer3\\obj\\",
+>>>>>>> parent of 199c2c7 (修正)
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -100,24 +125,29 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net48"
+          "net481"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net48": {
+          "net481": {
             "projectReferences": {
+<<<<<<< HEAD
               "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj": {
                 "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj"
+=======
+              "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
+                "projectPath": "C:\\Users\\hama\\Desktop\\TaikoSim\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj"
+>>>>>>> parent of 199c2c7 (修正)
               }
             }
           }
         }
       },
       "frameworks": {
-        "net48": {
+        "net481": {
           "dependencies": {
             "CSharpTest.Net.Collections": {
               "target": "Package",

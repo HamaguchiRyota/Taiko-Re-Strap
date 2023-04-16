@@ -45,6 +45,7 @@ C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\Test\Taiko-Re-Strap.pdb
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.CopyComplete
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\Taiko-Re-Strap.exe
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\obj\x86\Release\Taiko-Re-Strap.pdb
+<<<<<<< HEAD
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\Test\Taiko-Re-Strap.exe.config
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\Test\Taiko-Re-Strap.exe
 C:\Users\hama\Desktop\TaikoSim\Taiko-Re-Strap-master\TJAPlayer3\Test\Taiko-Re-Strap.pdb
@@ -100,3 +101,5 @@ C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\TJAPlayer3\Test\Newtonsoft.Json.dl
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\TJAPlayer3\Test\FDK.pdb
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\TJAPlayer3\Test\Newtonsoft.Json.xml
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\TJAPlayer3\obj\x86\Release\TJAPlayer3.csproj.CopyComplete
+=======
+>>>>>>> parent of 199c2c7 (修正)

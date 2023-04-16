@@ -121,7 +121,11 @@
   <data name="dtx" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\dtx.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+<<<<<<< HEAD
   <data name="trs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+=======
+  <data name="tjap3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+>>>>>>> parent of 199c2c7 (修正)
     <value>..\trs.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
