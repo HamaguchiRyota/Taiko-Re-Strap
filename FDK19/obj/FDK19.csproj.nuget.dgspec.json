@@ -1,21 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {}
+    "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj": {
+    "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
+        "projectUniqueName": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj",
         "projectName": "FDK",
-        "projectPath": "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\FDK19.csproj",
-        "packagesPath": "C:\\Users\\Hamac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hamac\\デスクトップ\\Taiko-Re-Strap-master\\FDK19\\obj\\",
+        "projectPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\FDK19.csproj",
+        "packagesPath": "C:\\Users\\hama\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hama\\Documents\\GitHub\\Taiko-Re-Strap\\FDK19\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Hamac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
