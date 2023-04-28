@@ -140,7 +140,7 @@ namespace TJAPlayer3
                 }
                 if (!string.IsNullOrEmpty(genreName))
                 {
-                    if (genreName.Equals("ポップス"))
+                    if (genreName.Equals("ポップス") || genreName.Equals("J-POP"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Pops");
                     }
@@ -148,11 +148,11 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Anime");
                     }
-                    else if (genreName.Equals("ゲームミュージック"))
+                    else if (genreName.Equals("ゲームミュージック") || genreName.Equals("ゲーム"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Game");
                     }
-                    else if (genreName.Equals("ナムコオリジナル"))
+                    else if (genreName.Equals("ナムコオリジナル") || genreName.Equals("ナムコ"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Namco");
                     }
@@ -164,7 +164,7 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Variety");
                     }
-                    else if (genreName.Equals("キッズ"))
+                    else if (genreName.Equals("キッズ") || genreName.Equals("どうよう"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Child");
                     }
@@ -172,16 +172,19 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Variety");
                     }
-                    else if (genreName.Equals("ボーカロイド") || genreName.Equals("Vocaloid"))
+                    else if (genreName.Equals("ボーカロイド") || genreName.Equals("Vocaloid") || genreName.Equals("ボカロ"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Vocaloid");
                     }
                     else
                     {
+                        this.txGENRE = TJAPlayer3.Tx.TxCGen("Other");
+                        /*
                         using (var bmpDummy = new Bitmap(1, 1))
                         {
                             this.txGENRE = TJAPlayer3.tテクスチャの生成(bmpDummy, true);
                         }
+                        */
                     }
                 }
 
