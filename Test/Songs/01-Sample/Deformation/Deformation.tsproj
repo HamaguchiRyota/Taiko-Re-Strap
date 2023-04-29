@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectName>Deformation</ProjectName>
+  <Courses>
+    <Course>
+      <CourseName>Oni</CourseName>
+      <Params>
+        <Params>
+          <Parameter>TITLE:</Parameter>
+          <Value>Deformation</Value>
+        </Params>
+        <Params>
+          <Parameter>SUBTITLE:</Parameter>
+          <Value>--煉獄庭園 rengoku-teien.com</Value>
+        </Params>
+        <Params>
+          <Parameter>WAVE:</Parameter>
+          <Value>Deformation.ogg</Value>
+        </Params>
+        <Params>
+          <Parameter>BPM:</Parameter>
+          <Value>129.13</Value>
+        </Params>
+        <Params>
+          <Parameter>OFFSET:</Parameter>
+          <Value>-0.75</Value>
+        </Params>
+        <Params>
+          <Parameter>DEMOSTART:</Parameter>
+          <Value>0.6</Value>
+        </Params>
+        <Params>
+          <Parameter>SCOREMODE:</Parameter>
+          <Value>2</Value>
+        </Params>
+        <Params>
+          <Parameter>GENRE:</Parameter>
+          <Value>バラエティ</Value>
+        </Params>
+        <Params>
+          <Parameter>COURSE:</Parameter>
+          <Value>Oni</Value>
+        </Params>
+        <Params>
+          <Parameter>LEVEL:</Parameter>
+          <Value>8</Value>
+        </Params>
+        <Params>
+          <Parameter>SCOREINIT:</Parameter>
+          <Value>720</Value>
+        </Params>
+        <Params>
+          <Parameter>SCOREDIFF:</Parameter>
+          <Value>180</Value>
+        </Params>
+      </Params>
+      <DocumentText>#START
+1020020020020020,
+1020020020020020,
+1020020020020020,
+1020020020020020, //
+
+1020120120120120,
+1020120120120120,
+1020120120120120,
+1020120011120200, //
+
+1010201100102000,
+1010201110102020,
+1010201100112000,
+1000200022221010, //
+
+1010201100102000,
+1010201110102020,
+1010201111102000,
+1000200022221020, //
+
+1010201110102000,
+1010201110102011,
+1010201101102000,
+1001001010202022, //
+
+1010201110102000,
+1010201111102020,
+1010201101102000,
+1001001102222222, //
+
+1010201110102000,
+1010201110112000,
+1010201212112000,
+1001001102222222, //
+
+1010201110102000,
+1010201110112000,
+1010101010101011,
+1022222222112211, //
+
+#GOGOSTART
+1000201110102011,
+1000201110102012,
+1000201020202010,
+1002001022222020, //
+
+1000201110112022,
+1000201110102012,
+1000201020201010,
+1002001022222020, //
+
+1000201110102011,
+1000201110112022,
+1000201020101010,
+1001001022222020, //
+#GOGOEND
+1020120120120120,
+1020120120120120,
+1120120120120120,
+1020120122122210, //
+
+1020120120120120,
+1020120120120120,
+1120120120120120,
+1020120122122210, //
+
+1020120200000000,
+0000000000000000,
+
+#END</DocumentText>
+    </Course>
+  </Courses>
+  <ProjectFile />
+</Project>
