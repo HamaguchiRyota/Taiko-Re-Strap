@@ -2728,7 +2728,7 @@ namespace TJAPlayer3
         #endregion
         #region PanelFont
         public int Game_MusicName_X = 1265;//1265
-        public int Game_MusicName_Y = 19;
+        public int Game_MusicName_Y = 15;
         public int Game_MusicName_FontSize = 27;
         public ReferencePoint Game_MusicName_ReferencePoint = ReferencePoint.Right;
         public int Game_Genre_X = 1011;
@@ -2748,7 +2748,7 @@ namespace TJAPlayer3
 
         #endregion
         #region Score
-        public int[] Game_Score_X = new int[] { 35, 35, 0, 0 };
+        public int[] Game_Score_X = new int[] { 33, 33, 0, 0 };
         public int[] Game_Score_Y = new int[] { 227, 530, 0, 0 };
         public int[] Game_Score_Add_X = new int[] { 33, 33, 0, 0 };
         public int[] Game_Score_Add_Y = new int[] { 187, 569, 0, 0 };
@@ -2758,7 +2758,7 @@ namespace TJAPlayer3
         public int[] Game_Score_Size = new int[] { 26, 34 };
         #endregion
         #region Taiko
-        public int[] Game_Taiko_NamePlate_X = new int[] { -5, -5 };
+        public int[] Game_Taiko_NamePlate_X = new int[] { -3, -3 };
         public int[] Game_Taiko_NamePlate_Y = new int[] { 297, 371 };
         public int[] Game_Taiko_PlayerNumber_X = new int[] { 4, 4 };
         public int[] Game_Taiko_PlayerNumber_Y = new int[] { 233, 435 };
