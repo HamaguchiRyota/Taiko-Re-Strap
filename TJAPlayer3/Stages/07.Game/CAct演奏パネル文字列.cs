@@ -92,6 +92,7 @@ namespace TJAPlayer3
                         if (txMusicName != null)
                         {
                             this.txMusicName.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txMusicName);
+                            this.txMusicName.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txMusicName);
                         }
 
                         Bitmap bmpDiff;
@@ -239,7 +240,7 @@ namespace TJAPlayer3
         {
             if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
             {
-                this.pfMusicName = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.FontName), TJAPlayer3.Skin.Game_MusicName_FontSize);
+                this.pfMusicName = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.FontName), TJAPlayer3.Skin.Game_MusicName_FontSize - 1);
                 //this.pf縦書きテスト = new CPrivateFastFont( new FontFamily( CDTXMania.ConfigIni.strPrivateFontで使うフォント名 ), 22 );
             }
 
@@ -327,7 +328,7 @@ namespace TJAPlayer3
                     }
 
                     if (txMusicName.szテクスチャサイズ.Width >= 225)
-                        txMusicName.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_MusicName_X - (this.txMusicName.szテクスチャサイズ.Width * txMusicName.vc拡大縮小倍率.X), TJAPlayer3.Skin.Game_MusicName_Y);
+                        txMusicName.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_MusicName_X - (this.txMusicName.szテクスチャサイズ.Width * txMusicName.vc拡大縮小倍率.X), TJAPlayer3.Skin.Game_MusicName_Y + 2);
                     else
                         txMusicName.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_MusicName_X - 108, TJAPlayer3.Skin.Game_MusicName_Y + 40);
                 }

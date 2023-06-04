@@ -87,10 +87,10 @@ namespace TJAPlayer3
             else
             {
                 TJAPlayer3.Tx.Taiko_Background[0]?.t2D描画(TJAPlayer3.app.Device, 0, 184);
-                ct点滅.t進行Loop();
-                TJAPlayer3.Tx.STP?.t2D描画(TJAPlayer3.app.Device, 202, 178);
-                TJAPlayer3.Tx.STBF?.t2D描画(TJAPlayer3.app.Device, 205, 193);
-                TJAPlayer3.Tx.STBF.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * ct点滅.n現在の値 * 2 / 500.0)));//176.0 + 80.0
+                //ct点滅.t進行Loop();
+                //TJAPlayer3.Tx.STP?.t2D描画(TJAPlayer3.app.Device, 202, 178);
+                //TJAPlayer3.Tx.STBF?.t2D描画(TJAPlayer3.app.Device, 205, 193);
+                //TJAPlayer3.Tx.STBF.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * ct点滅.n現在の値 * 2 / 500.0)));//176.0 + 80.0
 
                 if (TJAPlayer3.stage演奏ドラム画面.bDoublePlay)
                 {
