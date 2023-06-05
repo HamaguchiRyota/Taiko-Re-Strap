@@ -132,7 +132,7 @@ namespace TJAPlayer3
                 case (int)EOrder.PlayerCount:
                     TJAPlayer3.ConfigIni.nPlayerCount = (int)GetObj現在値((int) EOrder.PlayerCount );
                     break;
-				case (int) EOrder.More:
+                case (int) EOrder.More:
 					SetAutoParameters();			// 簡易CONFIGメニュー脱出に伴い、簡易CONFIG内のAUTOの設定をConfigIniクラスに反映する
 					this.bGotoDetailConfig = true;
 					this.tDeativatePopupMenu();
@@ -145,9 +145,9 @@ namespace TJAPlayer3
                 default:
                     break;
             }
-		}
+        }
 
-		public override void tCancel()
+        public override void tCancel()
 		{
 			SetAutoParameters();
 			// Autoの設定値保持のロジックを書くこと！
@@ -239,9 +239,9 @@ namespace TJAPlayer3
 		private Font ft表示用フォント;
 		private CTexture tx文字列パネル;
         private CTexture tx説明文1;
-		//-----------------
-		#endregion
-	}
+        //-----------------
+        #endregion
+    }
 
 
 }

@@ -474,7 +474,25 @@ namespace TJAPlayer3
                                 TJAPlayer3.Skin.sound決定音.t再生する();
                             t曲をランダム選択する();
                         }
-                        #endregion 
+                        #endregion
+                        #region [ F9 曲リスト更新 ]
+                        if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.F9))
+                        {
+                            TJAPlayer3.Skin.sound決定音.t再生する();
+
+                            if (TJAPlayer3.EnumSongs.IsEnumerating)
+                            {
+                                // Debug.WriteLine( "バックグラウンドでEnumeratingSongs中だったので、一旦中断します。" );
+                                TJAPlayer3.EnumSongs.Abort();
+                                TJAPlayer3.actEnumSongs.On非活性化();
+                            }
+
+                            TJAPlayer3.EnumSongs.StartEnumFromDisk();
+                            //TJAPlayer3.EnumSongs.ChangeEnumeratePriority(ThreadPriority.Normal);
+                            TJAPlayer3.actEnumSongs.bコマンドでの曲データ取得 = true;
+                            TJAPlayer3.actEnumSongs.On活性化();
+                        }
+                        #endregion
 
                         if (act曲リスト.r現在選択中の曲 != null)
                         {
@@ -845,6 +863,8 @@ namespace TJAPlayer3
         private CActSelectステータスパネル actステータスパネル;
         public CActSelect演奏履歴パネル act演奏履歴パネル;
         public CActSelect曲リスト act曲リスト;
+        public CActSelect曲リスト bBoxClose;
+        //public bool bBoxClose;
         private CActSelectShowCurrentPosition actShowCurrentPosition;
         public CActSelect難易度選択画面 act難易度選択画面;
         public CActPlayOption actPlayOption;
