@@ -141,52 +141,48 @@ namespace TJAPlayer3
 
 		public int n現在のアンカ難易度レベルに最も近い難易度レベルを返す( C曲リストノード song )
 		{
-			// 事前チェック。
+            if (song == null)
+                return n現在のアンカ難易度レベル; // 曲がまったくないよ
 
-			if( song == null )
-				return this.n現在のアンカ難易度レベル;	// 曲がまったくないよ
+            if (song.arスコア[n現在のアンカ難易度レベル] != null)
+                return n現在のアンカ難易度レベル; // 難易度ぴったりの曲があったよ
 
-			if( song.arスコア[ this.n現在のアンカ難易度レベル ] != null )
-				return this.n現在のアンカ難易度レベル;	// 難易度ぴったりの曲があったよ
+            if (song.eノード種別 == C曲リストノード.Eノード種別.BOX || song.eノード種別 == C曲リストノード.Eノード種別.BACKBOX)
+                return 0; // BOX と BACKBOX は関係無いよ
 
-			if( ( song.eノード種別 == C曲リストノード.Eノード種別.BOX ) || ( song.eノード種別 == C曲リストノード.Eノード種別.BACKBOX ) )
-				return 0;								// BOX と BACKBOX は関係無いよ
+            // 現在のアンカレベルから、難易度上向きに検索開始。
+            int n最も近いレベル = this.n現在のアンカ難易度レベル;
 
+            for (int i = 1; i <= (int)Difficulty.Total; i++)
+            {
+                int nextLevel = (n最も近いレベル + i) % (int)Difficulty.Total;
+                if (song.arスコア[nextLevel] != null)
+                {
+                    n最も近いレベル = nextLevel;
+                    break; // 曲があった。
+                }
+            }
 
-			// 現在のアンカレベルから、難易度上向きに検索開始。
+            // 見つかった曲がアンカより下のレベルだった場合、アンカから下向きに検索。
+            if (n最も近いレベル < this.n現在のアンカ難易度レベル)
+            {
+                n最も近いレベル = this.n現在のアンカ難易度レベル;
 
-			int n最も近いレベル = this.n現在のアンカ難易度レベル;
+                for (int i = 1; i <= (int)Difficulty.Total; i++)
+                {
+                    int prevLevel = ((n最も近いレベル - i) + (int)Difficulty.Total) % (int)Difficulty.Total;
+                    if (song.arスコア[prevLevel] != null)
+                    {
+                        n最も近いレベル = prevLevel;
+                        break; // 曲があった。
+                    }
+                }
+            }
 
-			for( int i = 0; i < (int)Difficulty.Total; i++ )
-			{
-				if( song.arスコア[ n最も近いレベル ] != null )
-					break;	// 曲があった。
+            return n最も近いレベル;
 
-				n最も近いレベル = ( n最も近いレベル + 1 ) % (int)Difficulty.Total;	// 曲がなかったので次の難易度レベルへGo。（5以上になったら0に戻る。）
-			}
-
-
-			// 見つかった曲がアンカより下のレベルだった場合……
-			// アンカから下向きに検索すれば、もっとアンカに近い曲があるんじゃね？
-
-			if( n最も近いレベル < this.n現在のアンカ難易度レベル )
-			{
-				// 現在のアンカレベルから、難易度下向きに検索開始。
-
-				n最も近いレベル = this.n現在のアンカ難易度レベル;
-
-				for( int i = 0; i < (int)Difficulty.Total; i++ )
-				{
-					if( song.arスコア[ n最も近いレベル ] != null )
-						break;	// 曲があった。
-
-					n最も近いレベル = ( ( n最も近いレベル - 1 ) + (int)Difficulty.Total) % (int)Difficulty.Total;	// 曲がなかったので次の難易度レベルへGo。（0未満になったら4に戻る。）
-				}
-			}
-
-			return n最も近いレベル;
-		}
-		private List<C曲リストノード> GetSongListWithinMe( C曲リストノード song )
+        }
+        private List<C曲リストノード> GetSongListWithinMe( C曲リストノード song )
 		{
 			if ( song.r親ノード == null )					// root階層のノートだったら
 			{

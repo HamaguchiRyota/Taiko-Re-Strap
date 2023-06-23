@@ -67,31 +67,34 @@ namespace TJAPlayer3
 		}
 		public override int On進行描画()
 		{
-			if( !b活性化してない )
-			{
-				if( ( ctBGMフェードイン用 != null ) && ctBGMフェードイン用.b進行中 )
-				{
-					ctBGMフェードイン用.t進行();
-					TJAPlayer3.Skin.bgm選曲画面.nAutomationLevel_現在のサウンド = ctBGMフェードイン用.n現在の値;
-					if( ctBGMフェードイン用.b終了値に達した )
-					{
-						ctBGMフェードイン用.t停止();
-					}
-				}
-				if( ( ctBGMフェードアウト用 != null ) && ctBGMフェードアウト用.b進行中 )
-				{
-					ctBGMフェードアウト用.t進行();
-					TJAPlayer3.Skin.bgm選曲画面.nAutomationLevel_現在のサウンド = CSound.MaximumAutomationLevel - ctBGMフェードアウト用.n現在の値;
-					if( ctBGMフェードアウト用.b終了値に達した )
-					{
-						ctBGMフェードアウト用.t停止();
-					}
-				}
-				t進行処理_プレビューサウンド();
+            if (!b活性化してない)
+            {
+                if (ctBGMフェードイン用?.b進行中 == true)
+                {
+                    ctBGMフェードイン用.t進行();
+                    TJAPlayer3.Skin.bgm選曲画面.nAutomationLevel_現在のサウンド = ctBGMフェードイン用.n現在の値;
+                    if (ctBGMフェードイン用.b終了値に達した)
+                    {
+                        ctBGMフェードイン用.t停止();
+                    }
+                }
+
+                if (ctBGMフェードアウト用?.b進行中 == true)
+                {
+                    ctBGMフェードアウト用.t進行();
+                    TJAPlayer3.Skin.bgm選曲画面.nAutomationLevel_現在のサウンド = CSound.MaximumAutomationLevel - ctBGMフェードアウト用.n現在の値;
+                    if (ctBGMフェードアウト用.b終了値に達した)
+                    {
+                        ctBGMフェードアウト用.t停止();
+                    }
+                }
+
+                t進行処理_プレビューサウンド();
 
                 if (sound != null)
                 {
                     Cスコア cスコア = TJAPlayer3.stage選曲.r現在選択中のスコア;
+
                     if (long再生位置 == -1)
                     {
                         long再生開始時のシステム時刻 = CSound管理.rc演奏用タイマ.nシステム時刻ms;
@@ -100,13 +103,14 @@ namespace TJAPlayer3
                     }
                     else
                     {
-						long再生位置 = CSound管理.rc演奏用タイマ.nシステム時刻ms - long再生開始時のシステム時刻;
-						if (long再生位置 >= sound.n総演奏時間ms - cスコア.譜面情報.nデモBGMオフセット) //2020.04.18 Mr-Ojii #DEMOSTARTから何度も再生するために追加
-							long再生位置 = -1;
-					}
-				}
-			}
-			return 0;
+                        long再生位置 = CSound管理.rc演奏用タイマ.nシステム時刻ms - long再生開始時のシステム時刻;
+                        if (long再生位置 >= sound.n総演奏時間ms - cスコア.譜面情報.nデモBGMオフセット)
+                            long再生位置 = -1;
+                    }
+                }
+            }
+
+            return 0;
 		}
 
 		// その他

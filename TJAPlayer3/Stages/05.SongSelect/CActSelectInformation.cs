@@ -48,53 +48,54 @@ namespace TJAPlayer3
 		{
 			if( !base.b活性化してない )
 			{
-				if( base.b初めての進行描画 )
-				{
-					base.b初めての進行描画 = false;
-				}
+                if (base.b初めての進行描画)
+                {
+                    base.b初めての進行描画 = false;
+                }
 
-                this.txInfo_Back?.t2D描画( TJAPlayer3.app.Device, 340, 600 );
+                this.txInfo_Back?.t2D描画(TJAPlayer3.app.Device, 340, 600);
 
-				this.ct進行用.t進行Loop();
-                if( this.bFirst )
+                this.ct進行用.t進行Loop();
+                if (this.bFirst)
                 {
                     this.ct進行用.n現在の値 = 300;
                 }
 
                 #region[ 透明度制御 ]
-                if( this.txInfo[ 0 ] != null && this.txInfo[ 1 ] != null )
+                if (this.txInfo[0] != null && this.txInfo[1] != null)
                 {
-                    if( this.ct進行用.n現在の値 < 255 )
+                    int opacity = this.ct進行用.n現在の値;
+
+                    if (opacity < 255)
                     {
-                        this.txInfo[ 0 ].Opacity = this.ct進行用.n現在の値;
-                        this.txInfo[ 1 ].Opacity = 255 - this.ct進行用.n現在の値;
+                        this.txInfo[0].Opacity = opacity;
+                        this.txInfo[1].Opacity = 255 - opacity;
                     }
-                    else if( this.ct進行用.n現在の値 >= 255 && this.ct進行用.n現在の値 < 1245 )
+                    else if (opacity >= 255 && opacity < 1245)
                     {
                         this.bFirst = false;
-                        this.txInfo[ 0 ].Opacity = 255;
-                        this.txInfo[ 1 ].Opacity = 0;
+                        this.txInfo[0].Opacity = 255;
+                        this.txInfo[1].Opacity = 0;
                     }
-                    else if( this.ct進行用.n現在の値 >= 1245 && this.ct進行用.n現在の値 < 1500 )
+                    else if (opacity >= 1245 && opacity < 1500)
                     {
-                        this.txInfo[ 0 ].Opacity = 255 - ( this.ct進行用.n現在の値 - 1245 );
-                        this.txInfo[ 1 ].Opacity = this.ct進行用.n現在の値 - 1245;
+                        this.txInfo[0].Opacity = 255 - (opacity - 1245);
+                        this.txInfo[1].Opacity = opacity - 1245;
                     }
-                    else if( this.ct進行用.n現在の値 >= 1500 && this.ct進行用.n現在の値 <= 3000 )
+                    else if (opacity >= 1500 && opacity <= 3000)
                     {
-                        this.txInfo[ 0 ].Opacity = 0;
-                        this.txInfo[ 1 ].Opacity = 255;
+                        this.txInfo[0].Opacity = 0;
+                        this.txInfo[1].Opacity = 255;
                     }
 
-                    this.txInfo[ 0 ].t2D描画( TJAPlayer3.app.Device, 340, 600 );
-                    this.txInfo[ 1 ].t2D描画( TJAPlayer3.app.Device, 340, 600 );
+                    this.txInfo[0].t2D描画(TJAPlayer3.app.Device, 340, 600);
+                    this.txInfo[1].t2D描画(TJAPlayer3.app.Device, 340, 600);
                 }
 
                 #endregion
 
-
-			}
-			return 0;
+            }
+            return 0;
 		}
 
 
