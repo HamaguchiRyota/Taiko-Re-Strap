@@ -285,11 +285,11 @@ namespace TJAPlayer3
 				TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
 				#region [ キャラクター & ぷち ]
-                //TJAPlayer3.Tx.Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 0.85f;
-                //TJAPlayer3.Tx.Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 0.85f;
+                TJAPlayer3.Tx.Result_Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 1f;
+                TJAPlayer3.Tx.Result_Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 1f;
 				//TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.50f;
                 //TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.50f;
-				//TJAPlayer3.Tx.Chara_Normal?[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
+				TJAPlayer3.Tx.Result_Chara_Normal?[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
 				//TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, 26, 485, new RectangleF(0, 0, 240, 240));
                 #endregion
 

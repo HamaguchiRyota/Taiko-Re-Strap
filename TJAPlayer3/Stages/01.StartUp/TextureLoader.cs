@@ -858,11 +858,11 @@ namespace TJAPlayer3
             for (int i = 0; i < 2; i++)
                 Result_Mountain[i] = TxC(RESULT + @"Background_Mountain_" + i.ToString() + ".png");
 
-            //for (int i = 0; i < Result_Donchan_Normal.Length; i++)
-            //    Result_Donchan_Normal[i] = TxC(RESULT + @"Result_Donchan_Normal\" + i.ToString() + ".png");
+            for (int i = 0; i < Result_Chara_Normal.Length; i++)
+                Result_Chara_Normal[i] = TxC(RESULT + @"Result_Chara_Normal\" + i.ToString() + ".png");
 
-            //for (int i = 0; i < Result_Donchan_Clear.Length; i++)
-            //    Result_Donchan_Clear[i] = TxC(RESULT + @"Result_Donchan_Clear\" + i.ToString() + ".png");
+            for (int i = 0; i < Result_Chara_Clear.Length; i++)
+                Result_Chara_Clear[i] = TxC(RESULT + @"Result_Chara_Clear\" + i.ToString() + ".png");
             #endregion
 
             #region 7_終了画面
@@ -1351,8 +1351,8 @@ namespace TJAPlayer3
         public CTexture[]
             Result_Rainbow = new CTexture[41],
             Result_Background = new CTexture[2],
-            //Result_Donchan_Normal = new CTexture[30],
-            //Result_Donchan_Clear = new CTexture[38],
+            Result_Chara_Normal = new CTexture[30],
+            Result_Chara_Clear = new CTexture[38],
             Result_Mountain = new CTexture[2];
         #endregion
 
