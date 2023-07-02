@@ -107,8 +107,6 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-			n本体X = 810;
-			n本体Y = 558;
 			ft表示用フォント = new Font("Arial", 30f, FontStyle.Bold, GraphicsUnit.Pixel);
 			base.On活性化();
 		}
@@ -129,7 +127,7 @@ namespace TJAPlayer3
 				t選択曲が変更された();
 				base.OnManagedリソースの作成();
 			}
-            this.ctDiff_fe = new CCounter(0, 100, 60, TJAPlayer3.Timer);
+            //this.ctDiff_fe = new CCounter(0, 100, 60, TJAPlayer3.Timer);
 
 
         }
@@ -186,18 +184,9 @@ namespace TJAPlayer3
 		#region [ private ]
 		//-----------------
 		private CCounter ct登場アニメ用;
-		private readonly CCounter ctスコアボード登場アニメ;
 		private Font ft表示用フォント;
-		private int n本体X;
-		private int n本体Y;
-		//private CTexture txパネル本体;
 		private CTexture tx文字列パネル;
-        //      private CTexture[] txスコアボード = new CTexture[4];
-        //      private CTexture tx文字;
-        //-----------------
-
-        private CCounter ctDiff_fe;
-
+        //private CCounter ctDiff_fe;
         [StructLayout(LayoutKind.Sequential)]
 		
 		private struct ST文字位置

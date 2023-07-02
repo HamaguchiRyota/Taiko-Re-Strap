@@ -168,6 +168,7 @@ namespace TJAPlayer3
             }
             //---------------------
             #endregion
+
             #region [ メニュー ]
             //---------------------
             int menuY = 162 - 22;
@@ -182,7 +183,6 @@ namespace TJAPlayer3
             }
             //---------------------
             #endregion
-
 
 
             for (int idx = -13; idx < 14; idx++)//-13 14

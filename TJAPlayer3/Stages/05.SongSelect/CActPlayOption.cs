@@ -43,6 +43,7 @@ namespace TJAPlayer3
             txSpeed[14] = OptionTypeTx("3.5", Color.White, Color.Black);
             txSpeed[15] = OptionTypeTx("4.0", Color.White, Color.Black);
 
+
             #endregion
 
             txSwitch[0] = OptionTypeTx("しない", Color.White, Color.Black);
@@ -78,7 +79,6 @@ namespace TJAPlayer3
 
         public override void On非活性化()
         {
-
             base.On非活性化();
         }
         public override void OnManagedリソースの作成()
@@ -276,19 +276,7 @@ namespace TJAPlayer3
             #region [ Speed ]
 
             int speed = TJAPlayer3.ConfigIni.nScrollSpeed[actual];
-
-            if (speed <= 4)
-                nSpeedCount = 0;
-            else if (speed <= 19)
-                nSpeedCount = speed - 8;
-            else if (speed <= 24)
-                nSpeedCount = 12;
-            else if (speed <= 29)
-                nSpeedCount = 13;
-            else if (speed <= 34)
-                nSpeedCount = 14;
-            else
-                nSpeedCount = 15;
+            nSpeedCount = GetSpeedCount(speed);
 
             #endregion
 
@@ -301,32 +289,7 @@ namespace TJAPlayer3
             #region [ Random ]
 
             var rand_ = TJAPlayer3.ConfigIni.eRandom.Taiko;
-
-            if (rand_ == Eランダムモード.HYPERRANDOM)
-            {
-                nRandom = 2;
-                nAbekobe = 1;
-            }
-            else if (rand_ == Eランダムモード.SUPERRANDOM)
-            {
-                nRandom = 2;
-                nAbekobe = 0;
-            }
-            else if (rand_ == Eランダムモード.RANDOM)
-            {
-                nRandom = 1;
-                nAbekobe = 0;
-            }
-            else if (rand_ == Eランダムモード.MIRROR)
-            {
-                nRandom = 0;
-                nAbekobe = 1;
-            }
-            else if (rand_ == Eランダムモード.OFF)
-            {
-                nRandom = 0;
-                nAbekobe = 0;
-            }
+            (nRandom, nAbekobe) = GetRandomValues(rand_);
 
             #endregion
 
@@ -338,57 +301,26 @@ namespace TJAPlayer3
 
             #region [ GameMode ]
 
-            if (TJAPlayer3.ConfigIni.bTokkunMode == true)
-                nGameMode = 1;
-            else
-                nGameMode = 0;
+            nGameMode = TJAPlayer3.ConfigIni.bTokkunMode ? 1 : 0;
 
             #endregion
 
             #region [ AutoMode ]
 
-            bool _auto = (player == 0)
-                ? TJAPlayer3.ConfigIni.b太鼓パートAutoPlay
-                : TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P;
-
-            if (_auto == true)
-                nAutoMode = 1;
-            else
-                nAutoMode = 0;
+            bool _auto = (player == 0) ? TJAPlayer3.ConfigIni.b太鼓パートAutoPlay : TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P;
+            nAutoMode = _auto ? 1 : 0;
 
             #endregion
-
         }
+
         public void Decision(int player)
         {
             int actual = TJAPlayer3.GetActualPlayer(player);
 
             #region [ Speed ]
 
-            if (nSpeedCount == 0)
-            {
-                TJAPlayer3.ConfigIni.nScrollSpeed[actual] = 4;
-            }
-            else if (nSpeedCount > 0 && nSpeedCount <= 11)
-            {
-                TJAPlayer3.ConfigIni.nScrollSpeed[actual] = nSpeedCount + 8;
-            }
-            else if (nSpeedCount == 12)
-            {
-                TJAPlayer3.ConfigIni.nScrollSpeed[actual] = 24;
-            }
-            else if (nSpeedCount == 13)
-            {
-                TJAPlayer3.ConfigIni.nScrollSpeed[actual] = 29;
-            }
-            else if (nSpeedCount == 14)
-            {
-                TJAPlayer3.ConfigIni.nScrollSpeed[actual] = 34;
-            }
-            else if (nSpeedCount == 15)
-            {
-                TJAPlayer3.ConfigIni.nScrollSpeed[actual] = 39;
-            }
+            int scrollSpeed = GetScrollSpeed(nSpeedCount);
+            TJAPlayer3.ConfigIni.nScrollSpeed[actual] = scrollSpeed;
 
             #endregion
 
@@ -400,30 +332,8 @@ namespace TJAPlayer3
 
             #region [ Random ]
 
-            if (nRandom == 2 && nAbekobe == 1)
-            {
-                TJAPlayer3.ConfigIni.eRandom.Taiko = Eランダムモード.HYPERRANDOM;
-            }
-            else if (nRandom == 2 && nAbekobe == 0)
-            {
-                TJAPlayer3.ConfigIni.eRandom.Taiko = Eランダムモード.SUPERRANDOM;
-            }
-            else if (nRandom == 1 && nAbekobe == 1)
-            {
-                TJAPlayer3.ConfigIni.eRandom.Taiko = Eランダムモード.RANDOM;
-            }
-            else if (nRandom == 1 && nAbekobe == 0)
-            {
-                TJAPlayer3.ConfigIni.eRandom.Taiko = Eランダムモード.RANDOM;
-            }
-            else if (nRandom == 0 && nAbekobe == 1)
-            {
-                TJAPlayer3.ConfigIni.eRandom.Taiko = Eランダムモード.MIRROR;
-            }
-            else if (nRandom == 0 && nAbekobe == 0)
-            {
-                TJAPlayer3.ConfigIni.eRandom.Taiko = Eランダムモード.OFF;
-            }
+            Eランダムモード randomMode = GetRandomMode(nRandom, nAbekobe);
+            TJAPlayer3.ConfigIni.eRandom.Taiko = randomMode;
 
             #endregion
 
@@ -435,36 +345,104 @@ namespace TJAPlayer3
 
             #region [ GameMode ]
 
-            if (nGameMode == 0)
-            {
-                TJAPlayer3.ConfigIni.bTokkunMode = false;
-            }
-            else
-            {
-                TJAPlayer3.ConfigIni.bTokkunMode = true;
-            }
+            TJAPlayer3.ConfigIni.bTokkunMode = (nGameMode == 1);
 
             #endregion
 
             #region [ AutoMode ]
 
-            if (nAutoMode == 1)
-            {
-                if (player == 0)
-                    TJAPlayer3.ConfigIni.b太鼓パートAutoPlay = true;
-                else
-                    TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P = true;
-            }
+            bool autoMode = (nAutoMode == 1);
+            if (player == 0)
+                TJAPlayer3.ConfigIni.b太鼓パートAutoPlay = autoMode;
             else
-            {
-                if (player == 0)
-                    TJAPlayer3.ConfigIni.b太鼓パートAutoPlay = false;
-                else
-                    TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P = false;
-            }
+                TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P = autoMode;
 
             #endregion
         }
+
+        private int GetSpeedCount(int speed)
+        {
+            if (speed <= 4)
+                return 0;
+            else if (speed <= 19)
+                return speed - 8;
+            else if (speed <= 24)
+                return 12;
+            else if (speed <= 29)
+                return 13;
+            else if (speed <= 34)
+                return 14;
+            else
+                return 15;
+        }
+
+        private int GetScrollSpeed(int speedCount)
+        {
+            if (speedCount == 0)
+                return 4;
+            else if (speedCount <= 11)
+                return speedCount + 8;
+            else if (speedCount == 12)
+                return 24;
+            else if (speedCount == 13)
+                return 29;
+            else if (speedCount == 14)
+                return 34;
+            else
+                return 39;
+        }
+
+        private (int, int) GetRandomValues(Eランダムモード randomMode)
+        {
+            int nRandom, nAbekobe;
+
+            switch (randomMode)
+            {
+                case Eランダムモード.HYPERRANDOM:
+                    nRandom = 2;
+                    nAbekobe = 1;
+                    break;
+                case Eランダムモード.SUPERRANDOM:
+                    nRandom = 2;
+                    nAbekobe = 0;
+                    break;
+                case Eランダムモード.RANDOM:
+                    nRandom = 1;
+                    nAbekobe = 0;
+                    break;
+                case Eランダムモード.MIRROR:
+                    nRandom = 0;
+                    nAbekobe = 1;
+                    break;
+                case Eランダムモード.OFF:
+                    nRandom = 0;
+                    nAbekobe = 0;
+                    break;
+                default:
+                    nRandom = 0;
+                    nAbekobe = 0;
+                    break;
+            }
+
+            return (nRandom, nAbekobe);
+        }
+
+        private Eランダムモード GetRandomMode(int nRandom, int nAbekobe)
+        {
+            if (nRandom == 2 && nAbekobe == 1)
+                return Eランダムモード.HYPERRANDOM;
+            else if (nRandom == 2 && nAbekobe == 0)
+                return Eランダムモード.SUPERRANDOM;
+            else if (nRandom == 1 && nAbekobe == 1)
+                return Eランダムモード.RANDOM;
+            else if (nRandom == 1 && nAbekobe == 0)
+                return Eランダムモード.RANDOM;
+            else if (nRandom == 0 && nAbekobe == 1)
+                return Eランダムモード.MIRROR;
+            else
+                return Eランダムモード.OFF;
+        }
+
 
     }
 }

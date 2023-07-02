@@ -145,22 +145,26 @@ namespace TJAPlayer3
             int[] y = new int[] { 0, 176 };
 
             this.ctEnd_ClearFailed.t進行();
-            if (this.ctEnd_ClearFailed.n現在の値 <= 20 || TJAPlayer3.Tx.ClearFailed == null)
+            int currentValue = this.ctEnd_ClearFailed.n現在の値;
+            int lastIndex = TJAPlayer3.Tx.End_ClearFailed.Length - 1;
+
+            if (currentValue <= 20 || TJAPlayer3.Tx.ClearFailed == null)
             {
-                TJAPlayer3.Tx.End_ClearFailed[Math.Min(this.ctEnd_ClearFailed.n現在の値, TJAPlayer3.Tx.End_ClearFailed.Length - 1)]?.t2D描画(TJAPlayer3.app.Device, 505, y[i] + 145);
+                TJAPlayer3.Tx.End_ClearFailed[Math.Min(currentValue, lastIndex)]?.t2D描画(TJAPlayer3.app.Device, 505, y[i] + 145);
             }
-            else if (this.ctEnd_ClearFailed.n現在の値 >= 20 && this.ctEnd_ClearFailed.n現在の値 <= 67)
+            else if (currentValue >= 20 && currentValue <= 67)
             {
                 TJAPlayer3.Tx.ClearFailed?.t2D描画(TJAPlayer3.app.Device, 502, y[i] + 192);
             }
-            else if (this.ctEnd_ClearFailed.n現在の値 == 68)
+            else if (currentValue == 68)
             {
                 TJAPlayer3.Tx.ClearFailed1?.t2D描画(TJAPlayer3.app.Device, 502, y[i] + 192);
             }
-            else if (this.ctEnd_ClearFailed.n現在の値 >= 69)
+            else if (currentValue >= 69)
             {
                 TJAPlayer3.Tx.ClearFailed2?.t2D描画(TJAPlayer3.app.Device, 502, y[i] + 192);
             }
+
             #endregion
         }
         private void showEndEffect_Clear(int i)
@@ -283,29 +287,32 @@ namespace TJAPlayer3
 
             if (this.ct進行メイン.n現在の値 >= 123)
             {
-                if (this.ct進行Loop == null) ct進行Loop = new CCounter(0, 93, 1000 / 60, TJAPlayer3.Timer);
+                if (this.ct進行Loop == null)
+                    ct進行Loop = new CCounter(0, 93, 1000 / 60, TJAPlayer3.Timer);
 
                 ct進行Loop.t進行Loop();
 
-                StarDraw(683, 209, ct進行Loop.n現在の値, 0, 12);
-                StarDraw(683, 209, ct進行Loop.n現在の値 - 12);
+                int currentLoopValue = ct進行Loop.n現在の値;
 
-                StarDraw(803, 208, ct進行Loop.n現在の値, 10);
-                StarDraw(803, 208, ct進行Loop.n現在の値 - 12, 0, 8);
+                StarDraw(683, 209, currentLoopValue, 0, 12);
+                StarDraw(683, 209, currentLoopValue - 12);
 
-                StarDraw(926, 208, ct進行Loop.n現在の値 - 6, 14);
-                StarDraw(926, 208, ct進行Loop.n現在の値 - 12, 0, 14);
+                StarDraw(803, 208, currentLoopValue, 10);
+                StarDraw(803, 208, currentLoopValue - 12, 0, 8);
 
-                StarDraw(644, 287, ct進行Loop.n現在の値 - 26, 18);
-                StarDraw(644, 287, ct進行Loop.n現在の値 - 30, 0, 14);
+                StarDraw(926, 208, currentLoopValue - 6, 14);
+                StarDraw(926, 208, currentLoopValue - 12, 0, 14);
 
-                StarDraw(726, 305, ct進行Loop.n現在の値 - 15, 7);
-                StarDraw(726, 305, ct進行Loop.n現在の値 - 30, 0, 4);
+                StarDraw(644, 287, currentLoopValue - 26, 18);
+                StarDraw(644, 287, currentLoopValue - 30, 0, 14);
 
-                StarDraw(874, 305, ct進行Loop.n現在の値 - 30);
+                StarDraw(726, 305, currentLoopValue - 15, 7);
+                StarDraw(726, 305, currentLoopValue - 30, 0, 4);
 
-                StarDraw(962, 291, ct進行Loop.n現在の値 - 21, 13);
-                StarDraw(962, 291, ct進行Loop.n現在の値 - 30, 0, 9);
+                StarDraw(874, 305, currentLoopValue);
+
+                StarDraw(962, 291, currentLoopValue - 21, 13);
+                StarDraw(962, 291, currentLoopValue - 30, 0, 9);
             }
 
             #endregion
@@ -568,7 +575,6 @@ namespace TJAPlayer3
                 #endregion
             }
             #endregion
-
 
         }
 
@@ -973,28 +979,33 @@ namespace TJAPlayer3
             StageDondaFullCombo
         }
 
-        void StarDraw(int x, int y, int count, int starttime = 0, int Endtime = 20)
+        void StarDraw(int x, int y, int count, int starttime = 0, int endtime = 20)
         {
-            if (count >= 0 && count <= Endtime)
+            if (count >= 0 && count <= endtime)
             {
                 count += starttime;
 
                 if (count <= 11)
                 {
-                    TJAPlayer3.Tx.End_Star.vc拡大縮小倍率.X = count * 0.09f;
-                    TJAPlayer3.Tx.End_Star.vc拡大縮小倍率.Y = count * 0.09f;
-                    TJAPlayer3.Tx.End_Star.Opacity = 255;
-                    TJAPlayer3.Tx.End_Star.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x, y);
+                    float scale = count * 0.09f;
+                    DrawStar(x, y, scale, scale, 255);
                 }
                 else if (count <= 20)
                 {
-                    TJAPlayer3.Tx.End_Star.vc拡大縮小倍率.X = 1.0f;
-                    TJAPlayer3.Tx.End_Star.vc拡大縮小倍率.Y = 1.0f;
-                    TJAPlayer3.Tx.End_Star.Opacity = (int)(255 - (255.0f / 9.0f) * (count - 11));
-                    TJAPlayer3.Tx.End_Star.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x, y);
+                    int opacity = (int)(255 - (255.0f / 9.0f) * (count - 11));
+                    DrawStar(x, y, 1.0f, 1.0f, opacity);
                 }
             }
         }
+
+        void DrawStar(int x, int y, float scaleX, float scaleY, int opacity)
+        {
+            TJAPlayer3.Tx.End_Star.vc拡大縮小倍率.X = scaleX;
+            TJAPlayer3.Tx.End_Star.vc拡大縮小倍率.Y = scaleY;
+            TJAPlayer3.Tx.End_Star.Opacity = opacity;
+            TJAPlayer3.Tx.End_Star.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x, y);
+        }
+
 
         //-----------------
         #endregion
