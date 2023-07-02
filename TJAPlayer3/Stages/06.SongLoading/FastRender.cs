@@ -6,6 +6,9 @@ using FDK;
 
 namespace TJAPlayer3
 {
+    #region [ old ]
+    /*
+
     class FastRender
     {
         public FastRender()
@@ -89,4 +92,78 @@ namespace TJAPlayer3
             tx.Opacity = 255;
         }
     }
+    */
+    #endregion
+
+    class FastRender
+    {
+        public FastRender()
+        {
+        }
+
+        public void Render()
+        {
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_10combo, TJAPlayer3.Tx.Chara_10Combo);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_10combo_Max, TJAPlayer3.Tx.Chara_10Combo_Maxed);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_GoGoStart, TJAPlayer3.Tx.Chara_GoGoStart);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_GoGoStart_Max, TJAPlayer3.Tx.Chara_GoGoStart_Maxed);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_Normal, TJAPlayer3.Tx.Chara_Normal);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_Clear, TJAPlayer3.Tx.Chara_Normal_Cleared);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_ClearIn, TJAPlayer3.Tx.Chara_Become_Cleared);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_SoulIn, TJAPlayer3.Tx.Chara_Become_Maxed);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_Balloon_Breaking, TJAPlayer3.Tx.Chara_Balloon_Breaking);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_Balloon_Broke, TJAPlayer3.Tx.Chara_Balloon_Broke);
+            RenderCharaTextures(TJAPlayer3.Skin.Game_Chara_Ptn_Balloon_Miss, TJAPlayer3.Tx.Chara_Balloon_Miss);
+
+            for (int i = 0; i < 5; i++)
+            {
+                RenderDancerTextures(i);
+            }
+
+            NullCheckAndRender(ref TJAPlayer3.Tx.Effects_GoGoSplash);
+            NullCheckAndRender(ref TJAPlayer3.Tx.Runner);
+
+            RenderMobTextures(TJAPlayer3.Skin.Game_Mob_Ptn, TJAPlayer3.Tx.Mob);
+
+            for (int i = 0; i < 2; i++)
+            {
+                NullCheckAndRender(ref TJAPlayer3.Tx.PuchiChara[i]);
+            }
+        }
+
+        private void RenderCharaTextures(int count, CTexture[] textures)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                NullCheckAndRender(ref textures[i]);
+            }
+        }
+
+        private void RenderDancerTextures(int index)
+        {
+            for (int k = 0; k < TJAPlayer3.Skin.Game_Dancer_Ptn; k++)
+            {
+                NullCheckAndRender(ref TJAPlayer3.Tx.Dancer[index][k]);
+            }
+        }
+
+        private void RenderMobTextures(int count, CTexture[] textures)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                NullCheckAndRender(ref textures[i]);
+            }
+        }
+
+        private void NullCheckAndRender(ref CTexture tx)
+        {
+            if (tx != null)
+            {
+                tx.Opacity = 0;
+                tx.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                tx.Opacity = 255;
+            }
+        }
+    }
+
 }

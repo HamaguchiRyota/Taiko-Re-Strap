@@ -216,7 +216,7 @@ namespace TJAPlayer3
 				ctBackgroundAnime_Clear = new CCounter(0, 1000, 1, TJAPlayer3.Timer);
 				ctMountain_ClearIn = new CCounter();
 				ctFlash_Icon = new CCounter(0, 3000, 1, TJAPlayer3.Timer);
-				ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.Chara_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);//45
+				ctChara_Normal = new CCounter(0, TJAPlayer3.Tx.Result_Chara_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);//45
 
 				Dan_Plate = TJAPlayer3.tテクスチャの生成(Path.GetDirectoryName(TJAPlayer3.DTX.strファイル名の絶対パス) + @"\Dan_Plate.png");
 
@@ -259,7 +259,7 @@ namespace TJAPlayer3
 			ctBackgroundAnime.t進行Loop();
 			ctMountain_ClearIn.t進行();
 			ctFlash_Icon.t進行Loop();
-			ctDonchan_Normal.t進行Loop();　
+			ctChara_Normal.t進行Loop();　
 
 			if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
 			{
@@ -285,11 +285,11 @@ namespace TJAPlayer3
 				TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
 				#region [ キャラクター & ぷち ]
-                TJAPlayer3.Tx.Result_Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 1f;
-                TJAPlayer3.Tx.Result_Chara_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 1f;
+                TJAPlayer3.Tx.Result_Chara_Normal[ctChara_Normal.n現在の値].vc拡大縮小倍率.X = 1f;
+                TJAPlayer3.Tx.Result_Chara_Normal[ctChara_Normal.n現在の値].vc拡大縮小倍率.Y = 1f;
 				//TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.50f;
                 //TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.50f;
-				TJAPlayer3.Tx.Result_Chara_Normal?[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
+				TJAPlayer3.Tx.Result_Chara_Normal?[ctChara_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
 				//TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, 26, 485, new RectangleF(0, 0, 240, 240));
                 #endregion
 
@@ -614,7 +614,7 @@ namespace TJAPlayer3
 		public CCounter ctBackgroundAnime;
 		public CCounter ctBackgroundAnime_Clear;
 		private CCounter ctFlash_Icon;
-		private CCounter ctDonchan_Normal;
+		private CCounter ctChara_Normal;
 
 		public bool[] b音声再生 = { false, false, false, false, false, false, false, false, false };
 		
