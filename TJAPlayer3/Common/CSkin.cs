@@ -285,6 +285,8 @@ namespace TJAPlayer3
 
         // プロパティ
 
+        public CHitSounds hsHitSoundsInformations = null;
+
         public Cシステムサウンド bgmオプション画面 = null;
         public Cシステムサウンド bgmコンフィグ画面 = null;
         public Cシステムサウンド bgm起動画面 = null;
@@ -695,6 +697,7 @@ namespace TJAPlayer3
             this.soundDanSongSelectCheck = new Cシステムサウンド(@"Sounds\Dan\DanSongSelectCheck.wav", false, false, false, ESoundGroup.SoundEffect);
             this.soundDanSelectBGM = new Cシステムサウンド(@"Sounds\Dan\DanSelectBGM.wav", true, false, false, ESoundGroup.SongPlayback);
             this.soundDanSongSelect = new Cシステムサウンド(@"Sounds\Dan\DanSongSelect.wav", false, false, false, ESoundGroup.SoundEffect);
+            hsHitSoundsInformations = new CHitSounds(Path(@"Sounds\HitSounds\HitSounds.json"));
             ReloadSkin();
             tReadSkinConfig();
         }
@@ -2492,7 +2495,6 @@ namespace TJAPlayer3
         public int[] Background_Scroll_Y = new int[] { 0, 536 };
         #endregion
 
-
         #region[ 座標 ]
         //2017.08.11 kairera0467 DP実用化に向けてint配列に変更
 
@@ -2615,7 +2617,7 @@ namespace TJAPlayer3
         public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームミュージック", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲"};
         public int[] SongSelect_NamePlate_X = new int[] { 37, 1020 };
         public int[] SongSelect_NamePlate_Y = new int[] { 612, 612 };
-        public int[] SongSelect_Auto_X = new int[] { 37, 1019 };
+        public int[] SongSelect_Auto_X = new int[] { 37, 1020 };
         public int[] SongSelect_Auto_Y = new int[] { 640, 640 };
 
         public int[] SongSelect_Frame_Score_X = new int[] { 400, 522, 644, 766 };
@@ -2728,7 +2730,7 @@ namespace TJAPlayer3
         #endregion
         #region PanelFont
         public int Game_MusicName_X = 1265;//1265
-        public int Game_MusicName_Y = 18;
+        public int Game_MusicName_Y = 17;
         public int Game_MusicName_FontSize = 27;
         public ReferencePoint Game_MusicName_ReferencePoint = ReferencePoint.Right;
         public int Game_Genre_X = 1011;
@@ -2939,8 +2941,8 @@ namespace TJAPlayer3
         public Color Result_StageText_BackColor = ColorTranslator.FromHtml("#000000");
         //public Color Result_StageText_BackColor_Red = ColorTranslator.FromHtml("#FF0000");
 
-        public int[] Result_NamePlate_X = new int[] { 6, 260 };
-        public int[] Result_NamePlate_Y = new int[] { 611, 611 };
+        public int[] Result_NamePlate_X = new int[] { 28, 1034 };
+        public int[] Result_NamePlate_Y = new int[] { 619, 619 };
 
         public int[] Result_Dan = new int[] { 500, 500 };
         public int[] Result_Dan_XY = new int[] { 100, 0 };

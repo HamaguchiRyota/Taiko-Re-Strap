@@ -267,12 +267,19 @@ namespace TJAPlayer3
 
             // Discord Presence の更新
             var difficultyName = TJAPlayer3.DifficultyNumberToEnum(TJAPlayer3.stage選曲.n確定された曲の難易度[0]).ToString();
+            /*
             Discord.UpdatePresence(TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? TJAPlayer3.DTX.TITLE + ".tja" : "",
                 Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
                 0,
                 Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
                 TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? difficultyName.ToLower() : "",
                 TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? String.Format("COURSE:{0} ({1})", difficultyName, TJAPlayer3.stage選曲.n確定された曲の難易度) : "");
+
+            */
+            Discord.UpdatePresence(TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ?  TJAPlayer3.DTX.TITLE + ".tja" : "",
+                                   Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
+                                   0, Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000);
+
         }
         public override void On非活性化()
         {
@@ -298,12 +305,28 @@ namespace TJAPlayer3
                 // other controller, etc. and the sounds of the input calibration audio file.
                 if (!TJAPlayer3.IsPerformingCalibration)
                 {
+                    int actual1 = TJAPlayer3.GetActualPlayer(0);
+                    int actual2 = TJAPlayer3.GetActualPlayer(1);
+
+                    var hs = TJAPlayer3.Skin.hsHitSoundsInformations;
+
+                    this.soundRed = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.don[actual1]), ESoundGroup.SoundEffect);
+                    this.soundBlue = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.ka[actual1]), ESoundGroup.SoundEffect);
+                    this.soundAdlib = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.adlib[actual1]), ESoundGroup.SoundEffect);
+
+                    this.soundRed2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.don[actual2]), ESoundGroup.SoundEffect);
+                    this.soundBlue2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.ka[actual2]), ESoundGroup.SoundEffect);
+                    this.soundAdlib2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.adlib[actual2]), ESoundGroup.SoundEffect);
+
+
+                    /*
                     this.soundRed = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\dong.ogg"), ESoundGroup.SoundEffect);
                     this.soundBlue = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\ka.ogg"), ESoundGroup.SoundEffect);
                     this.soundAdlib = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\Adlib.ogg"), ESoundGroup.SoundEffect);
                     this.soundRed2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\dong.ogg"), ESoundGroup.SoundEffect);
                     this.soundBlue2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\ka.ogg"), ESoundGroup.SoundEffect);
                     this.soundAdlib2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\Adlib.ogg"), ESoundGroup.SoundEffect);
+                    */
 
                     if (TJAPlayer3.ConfigIni.nPlayerCount >= 2)//2020.05.06 Mr-Ojii左右に出したかったから、追加。
                     {

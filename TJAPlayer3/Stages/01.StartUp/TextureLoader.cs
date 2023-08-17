@@ -837,7 +837,7 @@ namespace TJAPlayer3
             Result_Gauge_Base = TxC(RESULT + @"Gauge_Base.png");
             Result_Header = TxC(RESULT + @"Header.png");
             Result_Number = TxC(RESULT + @"Number.png");
-            Result_Panel = TxC(RESULT + @"Panel.png");
+            //Result_Panel = TxC(RESULT + @"Panel.png");
             Result_Soul_Text = TxC(RESULT + @"Soul_Text.png");
             Result_Soul_Fire = TxC(RESULT + @"Result_Soul_Fire.png");
             Result_Diff_Bar = TxC(RESULT + @"DifficultyBar.png");
@@ -848,12 +848,16 @@ namespace TJAPlayer3
             Result_Score_Number = TxC(RESULT + @"Score_Number.png");
             Result_Dan = TxC(RESULT + @"Dan.png");
             Result_Background_Dan = TxC(RESULT + @"Background_Dan.png");
+            Result_Background_Double = TxC(RESULT + @"Background_Double.png");
 
             for (int i = 0; i < 41; i++)
                 Result_Rainbow[i] = TxC(RESULT + @"Rainbow\" + i.ToString() + ".png");
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
                 Result_Background[i] = TxC(RESULT + @"Background_" + i.ToString() + ".png");
+
+            for (int i = 0; i < 2; i++)
+                Result_Panel[i] = TxC(RESULT + @"Panel_" + i.ToString() + ".png");
 
             for (int i = 0; i < 2; i++)
                 Result_Mountain[i] = TxC(RESULT + @"Background_Mountain_" + i.ToString() + ".png");
@@ -1339,7 +1343,6 @@ namespace TJAPlayer3
             Result_Gauge_Base,
             Result_Header,
             Result_Number,
-            Result_Panel,
             Result_Soul_Text,
             Result_Soul_Fire,
             Result_Diff_Bar,
@@ -1347,10 +1350,12 @@ namespace TJAPlayer3
             Result_ScoreRankEffect,
             Result_Score_Number,
             Result_Background_Dan,
+            Result_Background_Double,
             Result_Dan;
         public CTexture[]
             Result_Rainbow = new CTexture[41],
-            Result_Background = new CTexture[2],
+            Result_Background = new CTexture[4],
+            Result_Panel = new CTexture[2],
             Result_Chara_Normal = new CTexture[30],
             Result_Chara_Clear = new CTexture[38],
             Result_Mountain = new CTexture[2];

@@ -127,9 +127,6 @@ namespace TJAPlayer3
 				t選択曲が変更された();
 				base.OnManagedリソースの作成();
 			}
-            //this.ctDiff_fe = new CCounter(0, 100, 60, TJAPlayer3.Timer);
-
-
         }
 		public override void OnManagedリソースの解放()
 		{
@@ -144,7 +141,7 @@ namespace TJAPlayer3
 			{
 				if (b初めての進行描画)
 				{
-					ct登場アニメ用 = new CCounter(0, 3, 1, TJAPlayer3.Timer);
+					ct登場アニメ用 = new CCounter(0, 2, 1, TJAPlayer3.Timer);
 					b初めての進行描画 = false;
 				}
 				ct登場アニメ用.t進行();
@@ -156,8 +153,14 @@ namespace TJAPlayer3
                     TJAPlayer3.Tx.SongSelect_Counter?.t2D描画(TJAPlayer3.app.Device, x - 80, y - 75);
                     t小文字表示(x - 103, y - 60, string.Format("{0,9}", ((uint)TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.Bpm).ToString()));
                     t小文字表示(x + 30, y - 60, string.Format("{0,7:##0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.演奏回数.Drums.ToString()));
-
                     TJAPlayer3.Tx.SongSelect_HighScore?.t2D描画(TJAPlayer3.app.Device, 11, 375);
+
+                    if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
+					{
+						TJAPlayer3.Tx.SongSelect_Counter?.t2D描画(TJAPlayer3.app.Device, x + 950, y - 75);
+						TJAPlayer3.Tx.SongSelect_HighScore?.t2D描画(TJAPlayer3.app.Device, 1042, 375);
+					}
+
 
                     if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[3] < TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[4])
                     {

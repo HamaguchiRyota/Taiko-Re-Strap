@@ -142,49 +142,6 @@ namespace TJAPlayer3
             int tickWidth = TJAPlayer3.Tx.Dani_Plate.szテクスチャサイズ.Width / 7;//7
             int tickHeight = TJAPlayer3.Tx.Dani_Plate.szテクスチャサイズ.Height;
 
-
-            #region [ メニューカーソル ]
-            //---------------------
-            if (TJAPlayer3.Tx.Config_Cursor != null)
-            {
-                Rectangle rectangle;
-                //TJAPlayer3.Tx.Config_Cursor.Opacity = this.bメニューにフォーカス中 ? 255 : 128;
-                int x = n現在の選択行 * 14;
-                int y = 100;
-                int num3 = 340;
-                TJAPlayer3.Tx.Config_Cursor.t2D描画(TJAPlayer3.app.Device, x, y, new Rectangle(0, 0, 32, 48));
-                TJAPlayer3.Tx.Config_Cursor.t2D描画(TJAPlayer3.app.Device, (x + num3) - 32, y, new Rectangle(20, 0, 32, 48));
-                x += 32;
-                for (num3 -= 64; num3 > 0; num3 -= rectangle.Width)
-                {
-                    rectangle = new Rectangle(16, 0, 32, 48);
-                    if (num3 < 32)
-                    {
-                        rectangle.Width -= 32 - num3;
-                    }
-                    TJAPlayer3.Tx.Config_Cursor.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
-                    x += rectangle.Width;
-                }
-            }
-            //---------------------
-            #endregion
-
-            #region [ メニュー ]
-            //---------------------
-            int menuY = 162 - 22;
-            int stepY = 39;
-            //for (int i = 0; i < txMenuItemLeft.GetLength(0); i++)
-            {
-                //int flag = (this.n現在の選択行 == i) ? 1 : 0;
-                //int num4 = txMenuItemLeft[i, flag].sz画像サイズ.Width;
-                //txMenuItemLeft[i, flag].t2D描画(TJAPlayer3.app.Device, 282 - (num4 / 2) + TJAPlayer3.Skin.Config_ItemText_Correction_X, menuY + TJAPlayer3.Skin.Config_ItemText_Correction_Y); //55
-                                                                                                                                                                                             //txMenuItem.Dispose();
-                menuY += stepY;
-            }
-            //---------------------
-            #endregion
-
-
             for (int idx = -13; idx < 14; idx++)//-13 14
             {
                 int currentSong = n現在の選択行 + idx;
@@ -194,7 +151,8 @@ namespace TJAPlayer3
                 if (currentSong >= stバー情報.Length)
                     break;
 
-                int xPos = 640 + idx * (tickWidth - 9);//640 -9
+                int xPos = 640;
+                //int xPos = 640 + idx * (tickWidth - 9);//640 -9
                 int xJKs = 640 + idx * (tickWidth - 9);
                 int yPos = idx == 0 ? n現在の選択行 : 10;//0 25:10
 

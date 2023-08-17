@@ -93,7 +93,7 @@ namespace TJAPlayer3
                     this.list進行文字列.Add("");
                     this.list進行文字列.Add("Taiko-Re-Strap forked TJAP3DRW(@TouhouRenren)");
                     this.list進行文字列.Add("TRS edited by Jamix");
-                    this.list進行文字列.Add("2023_05/29 Release Version.");
+                    this.list進行文字列.Add("2023_08/17 Release Version.");
 					this.list進行文字列.Add("");
 
 					es = new CEnumSongs();
@@ -148,7 +148,6 @@ namespace TJAPlayer3
 				}
 				//-----------------
 				#endregion
-
 				
 				if(eフェーズID != Eフェーズ.起動7_完了)
                 {
@@ -168,33 +167,15 @@ namespace TJAPlayer3
 					//-----------------
 					#endregion
 				}
-				
-				/*
-                else
-                {
-					TJAPlayer3.Tx.Readme.t2D描画(TJAPlayer3.app.Device, 0, 0);
-				}
-				*/
-
-				
+			
 				if ( es != null && es.IsSongListEnumCompletelyDone && TJAPlayer3.Tx.IsLoaded)							// 曲リスト作成が終わったら
 				{
 					TJAPlayer3.Songs管理 = ( es != null ) ? es.Songs管理 : null;        // 最後に、曲リストを拾い上げる
-
                     return 1;
-					/*
-                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return))
-                    {
-						TJAPlayer3.Skin.sound決定音.t再生する();
-						
-                    }
-					*/
 				}
-				
 			}
 			return 0;
 		}
-
 
 		// その他
 

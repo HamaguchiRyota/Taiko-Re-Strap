@@ -135,6 +135,7 @@ namespace TJAPlayer3
             ctBarAnime = new CCounter[2];
             ctBarAnime[0] = new CCounter();
             ctBarAnime[1] = new CCounter();
+            ctSelect = new CCounter();
 
             base.On活性化();
 		}
@@ -185,6 +186,7 @@ namespace TJAPlayer3
             ctBarAnimeIn.t進行();
             ctBarAnime[0].t進行();
             ctBarAnime[1].t進行();
+            ctSelect.t進行();
 
             #region[ 難易度マーク ]
             /*
@@ -344,9 +346,6 @@ namespace TJAPlayer3
             TJAPlayer3.Tx.SongSelect_ScoreRank.Opacity = (TJAPlayer3.stage選曲.act曲リスト.ctDifficultyIn.n現在の値 - 1255);
             TJAPlayer3.Tx.Difficulty_Star.Opacity = (TJAPlayer3.stage選曲.act曲リスト.ctDifficultyIn.n現在の値 - 1255);
 
-
-
-
             TJAPlayer3.Tx.Difficulty_Back[nStrジャンルtoNum(TJAPlayer3.stage選曲.r現在選択中の曲.strジャンル)].t2D中心基準描画(TJAPlayer3.app.Device, 640, 290);
 
             for(int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
@@ -444,6 +443,7 @@ namespace TJAPlayer3
                     TJAPlayer3.ConfigIni.nPlayerCount == 2 ? n現在の選択行[0] != n現在の選択行[1] ? (float)this.BarX[n現在の選択行[i]] : i == 0 ? (float)this.BarX[n現在の選択行[i]] - 25 : (float)this.BarX[n現在の選択行[i]] + 25 : (float)this.BarX[n現在の選択行[i]], 
                     126 + ((float)Math.Sin((float)(ctBarAnimeIn.n現在の値 >= 80 ? (ctBarAnimeIn.n現在の値 - 80) : 0) * (Math.PI / 180)) * 50) + (float)Math.Sin((float)ctBarAnime[i].n現在の値 * (Math.PI / 180)) * 10, 
                     new RectangleF(0, 0, 259, 114));
+
             }
 
             #endregion
@@ -472,6 +472,7 @@ namespace TJAPlayer3
         private CTexture txTitle;
         private CTexture txSubTitle;
         private CCounter ct点滅;
+        private CCounter ctSelect;
 
         private CCounter ctBarAnimeIn;
         private CCounter[] ctBarAnime = new CCounter[2];

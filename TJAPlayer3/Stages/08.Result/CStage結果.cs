@@ -299,9 +299,6 @@ namespace TJAPlayer3
                 }
 
                 // 描画
-
-				TJAPlayer3.Tx.Result_Background?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
-
 				if (actParameterPanel.On進行描画() == 0)
 				{
 					bアニメが完了 = false;
@@ -318,8 +315,9 @@ namespace TJAPlayer3
 				#region [ ネームプレート ]
 				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
 				{
-					TJAPlayer3.NamePlate.tNamePlateDraw(28, 619, i);
-				}
+                    //TJAPlayer3.NamePlate.tNamePlateDraw(28, 619, i);
+                    TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.Result_NamePlate_X[i], TJAPlayer3.Skin.Result_NamePlate_Y[i], i);
+                }
 				#endregion
 
 				if (eフェーズID == CStage.Eフェーズ.共通_フェードイン)
@@ -376,10 +374,30 @@ namespace TJAPlayer3
 
 							#endregion
 
+							if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
+							{
+                                #region [ Return to song select screen ]
 
-							else if (TJAPlayer3.ConfigIni.nPlayerCount == 1)
+                                actFI.tフェードアウト開始();
+
+                                if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
+                                    if (TJAPlayer3.stage選曲.r現在選択中の曲.r親ノード != null)
+                                        TJAPlayer3.stage選曲.act曲リスト.tBOXを出る();
+
+                                {
+                                    eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
+                                    eフェードアウト完了時の戻り値 = E戻り値.完了;
+                                    TJAPlayer3.Skin.bgmリザルト音.t停止する();
+                                    TJAPlayer3.Skin.sound決定音.t再生する();
+                                }
+                                t後処理();
+
+                                #endregion
+                            }
+                            else 
 							{
 								#region [ Return to song select screen ]
+
 								actFI.tフェードアウト開始();
 
 								if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
@@ -396,18 +414,6 @@ namespace TJAPlayer3
 
 								#endregion
 							}
-							/*
-							else if ((TJAPlayer3.ConfigIni.nPlayerCount > 1 && (
-									TJAPlayer3.Pad.b押されたDGB(Eパッド.LRed2P)
-									|| TJAPlayer3.Pad.b押されたDGB(Eパッド.RRed2P)
-								)))
-							{
-								if (TJAPlayer3.Input管理.Keyboard.bキーが押されている((int)SlimDXKeys.Key.LeftArrow) ||
-										TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LBlue) ||
-									TJAPlayer3.Input管理.Keyboard.bキーが押されている((int)SlimDXKeys.Key.RightArrow) ||
-										TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RBlue)) ;
-							}
-							*/
 
 						}
 					}

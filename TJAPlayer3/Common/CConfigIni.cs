@@ -779,6 +779,7 @@ namespace TJAPlayer3
 		public bool bSuperHard = false;
         public bool bTokkunMode = false;
         public bool bJust;
+        public int[] nHitSounds = new int[4] { 0, 0, 0, 0};
 
         public bool bEndingAnime = false;   // 2017.01.27 DD 「また遊んでね」画面の有効/無効オプション追加
 
@@ -1712,8 +1713,11 @@ namespace TJAPlayer3
 			sw.WriteLine("; 演奏速度(5～40)(→x5/20～x40/20)");
 			sw.WriteLine("PlaySpeed={0}", this.n演奏速度);
 			sw.WriteLine();
+            sw.WriteLine("; Hitsounds index (音色)");
+            sw.WriteLine("HitSounds1P={0}", this.nHitSounds[0]);
+            sw.WriteLine("HitSounds2P={0}", this.nHitSounds[1]);
 
-			sw.WriteLine("; 演奏速度が一倍速であるときのみBGMを再生する(0:OFF, 1:ON)");
+            sw.WriteLine("; 演奏速度が一倍速であるときのみBGMを再生する(0:OFF, 1:ON)");
 			sw.WriteLine("PlaySpeedNotEqualOneNoSound={0}", this.b演奏速度が一倍速であるとき以外音声を再生しない ? 1 : 0);
 			sw.WriteLine();
 			sw.WriteLine("; デフォルトで選択される難易度");
@@ -2441,7 +2445,6 @@ namespace TJAPlayer3
 
 											#endregion
 
-
 											#region [Timing Zones]
 
 											else if (str3.Equals("TimingZones1P"))
@@ -2461,11 +2464,24 @@ namespace TJAPlayer3
 												this.nTimingZones[3] = C変換.n値を文字列から取得して範囲内に丸めて返す(str4, 0, 4, this.nTimingZones[3]);
 											}
 
-											#endregion
+                                            #endregion
 
-											#endregion
+                                            #region [Hitsounds]
 
-											else if ( str3.Equals( "DrumsReverse" ) )
+                                            else if (str3.Equals("HitSounds1P"))
+                                            {
+                                                this.nHitSounds[0] = C変換.n値を文字列から取得して範囲内に丸めて返す(str4, 0, 9999999, this.nHitSounds[0]);
+                                            }
+                                            else if (str3.Equals("HitSounds2P"))
+                                            {
+                                                this.nHitSounds[1] = C変換.n値を文字列から取得して範囲内に丸めて返す(str4, 0, 9999999, this.nHitSounds[1]);
+                                            }
+
+                                            #endregion
+
+                                            #endregion
+
+                                            else if ( str3.Equals( "DrumsReverse" ) )
 											{
 												this.bReverse.Drums = C変換.bONorOFF( str4[ 0 ] );
 											}

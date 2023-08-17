@@ -62,6 +62,22 @@ namespace TJAPlayer3
 
             txNone = OptionTypeTx("使用不可", Color.White, Color.Black);
 
+            hsInfo = TJAPlayer3.Skin.hsHitSoundsInformations;
+            txOtoiro = new CTexture[hsInfo.names.Length];
+
+            if (txOtoiro.Length > 0)
+            {
+                for (int i = 0; i < txOtoiro.Length; i++)
+                {
+                    txOtoiro[i] = OptionTypeTx(hsInfo.names[i], Color.White, Color.Black);
+                }
+            }
+            else
+            {
+                txOtoiro = new CTexture[1];
+                txOtoiro[0] = OptionTypeTx("音色", Color.White, Color.Black);
+            }
+
             OptionType[0] = OptionTypeTx("はやさ", Color.White, Color.Black);
             OptionType[1] = OptionTypeTx("ドロン", Color.White, Color.Black);
             OptionType[2] = OptionTypeTx("あべこべ", Color.White, Color.Black);
@@ -107,6 +123,17 @@ namespace TJAPlayer3
 
             var act難易度 = TJAPlayer3.stage選曲.act難易度選択画面;
             var danAct = TJAPlayer3.stage段位選択.段位挑戦選択画面;
+
+            var _textures = new CTexture[]
+            {
+                txSpeed[nSpeedCount],
+                txStealth[nStealth],
+                txSwitch[nAbekobe],
+                txRandom[nRandom],
+                txGameMode[nGameMode],
+                txSwitch[nAutoMode],
+                txOtoiro[nOtoiro],
+            };
 
             #region [ Open & Close ]
 
@@ -213,6 +240,10 @@ namespace TJAPlayer3
         public int nAutoMode = 0;
         public CTexture txNone = new CTexture();
 
+        public CTexture[] txOtoiro;
+        public int nOtoiro = 0;
+        public CHitSounds hsInfo;
+
         public CTexture[] txSwitch = new CTexture[2];
 
         //public CTexture[] txTiming = new CTexture[5];
@@ -265,6 +296,9 @@ namespace TJAPlayer3
                     if (nAutoMode == 0) nAutoMode = 1;
                     else nAutoMode = 0;
                     break;
+                case 7:
+                    ShiftVal(left, ref nOtoiro, txOtoiro.Length - 1, 0);
+                    break;
 
             }
         }
@@ -309,6 +343,12 @@ namespace TJAPlayer3
 
             bool _auto = (player == 0) ? TJAPlayer3.ConfigIni.b太鼓パートAutoPlay : TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P;
             nAutoMode = _auto ? 1 : 0;
+
+            #endregion
+
+            #region [ Hitsounds ]
+
+            nOtoiro = Math.Min(txOtoiro.Length - 1, TJAPlayer3.ConfigIni.nHitSounds[actual]);
 
             #endregion
         }
@@ -356,6 +396,13 @@ namespace TJAPlayer3
                 TJAPlayer3.ConfigIni.b太鼓パートAutoPlay = autoMode;
             else
                 TJAPlayer3.ConfigIni.b太鼓パートAutoPlay2P = autoMode;
+
+            #endregion
+
+            #region [ Hitsounds ]
+
+            TJAPlayer3.ConfigIni.nHitSounds[actual] = nOtoiro;
+            hsInfo.tReloadHitSounds(nOtoiro, actual);
 
             #endregion
         }

@@ -344,7 +344,7 @@ namespace TJAPlayer3
 
             // 背景を描画する。
 
-            TJAPlayer3.Tx.DanC_Background?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+            TJAPlayer3.Tx.DanC_Background?.t2D描画(TJAPlayer3.app.Device, 0, 360);
 
             DrawExam(Challenge);
 

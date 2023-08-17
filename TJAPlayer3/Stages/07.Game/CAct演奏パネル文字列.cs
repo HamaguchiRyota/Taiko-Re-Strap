@@ -180,12 +180,6 @@ namespace TJAPlayer3
                     else
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Other");
-                        /*
-                        using (var bmpDummy = new Bitmap(1, 1))
-                        {
-                            this.txGENRE = TJAPlayer3.tテクスチャの生成(bmpDummy, true);
-                        }
-                        */
                     }
                 }
 
@@ -241,13 +235,11 @@ namespace TJAPlayer3
             if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
             {
                 this.pfMusicName = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.FontName), TJAPlayer3.Skin.Game_MusicName_FontSize - 1);
-                //this.pf縦書きテスト = new CPrivateFastFont( new FontFamily( CDTXMania.ConfigIni.strPrivateFontで使うフォント名 ), 22 );
             }
 
             this.txPanel = null;
             this.ct進行用 = new CCounter();
             this.Start();
-            //this.bFirst = true;
             base.On活性化();
         }
         public override void On非活性化()
@@ -314,11 +306,6 @@ namespace TJAPlayer3
                 }
                 #endregion
 
-                //int NS = 1;
-                //int MS = 3;
-
-                //t小文字表示(200, 10, string.Format("{0,9}", NS.ToString()));
-                //t小文字表示(200, 20, string.Format("{0,9}", MS.ToString()));
 
                 if (txMusicName != null)
                 {

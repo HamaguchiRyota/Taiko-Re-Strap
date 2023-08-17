@@ -513,8 +513,8 @@ namespace TJAPlayer3
 						DonchanX = (float)Math.Sin(ctどんちゃんイン.n現在の値 / 2 * (Math.PI / 180)) * 200f;
 						DonchanY = ((float)Math.Sin((90 + (ctどんちゃんイン.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
-						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -520 + DonchanX, 241 - DonchanY);//200, 341
-						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -520 + DonchanX, 241 - DonchanY);
+						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -525 + DonchanX, 241 - DonchanY);//200, 341
+						//TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -520 + DonchanX, 241 - DonchanY);
 					}
 					#endregion
 
