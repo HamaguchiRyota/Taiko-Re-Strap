@@ -304,11 +304,13 @@ namespace TJAPlayer3
 				//bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
 				//bool is2PSide = TJAPlayer3.P1IsBlue();
 				TJAPlayer3.Tx.Result_Diff_Bar?.t2D描画(TJAPlayer3.app.Device, 18, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[0] * 54, 185, 54));
-                TJAPlayer3.Tx.Result_Diff_Bar?.t2D描画(TJAPlayer3.app.Device, 655, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[1] * 54, 185, 54));
                 TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
+				{
                     TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 686, 141);
+                    TJAPlayer3.Tx.Result_Diff_Bar?.t2D描画(TJAPlayer3.app.Device, 655, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[1] * 54, 185, 54));
+                }
 
                 #region [ キャラクター & ぷち ]
 
