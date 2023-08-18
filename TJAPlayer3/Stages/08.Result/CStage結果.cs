@@ -358,26 +358,20 @@ namespace TJAPlayer3
 							eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
 							eフェードアウト完了時の戻り値 = E戻り値.完了;
 						}
-						if (((TJAPlayer3.Pad.b押されたDGB(Eパッド.CY) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RD)) || (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LC) || (TJAPlayer3.Pad.b押されたDGB(Eパッド.LRed) || (TJAPlayer3.Pad.b押されたDGB(Eパッド.RRed) || TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return))))))
+						if (((TJAPlayer3.Pad.b押されたDGB(Eパッド.CY) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RD)) || (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LC) 
+							|| (TJAPlayer3.Pad.b押されたDGB(Eパッド.LRed) || (TJAPlayer3.Pad.b押されたDGB(Eパッド.RRed) || TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return))))))
 						{
 							TJAPlayer3.Skin.sound決定音.t再生する();
+							#region [ Skip animations ]
 
-							t後処理();
-
-                            #region [ Skip animations ]
-
-                            if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] < (int)Difficulty.Tower
+							if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] < (int)Difficulty.Tower
 								&& actParameterPanel.ct全体進行.n現在の値 < actParameterPanel.MountainAppearValue)
 							{
 								actParameterPanel.tSkipResultAnimations();
 							}
-
-							#endregion
-
-							if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
-							{
+                            else if (TJAPlayer3.ConfigIni.nPlayerCount == 1)
+                            {
                                 #region [ Return to song select screen ]
-
                                 actFI.tフェードアウト開始();
 
                                 if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
@@ -394,29 +388,29 @@ namespace TJAPlayer3
 
                                 #endregion
                             }
-                            else 
+							else if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
 							{
-								#region [ Return to song select screen ]
+                                #region [ Return to song select screen ]
+                                actFI.tフェードアウト開始();
 
-								actFI.tフェードアウト開始();
+                                if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
+                                    if (TJAPlayer3.stage選曲.r現在選択中の曲.r親ノード != null)
+                                        TJAPlayer3.stage選曲.act曲リスト.tBOXを出る();
 
-								if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
-									if (TJAPlayer3.stage選曲.r現在選択中の曲.r親ノード != null)
-										TJAPlayer3.stage選曲.act曲リスト.tBOXを出る();
+                                {
+                                    eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
+                                    eフェードアウト完了時の戻り値 = E戻り値.完了;
+                                    TJAPlayer3.Skin.bgmリザルト音.t停止する();
+                                    TJAPlayer3.Skin.sound決定音.t再生する();
+                                }
+                                t後処理();
 
-								{
-									eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
-									eフェードアウト完了時の戻り値 = E戻り値.完了;
-									TJAPlayer3.Skin.bgmリザルト音.t停止する();
-									TJAPlayer3.Skin.sound決定音.t再生する();
-								}
-								t後処理();
+                                #endregion
+                            }
 
-								#endregion
-							}
-
-						}
-					}
+                            #endregion
+                        }
+                    }
 
 				}
 			}
