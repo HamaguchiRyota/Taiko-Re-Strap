@@ -63,7 +63,6 @@ namespace TJAPlayer3
 			st文字位置10.pt = new Point(162, 0);
 			st文字位置Array[9] = st文字位置10;
 			st小文字位置 = st文字位置Array;
-			
 
 			base.b活性化してない = true;
 		}
@@ -85,10 +84,7 @@ namespace TJAPlayer3
 						}
 					}
 					graphics.Dispose();
-					if (tx文字列パネル != null)
-					{
-						tx文字列パネル.Dispose();
-					}
+					tx文字列パネル?.Dispose();
 					tx文字列パネル = new CTexture(TJAPlayer3.app.Device, image, TJAPlayer3.TextureFormat);
 					tx文字列パネル.vc拡大縮小倍率 = new Vector3(0.5f, 0.5f, 1f);
 					image.Dispose();
@@ -102,9 +98,7 @@ namespace TJAPlayer3
 			}
 		}
 
-
 		// CActivity 実装
-
 		public override void On活性化()
 		{
 			ft表示用フォント = new Font("Arial", 30f, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -161,21 +155,85 @@ namespace TJAPlayer3
 						TJAPlayer3.Tx.SongSelect_HighScore?.t2D描画(TJAPlayer3.app.Device, 1042, 375);
 					}
 
+                    #region [ 旧来のコード ]
+                    /*
+                    int[] highScores = TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア;
+					int DifW = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Width;
+					int DifH = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Height;
 
-                    if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[3] < TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[4])
+                    if (highScores[0] > highScores[1])
+                    {
+                        //簡単
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[0].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(0, 0, DifW / 5, DifH));
+                    }
+                    else if (highScores[1] > highScores[2])
+                    {
+                        //ふつう
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[1].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(41, 0, DifW / 5, DifH));
+                    }
+                    else if(highScores[2] > highScores[3])
+                    {
+                        //むずかしい
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[2].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(82, 0, DifW / 5, DifH));
+                    }
+                    else if (highScores[3] > highScores[4])
+                    {
+                        //鬼
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[3].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(123, 0, DifW / 5, DifH));
+                    }
+                    else if (highScores[4] > 0)
                     {
                         //裏鬼
-                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[4].ToString()));
-                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(164, 0, TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Width / 5, TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Height));
+						t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[4].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(164, 0, DifW / 5, DifH));
+                    }
+					else
+					{
+                        TJAPlayer3.Tx.SongSelect_Unplayed?.t2D描画(TJAPlayer3.app.Device, 11, 375);
 
+                        if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
+                            TJAPlayer3.Tx.SongSelect_Unplayed?.t2D描画(TJAPlayer3.app.Device, 1042, 375);
+					}
+					*/
+                    #endregion
+
+                    int[] highScores = TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア;
+                    int[] thresholds = new int[] { 0, 1, 2, 3, 4 };
+                    int[] xOffsets = new int[] { 0, 41, 82, 123, 164 };
+                    int DifW = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Width;
+                    int DifH = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Height;
+
+                    bool allZero = true;
+                    foreach (int score in highScores)
+                    {
+                        if (score != 0)
+                        {
+                            allZero = false;
+                            break;
+                        }
+                    }
+
+                    if (allZero)
+                    {
+                        TJAPlayer3.Tx.SongSelect_Unplayed?.t2D描画(TJAPlayer3.app.Device, 11, 375);
                     }
                     else
                     {
-                        //鬼
-                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア[3].ToString()));
-                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(123, 0, TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Width / 5, TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Height));
+                        for (int i = 0; i < thresholds.Length; i++)
+                        {
+                            if (highScores[thresholds[i]] > highScores[thresholds[i] + 1] || (i == thresholds.Length - 1 && highScores[thresholds[i]] > 0))
+                            {
+                                string scoreString = string.Format("{0,7:#######0}", highScores[thresholds[i]].ToString());
+                                t小文字表示(x + 5, y, scoreString);
+                                TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(xOffsets[i], 0, DifW / 5, DifH));
+                                break;
+                            }
+                        }
                     }
-
 
                 }
             }

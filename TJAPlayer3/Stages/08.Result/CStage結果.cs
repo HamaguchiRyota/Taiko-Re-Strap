@@ -223,7 +223,7 @@ namespace TJAPlayer3
 						n演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
 						n演奏回数.Bass = ini.stファイル.PlayCountBass;
 					}
-					#endregion
+				#endregion
 
 				// Discord Presenseの更新
 				Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + ".tja", Properties.Discord.Stage_Result + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), TJAPlayer3.StartupTime);
@@ -315,7 +315,6 @@ namespace TJAPlayer3
 				#region [ ネームプレート ]
 				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
 				{
-                    //TJAPlayer3.NamePlate.tNamePlateDraw(28, 619, i);
                     TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.Result_NamePlate_X[i], TJAPlayer3.Skin.Result_NamePlate_Y[i], i);
                 }
 				#endregion

@@ -273,7 +273,6 @@ namespace TJAPlayer3
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
                 {
                     TJAPlayer3.Tx.Result_Background?[2].t2D描画(TJAPlayer3.app.Device, 0, 0);
-                    //TJAPlayer3.Tx.Result_Background_Double?.t2D描画(TJAPlayer3.app.Device, 0, 0);
                 }
                 else
                 {

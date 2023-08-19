@@ -2799,11 +2799,11 @@ namespace TJAPlayer3
         public int[] Game_Balloon_Combo_Text_Ex_Y = new int[] { 83, 645 };
 
         public int[] Game_Balloon_Balloon_X = new int[] { 382, 382 };
-        public int[] Game_Balloon_Balloon_Y = new int[] { 115, 290 };
-        public int[] Game_Balloon_Balloon_Frame_X = new int[] { 382, 382 };
-        public int[] Game_Balloon_Balloon_Frame_Y = new int[] { 28, 260 };
-        public int[] Game_Balloon_Balloon_Number_X = new int[] { 484, 438 };
-        public int[] Game_Balloon_Balloon_Number_Y = new int[] { 130, 373 };
+        public int[] Game_Balloon_Balloon_Y = new int[] { 115, 411 };//290+121
+        public int[] Game_Balloon_Balloon_Frame_X = new int[] { 386, 386 };//382, 382
+        public int[] Game_Balloon_Balloon_Frame_Y = new int[] { 29, 325 };//28, 260+65
+        public int[] Game_Balloon_Balloon_Number_X = new int[] { 484, 484 };
+        public int[] Game_Balloon_Balloon_Number_Y = new int[] { 130, 427 };
         public int[] Game_Balloon_Roll_Frame_X = new int[] { 249, 249 };
         public int[] Game_Balloon_Roll_Frame_Y = new int[] { -10, 514 };
         public int[] Game_Balloon_Roll_Number_X = new int[] { 411, 411 };
