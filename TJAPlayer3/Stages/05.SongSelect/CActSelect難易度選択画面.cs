@@ -423,10 +423,9 @@ namespace TJAPlayer3
                 if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[3] > 0)
                     TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f, 1f);
                 else
-                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f, 1f);
+                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f, 0.5f);
 
                 TJAPlayer3.Tx.Difficulty_Bar.t2D描画(TJAPlayer3.app.Device, 855, 270, new RectangleF(600, 0, 143, 236));
-
                 TJAPlayer3.Tx.Difficulty_Crown.t2D描画(TJAPlayer3.app.Device, 445 + 3 * 144, 284, new RectangleF(TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nクリア[3] * 24.5f, 0, 24.5f, 26));
 
                 if (TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nスコアランク[3] != 0)

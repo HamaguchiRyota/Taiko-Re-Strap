@@ -267,22 +267,23 @@ namespace TJAPlayer3
 
                 int AnimeCount = 3000 + (int)ctゲージアニメ.n終了値 * 59;
                 int ScoreApparitionTimeStamp = AnimeCount + 420 * 4 + 840;
+                int ClearType = TJAPlayer3.stage結果.nクリア - 1;
+                bool is2P = (TJAPlayer3.ConfigIni.nPlayerCount == 2);
 
                 #region [ 背景 ]
 
-                if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
-                {
-                    TJAPlayer3.Tx.Result_Background?[2].t2D描画(TJAPlayer3.app.Device, 0, 0);
-                }
-                else
-                {
-                    TJAPlayer3.Tx.Result_Background?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
-                }
-
-				if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500)
+                //クリア以上で背景転調
+                if ((ClearType >= 0))
 				{
-					TJAPlayer3.Tx.Result_Background?[3].t2D描画(TJAPlayer3.app.Device, 0, 0);
-                }
+					if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500)
+					{
+                        TJAPlayer3.Tx.Result_Background?[3].t2D描画(TJAPlayer3.app.Device, 0, 0);
+                    }
+                    else
+					{
+                        TJAPlayer3.Tx.Result_Background?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
+                    }
+				}
 
                 #endregion
 
@@ -290,7 +291,7 @@ namespace TJAPlayer3
                 {
 					TJAPlayer3.Tx.Result_Header?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
-					if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
+					if (is2P)
 					{
 						TJAPlayer3.Tx.Result_Panel?[1].t2D描画(TJAPlayer3.app.Device, 0, 0);
                     }
@@ -299,13 +300,14 @@ namespace TJAPlayer3
 						TJAPlayer3.Tx.Result_Mountain?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
 					}
                     TJAPlayer3.Tx.Result_Panel?[0].t2D描画(TJAPlayer3.app.Device, 0, 0);
+
                 }
 				//bool is1P = (TJAPlayer3.ConfigIni.nPlayerCount == 1);
 				//bool is2PSide = TJAPlayer3.P1IsBlue();
 				TJAPlayer3.Tx.Result_Diff_Bar?.t2D描画(TJAPlayer3.app.Device, 18, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[0] * 54, 185, 54));
                 TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 55, 141);
 
-                if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
+                if (is2P)
 				{
                     TJAPlayer3.Tx.Result_Gauge_Base?.t2D描画(TJAPlayer3.app.Device, 686, 141);
                     TJAPlayer3.Tx.Result_Diff_Bar?.t2D描画(TJAPlayer3.app.Device, 655, 101, new RectangleF(0, TJAPlayer3.stage選曲.n確定された曲の難易度[1] * 54, 185, 54));
@@ -455,8 +457,6 @@ namespace TJAPlayer3
 							tスコア文字表示(TJAPlayer3.Skin.nResultScoreP1X, TJAPlayer3.Skin.nResultScoreP1Y, string.Format("{0,7:######0}", TJAPlayer3.stage結果.st演奏記録.Drums.nスコア));
 
 
-						    string cv =  "";
-
 							if (!b音声再生[6])
 							{
 								TJAPlayer3.Skin.soundScoreDon.t再生する();
@@ -560,8 +560,6 @@ namespace TJAPlayer3
 						TJAPlayer3.Tx.Result_CrownEffect.vc拡大縮小倍率.X = 1.1f;
 						TJAPlayer3.Tx.Result_CrownEffect.vc拡大縮小倍率.Y = 1.1f;
 					}
-
-					int ClearType = TJAPlayer3.stage結果.nクリア - 1;
 
 					if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)(Difficulty.Dan) && ClearType >= 0)
 					{

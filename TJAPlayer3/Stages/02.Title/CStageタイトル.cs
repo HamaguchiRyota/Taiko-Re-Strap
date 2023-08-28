@@ -40,6 +40,7 @@ namespace TJAPlayer3
 				ctBarMove = new CCounter();
 				ctBarMove.n現在の値 = 250;
 
+				b直モードセレクト = false;
 				bバナパス読み込み = false;
 				bバナパス読み込み失敗 = false;
 				bプレイヤーエントリー = false;
@@ -299,7 +300,33 @@ namespace TJAPlayer3
 							bモード選択 = true;
                         }
                     }
-				}
+
+                    if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RRed) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LRed))
+                    {
+                        TJAPlayer3.Skin.sound決定音.t再生する();
+                        bプレイヤーエントリー = false;
+                        bプレイヤーエントリー決定 = false;
+                        bバナパス読み込み = false;
+                        TJAPlayer3.Skin.SoundBanapas.bPlayed = false;
+                        ctバナパス読み込み待機.t停止();
+                        TJAPlayer3.Skin.soundEntry.t停止する();
+						b直モードセレクト = true;
+
+                        if (!bモード選択)
+                        {
+                            if (!TJAPlayer3.Skin.soundsanka.bPlayed && !TJAPlayer3.Skin.soundModeS.bPlayed)
+							{
+                                TJAPlayer3.Skin.soundsanka.t再生する();
+                                TJAPlayer3.Skin.soundModeS.t再生する();
+                            }
+
+                            ctどんちゃんイン.t開始(0, 180, 2, TJAPlayer3.Timer);
+                            ctBarAnimeIn.t開始(0, 1295, 1, TJAPlayer3.Timer);
+                            bモード選択 = true;
+                        }
+						
+                    }
+                }
 
 				#endregion
 
@@ -312,7 +339,7 @@ namespace TJAPlayer3
 
                 #region [ バナパス読み込み ]
 
-                if (!bバナパス読み込み && !bバナパス読み込み失敗)
+                if (!bバナパス読み込み && !bバナパス読み込み失敗 && !b直モードセレクト)
                 {
 					TJAPlayer3.Tx.Entry_Bar?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
@@ -434,6 +461,13 @@ namespace TJAPlayer3
 							}
 						}
 					}
+
+					if (b直モードセレクト)
+					{
+						bプレイヤーエントリー = true;
+
+                    }
+
 				}
 
                 #endregion
@@ -499,7 +533,7 @@ namespace TJAPlayer3
 
                 #region [ モード選択 ]
 
-                if (bモード選択)
+                if (bモード選択 && b直モードセレクト)
 				{
 					ctBarAnimeIn.t進行();
 
@@ -705,6 +739,7 @@ namespace TJAPlayer3
 		private CCounter ctBarAnimeIn;
 		private CCounter ctBarMove;
 
+		private bool b直モードセレクト;
 		private bool bバナパス読み込み;
 		private bool bバナパス読み込み失敗;
 		private bool bプレイヤーエントリー;

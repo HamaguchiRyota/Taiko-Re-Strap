@@ -156,10 +156,7 @@ namespace TJAPlayer3
 
                 if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan)
                 {
-                    if (TJAPlayer3.Tx.Gauge_Dan[0] != null)
-                    {
-                        TJAPlayer3.Tx.Gauge_Dan[0].t2D描画(TJAPlayer3.app.Device, 492, 144, new Rectangle(0, 0, 700, 44));
-                    }
+                    TJAPlayer3.Tx.Gauge_Dan[0]?.t2D描画(TJAPlayer3.app.Device, 492, 144, new Rectangle(0, 0, 700, 44));
                     if (TJAPlayer3.Tx.Gauge_Dan[2] != null)
                     {
                         for (int i = 0; i < TJAPlayer3.DTX.Dan_C.Length; i++)
@@ -176,10 +173,7 @@ namespace TJAPlayer3
                 }
                 else
                 {
-                    if (TJAPlayer3.Tx.Gauge_Base[0] != null)
-                    {
-                        TJAPlayer3.Tx.Gauge_Base[0].t2D描画(TJAPlayer3.app.Device, 492, 144, new Rectangle(0, 0, 700, 44));
-                    }
+                    TJAPlayer3.Tx.Gauge_Base[0]?.t2D描画(TJAPlayer3.app.Device, 492, 144, new Rectangle(0, 0, 700, 44));
                     if (TJAPlayer3.stage演奏ドラム画面.bDoublePlay && TJAPlayer3.Tx.Gauge_Base[1] != null)
                     {
                         TJAPlayer3.Tx.Gauge_Base[1].t2D描画(TJAPlayer3.app.Device, 492, 532, new Rectangle(0, 0, 700, 44));
@@ -299,7 +293,7 @@ namespace TJAPlayer3
                 #endregion
 
 
-                if(TJAPlayer3.Tx.Gauge_Soul_Fire != null )
+                if (TJAPlayer3.Tx.Gauge_Soul_Fire != null )
                 {
                     //仮置き
                     int[] nSoulFire = new int[] { 52, 443, 0, 0 };
@@ -339,14 +333,14 @@ namespace TJAPlayer3
                     for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                     {
                         if (this.db現在のゲージ値[i] >= 100.0)
-						{
-                            TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 0, nCharaEf[ i ]);
+                        {
+                            TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 0, nCharaEf[i]);
                             TJAPlayer3.Tx.Chara_Ef.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ctCharaEf.n現在の値 * 2 / 100.0)));
-                        }
 
+                        }
                     }
                 }
-
+                
 
                 //仮置き
                 int[] nSoulExplosion = new int[] { 73, 468, 0, 0 };
@@ -385,6 +379,10 @@ namespace TJAPlayer3
 
         #region [ private ]
         //-----------------
+        public CAct演奏Drumsキャラクター actChara;
+
+        //public bool[] b風船連打中 = new bool[2];
+
         private CCounter ctGaugeFlash;
 
         protected STSTATUS[] st花火状態 = new STSTATUS[ 32 ];
