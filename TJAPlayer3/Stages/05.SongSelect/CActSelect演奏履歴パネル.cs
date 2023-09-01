@@ -161,46 +161,39 @@ namespace TJAPlayer3
 					int DifW = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Width;
 					int DifH = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Height;
 
-                    if (highScores[0] > highScores[1])
+                    if (highScores[4] > 0)
                     {
-                        //簡単
-                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[0].ToString()));
-                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(0, 0, DifW / 5, DifH));
-                    }
-                    else if (highScores[1] > highScores[2])
-                    {
-                        //ふつう
-                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[1].ToString()));
-                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(41, 0, DifW / 5, DifH));
-                    }
-                    else if(highScores[2] > highScores[3])
-                    {
-                        //むずかしい
-                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[2].ToString()));
-                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(82, 0, DifW / 5, DifH));
-                    }
-                    else if (highScores[3] > highScores[4])
-                    {
-                        //鬼
-                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[3].ToString()));
-                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(123, 0, DifW / 5, DifH));
-                    }
-                    else if (highScores[4] > 0)
-                    {
-                        //裏鬼
 						t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[4].ToString()));
                         TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(164, 0, DifW / 5, DifH));
                     }
-					else
+                    else if (highScores[3] > highScores[4])
+                    {
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[3].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(123, 0, DifW / 5, DifH));
+                    }
+                    else if (highScores[2] > highScores[3])
+                    {
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[2].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(82, 0, DifW / 5, DifH));
+                    }
+                    else if (highScores[1] > highScores[2])
+                    {
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[1].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(41, 0, DifW / 5, DifH));
+                    }
+                    else if (highScores[0] > highScores[1])
+                    {
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[0].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(0, 0, DifW / 5, DifH));
+                    }
+                    else
 					{
                         TJAPlayer3.Tx.SongSelect_Unplayed?.t2D描画(TJAPlayer3.app.Device, 11, 375);
-
-                        if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
-                            TJAPlayer3.Tx.SongSelect_Unplayed?.t2D描画(TJAPlayer3.app.Device, 1042, 375);
 					}
 					*/
+					
                     #endregion
-
+				
                     int[] highScores = TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア;
                     int[] thresholds = new int[] { 0, 1, 2, 3, 4 };
                     int[] xOffsets = new int[] { 0, 41, 82, 123, 164 };
@@ -223,6 +216,7 @@ namespace TJAPlayer3
                     }
                     else
                     {
+						
                         for (int i = 0; i < thresholds.Length; i++)
                         {
                             if (highScores[thresholds[i]] > highScores[thresholds[i] + 1] || (i == thresholds.Length - 1 && highScores[thresholds[i]] > 0))
@@ -231,9 +225,11 @@ namespace TJAPlayer3
                                 t小文字表示(x + 5, y, scoreString);
                                 TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(xOffsets[i], 0, DifW / 5, DifH));
                                 break;
-                            }
+							}
                         }
+						
                     }
+					
 
                 }
             }

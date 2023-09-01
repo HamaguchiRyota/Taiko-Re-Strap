@@ -221,13 +221,6 @@ namespace TJAPlayer3
                                     TJAPlayer3.stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan ? 22 : 0, 
                                     TJAPlayer3.Tx.Gauge_Rainbow[虹ベース].szテクスチャサイズ.Width,
                                     TJAPlayer3.stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan ? TJAPlayer3.Tx.Gauge_Rainbow[虹ベース].szテクスチャサイズ.Height - 22 : TJAPlayer3.Tx.Gauge_Rainbow[虹ベース].szテクスチャサイズ.Height));
-                                /*
-                                if (TJAPlayer3.Tx.Chara_Ef != null)
-                                {
-                                    TJAPlayer3.Tx.Chara_Ef.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * this.ctCharaEf.n現在の値 * 2 / 100.0)));
-                                    TJAPlayer3.Tx.Chara_Ef.t2D描画(TJAPlayer3.app.Device, 10, 5);
-                                }
-                                */
                             }
 
 

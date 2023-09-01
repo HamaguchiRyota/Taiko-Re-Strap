@@ -838,6 +838,7 @@ namespace TJAPlayer3
             #region 6_結果発表
             Result_Gauge = TxC(RESULT + @"Gauge.png");
             Result_Gauge_Base = TxC(RESULT + @"Gauge_Base.png");
+            Result_Gauge_Flash = TxC(RESULT + @"Flash.png");
             Result_Header = TxC(RESULT + @"Header.png");
             Result_Number = TxC(RESULT + @"Number.png");
             //Result_Panel = TxC(RESULT + @"Panel.png");
@@ -1345,6 +1346,7 @@ namespace TJAPlayer3
 
         #region 6_結果発表
         public CTexture Result_Gauge,
+            Result_Gauge_Flash,
             Result_Gauge_Base,
             Result_Header,
             Result_Number,
@@ -1362,7 +1364,7 @@ namespace TJAPlayer3
             Result_Background = new CTexture[4],
             Result_Panel = new CTexture[2],
             Result_Chara_Normal = new CTexture[30],
-            Result_Chara_Clear = new CTexture[38],
+            Result_Chara_Clear = new CTexture[51],
             Result_Mountain = new CTexture[2];
         #endregion
 

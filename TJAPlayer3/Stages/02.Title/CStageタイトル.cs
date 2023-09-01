@@ -276,7 +276,7 @@ namespace TJAPlayer3
 						}
 					}
 
-					if (ctバナパス読み込み待機.n現在の値 >= 500)
+					if (ctバナパス読み込み待機.n現在の値 >= 500)//バナパス成功!アニメ
 					{
                         if (!bバナパス読み込み)
 						{
@@ -286,7 +286,7 @@ namespace TJAPlayer3
 						}
 					}
 
-					if (ctエントリーバー決定点滅.n現在の値 >= 1055)
+					if (ctエントリーバー決定点滅.n現在の値 >= 1055)//モード選択画面
                     {
                         if (!bモード選択)
                         {					
@@ -301,17 +301,17 @@ namespace TJAPlayer3
                         }
                     }
 
+					//バナパスアニメスキップ→モード選択
                     if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RRed) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LRed))
                     {
                         TJAPlayer3.Skin.sound決定音.t再生する();
                         bプレイヤーエントリー = false;
-                        bプレイヤーエントリー決定 = false;
+                        bプレイヤーエントリー決定 = true;
                         bバナパス読み込み = false;
                         TJAPlayer3.Skin.SoundBanapas.bPlayed = false;
                         ctバナパス読み込み待機.t停止();
                         TJAPlayer3.Skin.soundEntry.t停止する();
 						b直モードセレクト = true;
-
                         if (!bモード選択)
                         {
                             if (!TJAPlayer3.Skin.soundsanka.bPlayed && !TJAPlayer3.Skin.soundModeS.bPlayed)
@@ -324,7 +324,6 @@ namespace TJAPlayer3
                             ctBarAnimeIn.t開始(0, 1295, 1, TJAPlayer3.Timer);
                             bモード選択 = true;
                         }
-						
                     }
                 }
 
@@ -547,7 +546,7 @@ namespace TJAPlayer3
 						DonchanX = (float)Math.Sin(ctどんちゃんイン.n現在の値 / 2 * (Math.PI / 180)) * 200f;
 						DonchanY = ((float)Math.Sin((90 + (ctどんちゃんイン.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
-						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -525 + DonchanX, 241 - DonchanY);//200, 341
+						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -525 + 4 + DonchanX, 237 - DonchanY);//200, 341
 						//TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -520 + DonchanX, 241 - DonchanY);
 					}
 					#endregion
@@ -723,12 +722,9 @@ namespace TJAPlayer3
 		#region [ private ]
 		//-----------------
 		private CCounter ctコインイン待機;
-
 		private CCounter ctバナパス読み込み待機;
-
 		private CCounter ctバナパス読み込み成功;
 		private CCounter ctバナパス読み込み失敗;
-
 		private CCounter ctエントリーバー点滅;
 		private CCounter ctエントリーバー決定点滅;
 

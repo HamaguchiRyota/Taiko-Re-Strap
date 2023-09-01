@@ -306,7 +306,6 @@ namespace TJAPlayer3
                 }
                 #endregion
 
-
                 if (txMusicName != null)
                 {
                     if (b初めての進行描画)

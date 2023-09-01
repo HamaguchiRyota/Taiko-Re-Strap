@@ -186,8 +186,8 @@ namespace TJAPlayer3
 
                 if(ctDonchan_In.n現在の値 != 90)
                 {
-                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 0.85f;
-                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 0.85f;
+                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 1f;
+                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 1f;
 
                     float DonchanX = 0f, DonchanY = 0f;
 
@@ -205,7 +205,6 @@ namespace TJAPlayer3
             }
 
             if (段位挑戦選択画面.bOption) actPlayOption.On進行描画(0);
-
 
             if (ct待機.n現在の値 >= 3000)
             {
@@ -262,6 +261,7 @@ namespace TJAPlayer3
 
         public bool b選択した;
         public bool bDifficultyIn;
+        public bool bキャラサイズ初期化;
 
         private CCounter ctDonchan_In;
         private CCounter ctDonchan_Normal;

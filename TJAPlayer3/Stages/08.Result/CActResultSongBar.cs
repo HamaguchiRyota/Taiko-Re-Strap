@@ -18,27 +18,38 @@ namespace TJAPlayer3
 		{
             if( !string.IsNullOrEmpty( TJAPlayer3.ConfigIni.FontName) )
             {
-                pfMusicName = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.FontName), TJAPlayer3.Skin.Result_MusicName_FontSize);
-			}
+                pfTitle = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.FontName), TJAPlayer3.Skin.Result_MusicName_FontSize);
+                pfSubTitle = new CPrivateFastFont(new FontFamily(TJAPlayer3.ConfigIni.FontName), 12);
+            }
             else
             {
-                pfMusicName = new CPrivateFastFont(new FontFamily("MS UI Gothic"), TJAPlayer3.Skin.Result_MusicName_FontSize);
-			}
+                pfTitle = new CPrivateFastFont(new FontFamily("MS UI Gothic"), TJAPlayer3.Skin.Result_MusicName_FontSize);
+                pfSubTitle = new CPrivateFastFont(new FontFamily("MS UI Gothic"), 12);
 
-			var title = TJAPlayer3.IsPerformingCalibration
+            }
+
+            var title = TJAPlayer3.IsPerformingCalibration
 				? $"Calibration complete. InputAdjustTime is now {TJAPlayer3.ConfigIni.nInputAdjustTimeMs}ms"
 		        : TJAPlayer3.DTX.TITLE;
 
-			using (var bmpSongTitle = pfMusicName.DrawPrivateFont(title, TJAPlayer3.Skin.Result_MusicName_ForeColor, TJAPlayer3.Skin.Result_MusicName_BackColor))
+			var subtitle = TJAPlayer3.IsPerformingCalibration
+                ? $"Calibration complete. InputAdjustTime is now {TJAPlayer3.ConfigIni.nInputAdjustTimeMs}ms"
+                : TJAPlayer3.DTX.SUBTITLE;
 
-		    {
-		        txMusicName = TJAPlayer3.tテクスチャの生成(bmpSongTitle, false);
+            this.txTitle = TJAPlayer3.tテクスチャの生成(pfTitle.DrawPrivateFont(title, Color.White, Color.Black));
+            {
+                this.txTitle.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txTitle, 720);
+                this.txTitle.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txTitle, 720);
+            }
+            this.txSubTitle = TJAPlayer3.tテクスチャの生成(pfSubTitle.DrawPrivateFont(subtitle, Color.White, Color.Black));
+            {
+                this.txSubTitle.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txSubTitle, 720);
+                this.txSubTitle.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txSubTitle, 720);
+            }
 
-				txMusicName.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txMusicName);
 
-			}
 
-			base.On活性化();
+            base.On活性化();
 		}
 		public override void On非活性化()
 		{
@@ -59,10 +70,12 @@ namespace TJAPlayer3
 		{
 			if( !b活性化してない )
 			{
-                TJAPlayer3.t安全にDisposeする(ref pfMusicName);
-                TJAPlayer3.tテクスチャの解放( ref txMusicName );
+                TJAPlayer3.t安全にDisposeする(ref pfTitle);
+                TJAPlayer3.tテクスチャの解放( ref txTitle);
+                TJAPlayer3.t安全にDisposeする(ref pfSubTitle);
+                TJAPlayer3.tテクスチャの解放(ref txSubTitle);
 
-				base.OnManagedリソースの解放();
+                base.OnManagedリソースの解放();
 			}
 		}
 		public override int On進行描画()
@@ -80,18 +93,24 @@ namespace TJAPlayer3
 
             if (TJAPlayer3.Skin.Result_MusicName_ReferencePoint == CSkin.ReferencePoint.Center)
             {
-                txMusicName.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - ((txMusicName.szテクスチャサイズ.Width * txMusicName.vc拡大縮小倍率.X) / 2), TJAPlayer3.Skin.Result_MusicName_Y);
-			}
+                txTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - ((txTitle.szテクスチャサイズ.Width * txTitle.vc拡大縮小倍率.X) / 2), TJAPlayer3.Skin.Result_MusicName_Y);
+                txSubTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - ((txSubTitle.szテクスチャサイズ.Width * txSubTitle.vc拡大縮小倍率.X) / 2), TJAPlayer3.Skin.Result_MusicName_Y + 50);
+
+            }
             else if (TJAPlayer3.Skin.Result_MusicName_ReferencePoint == CSkin.ReferencePoint.Left)
             {
-                txMusicName.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X, TJAPlayer3.Skin.Result_MusicName_Y);
+                txTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X, TJAPlayer3.Skin.Result_MusicName_Y);
+                txSubTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X, TJAPlayer3.Skin.Result_MusicName_Y + 20);
+
             }
             else
             {
-                txMusicName.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - txMusicName.szテクスチャサイズ.Width * txMusicName.vc拡大縮小倍率.X, TJAPlayer3.Skin.Result_MusicName_Y);
+                txTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - txTitle.szテクスチャサイズ.Width * txTitle.vc拡大縮小倍率.X, TJAPlayer3.Skin.Result_MusicName_Y);
+                txSubTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - txTitle.szテクスチャサイズ.Width * txTitle.vc拡大縮小倍率.X, TJAPlayer3.Skin.Result_MusicName_Y + 20);
+
             }
 
-			if( !ct登場用.b終了値に達した )
+            if ( !ct登場用.b終了値に達した )
 			{
 				return 0;
 			}
@@ -103,8 +122,10 @@ namespace TJAPlayer3
 		#region [ private ]
 		//-----------------
 		private CCounter ct登場用;
-        private CTexture txMusicName;
-		private CPrivateFastFont pfMusicName;
+        private CTexture txTitle;
+		private CTexture txSubTitle;
+		private CPrivateFastFont pfTitle;
+		private CPrivateFastFont pfSubTitle;
 		//-----------------
 		#endregion
 	}

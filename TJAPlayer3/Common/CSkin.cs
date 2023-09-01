@@ -310,6 +310,9 @@ namespace TJAPlayer3
         public Cシステムサウンド soundModeS = null;
         //add
         public Cシステムサウンド sound曲決定音 = null;
+        public Cシステムサウンド soundクリア音 = null;
+        public Cシステムサウンド sound失敗音 = null;
+
         public Cシステムサウンド bgmリザルトイン音 = null;
         public Cシステムサウンド bgmリザルト音 = null;
         public Cシステムサウンド bgm段位リザルト音 = null;
@@ -678,6 +681,9 @@ namespace TJAPlayer3
             this.bgm段位リザルト音 = new Cシステムサウンド(@"Sounds\BGM\DanResult.ogg", true, false, true, ESoundGroup.SongPlayback);
             this.sound裏 = new Cシステムサウンド(@"Sounds\Ura.ogg", false, false, true, ESoundGroup.SoundEffect);
             this.soundオプション = new Cシステムサウンド(@"Sounds\EnsoOp.ogg", false, false, true, ESoundGroup.SoundEffect);
+
+            this.soundクリア音 = new Cシステムサウンド(@"Sounds\ResultScreen\Donchan_Clear.ogg", false, false, false, ESoundGroup.SoundEffect);
+            this.sound失敗音 = new Cシステムサウンド(@"Sounds\ResultScreen\Donchan_Miss.ogg", false, false, false, ESoundGroup.SoundEffect);
 
             this.soundCrownIn = new Cシステムサウンド(@"Sounds\ResultScreen\CrownIn.ogg", false, false, false, ESoundGroup.SoundEffect);
             this.soundRankIn = new Cシステムサウンド(@"Sounds\ResultScreen\RankIn.ogg", false, false, false, ESoundGroup.SoundEffect);
@@ -2613,7 +2619,7 @@ namespace TJAPlayer3
         public int SongSelect_BoxExplanation_FontSize = 16;
         public int SongSelect_BoxExplanation_Interval = 30;
         public int SongSelect_Title_X = 0;
-        public int SongSelect_Title_Y = 2;
+        public int SongSelect_Title_Y = -5;
         public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームミュージック", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲"};
         public int[] SongSelect_NamePlate_X = new int[] { 37, 1020 };
         public int[] SongSelect_NamePlate_Y = new int[] { 612, 612 };
