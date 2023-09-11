@@ -245,6 +245,7 @@ namespace TJAPlayer3
             Difficulty_Crown = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Crown.png");
             Difficulty_Option = TxC($"{SONGSELECT}Difficulty_Select/Difficulty_Option.png");
             Difficulty_Option_Select = TxC($"{SONGSELECT}Difficulty_Select/Difficulty_Option_Select.png");
+            //Difficulty_Mark = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Mark.png");
 
             Difficulty_Select_Bar[0] = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Select_Bar.png");
             Difficulty_Select_Bar[1] = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Select_Bar2.png");
@@ -264,6 +265,11 @@ namespace TJAPlayer3
                     Difficulty_Back[i] = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Back\Difficulty_Back_" + i.ToString() + ".png");
                 }
             }
+            for (int i = 0; i < Difficulty_Mark.Length; i++)
+            {
+                Difficulty_Mark[i] = TxC(SONGSELECT + @"Difficulty_Select\Difficulty_Mark_" + i.ToString() + ".png");
+            }
+
             #endregion
 
             #endregion
@@ -1080,17 +1086,18 @@ namespace TJAPlayer3
             SongSelect_NamePlate = new CTexture[1];
 
         #region [ 難易度選択画面 ]
-        public CTexture Difficulty_Bar;
-        public CTexture Difficulty_Number;
-        public CTexture Difficulty_Star;
-        public CTexture Difficulty_Crown;
-        public CTexture Difficulty_Option;
-        public CTexture Difficulty_Option_Select;
-        public CTexture Ctr;
-        public CTexture Ctr_Ef;
+        public CTexture Difficulty_Bar,
+            Difficulty_Number,
+            Difficulty_Star,
+            Difficulty_Crown,
+            Difficulty_Option,
+            Difficulty_Option_Select,
+            Ctr,
+            Ctr_Ef;
 
         public CTexture[] Difficulty_Select_Bar = new CTexture[2];
         public CTexture[] Difficulty_Back;
+        public CTexture[] Difficulty_Mark = new CTexture[5];
         #endregion
 
         #endregion

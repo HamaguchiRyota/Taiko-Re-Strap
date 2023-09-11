@@ -605,14 +605,14 @@ namespace TJAPlayer3
 
 			// #xxxxx 2013.4.8 yyagi; sleepの挿入位置を、EndScnene～Present間から、BeginScene前に移動。描画遅延を小さくするため。
 			#region [ スリープ ]
-			if ( ConfigIni.nフレーム毎スリープms >= 0 )			// #xxxxx 2011.11.27 yyagi
+			if ( ConfigIni.nフレーム毎スリープms >= 0)			// #xxxxx 2011.11.27 yyagi
 			{
 				Thread.Sleep( ConfigIni.nフレーム毎スリープms );
 			}
-			#endregion
+            #endregion
 
-			#region [ DTXCreatorからの指示 ]
-			if ( this.Window.IsReceivedMessage )	// ウインドウメッセージで、
+            #region [ DTXCreatorからの指示 ]
+            if ( this.Window.IsReceivedMessage )	// ウインドウメッセージで、
 			{
 				string strMes = this.Window.strMessage;
 				this.Window.IsReceivedMessage = false;

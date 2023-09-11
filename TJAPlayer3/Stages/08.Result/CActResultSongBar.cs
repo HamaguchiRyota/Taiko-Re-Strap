@@ -38,16 +38,14 @@ namespace TJAPlayer3
 
             this.txTitle = TJAPlayer3.tテクスチャの生成(pfTitle.DrawPrivateFont(title, Color.White, Color.Black));
             {
-                this.txTitle.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txTitle, 720);
-                this.txTitle.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txTitle, 720);
+                this.txTitle.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txTitle, 760);
+                this.txTitle.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txTitle, 760);
             }
             this.txSubTitle = TJAPlayer3.tテクスチャの生成(pfSubTitle.DrawPrivateFont(subtitle, Color.White, Color.Black));
             {
-                this.txSubTitle.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txSubTitle, 720);
-                this.txSubTitle.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txSubTitle, 720);
+                this.txSubTitle.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txSubTitle, 760);
+                this.txSubTitle.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txSubTitle, 760);
             }
-
-
 
             base.On活性化();
 		}
@@ -95,19 +93,6 @@ namespace TJAPlayer3
             {
                 txTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - ((txTitle.szテクスチャサイズ.Width * txTitle.vc拡大縮小倍率.X) / 2), TJAPlayer3.Skin.Result_MusicName_Y);
                 txSubTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - ((txSubTitle.szテクスチャサイズ.Width * txSubTitle.vc拡大縮小倍率.X) / 2), TJAPlayer3.Skin.Result_MusicName_Y + 50);
-
-            }
-            else if (TJAPlayer3.Skin.Result_MusicName_ReferencePoint == CSkin.ReferencePoint.Left)
-            {
-                txTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X, TJAPlayer3.Skin.Result_MusicName_Y);
-                txSubTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X, TJAPlayer3.Skin.Result_MusicName_Y + 20);
-
-            }
-            else
-            {
-                txTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - txTitle.szテクスチャサイズ.Width * txTitle.vc拡大縮小倍率.X, TJAPlayer3.Skin.Result_MusicName_Y);
-                txSubTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - txTitle.szテクスチャサイズ.Width * txTitle.vc拡大縮小倍率.X, TJAPlayer3.Skin.Result_MusicName_Y + 20);
-
             }
 
             if ( !ct登場用.b終了値に達した )

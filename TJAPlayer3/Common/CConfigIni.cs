@@ -947,6 +947,7 @@ namespace TJAPlayer3
 			}
 		}
 		#endregion
+
 		#region [ STLANEVALUE ]
 		public STLANEVALUE nVelocityMin;
 		[StructLayout( LayoutKind.Sequential )]
@@ -1074,7 +1075,6 @@ namespace TJAPlayer3
 		}
 		#endregion
 
-
         #region[ Ver.K追加オプション ]
         //--------------------------
         //ゲーム内のオプションに加えて、
@@ -1089,6 +1089,7 @@ namespace TJAPlayer3
         public Eミラー eMirror;
 
         #endregion
+
         #region[System]
         public bool bDirectShowMode;
         #endregion
@@ -1102,7 +1103,7 @@ namespace TJAPlayer3
 		public CConfigIni()
 		{
 			this.strDTXManiaのバージョン = "Unknown";
-			this.str曲データ検索パス = @".\";
+			this.str曲データ検索パス = @"./Songs/";
 			this.b全画面モード = false;
 			this.b垂直帰線待ちを行う = true;
 			this.n初期ウィンドウ開始位置X = 0; // #30675 2013.02.04 ikanick add
@@ -1491,7 +1492,7 @@ namespace TJAPlayer3
 			sw.WriteLine( "ClipDispType={0}", (int) this.eClipDispType );
 			sw.WriteLine();
 			#endregion
-    		    #region [ プレビュー音 ]
+    		#region [ プレビュー音 ]
 			sw.WriteLine( "; 曲選択からプレビュー音の再生までのウェイト[ms]" );
 			sw.WriteLine( "PreviewSoundWait={0}", this.n曲が選択されてからプレビュー音が鳴るまでのウェイトms );
 			sw.WriteLine();
@@ -2112,6 +2113,7 @@ namespace TJAPlayer3
 												this.eClipDispType = (EClipDispType)C変換.n値を文字列から取得して範囲内に丸めて返す( str4, 0, 3, (int) this.eClipDispType );
 											}
 											#endregion
+
 											#region [ プレビュー音 ]
 											else if( str3.Equals( "PreviewSoundWait" ) )
 											{
@@ -2122,16 +2124,14 @@ namespace TJAPlayer3
 												this.n曲が選択されてからプレビュー画像が表示開始されるまでのウェイトms = C変換.n値を文字列から取得して範囲内に丸めて返す( str4, 0, 0x5f5e0ff, this.n曲が選択されてからプレビュー画像が表示開始されるまでのウェイトms );
 											}
 											#endregion
-											//else if( str3.Equals( "AdjustWaves" ) )
-											//{
-											//	this.bWave再生位置自動調整機能有効 = C変換.bONorOFF( str4[ 0 ] );
-											//}
+
 											#region [ BGM/ドラムのヒット音 ]
 											else if( str3.Equals( "BGMSound" ) )
 											{
 												this.bBGM音を発声する = C変換.bONorOFF( str4[ 0 ] );
 											}
 											#endregion
+
 											else if( str3.Equals( "SaveScoreIni" ) )
 											{
 												this.bScoreIniを出力する = C変換.bONorOFF( str4[ 0 ] );
@@ -2140,12 +2140,14 @@ namespace TJAPlayer3
 											{
 												this.bランダムセレクトで子BOXを検索対象とする = C変換.bONorOFF( str4[ 0 ] );
 											}
+
 											#region [ コンボ数 ]
 											else if( str3.Equals( "MinComboDrums" ) )
 											{
 												this.n表示可能な最小コンボ数.Drums = C変換.n値を文字列から取得して範囲内に丸めて返す( str4, 1, 0x1869f, this.n表示可能な最小コンボ数.Drums );
 											}
 											#endregion
+
 											else if( str3.Equals( "ShowDebugStatus" ) )
 											{
 												this.b演奏情報を表示する = C変換.bONorOFF( str4[ 0 ] );
@@ -2202,6 +2204,7 @@ namespace TJAPlayer3
 											{
 												this.bTimeStretch = C変換.bONorOFF( str4[ 0 ] );
 											}
+
 											#region [ AdjustTime ]
 											else if( str3.Equals( "InputAdjustTime" ) )
 											{
@@ -2228,6 +2231,7 @@ namespace TJAPlayer3
 												this.e判定位置.Bass = (E判定位置) C変換.n値を文字列から取得して範囲内に丸めて返す( str4, 0, 2, (int) this.e判定位置.Bass );
 											}
 											#endregion
+
 											else if( str3.Equals( "BufferedInput" ) )
 											{
 												this.bバッファ入力を行う = C変換.bONorOFF( str4[ 0 ] );
@@ -2236,6 +2240,7 @@ namespace TJAPlayer3
 											{
 												this.nPoliphonicSounds = C変換.n値を文字列から取得して範囲内に丸めて返す( str4, 1, 8, this.nPoliphonicSounds );
 											}
+
 											#region [ VelocityMin ]
 											else if ( str3.Equals( "LCVelocityMin" ) )			// #23857 2010.12.12 yyagi
 											{
@@ -2274,16 +2279,14 @@ namespace TJAPlayer3
 												this.nVelocityMin.RD = C変換.n値を文字列から取得して範囲内に丸めて返す( str4, 0, 127, this.nVelocityMin.RD );
 											}
 											#endregion
-											//else if ( str3.Equals( "NoMP3Streaming" ) )
-											//{
-											//    this.bNoMP3Streaming = C変換.bONorOFF( str4[ 0 ] );
-                                            //}
+
                                             #region[ Ver.K追加 ]
 											else if ( str3.Equals( "DirectShowMode" ) )		// #28228 2012.5.1 yyagi
 											{
                                                 this.bDirectShowMode = C変換.bONorOFF( str4[ 0 ] ); ;
 											}
 											#endregion
+
 											else if (str3.Equals("EndingAnime"))
 											{
 												this.eEndingAnime = C変換.bONorOFF(str4[0]); ;

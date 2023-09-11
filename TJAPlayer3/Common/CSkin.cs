@@ -959,7 +959,7 @@ namespace TJAPlayer3
                             strCommand = strArray[0].Trim();
                             strParam = strArray[1].Trim();
 
-                            #region スキン設定
+                            #region [ スキン設定 ]
 
                             void ParseInt32(Action<int> setValue)
                             {
@@ -987,7 +987,7 @@ namespace TJAPlayer3
                             }
                             #endregion
 
-                            #region 背景(スクロール)
+                            #region [ 背景(スクロール) ]
                             else if (strCommand == "Background_Scroll_Y")
                             {
                                 string[] strSplit = strParam.Split(',');
@@ -1067,7 +1067,7 @@ namespace TJAPlayer3
                             #region[ その他 ]
                             #endregion
 
-                            #region 新・SkinConfig
+                            #region [ 新・SkinConfig ]
                             #region UserConfig
                             else if (strCommand == nameof(UserConfig_TitleDon_Show))
                             {
@@ -2497,7 +2497,7 @@ namespace TJAPlayer3
         //-----------------
         #endregion
 
-        #region 背景(スクロール)
+        #region [ 背景(スクロール) ]
         public int[] Background_Scroll_Y = new int[] { 0, 536 };
         #endregion
 
@@ -2593,7 +2593,7 @@ namespace TJAPlayer3
         }
         
 
-        #region 新・SkinConfig
+        #region [ 新・SkinConfig ]
         #region General
         public string Skin_Name = "Unknown";
         public string Skin_Version = "Unknown";

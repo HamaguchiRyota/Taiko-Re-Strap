@@ -93,7 +93,7 @@ namespace TJAPlayer3
                     this.list進行文字列.Add("");
                     this.list進行文字列.Add("Taiko-Re-Strap forked TJAP3DRW(@TouhouRenren)");
                     this.list進行文字列.Add("TRS edited by Fumolat");
-                    this.list進行文字列.Add("2023_09/01 Release Version.");
+                    this.list進行文字列.Add("2023_09/11 Release Version.");
 					this.list進行文字列.Add("");
 
 					es = new CEnumSongs();

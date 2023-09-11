@@ -309,9 +309,10 @@ namespace TJAPlayer3
                         bプレイヤーエントリー決定 = true;
                         bバナパス読み込み = false;
                         TJAPlayer3.Skin.SoundBanapas.bPlayed = false;
-                        ctバナパス読み込み待機.t停止();
                         TJAPlayer3.Skin.soundEntry.t停止する();
 						b直モードセレクト = true;
+                        ctバナパス読み込み待機.t停止();
+
                         if (!bモード選択)
                         {
                             if (!TJAPlayer3.Skin.soundsanka.bPlayed && !TJAPlayer3.Skin.soundModeS.bPlayed)
@@ -323,6 +324,7 @@ namespace TJAPlayer3
                             ctどんちゃんイン.t開始(0, 180, 2, TJAPlayer3.Timer);
                             ctBarAnimeIn.t開始(0, 1295, 1, TJAPlayer3.Timer);
                             bモード選択 = true;
+
                         }
                     }
                 }
