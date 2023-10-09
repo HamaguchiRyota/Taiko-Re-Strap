@@ -1,4 +1,5 @@
 ﻿using FDK;
+using System.Security.Cryptography.X509Certificates;
 
 namespace TJAPlayer3
 {
@@ -14,7 +15,7 @@ namespace TJAPlayer3
                 {
                     base.b初めての進行描画 = false;
                 }
-                long num = FDK.CSound管理.rc演奏用タイマ.n現在時刻;
+                //long num = FDK.CSound管理.rc演奏用タイマ.n現在時刻;
 
                 if (!this.ctTimer.b停止中)
                 {
@@ -152,10 +153,29 @@ namespace TJAPlayer3
                             }
                         }
                     }
+                }
+
+                int[] HighScore = TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア;
+                int d = TJAPlayer3.stage選曲.n確定された曲の難易度[0];
+                //long nb = this.n現在表示中のスコア[0].Taiko - HighScore[d];
+                //TJAPlayer3.act文字コンソール.tPrint(20, 5, C文字コンソール.Eフォント種別.白, nb.ToString());
+                /*
+                if (HighScore[d] >= 1 && nb <= 5000 )
+                {
+                    TJAPlayer3.act文字コンソール.tPrint(10, 230, C文字コンソール.Eフォント種別.白, "ハイスコア間近".ToString());
 
                 }
+                */
+
+                if (HighScore[d] >= 1 && this.n現在表示中のスコア[0].Taiko > HighScore[d])
+                {
+                    TJAPlayer3.Tx.Taiko_HG?.t2D描画(TJAPlayer3.app.Device, 2, 228);
+                }
+
             }
             return 0;
         }
-	}
+    }
 }
+
+

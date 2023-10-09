@@ -581,7 +581,9 @@ namespace TJAPlayer3
             Taiko_Ka_Left = TxC(GAME + TAIKO + @"Taiko_M.png");
             Taiko_Ka_Right = TxC(GAME + TAIKO + @"Taiko_M.png");
             STP = TxC(GAME + TAIKO + @"SectionTime_Panel.png");
+            STB = TxC(GAME + TAIKO + @"SectionTime_Bar.png");
             STBF = TxC(GAME + TAIKO + @"SectionTime_Bar_Finish.png");
+            Taiko_HG = TxC(GAME + TAIKO + @"HG.png");
 
             Taiko_LevelUp = TxC(GAME + TAIKO + @"Level.png");
             Taiko_LevelDown = TxC(GAME + TAIKO + @"Level.png");
@@ -851,6 +853,8 @@ namespace TJAPlayer3
             Result_Soul_Text = TxC(RESULT + @"Soul_Text.png");
             Result_Soul_Fire = TxC(RESULT + @"Result_Soul_Fire.png");
             Result_Diff_Bar = TxC(RESULT + @"DifficultyBar.png");
+
+            Result_HighScore = TxC(RESULT + @"HighScore.png");
 
             Result_CrownEffect = TxC(RESULT + @"CrownEffect.png");
             Result_ScoreRankEffect = TxC(RESULT + @"ScoreRankEffect.png");
@@ -1216,7 +1220,9 @@ namespace TJAPlayer3
             Taiko_LevelUp,
             Taiko_LevelDown,
             STP,
+            STB,
             STBF,
+            Taiko_HG,
             Taiko_Combo_Effect,
             Taiko_Combo_Text;
         public CTexture[] Couse_Symbol,// コースシンボル
@@ -1360,6 +1366,7 @@ namespace TJAPlayer3
             Result_Soul_Text,
             Result_Soul_Fire,
             Result_Diff_Bar,
+            Result_HighScore,
             Result_CrownEffect,
             Result_ScoreRankEffect,
             Result_Score_Number,

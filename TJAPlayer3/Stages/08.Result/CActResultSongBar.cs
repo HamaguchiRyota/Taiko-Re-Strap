@@ -89,7 +89,7 @@ namespace TJAPlayer3
 			}
 			ct登場用.t進行();
 
-            if (TJAPlayer3.Skin.Result_MusicName_ReferencePoint == CSkin.ReferencePoint.Center)
+            if (TJAPlayer3.Skin.Result_MusicName_ReferencePoint == CSkin.ReferencePoint.Center && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
             {
                 txTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - ((txTitle.szテクスチャサイズ.Width * txTitle.vc拡大縮小倍率.X) / 2), TJAPlayer3.Skin.Result_MusicName_Y);
                 txSubTitle.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_MusicName_X - ((txSubTitle.szテクスチャサイズ.Width * txSubTitle.vc拡大縮小倍率.X) / 2), TJAPlayer3.Skin.Result_MusicName_Y + 50);

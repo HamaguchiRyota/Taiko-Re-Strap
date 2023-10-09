@@ -315,6 +315,7 @@ namespace TJAPlayer3
 
         public Cシステムサウンド bgmリザルトイン音 = null;
         public Cシステムサウンド bgmリザルト音 = null;
+        public Cシステムサウンド Sound段位リザルトイン音 = null;
         public Cシステムサウンド bgm段位リザルト音 = null;
 
         public Cシステムサウンド bgmタイトル = null;
@@ -678,6 +679,7 @@ namespace TJAPlayer3
             this.bgm選曲画面 = new Cシステムサウンド(@"Sounds\BGM\SongSelect.ogg", true, false, true, ESoundGroup.SongPlayback);
             this.bgmリザルトイン音 = new Cシステムサウンド(@"Sounds\BGM\Result_In.ogg", false, false, true, ESoundGroup.SongPlayback);
             this.bgmリザルト音 = new Cシステムサウンド(@"Sounds\BGM\Result.ogg", true, false, true, ESoundGroup.SongPlayback);
+            this.Sound段位リザルトイン音 = new Cシステムサウンド(@"Sounds\BGM\DanResult_In.ogg", false, false, true, ESoundGroup.SoundEffect);
             this.bgm段位リザルト音 = new Cシステムサウンド(@"Sounds\BGM\DanResult.ogg", true, false, true, ESoundGroup.SongPlayback);
             this.sound裏 = new Cシステムサウンド(@"Sounds\Ura.ogg", false, false, true, ESoundGroup.SoundEffect);
             this.soundオプション = new Cシステムサウンド(@"Sounds\EnsoOp.ogg", false, false, true, ESoundGroup.SoundEffect);

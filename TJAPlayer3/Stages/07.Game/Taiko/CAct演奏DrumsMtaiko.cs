@@ -1,8 +1,11 @@
 using System;
 using System.Runtime.InteropServices;
 using FDK;
+using SampleFramework;
 using SharpDX;
 using Rectangle = System.Drawing.Rectangle;
+using RectangleF = System.Drawing.RectangleF;
+
 
 namespace TJAPlayer3
 {
@@ -42,6 +45,7 @@ namespace TJAPlayer3
                 this.ctレベルアップダウン[ i ] = new CCounter();
             }
             ct点滅 = new CCounter(0, 500, 1, TJAPlayer3.Timer);
+            ctGTime = new CCounter();
 
             base.OnManagedリソースの作成();
         }
@@ -78,8 +82,6 @@ namespace TJAPlayer3
 				this.nフラッシュ制御タイマ += 20;
 		    }
 
-            //this.nHS = TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums < 8 ? TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums : 7;
-
             if(TJAPlayer3.stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan)
             {
                 TJAPlayer3.Tx.Taiko_Background[2]?.t2D描画(TJAPlayer3.app.Device, 0, 184);
@@ -87,20 +89,29 @@ namespace TJAPlayer3
             else
             {
                 TJAPlayer3.Tx.Taiko_Background[0]?.t2D描画(TJAPlayer3.app.Device, 0, 184);
-                //ct点滅.t進行Loop();
-                //TJAPlayer3.Tx.STP?.t2D描画(TJAPlayer3.app.Device, 202, 178);
-                //TJAPlayer3.Tx.STBF?.t2D描画(TJAPlayer3.app.Device, 205, 193);
-                //TJAPlayer3.Tx.STBF.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * ct点滅.n現在の値 * 2 / 500.0)));//176.0 + 80.0
+                ct点滅.t進行Loop();
+                /*
+                int EndTime = (TJAPlayer3.DTX.listChip.Count > 0) ? TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms : 0;
+                double NowT = ((double)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0))) / 1000.0;
+                double EndT = ((double)EndTime) / 1000.0;
+                double gg = (double)(NowT / EndT);
+
+                TJAPlayer3.Tx.STP?.t2D描画(TJAPlayer3.app.Device, 202, 178);
+                TJAPlayer3.Tx.STB?.t2D描画(TJAPlayer3.app.Device, 205, 193, new RectangleF(0, 0, NowT, 15));
+
+                string str = "Time:" + ((((double)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0))) / 1000.0)).ToString("####0.00") + " / " + ((((double)EndTime) / 1000.0)).ToString("####0.00");
+                TJAPlayer3.act文字コンソール.tPrint(202, 160, C文字コンソール.Eフォント種別.白, str);
+                TJAPlayer3.Tx.STBF?.t2D描画(TJAPlayer3.app.Device, 205, 193);
+                TJAPlayer3.Tx.STBF.Opacity = (int)(176.0 + 80.0 * Math.Sin((double)(2 * Math.PI * ct点滅.n現在の値 * 2 / 500.0)));//176.0 + 80.0
+                */
 
                 if (TJAPlayer3.stage演奏ドラム画面.bDoublePlay)
-                {
                     TJAPlayer3.Tx.Taiko_Background[1]?.t2D描画(TJAPlayer3.app.Device, 0, 360);
-                }
+
             }
             
             if(TJAPlayer3.Tx.Taiko_Base != null )
             {
-
                 TJAPlayer3.Tx.Taiko_Base.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[0], TJAPlayer3.Skin.Game_Taiko_Y[0], new Rectangle(0, 0, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Height / 5));
                 if( TJAPlayer3.stage演奏ドラム画面.bDoublePlay )
                     TJAPlayer3.Tx.Taiko_Base.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_X[1], TJAPlayer3.Skin.Game_Taiko_Y[1], new Rectangle(0, 0, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Width, TJAPlayer3.Tx.Taiko_Base.szテクスチャサイズ.Height / 5));
@@ -213,6 +224,7 @@ namespace TJAPlayer3
                 {
                     TJAPlayer3.Tx.Couse_Symbol[(int)Difficulty.Total]?.t2D描画(TJAPlayer3.app.Device,TJAPlayer3.Skin.Game_CourseSymbol_X[i],TJAPlayer3.Skin.Game_CourseSymbol_Y[i]);
                 }
+               
             }
             
             TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.Game_Taiko_NamePlate_X[0], TJAPlayer3.Skin.Game_Taiko_NamePlate_Y[0], 0);
@@ -227,6 +239,7 @@ namespace TJAPlayer3
             {
                 TJAPlayer3.Tx.Taiko_PlayerNumber[1].t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Taiko_PlayerNumber_X[1], TJAPlayer3.Skin.Game_Taiko_PlayerNumber_Y[1]);
             }
+
             return base.On進行描画();
         }
 
@@ -313,6 +326,7 @@ namespace TJAPlayer3
         private STパッド状態[] stパッド状態 = new STパッド状態[ 4 * 4 ];
         private long nフラッシュ制御タイマ;
         private CCounter ct点滅;
+        private CCounter ctGTime;
 
         //private CTexture[] txコースシンボル = new CTexture[ 6 ];
         //private string[] strCourseSymbolFileName;

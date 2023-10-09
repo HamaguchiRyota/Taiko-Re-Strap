@@ -89,6 +89,7 @@ namespace TJAPlayer3
             }
         }
         #endregion
+
         #region [ t演奏結果を格納する_太鼓() ]
         public void t演奏結果を格納する_太鼓(out CScoreIni.C演奏記録 Drums)
         {

@@ -104,10 +104,12 @@ namespace TJAPlayer3
 				{
 					return;
 				}
+				/*
 				if( this.tプレビュー画像の指定があれば構築する() )
 				{
 					return;
 				}
+				*/
 				if( this.t背景画像があればその一部からプレビュー画像を構築する() )
 				{
 					return;
@@ -117,6 +119,7 @@ namespace TJAPlayer3
 			this.str現在のファイル名 = "";
 		}
 		
+		/*
 		private bool tプレビュー画像の指定があれば構築する()
 		{
 			Cスコア cスコア = TJAPlayer3.stage選曲.r現在選択中のスコア;
@@ -146,6 +149,7 @@ namespace TJAPlayer3
 			}
 			return true;
 		}
+		*/
 		private bool tプレビュー動画の指定があれば構築する()
 		{
 			Cスコア cスコア = TJAPlayer3.stage選曲.r現在選択中のスコア;

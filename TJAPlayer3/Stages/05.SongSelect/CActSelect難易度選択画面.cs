@@ -307,7 +307,6 @@ namespace TJAPlayer3
 
             for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
             {
-                
                 if (bSelect[i] == true)//(選択済み[i])
                 {
                     if (TJAPlayer3.Tx.Difficulty_Mark[n現在の選択行[i] - 2] != null)
@@ -340,90 +339,9 @@ namespace TJAPlayer3
                         }
                     }
                 }
-                
-
-                /*
-                if (n現在の選択行[0] == 2)
-                {
-                    if (!bSelect[i] == true)
-                    {
-                        TJAPlayer3.Tx.Difficulty_Mark[0].Opacity = 85;
-                        //TJAPlayer3.Tx.Difficulty_Mark[0].vc拡大縮小倍率 = new Vector3(0.75f);
-                        //TJAPlayer3.Tx.Difficulty_Mark[0].vc拡大縮小倍率.Y = 0.75f * (float)(1 + Math.Sin(ct難易度拡大用[i].n現在の値 * Math.PI / 180) * 0.25);
-                        TJAPlayer3.Tx.Difficulty_Mark[0]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                    else
-                    {
-                        //TJAPlayer3.Tx.Difficulty_Mark[0].Opacity = 100;
-                        TJAPlayer3.Tx.Difficulty_Mark[0]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                }
-                else if (n現在の選択行[0] == 3)
-                {
-                    if (!bSelect[i] == true)
-                    {
-                        TJAPlayer3.Tx.Difficulty_Mark[1].Opacity = 85;
-                        //TJAPlayer3.Tx.Difficulty_Mark[1].vc拡大縮小倍率 = new Vector3(0.75f);
-                        //TJAPlayer3.Tx.Difficulty_Mark[1].vc拡大縮小倍率.Y = 0.75f * (float)(1 + Math.Sin(ct難易度拡大用[i].n現在の値 * Math.PI / 180) * 0.25);
-                        TJAPlayer3.Tx.Difficulty_Mark[1]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                    else
-                    {
-                        //TJAPlayer3.Tx.Difficulty_Mark[0].Opacity = 100;
-                        TJAPlayer3.Tx.Difficulty_Mark[1]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                }
-                else if (n現在の選択行[0] == 4)
-                {
-                    if (!bSelect[i] == true)
-                    {
-                        TJAPlayer3.Tx.Difficulty_Mark[2].Opacity = 85;
-                        //TJAPlayer3.Tx.Difficulty_Mark[2].vc拡大縮小倍率 = new Vector3(0.75f);
-                        //TJAPlayer3.Tx.Difficulty_Mark[2].vc拡大縮小倍率.Y = 0.75f * (float)(1 + Math.Sin(ct難易度拡大用[i].n現在の値 * Math.PI / 180) * 0.25);
-                        TJAPlayer3.Tx.Difficulty_Mark[2]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                    else
-                    {
-                        //TJAPlayer3.Tx.Difficulty_Mark[0].Opacity = 100;
-                        TJAPlayer3.Tx.Difficulty_Mark[2]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                }
-                else if (n現在の選択行[0] == 5)
-                {
-                    if (!bSelect[i] == true)
-                    {
-                        TJAPlayer3.Tx.Difficulty_Mark[3].Opacity = 85;
-                        //TJAPlayer3.Tx.Difficulty_Mark[3].vc拡大縮小倍率 = new Vector3(0.75f);
-                        //TJAPlayer3.Tx.Difficulty_Mark[3].vc拡大縮小倍率.Y = 0.75f * (float)(1 + Math.Sin(ct難易度拡大用[i].n現在の値 * Math.PI / 180) * 0.25);
-                        TJAPlayer3.Tx.Difficulty_Mark[3]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                    else
-                    {
-                        //TJAPlayer3.Tx.Difficulty_Mark[0].Opacity = 100;
-                        TJAPlayer3.Tx.Difficulty_Mark[3]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                }
-                else if (n現在の選択行[0] == 6)
-                {
-                    if (!bSelect[i] == true)
-                    {
-                        TJAPlayer3.Tx.Difficulty_Mark[4].Opacity = 85;
-                        //TJAPlayer3.Tx.Difficulty_Mark[4].vc拡大縮小倍率 = new Vector3(0.75f);
-                        //TJAPlayer3.Tx.Difficulty_Mark[4].vc拡大縮小倍率.Y = 0.75f * (float)(1 + Math.Sin(ct難易度拡大用[i].n現在の値 * Math.PI / 180) * 0.25);
-                        TJAPlayer3.Tx.Difficulty_Mark[4]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                    else
-                    {
-                        //TJAPlayer3.Tx.Difficulty_Mark[0].Opacity = 100;
-                        TJAPlayer3.Tx.Difficulty_Mark[4]?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.DownLeft, i * 1075 - 41, 447);
-                    }
-                }
-                */
-
             }
 
             #endregion
-
 
             TJAPlayer3.Tx.Difficulty_Back[nStrジャンルtoNum(TJAPlayer3.stage選曲.r現在選択中の曲.strジャンル)].Opacity =
                 (TJAPlayer3.stage選曲.act曲リスト.ctDifficultyIn.n現在の値 - 1255);
@@ -449,7 +367,7 @@ namespace TJAPlayer3
                 {
                     //TJAPlayer3.Tx.Difficulty_Select_Bar[i].color4 = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
                     //TJAPlayer3.Tx.Difficulty_Select_Bar[i].Opacity = (int)(ctBarAnimeIn.n現在の値 >= 80 ? (ctBarAnimeIn.n現在の値 - 80) * 2.84f : 0);
-                    TJAPlayer3.Tx.Difficulty_Select_Bar[i].t2D描画(TJAPlayer3.app.Device, (float)this.BarX[n現在の選択行[i]], 242, new RectangleF(0, (n現在の選択行[i] >= 2 ? 114 : 387), 259, 275 - (n現在の選択行[i] >= 2 ? 0 : 164)));
+                    //TJAPlayer3.Tx.Difficulty_Select_Bar[i].t2D描画(TJAPlayer3.app.Device, (float)this.BarX[n現在の選択行[i]], 242, new RectangleF(0, (n現在の選択行[i] >= 2 ? 114 : 387), 259, 275 - (n現在の選択行[i] >= 2 ? 0 : 164)));
                 }
             }
 
@@ -557,21 +475,14 @@ namespace TJAPlayer3
 
             #endregion
 
-            #region [ バーの描画 ]
+            #region [ 選択バー(矢印)の描画 ]
 
             for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
             {
-                if (!bSelect[i] == true)
-                {
-                    TJAPlayer3.Tx.Difficulty_Select_Bar[i].t2D描画(TJAPlayer3.app.Device,
-                        TJAPlayer3.ConfigIni.nPlayerCount == 2 ? n現在の選択行[0] != n現在の選択行[1] ? (float)this.BarX[n現在の選択行[i]] : i == 0 ? (float)this.BarX[n現在の選択行[i]] - 25 : (float)this.BarX[n現在の選択行[i]] + 25 : (float)this.BarX[n現在の選択行[i]],
-                        126 + ((float)Math.Sin((float)(ctBarAnimeIn.n現在の値 >= 80 ? (ctBarAnimeIn.n現在の値 - 80) : 0) * (Math.PI / 180)) * 50) + (float)Math.Sin((float)ctBarAnime[i].n現在の値 * (Math.PI / 180)) * 10,
-                        new RectangleF(0, 0, 259, 114));
-                }
-                else
-                {
-
-                }
+                TJAPlayer3.Tx.Difficulty_Select_Bar[i].t2D描画(TJAPlayer3.app.Device,
+                    TJAPlayer3.ConfigIni.nPlayerCount == 2 ? n現在の選択行[0] != n現在の選択行[1] ? (float)this.BarX[n現在の選択行[i]] : i == 0 ? (float)this.BarX[n現在の選択行[i]] - 25 : (float)this.BarX[n現在の選択行[i]] + 25 : (float)this.BarX[n現在の選択行[i]],
+                    126 + ((float)Math.Sin((float)(ctBarAnimeIn.n現在の値 >= 80 ? (ctBarAnimeIn.n現在の値 - 80) : 0) * (Math.PI / 180)) * 50) + (float)Math.Sin((float)ctBarAnime[i].n現在の値 * (Math.PI / 180)) * 10,
+                    new RectangleF(0, 0, 259, 114));
             }
 
             #endregion

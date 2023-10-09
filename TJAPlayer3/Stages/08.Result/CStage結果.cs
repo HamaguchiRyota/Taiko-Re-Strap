@@ -54,12 +54,20 @@ namespace TJAPlayer3
 
 		}
 
-		// CStage 実装
+        // CStage 実装
 
-		public override void On活性化()
+        public override void On活性化()
 		{
-			TJAPlayer3.Skin.bgmリザルトイン音.t再生する();
-			Trace.TraceInformation("結果ステージを活性化します。");
+			if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
+			{
+                TJAPlayer3.Skin.bgmリザルトイン音.t再生する();
+            }
+			else
+			{
+				TJAPlayer3.Skin.Sound段位リザルトイン音.t再生する();
+			}
+
+            Trace.TraceInformation("結果ステージを活性化します。");
 			Trace.Indent();
 			b最近遊んだ曲追加済み = false;
 			try
@@ -186,8 +194,8 @@ namespace TJAPlayer3
 						if (st演奏記録[0].nスコア > ini.stセクション[0].nスコア)
 							st演奏記録[0].nハイスコア[TJAPlayer3.stage選曲.n確定された曲の難易度[0]] = (int)st演奏記録[0].nスコア;
 
-					// 新記録スキルチェック
-					if (st演奏記録[0].db演奏型スキル値 > ini.stセクション[0].db演奏型スキル値)
+                    // 新記録スキルチェック
+                    if (st演奏記録[0].db演奏型スキル値 > ini.stセクション[0].db演奏型スキル値)
 					{
 						b新記録スキル[0] = true;
 						ini.stセクション[0] = st演奏記録[0];
@@ -292,10 +300,21 @@ namespace TJAPlayer3
 					}
 				}
 
-                if (!b音声再生 && !TJAPlayer3.Skin.bgmリザルトイン音.b再生中)
-                {
-                    TJAPlayer3.Skin.bgmリザルト音.t再生する();
-                    b音声再生 = true;
+				if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
+				{
+                    if (!b音声再生 && !TJAPlayer3.Skin.bgmリザルトイン音.b再生中)
+                    {
+                        TJAPlayer3.Skin.bgmリザルト音.t再生する();
+                        b音声再生 = true;
+                    }
+                }
+				else
+				{
+                    if (!b音声再生 && !TJAPlayer3.Skin.Sound段位リザルトイン音.b再生中)
+                    {
+                        TJAPlayer3.Skin.bgm段位リザルト音.t再生する();
+                        b音声再生 = true;
+                    }
                 }
 
                 // 描画
@@ -309,11 +328,14 @@ namespace TJAPlayer3
 					bアニメが完了 = false;
 				}
 
-				tSongNumberDraw(1111, 14, NowSong.ToString());
-				tSongNumberDraw(1204, 14, MaxSong.ToString());
+				if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)//何曲目?
+				{
+					tSongNumberDraw(1111, 14, NowSong.ToString());
+					tSongNumberDraw(1204, 14, MaxSong.ToString());
+				}
 
-				#region [ ネームプレート ]
-				for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
+                #region [ ネームプレート ]
+                for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
 				{
                     TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.Result_NamePlate_X[i], TJAPlayer3.Skin.Result_NamePlate_Y[i], i);
                 }
@@ -515,7 +537,7 @@ namespace TJAPlayer3
 		private readonly CActFIFOResult actFI;
 		private readonly CActFIFOBlack actFO;
 		private readonly CActオプションパネル actOption;
-		//public CActResultParameterPanel actParameterPanel;
+		public CAct演奏Drumsスコア actGameScore;
 		private readonly CActResultParameterPanel actParameterPanel;
 		private readonly CActResultSongBar actSongBar;
 		private bool bアニメが完了;
@@ -548,15 +570,14 @@ namespace TJAPlayer3
 			}
 		}
 
-
-		#region [ #24609 リザルト画像をpngで保存する ]		// #24609 2011.3.14 yyagi; to save result screen in case BestRank or HiSkill.
-		/// <summary>
-		/// リザルト画像のキャプチャと保存。
-		/// 自動保存モード時は、ランク更新or演奏型スキル更新時に自動保存。
-		/// 手動保存モード時は、ランクに依らず保存。
-		/// </summary>
-		/// <param name="bIsAutoSave">true=自動保存モード, false=手動保存モード</param>
-		private void CheckAndSaveResultScreen(bool bIsAutoSave)
+        #region [ #24609 リザルト画像をpngで保存する ]		// #24609 2011.3.14 yyagi; to save result screen in case BestRank or HiSkill.
+        /// <summary>
+        /// リザルト画像のキャプチャと保存。
+        /// 自動保存モード時は、ランク更新or演奏型スキル更新時に自動保存。
+        /// 手動保存モード時は、ランクに依らず保存。
+        /// </summary>
+        /// <param name="bIsAutoSave">true=自動保存モード, false=手動保存モード</param>
+        private void CheckAndSaveResultScreen(bool bIsAutoSave)
 		{
 			//string path = Path.GetDirectoryName(TJAPlayer3.DTX.strファイル名の絶対パス);
 			string datetime = DateTime.Now.ToString("yyyyMMddHHmmss");

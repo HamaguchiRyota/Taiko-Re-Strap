@@ -256,7 +256,7 @@ namespace TJAPlayer3
 										TJAPlayer3.Skin.soundModeS.t停止する();
 										TJAPlayer3.Skin.sound決定音.t再生する();
 										n現在の選択行モード選択 = (int)E戻り値.DANGAMESTART - 1;
-										actFO.tフェードアウト開始(0, 500);
+										actFO.tフェードアウト開始(0, 800);
 										eフェーズID = Eフェーズ.共通_フェードアウト;
 									}
 									else
@@ -270,7 +270,7 @@ namespace TJAPlayer3
 								TJAPlayer3.Skin.soundModeS.t停止する();
 								TJAPlayer3.Skin.sound決定音.t再生する();
 								n現在の選択行モード選択 = (int)E戻り値.GAMESTART - 1;
-								actFO.tフェードアウト開始(0, 500);
+								actFO.tフェードアウト開始(0, 800);
 								eフェーズID = Eフェーズ.共通_フェードアウト;
 							}
 						}
@@ -549,13 +549,12 @@ namespace TJAPlayer3
 						DonchanY = ((float)Math.Sin((90 + (ctどんちゃんイン.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
 						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -525 + 4 + DonchanX, 237 - DonchanY);//200, 341
-						//TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -520 + DonchanX, 241 - DonchanY);
 					}
 					#endregion
 
 					if (ctBarAnimeIn.n現在の値 >= (int)(16 * 16.6f))
 					{
-						TJAPlayer3.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, ctBarMove.n現在の値.ToString());
+						//TJAPlayer3.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, ctBarMove.n現在の値.ToString());
 
                         for (int i = 0; i < 2; i++)
                         {

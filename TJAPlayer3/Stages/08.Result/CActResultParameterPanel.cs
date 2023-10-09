@@ -12,46 +12,48 @@ namespace TJAPlayer3
 
 		public CActResultParameterPanel()
 		{
+            #region [ ST小文字 ]
+
             ST文字位置[] st文字位置Array = new ST文字位置[11];
             ST文字位置 st文字位置 = new ST文字位置();
             st文字位置.ch = '0';
-            st文字位置.pt = new Point(0, 0);
+            st文字位置.pt = new Point(4, 0);
             st文字位置Array[0] = st文字位置;
             ST文字位置 st文字位置2 = new ST文字位置();
             st文字位置2.ch = '1';
-            st文字位置2.pt = new Point(32, 0);
+            st文字位置2.pt = new Point(37, 0);
             st文字位置Array[1] = st文字位置2;
             ST文字位置 st文字位置3 = new ST文字位置();
             st文字位置3.ch = '2';
-            st文字位置3.pt = new Point(64, 0);
+            st文字位置3.pt = new Point(68, 0);
             st文字位置Array[2] = st文字位置3;
             ST文字位置 st文字位置4 = new ST文字位置();
             st文字位置4.ch = '3';
-            st文字位置4.pt = new Point(96, 0);
+            st文字位置4.pt = new Point(100, 0);
             st文字位置Array[3] = st文字位置4;
             ST文字位置 st文字位置5 = new ST文字位置();
             st文字位置5.ch = '4';
-            st文字位置5.pt = new Point(128, 0);
+            st文字位置5.pt = new Point(132, 0);
             st文字位置Array[4] = st文字位置5;
             ST文字位置 st文字位置6 = new ST文字位置();
             st文字位置6.ch = '5';
-            st文字位置6.pt = new Point(160, 0);
+            st文字位置6.pt = new Point(165, 0);
             st文字位置Array[5] = st文字位置6;
             ST文字位置 st文字位置7 = new ST文字位置();
             st文字位置7.ch = '6';
-            st文字位置7.pt = new Point(192, 0);
+            st文字位置7.pt = new Point(197, 0);
             st文字位置Array[6] = st文字位置7;
             ST文字位置 st文字位置8 = new ST文字位置();
             st文字位置8.ch = '7';
-            st文字位置8.pt = new Point(224, 0);
+            st文字位置8.pt = new Point(228, 0);
             st文字位置Array[7] = st文字位置8;
             ST文字位置 st文字位置9 = new ST文字位置();
             st文字位置9.ch = '8';
-            st文字位置9.pt = new Point(256, 0);
+            st文字位置9.pt = new Point(260, 0);
             st文字位置Array[8] = st文字位置9;
             ST文字位置 st文字位置10 = new ST文字位置();
             st文字位置10.ch = '9';
-            st文字位置10.pt = new Point(288, 0);
+            st文字位置10.pt = new Point(292, 0);
             st文字位置Array[9] = st文字位置10;
             ST文字位置 st文字位置11 = new ST文字位置();
             st文字位置11.ch = ' ';
@@ -59,7 +61,11 @@ namespace TJAPlayer3
             st文字位置Array[10] = st文字位置11;
             st小文字位置 = st文字位置Array;
 
-			ST文字位置[] st文字位置Array2 = new ST文字位置[11];
+            #endregion
+
+            #region [ ST大文字 ]
+
+            ST文字位置[] st文字位置Array2 = new ST文字位置[11];
 			ST文字位置 st文字位置12 = new ST文字位置();
 			st文字位置12.ch = '0';
 			st文字位置12.pt = new Point(0, 0);
@@ -106,7 +112,11 @@ namespace TJAPlayer3
 			st文字位置Array2[10] = st文字位置22;
 			st大文字位置 = st文字位置Array2;
 
-			ST文字位置[] stScore文字位置Array = new ST文字位置[10];
+            #endregion
+
+            #region [ STScore文字 ]
+
+            ST文字位置[] stScore文字位置Array = new ST文字位置[10];
 			ST文字位置 stScore文字位置 = new ST文字位置();
 			stScore文字位置.ch = '0';
 			stScore文字位置.pt = new Point(0, 0);
@@ -149,7 +159,9 @@ namespace TJAPlayer3
             stScore文字位置Array[9] = stScore文字位置10;
             stScoreFont = stScore文字位置Array;
 
-			ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
+            #endregion
+
+            ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
 			b活性化してない = true;
 		}
 
@@ -269,9 +281,10 @@ namespace TJAPlayer3
                 int AnimeCount = 3000 + (int)ctゲージアニメ.n終了値 * 59;
                 int ScoreApparitionTimeStamp = AnimeCount + 420 * 4 + 840;
                 int ClearType = TJAPlayer3.stage結果.nクリア - 1;
+				int RankType = TJAPlayer3.stage結果.nスコアランク;
                 bool is2P = (TJAPlayer3.ConfigIni.nPlayerCount == 2);
 
-                #region [ 背景 ]
+                #region [ 背景と音声 ]
 
                 //クリア以上で背景転調
                 if (ClearType >= -1 && TJAPlayer3.Tx.Result_Background[0] != null && TJAPlayer3.Tx.Result_Background[1] != null && TJAPlayer3.Tx.Result_Background[3] != null)
@@ -285,7 +298,7 @@ namespace TJAPlayer3
                         TJAPlayer3.Tx.Result_Background[2].t2D描画(TJAPlayer3.app.Device, 0, 0);
                     }
 
-
+                    //音声
                     if (ClearType >= 0 && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500)
 					{
                         TJAPlayer3.Tx.Result_Background[3].t2D描画(TJAPlayer3.app.Device, 0, 0);
@@ -295,7 +308,23 @@ namespace TJAPlayer3
                             b音声再生[9] = true;
                         }
                     }
-				}
+					else if (ClearType <= -1 && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 2800)//スコアランク取得+王冠未取得の場合
+					{
+                        if (!b音声再生[10])
+                        {
+                            TJAPlayer3.Skin.sound失敗音.t再生する();
+                            b音声再生[10] = true;
+                        }
+                    }
+                    else if (ClearType <= -1 && RankType <= 0 && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 2000)//スコアランク未取得+王冠未取得の場合
+                    {
+                        if (!b音声再生[10])
+                        {
+                            TJAPlayer3.Skin.sound失敗音.t再生する();
+                            b音声再生[10] = true;
+                        }
+                    }
+                }
 
                 #endregion
 
@@ -340,9 +369,8 @@ namespace TJAPlayer3
                         TJAPlayer3.Tx.Result_Chara_Normal?[ctChara_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);//+-54,+-28
                         if (is2P)
                             TJAPlayer3.Tx.Result_Chara_Normal?[ctChara_Normal.n現在の値].t2D左右反転描画(TJAPlayer3.app.Device, 809, 348);
-                    } 
-
-                    if (ClearType >= 0 && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500 && TJAPlayer3.Tx.Result_Chara_Clear != null)
+                    }
+                    else if (ClearType >= 0 && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3500 && TJAPlayer3.Tx.Result_Chara_Clear != null)
                     {
 						ctChara_Clear.t進行Loop();
 						TJAPlayer3.Tx.Result_Chara_Clear?[ctChara_Clear.n現在の値].t2D描画(TJAPlayer3.app.Device, -156, 348);
@@ -350,6 +378,15 @@ namespace TJAPlayer3
                             TJAPlayer3.Tx.Result_Chara_Clear[ctChara_Clear.n現在の値].t2D左右反転描画(TJAPlayer3.app.Device, 809, 348);
 
                     }
+					else if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 3000)
+					{
+						//スコアランクは獲得したが王冠は未獲得の場合
+                    }
+					else if (RankType <= 0 && ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 2000)
+					{
+						//スコアランク,王冠ともに未獲得の場合
+					}
+
                 }
 
 
@@ -441,7 +478,6 @@ namespace TJAPlayer3
 				*/
 
                 #endregion
-
 
 
                 #region [ オプションアイコン・ModIcons ]
@@ -572,33 +608,32 @@ namespace TJAPlayer3
 							}
 						}
 
-						#endregion
+                    #endregion
 
-					#region [ スコア関連 ]
+                    #region [ スコア関連 ]
 
-						if (ct全体進行.n現在の値 >= AnimeCount + Interval * 4 + 840)
-						{
-							int AnimeCount1 = AnimeCount + Interval * 4 + 840;
+                    if (ct全体進行.n現在の値 >= AnimeCount + Interval * 4 + 840)
+                    {
+                        int AnimeCount1 = AnimeCount + Interval * 4 + 840;
 
-							TJAPlayer3.Tx.Result_Score_Number.vc拡大縮小倍率.X = ct全体進行.n現在の値 <= AnimeCount1 + 270 ? 1.0f + (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1) / 1.5f * (Math.PI / 180)) * 0.65f :
-																			  ct全体進行.n現在の値 <= AnimeCount1 + 360 ? 1.0f - (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1 - 270) * (Math.PI / 180)) * 0.1f : 1.0f;
-							TJAPlayer3.Tx.Result_Score_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount1 + 270 ? 1.0f + (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1) / 1.5f * (Math.PI / 180)) * 0.65f :
-																			  ct全体進行.n現在の値 <= AnimeCount1 + 360 ? 1.0f - (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1 - 270) * (Math.PI / 180)) * 0.1f : 1.0f;
+                        TJAPlayer3.Tx.Result_Score_Number.vc拡大縮小倍率.X = ct全体進行.n現在の値 <= AnimeCount1 + 270 ? 1.0f + (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1) / 1.5f * (Math.PI / 180)) * 0.65f :
+                                                                             ct全体進行.n現在の値 <= AnimeCount1 + 360 ? 1.0f - (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1 - 270) * (Math.PI / 180)) * 0.1f : 1.0f;
+                        TJAPlayer3.Tx.Result_Score_Number.vc拡大縮小倍率.Y = ct全体進行.n現在の値 <= AnimeCount1 + 270 ? 1.0f + (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1) / 1.5f * (Math.PI / 180)) * 0.65f :
+																			 ct全体進行.n現在の値 <= AnimeCount1 + 360 ? 1.0f - (float)Math.Sin((ct全体進行.n現在の値 - AnimeCount1 - 270) * (Math.PI / 180)) * 0.1f : 1.0f;
 
-							tスコア文字表示(TJAPlayer3.Skin.nResultScoreP1X, TJAPlayer3.Skin.nResultScoreP1Y, string.Format("{0,7:######0}", TJAPlayer3.stage結果.st演奏記録.Drums.nスコア));
+                        tスコア文字表示(TJAPlayer3.Skin.nResultScoreP1X, TJAPlayer3.Skin.nResultScoreP1Y, string.Format("{0,7:######0}", TJAPlayer3.stage結果.st演奏記録.Drums.nスコア));
 
+                        if (!b音声再生[6])
+                        {
+                            TJAPlayer3.Skin.soundScoreDon.t再生する();
+                            b音声再生[6] = true;
+                        }
+                    }
 
-							if (!b音声再生[6])
-							{
-								TJAPlayer3.Skin.soundScoreDon.t再生する();
-								b音声再生[6] = true;
-							}
-						}
+                    #endregion
 
-						#endregion
-
-					#region [ 山アニメーションカウンターのセットアップ ]
-					/*
+                    #region [ 山アニメーションカウンターのセットアップ ]
+                    /*
 					if (!this.ctMountain_ClearIn.b進行中)
 						this.ctMountain_ClearIn.t開始(0, 515, 3, TJAPlayer3.Timer);
 
@@ -616,9 +651,9 @@ namespace TJAPlayer3
 							CResultCharacter.tMenuResetTimer(p, CResultCharacter.ECharacterResult.FAILED);
 					}
 					*/
-					#endregion
-			
-				}
+                    #endregion
+
+                }
 
 				if (ctゲージアニメ.n現在の値 != 50)
 				{
@@ -772,10 +807,11 @@ namespace TJAPlayer3
 
 		public CCounter ct全体進行;
 		//private CCounter ct全体進行;
-		private CCounter ctゲージアニメ;
+		public CCounter ctゲージアニメ;
 		private CCounter ct虹ゲージアニメ;
 		private CCounter ctSoul;
 		private CCounter ctGaugeFlash;
+		public CAct演奏Drumsスコア CActScore;
 
         public CCounter ctEndAnime;
 		public CCounter ctMountain_ClearIn;
@@ -785,7 +821,7 @@ namespace TJAPlayer3
 		private CCounter ctChara_Normal;
 		private CCounter ctChara_Clear;
 
-		public bool[] b音声再生 = { false, false, false, false, false, false, false, false, false, false };
+		public bool[] b音声再生 = { false, false, false, false, false, false, false, false, false, false, false };
 		
 		private CCounter ct表示用;
 		private readonly Point[] ptFullCombo位置;
@@ -809,7 +845,7 @@ namespace TJAPlayer3
 
 					if (st小文字位置[i].ch == ch)
 					{
-						Rectangle rectangle = new Rectangle(st小文字位置[i].pt.X, st小文字位置[i].pt.Y, 32, 38);
+						Rectangle rectangle = new Rectangle(st小文字位置[i].pt.X, st小文字位置[i].pt.Y, 23, 38);
 						TJAPlayer3.Tx.Result_Number?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x + 16, y + 19, rectangle);
 						break;
 					}
