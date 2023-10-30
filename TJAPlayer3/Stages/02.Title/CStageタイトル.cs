@@ -563,9 +563,16 @@ namespace TJAPlayer3
                                 int BarAnime = ctBarAnimeIn.n現在の値 >= (int)(26 * 16.6f) + 100 ? 0 : ctBarAnimeIn.n現在の値 >= (int)(26 * 16.6f) && ctBarAnimeIn.n現在の値 <= (int)(26 * 16.6f) + 100 ? 40 + (int)((ctBarAnimeIn.n現在の値 - (26 * 16.6)) / 100f * 71f) : ctBarAnimeIn.n現在の値 < (int)(26 * 16.6f) ? 40 : 111;
 								int BarAnime1 = BarAnime == 0 ? ctBarMove.n現在の値 >= 150 ? 40 + (int)((ctBarMove.n現在の値 - 150) / 100f * 71f) : ctBarMove.n現在の値 < 150 ? 40 : 111 : 0;
 
-
+                                //縁上下
                                 TJAPlayer3.Tx.Entry_Bar_Select.Opacity = (int)((ctBarAnimeIn.n現在の値 - (16 * 16.6f)) * 1.23f);
-                                TJAPlayer3.Tx.Entry_Bar_Select?.t2D描画(TJAPlayer3.app.Device, 303, 218);
+                                TJAPlayer3.Tx.Entry_Bar_Select.vc拡大縮小倍率.Y = 1.0f;
+                                TJAPlayer3.Tx.Entry_Bar_Select?.t2D描画(TJAPlayer3.app.Device, 305, 330 - BarAnime - BarAnime1, new Rectangle(0, 0, 667, 36));
+                                TJAPlayer3.Tx.Entry_Bar_Select?.t2D描画(TJAPlayer3.app.Device, 305, 352 + BarAnime + BarAnime1, new Rectangle(0, 91, 667, 40));
+
+								//真ん中
+                                TJAPlayer3.Tx.Entry_Bar_Select.vc拡大縮小倍率.Y = BarAnime / 29.1f + BarAnime1 / 29.1f;//25.7f
+                                TJAPlayer3.Tx.Entry_Bar_Select?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 638, 359, new Rectangle(0, 36, 667, 55));
+
 
                                 stModeBar[i].BarTexture.Opacity = (int)((ctBarAnimeIn.n現在の値 - (16 * 16.6f)) * 1.23f);
 
@@ -576,14 +583,16 @@ namespace TJAPlayer3
 								stModeBar[i].BarTexture.vc拡大縮小倍率.Y = BarAnime / 25.7f + BarAnime1 / 25.7f;
 								stModeBar[i].BarTexture?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 360, new Rectangle(0, 27, 641, 45));
 
-								TJAPlayer3.Tx.ModeSelect_Bar[2].vc拡大縮小倍率.Y = 1.0f;
+                                #region [ 透明ボックス ]
+                                TJAPlayer3.Tx.ModeSelect_Bar[2].vc拡大縮小倍率.Y = 1.0f;
 								TJAPlayer3.Tx.ModeSelect_Bar[2]?.t2D描画(TJAPlayer3.app.Device, 320, 306, new Rectangle(0, 0, 641, 27));
 								TJAPlayer3.Tx.ModeSelect_Bar[2]?.t2D描画(TJAPlayer3.app.Device, 320, 334 + (BarAnime + BarAnime1) / 0.95238f, new Rectangle(0, 71, 641, 35));
 
 								TJAPlayer3.Tx.ModeSelect_Bar[2].vc拡大縮小倍率.Y = (BarAnime + BarAnime1) / 0.95238f;
 								TJAPlayer3.Tx.ModeSelect_Bar[2]?.t2D拡大率考慮上中央基準描画(TJAPlayer3.app.Device, 640, 333, new Rectangle(0, 27, 641, 1));
+                                #endregion
 
-								float anime = 0;
+                                float anime = 0;
 								float BarAnimeCount = ctBarMove.n現在の値 - 150;
 
 								if (BarAnimeCount <= 45)

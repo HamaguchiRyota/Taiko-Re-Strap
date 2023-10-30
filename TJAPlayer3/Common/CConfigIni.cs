@@ -748,6 +748,7 @@ namespace TJAPlayer3
         public bool b太鼓パートAutoPlay;
         public bool b太鼓パートAutoPlay2P; //2017.08.16 kairera0467 マルチプレイ対応
         public bool bAuto先生の連打;
+        public int nAuto先生の連打速度;
         public bool b大音符判定;
         public int n両手判定の待ち時間;
         public int nBranchAnime;
@@ -1198,8 +1199,9 @@ namespace TJAPlayer3
             this.b太鼓パートAutoPlay = true;
             this.b太鼓パートAutoPlay2P = true;
             this.bAuto先生の連打 = true;
-			#endregion
-			this.nヒット範囲ms = new STRANGE();
+            this.nAuto先生の連打速度 = 67;
+            #endregion
+            this.nヒット範囲ms = new STRANGE();
 			this.nヒット範囲ms.Perfect = 30;
 			this.nヒット範囲ms.Great = -1; //使用しません。
 			this.nヒット範囲ms.Good = 100;
@@ -1608,6 +1610,10 @@ namespace TJAPlayer3
             sw.WriteLine("Taiko={0}", this.b太鼓パートAutoPlay ? 1 : 0);
             sw.WriteLine("Taiko2P={0}", this.b太鼓パートAutoPlay2P ? 1 : 0);
             sw.WriteLine("TaikoAutoRoll={0}", this.bAuto先生の連打 ? 1 : 0);
+            sw.WriteLine();
+            sw.WriteLine(";Auto先生の連打間隔の変更(ms)");
+            sw.WriteLine(";※フレームレート以上の速度は出ません。");
+            sw.WriteLine("TaikoAutoRollSpeed={0}", this.nAuto先生の連打速度);
             sw.WriteLine();
             sw.WriteLine(";-------------------");
             #endregion

@@ -1151,36 +1151,36 @@ namespace TJAPlayer3
                     {
                         TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.X = 1.0f;
                     }
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 326 + xp - BarAnimeCount, new Rectangle(0, 0, 632, 21));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 326 + xp - BarAnimeCount, new Rectangle(0, 0, 632, 20));
 
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) / 23.6f;
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 360 + xp, new Rectangle(0, 21, 632, 48));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) / 27.0f;
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 360 + xp, new Rectangle(0, 20, 632, 52));
                     TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = 1.0f;
 
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 394 + xp + BarAnimeCount, new Rectangle(0, 69, 632, 23));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 394 + xp + BarAnimeCount, new Rectangle(0, 72, 632, 20));
 
                     #endregion
                 }
 
                 if (r現在選択中の曲.eノード種別 == C曲リストノード.Eノード種別.SCORE)//フォルダ内のBarの影
                 {
-                    #region [ BoxShadow ]
+                    #region [ BarShadow ]
 
                     if (ctBoxOpen.n現在の値 >= 1300 && ctBoxOpen.n現在の値 <= 1940)
                     {
-                        TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.X = 1.0f - (float)Math.Sin(((ctBoxOpen.n現在の値 - 1300) * 0.28125f) * (Math.PI / 180)) * 1.0f;
+                        TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.X = 1.0f - (float)Math.Sin(((ctBoxOpen.n現在の値 - 2300) * 0.28125f) * (Math.PI / 180)) * 1.0f;//1300
                     }
                     else
                     {
                         TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.X = 1.0f;
                     }
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 326 + xp - BarAnimeCount, new Rectangle(0, 0, 632, 21));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 326 + xp - BarAnimeCount, new Rectangle(0, 0, 632, 20));
 
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) / 23.6f;
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 360 + xp, new Rectangle(0, 21, 632, 48));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) / 27.0f;//24.6
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 360 + xp, new Rectangle(0, 20, 632, 52));
                     TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = 1.0f;
 
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 394 + xp + BarAnimeCount, new Rectangle(0, 69, 632, 23));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 394 + xp + BarAnimeCount, new Rectangle(0, 72, 632, 20));
 
                     #endregion
 
@@ -1195,13 +1195,13 @@ namespace TJAPlayer3
                     else
                         TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.X = 1.0f;
 
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 326 + xp - BarAnimeCount, new Rectangle(0, 0, 632, 21));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 326 + xp - BarAnimeCount, new Rectangle(0, 0, 632, 20));
 
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) / 23.6f;
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 360 + xp, new Rectangle(0, 21, 632, 48));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) / 27.0f;
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 360 + xp, new Rectangle(0, 20, 632, 52));
                     TJAPlayer3.Tx.SongSelect_Box_Shadow.vc拡大縮小倍率.Y = 1.0f;
 
-                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 394 + xp + BarAnimeCount, new Rectangle(0, 69, 632, 23));
+                    TJAPlayer3.Tx.SongSelect_Box_Shadow?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640 + xp, 394 + xp + BarAnimeCount, new Rectangle(0, 72, 632, 20));
 
                     #endregion
                 }
@@ -1281,17 +1281,17 @@ namespace TJAPlayer3
 					
 					if (BarAnimeCount != 0)
 					{
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 326 - BarAnimeCount, new Rectangle(0, 0, 632, 21));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 641, 337 - BarAnimeCount, new Rectangle(0, 0, 531, 9));
 
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  24.55f;//24.5
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 359, new Rectangle(0, 21, 632, 48));//359
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  19.10f;//24.55
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 641, 360, new Rectangle(0, 9, 531, 38));//359
 						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = 1.0f;
 
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 394 + BarAnimeCount, new Rectangle(0, 69, 632, 23));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 641, 384 + BarAnimeCount, new Rectangle(0, 47, 531, 9));
 					}
 					else
 					{
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 360, new Rectangle(0, 0, 632, 92));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 641, 360, new Rectangle(0, 0, 531, 56));
 					}
 					#endregion
 
@@ -1302,10 +1302,10 @@ namespace TJAPlayer3
                         var クリア = this.r現在選択中の曲.arスコア[3].譜面情報.nクリア;
 						var スコアランク = this.r現在選択中の曲.arスコア[3].譜面情報.nスコアランク;
 
-						TJAPlayer3.Tx.SongSelect_Crown.vc拡大縮小倍率.X = 0.90f + BarAnimeCount / 315f;//620f
-						TJAPlayer3.Tx.SongSelect_Crown.vc拡大縮小倍率.Y = 0.90f + BarAnimeCount / 315f;
-						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.X = 0.83f + BarAnimeCount / 417f;
-						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.Y = 0.83f + BarAnimeCount / 417f;
+						TJAPlayer3.Tx.SongSelect_Crown.vc拡大縮小倍率.X = 0.93f + BarAnimeCount / 315f;//620f
+						TJAPlayer3.Tx.SongSelect_Crown.vc拡大縮小倍率.Y = 0.93f + BarAnimeCount / 315f;
+						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.X = 0.85f + BarAnimeCount / 417f;
+						TJAPlayer3.Tx.SongSelect_ScoreRank.vc拡大縮小倍率.Y = 0.85f + BarAnimeCount / 417f;
 						float Nsize = 42.80f;
 
                         if (!(ctBoxOpen.n現在の値 >= 1300 && ctBoxOpen.n現在の値 <= 1940))
@@ -1363,19 +1363,19 @@ namespace TJAPlayer3
 
                     TJAPlayer3.Tx.SongSelect_Bar_Genre[nStrジャンルtoNum(r現在選択中の曲.strジャンル)].t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 394 + BarAnimeCount, new Rectangle(0, 69, 632, 23));
 					
-					if (BarAnimeCount != 0)
+					if (BarAnimeCount != 0)//+49
 					{
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 326, new Rectangle(0, 0, 632, 21));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 641, 337, new Rectangle(0, 0, 531, 9));
 
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  50;
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮上中央基準描画(TJAPlayer3.app.Device, 640, 336, new Rectangle(0, 21, 632, 48));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = BarAnimeCount == 0 ? 1.0f : 1.0f + (float)(BarAnimeCount) /  37.6f;
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮上中央基準描画(TJAPlayer3.app.Device, 641, 341, new Rectangle(0, 9, 531, 38));
 						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.vc拡大縮小倍率.Y = 1.0f;
 
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 393 + BarAnimeCount, new Rectangle(0, 69, 632, 23));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 641, 385 + BarAnimeCount, new Rectangle(0, 47, 531, 9));
 					}
 					else
 					{
-						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 360, new Rectangle(0, 0, 632, 92));
+						TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 641, 360, new Rectangle(0, 0, 531, 56));
 					}
 					#endregion
 				}
@@ -2018,7 +2018,7 @@ namespace TJAPlayer3
 					}
 				}
 
-				TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D描画(TJAPlayer3.app.Device, x, y);
+				TJAPlayer3.Tx.SongSelect_Bar_Genre_Overlay?.t2D描画(TJAPlayer3.app.Device, x+49, y+17);
 			}
 			else
 			{

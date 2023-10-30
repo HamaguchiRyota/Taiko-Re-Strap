@@ -157,14 +157,14 @@ namespace TJAPlayer3
 					b今までにフルコンボしたことがある[0] = ini.stセクション[0].bフルコンボである | ini.stセクション[0].bフルコンボである;
 
 					// #24459 上記の条件だと[HiSkill.***]でのランクしかチェックしていないので、BestRankと比較するよう変更。
-					if (nランク値[0] >= 0 && ini.stファイル.BestRank[0] > nランク値[0])       // #24459 2011.3.1 yyagi update BestRank
+					if (nランク値[0] >= 0 && ini.stファイル.BestRank[0] > nランク値[0] && !TJAPlayer3.ConfigIni.b太鼓パートAutoPlay)       // #24459 2011.3.1 yyagi update BestRank
 					{
 						b新記録ランク[0] = true;
 						ini.stファイル.BestRank[0] = nランク値[0];
 					}
 
 					// Clear and score ranks
-					if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Tower)
+					if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Tower && !TJAPlayer3.ConfigIni.b太鼓パートAutoPlay)
 					{
 						st演奏記録[0].nクリア[TJAPlayer3.stage選曲.n確定された曲の難易度[0]] = Math.Max(ini.stセクション[0].nクリア[TJAPlayer3.stage選曲.n確定された曲の難易度[0]], nクリア);
 						st演奏記録[0].nスコアランク[TJAPlayer3.stage選曲.n確定された曲の難易度[0]] = Math.Max(ini.stセクション[0].nスコアランク[TJAPlayer3.stage選曲.n確定された曲の難易度[0]], nスコアランク);
@@ -190,7 +190,7 @@ namespace TJAPlayer3
 					}
 
 					//Header hi-score
-					if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Tower)
+					if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Tower && !TJAPlayer3.ConfigIni.b太鼓パートAutoPlay)
 						if (st演奏記録[0].nスコア > ini.stセクション[0].nスコア)
 							st演奏記録[0].nハイスコア[TJAPlayer3.stage選曲.n確定された曲の難易度[0]] = (int)st演奏記録[0].nスコア;
 
