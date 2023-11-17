@@ -714,8 +714,6 @@ namespace TJAPlayer3
 				#region [ 王冠 ]
 				if (ct全体進行.n現在の値 >= ScoreApparitionTimeStamp + 2500)
 				{
-					
-
 					if (ct全体進行.n現在の値 <= ScoreApparitionTimeStamp + 2680)
 					{
 						TJAPlayer3.Tx.Result_CrownEffect.Opacity = (int)((ct全体進行.n現在の値 - (ScoreApparitionTimeStamp + 2500)) / 180.0f * 255.0f);

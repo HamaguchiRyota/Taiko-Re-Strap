@@ -86,8 +86,8 @@ namespace TJAPlayer3
             //Readme = TxC(@"Readme.png");
             NamePlate = new CTexture[2];
             NamePlateBase = TxC(@"NamePlate.png");
-            NamePlate[0] = TxC(@"1P_NamePlate.png");
-            NamePlate[1] = TxC(@"2P_NamePlate.png");
+            //NamePlate[0] = TxC(@"1P_NamePlate.png");
+            //NamePlate[1] = TxC(@"2P_NamePlate.png");
             NamePlate_Effect[0] = TxC(@"9_NamePlateEffect\GoldMStar.png");
             NamePlate_Effect[1] = TxC(@"9_NamePlateEffect\PurpleMStar.png");
             NamePlate_Effect[2] = TxC(@"9_NamePlateEffect\GoldBStar.png");
