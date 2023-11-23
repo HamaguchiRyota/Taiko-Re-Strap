@@ -187,7 +187,7 @@ namespace TJAPlayer3
         {
             LoudnessMetadataScanner.StopBackgroundScanning(joinImmediately: false);
 
-            this.bフィルイン中 = false;
+            //this.bフィルイン中 = false;
             this.n待機中の大音符の座標 = 0;
             this.actGame.t叩ききりまショー_初期化();
             base.ReSetScore(TJAPlayer3.DTX.nScoreInit[0, TJAPlayer3.stage選曲.n確定された曲の難易度[0]], TJAPlayer3.DTX.nScoreDiff[TJAPlayer3.stage選曲.n確定された曲の難易度[0]]);
@@ -263,7 +263,6 @@ namespace TJAPlayer3
             }
 
             this.ct手つなぎ = new CCounter(0, 60, 20, TJAPlayer3.Timer);
-            this.ShownLyric2 = 0;
 
             // Discord Presence の更新
             var difficultyName = TJAPlayer3.DifficultyNumberToEnum(TJAPlayer3.stage選曲.n確定された曲の難易度[0]).ToString();
@@ -370,8 +369,8 @@ namespace TJAPlayer3
                     CSound管理.rc演奏用タイマ.tリセット();
                     TJAPlayer3.Timer.tリセット();
                     this.ctチップ模様アニメ.Drums = new CCounter(0, 1, 500, TJAPlayer3.Timer);
-                    this.ctチップ模様アニメ.Guitar = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
-                    this.ctチップ模様アニメ.Bass = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
+                    //this.ctチップ模様アニメ.Guitar = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
+                    //this.ctチップ模様アニメ.Bass = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
                     this.ctチップ模様アニメ.Taiko = new CCounter(0, 1, 500, TJAPlayer3.Timer);
 
                     // this.actChipFireD.Start( Eレーン.HH );	// #31554 2013.6.12 yyagi
@@ -430,7 +429,6 @@ namespace TJAPlayer3
                     this.actFooter.On進行描画();
 
                 //this.t進行描画_グラフ();   // #24074 2011.01.23 add ikanick
-
 
                 //this.t進行描画_DANGER();
                 //this.t進行描画_判定ライン();
@@ -503,12 +501,13 @@ namespace TJAPlayer3
 
                 this.t進行描画_演奏情報();
 
+                /*
                 if (TJAPlayer3.DTX.listLyric2.Count > ShownLyric2 && TJAPlayer3.DTX.listLyric2[ShownLyric2].Time < (long)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0)))
                 {
                     this.actPanel.t歌詞テクスチャを生成する(TJAPlayer3.DTX.listLyric2[ShownLyric2++].TextTex);
                 }
-
                 this.actPanel.t歌詞テクスチャを描画する();
+                */
 
                 actChara.OnDraw_Balloon();
 
@@ -613,7 +612,8 @@ namespace TJAPlayer3
         public FireWorks FireWorks;
         public PuchiChara PuchiChara;
         public CAct演奏Drumsスコアランク ScoreRank;
-        private bool bフィルイン中;
+        //private bool bフィルイン中;
+        /*
         private readonly Eパッド[] eチャンネルtoパッド = new Eパッド[]
         {
             Eパッド.HH, Eパッド.SD, Eパッド.BD, Eパッド.HT,
@@ -621,10 +621,10 @@ namespace TJAPlayer3
             Eパッド.RD, Eパッド.UNKNOWN, Eパッド.UNKNOWN, Eパッド.LC,
             Eパッド.LP, Eパッド.LBD
         };
+        */
         private CCounter ct手つなぎ;
 
         public float nGauge = 0.0f;
-        private int ShownLyric2 = 0;
 
         private int n待機中の大音符の座標;
         private readonly ST文字位置[] st小文字位置;
@@ -811,7 +811,7 @@ namespace TJAPlayer3
             this.actChipFireD.On進行描画();
         }
 
-
+        /*
         private void t進行描画_ドラムパッド()
         {
             if (TJAPlayer3.ConfigIni.eDark != Eダークモード.FULL)
@@ -819,6 +819,7 @@ namespace TJAPlayer3
                 this.actPad.On進行描画();
             }
         }
+        */
         protected override void t進行描画_パネル文字列()
         {
             base.t進行描画_パネル文字列(336, 427);
@@ -1265,6 +1266,7 @@ namespace TJAPlayer3
         /// <param name="chipArray">ソート対象chip群</param>
         /// <param name="e判定Array">ソート対象e判定群</param>
         /// <param name="NumOfChips">チップ数</param>
+        /*
         private static void SortChipsByNTime(CDTX.CChip[] chipArray, E判定[] e判定Array, int NumOfChips)
         {
             for (int i = 0; i < NumOfChips - 1; i++)
@@ -1288,6 +1290,7 @@ namespace TJAPlayer3
                 //num8++;
             }
         }
+        */
 
         protected override void t背景テクスチャの生成()
         {
@@ -2064,7 +2067,7 @@ namespace TJAPlayer3
 
         protected void t進行描画_レーン()
         {
-            this.actLane.On進行描画();
+            actLane.On進行描画();
         }
 
         /// <summary>
