@@ -1,9 +1,6 @@
 ﻿using FDK;
 using System;
 using System.Drawing;
-using SharpDX;
-
-using Rectangle = System.Drawing.Rectangle;
 
 namespace TJAPlayer3
 {
@@ -48,7 +45,7 @@ namespace TJAPlayer3
             Counter.t進行Loop();
             SineCounter.t進行LoopDb();
             var sineY = Math.Sin(SineCounter.n現在の値 * (Math.PI / 180)) * (TJAPlayer3.Skin.Game_PuchiChara_Sine * (isBalloon ? TJAPlayer3.Skin.Game_PuchiChara_Scale[1] : TJAPlayer3.Skin.Game_PuchiChara_Scale[0]));
-            TJAPlayer3.Tx.PuchiChara[nPlayer].vc拡大縮小倍率 = new Vector3((isBalloon ? TJAPlayer3.Skin.Game_PuchiChara_Scale[1] : TJAPlayer3.Skin.Game_PuchiChara_Scale[0]));
+            TJAPlayer3.Tx.PuchiChara[nPlayer].vc拡大縮小倍率 = new SlimDX.Vector3((isBalloon ? TJAPlayer3.Skin.Game_PuchiChara_Scale[1] : TJAPlayer3.Skin.Game_PuchiChara_Scale[0]));
             TJAPlayer3.Tx.PuchiChara[nPlayer].Opacity = alpha;
             TJAPlayer3.Tx.PuchiChara[nPlayer].t2D中心基準描画(TJAPlayer3.app.Device, x, y + (int)sineY, new Rectangle(Counter.n現在の値 * TJAPlayer3.Skin.Game_PuchiChara[0], (isGrowing ? TJAPlayer3.Skin.Game_PuchiChara[1] : 0), TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1]));
             return base.On進行描画();

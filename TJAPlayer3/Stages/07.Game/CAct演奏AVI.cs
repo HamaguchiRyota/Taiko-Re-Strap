@@ -2,14 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
-using SharpDX;
-using SharpDX.Direct3D9;
+using SlimDX;
+using SlimDX.Direct3D9;
 using FDK;
 using DirectShowLib;
-
-using Rectangle = System.Drawing.Rectangle;
-using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -394,11 +390,11 @@ namespace TJAPlayer3
 				{
 					if ( this.bフレームを作成した && ( this.pBmp != IntPtr.Zero ) )
 					{
-                        DataRectangle rectangle3 = this.tx描画用.texture.LockRectangle(0, LockFlags.None);
-                        DataStream data = new DataStream(rectangle3.DataPointer, this.tx描画用.szテクスチャサイズ.Width * rectangle3.Pitch, true, false);
-                        int num14 = rectangle3.Pitch / this.tx描画用.szテクスチャサイズ.Width;
-                        BitmapUtil.BITMAPINFOHEADER* pBITMAPINFOHEADER = (BitmapUtil.BITMAPINFOHEADER*)this.pBmp.ToPointer();
-                        if ( pBITMAPINFOHEADER->biBitCount == 0x18 )
+						DataRectangle rectangle3 = this.tx描画用.texture.LockRectangle( 0, LockFlags.None );
+						DataStream data = rectangle3.Data;
+						int num14 = rectangle3.Pitch / this.tx描画用.szテクスチャサイズ.Width;
+						BitmapUtil.BITMAPINFOHEADER* pBITMAPINFOHEADER = (BitmapUtil.BITMAPINFOHEADER*) this.pBmp.ToPointer();
+						if ( pBITMAPINFOHEADER->biBitCount == 0x18 )
 						{
 							switch ( num14 )
 							{
@@ -570,9 +566,8 @@ namespace TJAPlayer3
         private int i1;
         private int i2;
         private int position;
-        private int position2;
         private float ratio1;
-        private float ratio2;
+        private readonly float ratio2;
         private Rectangle rec;
         private Rectangle rec2;
         private Rectangle rec3;

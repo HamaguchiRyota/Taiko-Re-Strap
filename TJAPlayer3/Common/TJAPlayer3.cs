@@ -8,17 +8,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Net.NetworkInformation;
-using SharpDX;
-using SharpDX.Direct3D9;
+using SlimDX;
+using SlimDX.Direct3D9;
 using FDK;
 using SampleFramework;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Linq;
-
-using Rectangle = System.Drawing.Rectangle;
-using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -343,7 +339,7 @@ namespace TJAPlayer3
 			get;
 			set;
 		}
-		public Device Device
+		public DeviceCache Device
 		{
 			get { return base.GraphicsDeviceManager.Direct3D9.Device; }
 		}
@@ -662,7 +658,7 @@ namespace TJAPlayer3
 			#endregion
 
 			this.Device.BeginScene();
-			this.Device.Clear( ClearFlags.ZBuffer | ClearFlags.Target, SharpDX.Color.Black, 1f, 0 );
+			this.Device.Clear( ClearFlags.ZBuffer | ClearFlags.Target, Color.Black, 1f, 0 );
 
 			if( r現在のステージ != null )
 			{

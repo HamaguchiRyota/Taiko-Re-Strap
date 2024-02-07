@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Diagnostics;
-using SharpDX;
+using SlimDX;
 using FDK;
-
-using Rectangle = System.Drawing.Rectangle;
-using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -1853,8 +1849,8 @@ namespace TJAPlayer3
                         }
 
                         float f減少するカラー = 1.0f - ((0.95f / 100) * pChip.RollEffectLevel);
-                        var effectedColor = new Color4(1.0f, f減少するカラー, f減少するカラー, 1f);
-                        var normalColor = new Color4(1.0f, 1.0f, 1.0f, 1f);
+                        var effectedColor = new Color4(1.0f, f減少するカラー, f減少するカラー);
+                        var normalColor = new Color4(1.0f, 1.0f, 1.0f);
                         float f末端ノーツのテクスチャ位置調整 = 65f;
 
                         if (pChip.nチャンネル番号 == 0x15 && pChip.bShow) //連打(小)
@@ -2124,7 +2120,7 @@ namespace TJAPlayer3
             #endregion
 
             string strNull = "Found";
-            if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.F1))
+            if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDX.DirectInput.Key.F1))
             {
                 if (!this.actPauseMenu.bIsActivePopupMenu && this.bPAUSE == false)
                 {

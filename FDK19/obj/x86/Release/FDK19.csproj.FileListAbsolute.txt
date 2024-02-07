@@ -42,6 +42,7 @@ C:\Users\hama\Desktop\Taiko-Re-Strap-master\FDK19\obj\x86\Release\FDK19.csproj.C
 C:\Users\hama\Desktop\Taiko-Re-Strap-master\FDK19\obj\x86\Release\FDK19.csproj.CopyComplete
 C:\Users\hama\Desktop\Taiko-Re-Strap-master\FDK19\obj\x86\Release\FDK.dll
 C:\Users\hama\Desktop\Taiko-Re-Strap-master\FDK19\obj\x86\Release\FDK.pdb
+<<<<<<< HEAD
 C:\Users\hama\Desktop\太鼓シミュ\Taiko-Re-Strap-master\FDK19\bin\x86\Release\FDK.dll
 C:\Users\hama\Desktop\太鼓シミュ\Taiko-Re-Strap-master\FDK19\bin\x86\Release\FDK.pdb
 C:\Users\hama\Desktop\太鼓シミュ\Taiko-Re-Strap-master\FDK19\bin\x86\Release\Hnx8.ReadJEnc.dll
@@ -139,3 +140,5 @@ C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK19.csproj
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK19.csproj.CopyComplete
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK.dll
 C:\Users\hama\Documents\GitHub\Taiko-Re-Strap\FDK19\obj\x86\Release\FDK.pdb
+=======
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))

@@ -25,11 +25,10 @@ using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using SharpDX;
-using SharpDX.Direct3D9;
+using SlimDX;
+using SlimDX.Direct3D9;
+using SlimDX.DXGI;
 using System.Diagnostics;
-
-using Rectangle = System.Drawing.Rectangle;
 
 namespace SampleFramework
 {
@@ -128,14 +127,12 @@ namespace SampleFramework
 
 			Enumeration9.MinimumSettings = minimumSettings;
 
-            DeviceSettings validSettings = DeviceSettings.FindValidSettings(settings);
+			DeviceSettings validSettings = DeviceSettings.FindValidSettings( settings );
 
-            var pp = validSettings.Direct3D9.PresentParameters;
-            pp.DeviceWindowHandle = game.Window.Handle;
-            validSettings.Direct3D9.PresentParameters = pp;
+			validSettings.Direct3D9.PresentParameters.DeviceWindowHandle = game.Window.Handle;
 
-            CreateDevice(validSettings);
-        }
+			CreateDevice( validSettings );
+		}
         public void ChangeDevice(bool windowed, int desiredWidth, int desiredHeight)
         {
             DeviceSettings desiredSettings = new DeviceSettings();
@@ -255,14 +252,14 @@ namespace SampleFramework
             }
 
             // check if the device can be reset, or if we need to completely recreate it
-            Result result = ResultCode.Success;
+            Result result = SlimDX.Direct3D9.ResultCode.Success;
             bool canReset = CanDeviceBeReset(oldSettings, settings);
             if (canReset)
                 result = ResetDevice();
 
-            if (result == ResultCode.DeviceLost)
+            if (result == SlimDX.Direct3D9.ResultCode.DeviceLost)
                 deviceLost = true;
-            else if (!canReset || result.Failure)
+            else if (!canReset || result.IsFailure)
             {
                 if (oldSettings != null)
                     ReleaseDevice();
@@ -350,10 +347,8 @@ namespace SampleFramework
                         newSettings.BackBufferHeight = 0;
                         if (newSettings.Direct3D9 != null)
                         {
-                            var pp = newSettings.Direct3D9.PresentParameters;
-                            pp.BackBufferWidth = GameWindowSize.Width;  // #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
-                            pp.BackBufferHeight = GameWindowSize.Height;   // #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
-                            newSettings.Direct3D9.PresentParameters = pp;
+							newSettings.Direct3D9.PresentParameters.BackBufferWidth = GameWindowSize.Width;	// #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
+							newSettings.Direct3D9.PresentParameters.BackBufferHeight = GameWindowSize.Height;	// #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
                         }
 
                         CreateDevice(newSettings);
@@ -386,11 +381,9 @@ namespace SampleFramework
 			{
 				newSettings.BackBufferWidth = 0;
 				newSettings.BackBufferHeight = 0;
-                var pp = newSettings.Direct3D9.PresentParameters;
-                pp.BackBufferWidth = GameWindowSize.Width;  // #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
-                pp.BackBufferHeight = GameWindowSize.Height;   // #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
-                newSettings.Direct3D9.PresentParameters = pp;
-                CreateDevice( newSettings );
+				newSettings.Direct3D9.PresentParameters.BackBufferWidth = GameWindowSize.Width;		// #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
+				newSettings.Direct3D9.PresentParameters.BackBufferHeight = GameWindowSize.Height;	// 
+				CreateDevice( newSettings );
 			}
 		}
 		void Window_ScreenChanged( object sender, EventArgs e )
@@ -406,28 +399,26 @@ namespace SampleFramework
 				return;
 			newSettings.Direct3D9.AdapterOrdinal = adapterOrdinal;
 
-			newSettings.BackBufferWidth = 0;                                // #23510 2010.11.1 add yyagi to avoid to reset to 640x480 for the first time in XP.
-            newSettings.BackBufferHeight = 0;                               //
-            var pp = newSettings.Direct3D9.PresentParameters;
-            pp.BackBufferWidth = GameWindowSize.Width;  // #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
-            pp.BackBufferHeight = GameWindowSize.Height;   // #23510 2010.10.31 add yyagi: to avoid setting BackBufferSize=ClientSize
-            newSettings.Direct3D9.PresentParameters = pp;
+			newSettings.BackBufferWidth = 0;								// #23510 2010.11.1 add yyagi to avoid to reset to 640x480 for the first time in XP.
+			newSettings.BackBufferHeight = 0;								//
+			newSettings.Direct3D9.PresentParameters.BackBufferWidth = GameWindowSize.Width;		//
+			newSettings.Direct3D9.PresentParameters.BackBufferHeight = GameWindowSize.Height;	//
 
-            CreateDevice(newSettings);
+			CreateDevice(newSettings);
 		}
 
 		void game_FrameEnd( object sender, EventArgs e )
 		{
-			Result result = ResultCode.Success;
+			Result result = SlimDX.Direct3D9.ResultCode.Success;
 			try
 			{
-				Direct3D9.Device.Present();
+				result = Direct3D9.Device.Present();
 			}
-			catch
+			catch (Direct3D9Exception)				// #23842 2011.1.6 yyagi: catch D3D9Exception to avoid unexpected termination by changing VSyncWait in fullscreen.
 			{
 				deviceLost = true;
 			}
-			if( result == ResultCode.DeviceLost )
+			if( result == SlimDX.Direct3D9.ResultCode.DeviceLost )
 				deviceLost = true;
 		}
         void game_FrameStart(object sender, CancelEventArgs e)
@@ -447,7 +438,7 @@ namespace SampleFramework
             if (deviceLost)
             {
                 Result result = Direct3D9.Device.TestCooperativeLevel();
-                if (result == ResultCode.DeviceLost)
+                if (result == SlimDX.Direct3D9.ResultCode.DeviceLost)
                 {
                     e.Cancel = true;
                     return;
@@ -468,7 +459,7 @@ namespace SampleFramework
                 }
 
                 result = ResetDevice();
-                if (result.Failure)
+                if (result.IsFailure)
                 {
                     e.Cancel = true;
                     return;
@@ -524,16 +515,12 @@ namespace SampleFramework
 				}
 				Direct3D9.Device.MaximumFrameLatency = 1;
 #else
-                Direct3D9.Device = new Device(
-                        Direct3D9Object,
-                        CurrentSettings.Direct3D9.AdapterOrdinal,
-                        CurrentSettings.Direct3D9.DeviceType,
-                        game.Window.Handle,
-                        CurrentSettings.Direct3D9.CreationFlags,
-                        CurrentSettings.Direct3D9.PresentParameters);
+				Direct3D9.Device = new DeviceCache( new SlimDX.Direct3D9.Device( Direct3D9Object, CurrentSettings.Direct3D9.AdapterOrdinal,
+					CurrentSettings.Direct3D9.DeviceType, game.Window.Handle,
+					CurrentSettings.Direct3D9.CreationFlags, CurrentSettings.Direct3D9.PresentParameters ) );
 #endif
-                if (Result.GetResultFromWin32Error(System.Runtime.InteropServices.Marshal.GetLastWin32Error()) == ResultCode.DeviceLost)
-                {
+				if ( Result.Last == SlimDX.Direct3D9.ResultCode.DeviceLost )
+				{
 					deviceLost = true;
 					return;
 				}
@@ -558,18 +545,15 @@ namespace SampleFramework
 		{
 			game.UnloadContent();
 
-            Direct3D9.Device.Reset(CurrentSettings.Direct3D9.PresentParameters);
-
-            var result = Result.GetResultFromWin32Error(System.Runtime.InteropServices.Marshal.GetLastWin32Error());
-
-            if (result == ResultCode.DeviceLost)
-                return result;
+			Result result = Direct3D9.Device.Reset( CurrentSettings.Direct3D9.PresentParameters );
+			if( result == SlimDX.Direct3D9.ResultCode.DeviceLost )
+				return result;
 
 			PropogateSettings();
 			UpdateDeviceStats();
 			game.LoadContent();
 
-			return result;
+			return Result.Last;
 		}
 
 		void ReleaseDevice()
@@ -610,10 +594,10 @@ namespace SampleFramework
 			CurrentSettings.BackBufferFormat = CurrentSettings.Direct3D9.PresentParameters.BackBufferFormat;
 			CurrentSettings.DepthStencilFormat = CurrentSettings.Direct3D9.PresentParameters.AutoDepthStencilFormat;
 			CurrentSettings.DeviceType = CurrentSettings.Direct3D9.DeviceType;
-            CurrentSettings.MultisampleQuality = CurrentSettings.Direct3D9.PresentParameters.MultiSampleQuality;
-            CurrentSettings.MultisampleType = CurrentSettings.Direct3D9.PresentParameters.MultiSampleType;
-            CurrentSettings.RefreshRate = CurrentSettings.Direct3D9.PresentParameters.FullScreenRefreshRateInHz;
-            CurrentSettings.Windowed = CurrentSettings.Direct3D9.PresentParameters.Windowed;
+			CurrentSettings.MultisampleQuality = CurrentSettings.Direct3D9.PresentParameters.MultisampleQuality;
+			CurrentSettings.MultisampleType = CurrentSettings.Direct3D9.PresentParameters.Multisample;
+			CurrentSettings.RefreshRate = CurrentSettings.Direct3D9.PresentParameters.FullScreenRefreshRateInHertz;
+			CurrentSettings.Windowed = CurrentSettings.Direct3D9.PresentParameters.Windowed;
 		}
 
 		void UpdateDeviceInformation()
@@ -670,18 +654,18 @@ namespace SampleFramework
 			builder.AppendFormat( " ({0}x{1}), ", CurrentSettings.Direct3D9.PresentParameters.BackBufferWidth, CurrentSettings.Direct3D9.PresentParameters.BackBufferHeight );
 
 			if( CurrentSettings.Direct3D9.AdapterFormat == CurrentSettings.Direct3D9.PresentParameters.BackBufferFormat )
-				builder.Append( Enum.GetName( typeof( Format ), CurrentSettings.Direct3D9.AdapterFormat ) );
+				builder.Append( Enum.GetName( typeof( SlimDX.Direct3D9.Format ), CurrentSettings.Direct3D9.AdapterFormat ) );
 			else
 				builder.AppendFormat( "backbuf {0}, adapter {1}",
-					Enum.GetName( typeof( Format ), CurrentSettings.Direct3D9.AdapterFormat ),
-					Enum.GetName( typeof( Format ), CurrentSettings.Direct3D9.PresentParameters.BackBufferFormat ) );
+					Enum.GetName( typeof( SlimDX.Direct3D9.Format ), CurrentSettings.Direct3D9.AdapterFormat ),
+					Enum.GetName( typeof( SlimDX.Direct3D9.Format ), CurrentSettings.Direct3D9.PresentParameters.BackBufferFormat ) );
 
-			builder.AppendFormat( " ({0})", Enum.GetName( typeof( Format ), CurrentSettings.Direct3D9.PresentParameters.AutoDepthStencilFormat ) );
+			builder.AppendFormat( " ({0})", Enum.GetName( typeof( SlimDX.Direct3D9.Format ), CurrentSettings.Direct3D9.PresentParameters.AutoDepthStencilFormat ) );
 
-			if( CurrentSettings.Direct3D9.PresentParameters.MultiSampleType == MultisampleType.NonMaskable )
+			if( CurrentSettings.Direct3D9.PresentParameters.Multisample == MultisampleType.NonMaskable )
 				builder.Append( " (Nonmaskable Multisample)" );
-			else if( CurrentSettings.Direct3D9.PresentParameters.MultiSampleType != MultisampleType.None )
-				builder.AppendFormat( " ({0}x Multisample)", (int) CurrentSettings.Direct3D9.PresentParameters.MultiSampleType);
+			else if( CurrentSettings.Direct3D9.PresentParameters.Multisample != MultisampleType.None )
+				builder.AppendFormat( " ({0}x Multisample)", (int) CurrentSettings.Direct3D9.PresentParameters.Multisample );
 
 			DeviceStatistics = builder.ToString();
 		}

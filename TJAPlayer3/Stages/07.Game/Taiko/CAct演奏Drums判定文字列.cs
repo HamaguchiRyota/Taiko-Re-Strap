@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Runtime.InteropServices;
+using SlimDX;
 using FDK;
 using System.Drawing;
 

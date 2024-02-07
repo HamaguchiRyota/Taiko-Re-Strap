@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FDK
 {
-    public class CActivity
+	public class CActivity
 	{
 		// プロパティ
 
@@ -28,8 +28,11 @@ namespace FDK
 		/// <para>On進行描画() 側では、必要な初期化を追えたら false をセットすること。</para>
 		/// </summary>
 		protected bool b初めての進行描画 = true;
+<<<<<<< HEAD
         //private readonly int n加算時間;
         //private readonly int position2;
+=======
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 
 	
 		// コンストラクタ

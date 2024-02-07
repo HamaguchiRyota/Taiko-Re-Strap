@@ -24,8 +24,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using SharpDX;
-using SharpDX.Direct3D9;
+using SlimDX;
+using SlimDX.Direct3D9;
 
 namespace SampleFramework
 {
@@ -43,7 +43,7 @@ namespace SampleFramework
 #if TEST_Direct3D9Ex
 		public DeviceEx Device							//yyagi
 #else
-		public Device Device
+		public DeviceCache Device
 #endif
 		{
             get;
@@ -121,7 +121,7 @@ namespace SampleFramework
             }
 
             elements.Add(VertexElement.VertexDeclarationEnd);
-            return new VertexDeclaration(Device, elements.ToArray());
+            return new VertexDeclaration(Device.UnderlyingDevice, elements.ToArray());
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace SampleFramework
         /// <returns>The newly created render target surface.</returns>
         public Texture CreateRenderTarget(int width, int height)
         {
-            return new Texture(Device, width, height, 1, Usage.RenderTarget, manager.CurrentSettings.BackBufferFormat, Pool.Default);
+            return new Texture(Device.UnderlyingDevice, width, height, 1, Usage.RenderTarget, manager.CurrentSettings.BackBufferFormat, Pool.Default);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace SampleFramework
         /// <returns>The newly created resolve target.</returns>
         public Texture CreateResolveTarget()
         {
-            return new Texture(Device, manager.ScreenWidth, manager.ScreenHeight, 1, Usage.RenderTarget, manager.CurrentSettings.BackBufferFormat, Pool.Default);
+            return new Texture(Device.UnderlyingDevice, manager.ScreenWidth, manager.ScreenHeight, 1, Usage.RenderTarget, manager.CurrentSettings.BackBufferFormat, Pool.Default);
         }
 
         /// <summary>
@@ -163,33 +163,30 @@ namespace SampleFramework
         public void ResolveBackBuffer(Texture target, int backBufferIndex)
         {
             // disable exceptions for this method
-            //bool storedThrow = Configuration.ThrowOnError;
-            //Configuration.ThrowOnError = false;
+            bool storedThrow = Configuration.ThrowOnError;
+            Configuration.ThrowOnError = false;
             Surface destination = null;
 
             try
             {
                 // grab the current back buffer
                 Surface backBuffer = Device.GetBackBuffer(0, backBufferIndex);
-                if (backBuffer == null || Result.GetResultFromWin32Error(Marshal.GetLastWin32Error()).Failure)
+                if (backBuffer == null || Result.Last.IsFailure)
                     throw new InvalidOperationException("Could not obtain back buffer surface.");
 
                 // grab the destination surface
                 destination = target.GetSurfaceLevel(0);
-                if (destination == null || Result.GetResultFromWin32Error(Marshal.GetLastWin32Error()).Failure)
+                if (destination == null || Result.Last.IsFailure)
                     throw new InvalidOperationException("Could not obtain resolve target surface.");
 
                 // first try to copy using linear filtering
-                Device.StretchRectangle(backBuffer, destination, TextureFilter.Linear);
-                if (Result.GetResultFromWin32Error(Marshal.GetLastWin32Error()).Failure)
+                if (Device.StretchRectangle(backBuffer, destination, TextureFilter.Linear).IsFailure)
                 {
                     // that failed, so try with no filtering
-                    Device.StretchRectangle(backBuffer, destination, TextureFilter.None);
-                    if (Result.GetResultFromWin32Error(Marshal.GetLastWin32Error()).Failure)
+                    if (Device.StretchRectangle(backBuffer, destination, TextureFilter.None).IsFailure)
                     {
                         // that failed as well, so the last thing we can try is a load surface call
-                        Surface.FromSurface(destination, backBuffer, Filter.Default, 0);
-                        if (Result.GetResultFromWin32Error(Marshal.GetLastWin32Error()).Failure)
+                        if (Surface.FromSurface(destination, backBuffer, Filter.Default, 0).IsFailure)
                             throw new InvalidOperationException("Could not copy surfaces.");
                     }
                 }
@@ -198,7 +195,7 @@ namespace SampleFramework
             {
                 if (destination != null)
                     destination.Dispose();
-                //Configuration.ThrowOnError = storedThrow;
+                Configuration.ThrowOnError = storedThrow;
             }
         }
 

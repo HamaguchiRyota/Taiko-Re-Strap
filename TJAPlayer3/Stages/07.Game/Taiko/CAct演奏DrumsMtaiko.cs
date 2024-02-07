@@ -1,11 +1,14 @@
 using System;
 using System.Runtime.InteropServices;
 using FDK;
+<<<<<<< HEAD
 using SampleFramework;
 using SharpDX;
 using Rectangle = System.Drawing.Rectangle;
 using RectangleF = System.Drawing.RectangleF;
 
+=======
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 
 namespace TJAPlayer3
 {
@@ -198,9 +201,9 @@ namespace TJAPlayer3
                         fScale = 1.0f;
                     }
 
-                    Matrix mat = Matrix.Identity;
-                    mat *= Matrix.Scaling( fScale, fScale, 1.0f );
-                    mat *= Matrix.Translation( -329, fY[ i ], 0 );
+                    SlimDX.Matrix mat = SlimDX.Matrix.Identity;
+                    mat *= SlimDX.Matrix.Scaling( fScale, fScale, 1.0f );
+                    mat *= SlimDX.Matrix.Translation( -329, fY[ i ], 0 );
                     if( this.After[ i ] - this.Before[ i ] >= 0 )
                     {
                         //レベルアップ

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Diagnostics;
-using SharpDX;
+using SlimDX;
 using FDK;
 
+<<<<<<< HEAD
 using Rectangle = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
 
+=======
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 namespace TJAPlayer3
 {
     internal class CAct演奏パネル文字列 : CActivity

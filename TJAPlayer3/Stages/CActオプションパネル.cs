@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using FDK;
-using SharpDX.Direct3D9;
+
+using Device = SampleFramework.DeviceCache;
 
 namespace TJAPlayer3
 {

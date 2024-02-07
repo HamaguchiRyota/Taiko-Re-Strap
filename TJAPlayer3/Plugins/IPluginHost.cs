@@ -1,6 +1,4 @@
-﻿using SharpDX.Direct3D9;
-
-namespace TJAPlayer3
+﻿namespace TJAPlayer3
 {
 	/// <summary>
 	/// <para>プラグインホスト情報提供インターフェース。</para>
@@ -18,7 +16,7 @@ namespace TJAPlayer3
 		/// <para>Direct3D9 デバイスオブジェクト。</para>
 		/// <para>ロストしたりリセットしたりすることがあるので、常に同じ値であるとは保証されません。</para>
 		/// </summary>
-		Device D3D9Device { get; }
+		SlimDX.Direct3D9.Device D3D9Device { get; }
 
 		/// <summary>
 		/// <para>DirectSound の管理クラス。</para>

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Diagnostics;
+<<<<<<< HEAD
 using SharpDX;
 using FDK;
 using System.Linq;
@@ -11,6 +12,13 @@ using Rectangle = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
 using Color = System.Drawing.Color;
 using RectangleF = System.Drawing.RectangleF;
+=======
+using System.Drawing.Text;
+using SlimDX;
+using FDK;
+using System.Linq;
+using System.ComponentModel;
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 
 namespace TJAPlayer3
 {
@@ -1418,8 +1426,12 @@ namespace TJAPlayer3
 
                                             if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i] >= 0)
 											{
+<<<<<<< HEAD
 												TJAPlayer3.Tx.SongSelect_Frame_Score.color4 = new Color4(1f, 1f, 1f, 1f);
 												TJAPlayer3.Tx.SongSelect_Branch.color4 = new Color4(1f, 1f, 1f, 1f);
+=======
+												TJAPlayer3.Tx.SongSelect_Frame_Score.color4 = new Color4(1f, 1f, 1f);
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 
 												int opacity = 0;
                                                 if (BarAnimeCount == 63)
@@ -1513,9 +1525,27 @@ namespace TJAPlayer3
 											}
 											else //難易度がない場合
 											{
+<<<<<<< HEAD
 												// レベルが0未満 = 譜面がないとみなす						
 												TJAPlayer3.Tx.SongSelect_Frame_Score.color4 = new Color4(0.5f, 0.5f, 0.5f, 0.5f);
 												if (i == 4 && TJAPlayer3.stage選曲.n現在選択中の曲の難易度 == 4 && !(ctBoxOpen.n現在の値 >= 1300 && ctBoxOpen.n現在の値 <= 1940))
+=======
+												// レベルが0未満 = 譜面がないとみなす
+												TJAPlayer3.Tx.SongSelect_Frame_Score.color4 = new Color4(0.5f, 0.5f, 0.5f);
+												if (i == 4 && TJAPlayer3.stage選曲.n現在選択中の曲の難易度 == 4)
+												{
+													if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
+														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = (int)(BarAnimeCount * 4.25f);
+													else if (ctDifficultyIn.n現在の値 >= 1000)
+														TJAPlayer3.Tx.SongSelect_Level_Number.Opacity = (int)255.0f - (ctDifficultyIn.n現在の値 - 1000);
+													// エディット
+													TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (3 * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(122 * i, 0, 122, 360));
+
+                                                    //if (TJAPlayer3.Tx.SongSelect_Branch != null && TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.b譜面分岐[i])
+                                                    //    TJAPlayer3.Tx.SongSelect_Branch.t2D描画(TJAPlayer3.app.Device, 775, TJAPlayer3.Skin.SongSelect_Overall_Y + 263);
+                                                }
+												else if (i != 4)
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 												{
 													//裏鬼
 													if (!TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect)
@@ -1552,9 +1582,24 @@ namespace TJAPlayer3
 								}
 								else
 								{
+<<<<<<< HEAD
 									// ないですね
 									TJAPlayer3.Tx.SongSelect_Frame_Score.color4 = new Color4(0.5f, 0.5f, 0.5f, 0.5f);
 									TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (3 * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(0, 360 + (360 * (TJAPlayer3.stage選曲.n現在選択中の曲の難易度 - (int)Difficulty.Tower)), TJAPlayer3.Tx.SongSelect_Frame_Score.szテクスチャサイズ.Width, 360));
+=======
+									if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[TJAPlayer3.stage選曲.n現在選択中の曲の難易度] >= 0)
+									{
+										// 譜面がありますね
+										TJAPlayer3.Tx.SongSelect_Frame_Score.color4 = new Color4(1f, 1f, 1f);
+										TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (3 * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(0, 360 + (360 * (TJAPlayer3.stage選曲.n現在選択中の曲の難易度 - (int)Difficulty.Tower)), TJAPlayer3.Tx.SongSelect_Frame_Score.szテクスチャサイズ.Width, 360));
+									}
+									else
+									{
+										// ないですね
+										TJAPlayer3.Tx.SongSelect_Frame_Score.color4 = new Color4(0.5f, 0.5f, 0.5f);
+										TJAPlayer3.Tx.SongSelect_Frame_Score.t2D下中央基準描画(TJAPlayer3.app.Device, 494 + (3 * 122) - 31, TJAPlayer3.Skin.SongSelect_Overall_Y + 465, new Rectangle(0, 360 + (360 * (TJAPlayer3.stage選曲.n現在選択中の曲の難易度 - (int)Difficulty.Tower)), TJAPlayer3.Tx.SongSelect_Frame_Score.szテクスチャサイズ.Width, 360));
+									}
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 								}
 							}
                         }

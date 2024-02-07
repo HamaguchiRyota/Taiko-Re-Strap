@@ -4,12 +4,9 @@ using System.Text;
 using System.Drawing;
 using System.IO;
 using System.Diagnostics;
-using SharpDX;
-using SharpDX.Direct3D9;
+using SlimDX;
+using SlimDX.Direct3D9;
 using FDK;
-
-using Rectangle = System.Drawing.Rectangle;
-using Point = System.Drawing.Point;
 
 namespace TJAPlayer3
 {
@@ -40,7 +37,7 @@ namespace TJAPlayer3
 		private CTexture txプレビュー画像;
 		private CTexture txプレビュー画像がないときの画像;
 		private bool b新しいプレビューファイルを読み込んだ;
-		
+		/*
 		private bool b新しいプレビューファイルをまだ読み込んでいない
 		{
 			get
@@ -51,15 +48,14 @@ namespace TJAPlayer3
 			{
 				this.b新しいプレビューファイルを読み込んだ = !value;
 			}
-        }
-		
-		//this.sfAVI画像 = Surface.CreateOffscreenPlain(TJAPlayer3.app.Device, 0xcc, 0x10d, TJAPlayer3.app.GraphicsDeviceManager.CurrentSettings.BackBufferFormat, Pool.SystemMemory );
+		}
+		*/
 
 		private unsafe void tサーフェイスをクリアする( Surface sf )
 		{
 			DataRectangle rectangle = sf.LockRectangle( LockFlags.None );
-            DataStream data = new DataStream(rectangle.DataPointer, sf.Description.Width * rectangle.Pitch, true, false);
-            switch ( ( rectangle.Pitch / sf.Description.Width ) )
+			DataStream data = rectangle.Data;
+			switch( ( rectangle.Pitch / sf.Description.Width ) )
 			{
 				case 4:
 					{
@@ -88,7 +84,7 @@ namespace TJAPlayer3
 			}
 			sf.UnlockRectangle();
 		}
-		
+		/*
 		private void tプレビュー画像_動画の変更()
 		{
 			if( this.avi != null )
@@ -118,8 +114,12 @@ namespace TJAPlayer3
 			this.r表示するプレビュー画像 = this.txプレビュー画像がないときの画像;
 			this.str現在のファイル名 = "";
 		}
+<<<<<<< HEAD
 		
 		/*
+=======
+		*/
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 		private bool tプレビュー画像の指定があれば構築する()
 		{
 			Cスコア cスコア = TJAPlayer3.stage選曲.r現在選択中のスコア;
@@ -261,7 +261,7 @@ namespace TJAPlayer3
         /// </summary>
 		/// 
 
-		
+		/*
 		private void t描画処理_ジャンル文字列()
 		{
 			C曲リストノード c曲リストノード = TJAPlayer3.stage選曲.r現在選択中の曲;
@@ -334,6 +334,8 @@ namespace TJAPlayer3
 				TJAPlayer3.act文字コンソール.tPrint( this.n本体X + 0x12, this.n本体Y - 1, C文字コンソール.Eフォント種別.赤細, str );
 			}
 		}
+		*/
+		/*
 		private void t描画処理_センサ光()
 		{
 			int num = (int)this.ctセンサ光.n現在の値;
@@ -365,7 +367,8 @@ namespace TJAPlayer3
 				}
 			}
 		}
-
+		*/
+		/*
 		private void t描画処理_センサ本体()
 		{
 			int x = this.n本体X + 0xcd;
@@ -396,7 +399,8 @@ namespace TJAPlayer3
 				this.txパネル本体.t2D描画(TJAPlayer3.app.Device, this.n本体X, this.n本体Y);
 			}
 		}
-
+		*/
+		/*
 		private unsafe void t描画処理_プレビュー画像()
 		{
 			if( !TJAPlayer3.stage選曲.bスクロール中 && ( ( ( this.ct遅延表示 != null ) && ( this.ct遅延表示.n現在の値 > 0 ) ) && !this.b新しいプレビューファイルをまだ読み込んでいない ) )
@@ -410,8 +414,8 @@ namespace TJAPlayer3
 					if( this.b動画フレームを作成した && ( this.pAVIBmp != IntPtr.Zero ) )
 					{
 						DataRectangle rectangle = this.sfAVI画像.LockRectangle( LockFlags.None );
-                        DataStream data = new DataStream(rectangle.DataPointer, this.sfAVI画像.Description.Width * rectangle.Pitch, true, false); ;
-                        int num5 = rectangle.Pitch / this.sfAVI画像.Description.Width;
+						DataStream data = rectangle.Data;
+						int num5 = rectangle.Pitch / this.sfAVI画像.Description.Width;
 						BitmapUtil.BITMAPINFOHEADER* pBITMAPINFOHEADER = (BitmapUtil.BITMAPINFOHEADER*) this.pAVIBmp.ToPointer();
 						if( pBITMAPINFOHEADER->biBitCount == 0x18 )
 						{
@@ -433,8 +437,8 @@ namespace TJAPlayer3
 					{
 						try
 						{
-                            TJAPlayer3.app.Device.UpdateSurface(this.sfAVI画像, new SharpDX.Rectangle(0, 0, this.sfAVI画像.Description.Width, this.sfAVI画像.Description.Height), surface, new SharpDX.Point(x, y));
-                        }
+							TJAPlayer3.app.Device.UpdateSurface( this.sfAVI画像, new Rectangle( 0, 0, this.sfAVI画像.Description.Width, this.sfAVI画像.Description.Height ), surface, new Point( x, y ) );
+						}
 						catch( Exception e )	// #32335 2013.10.26 yyagi: codecがないと、D3DERR_INVALIDCALLが発生する場合がある
 						{
 							Trace.TraceError( "codecがないと、D3DERR_INVALIDCALLが発生する場合がある" );
@@ -465,7 +469,7 @@ namespace TJAPlayer3
 				}
 			}
 		}
-		
+		*/
 		//-----------------
 		#endregion
 	}

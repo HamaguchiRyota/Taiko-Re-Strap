@@ -21,8 +21,7 @@
 */
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using SharpDX.Direct3D9;
+using SlimDX.Direct3D9;
 
 namespace SampleFramework
 {
@@ -55,28 +54,25 @@ namespace SampleFramework
 		public PresentParameters PresentParameters
 		{
 			get;
-			set;
+			private set;
 		}
 
 		public Direct3D9Settings()
 		{
-			//PresentParameters = new PresentParameters();
+			PresentParameters = new PresentParameters();
 			DeviceType = DeviceType.Hardware;
+			PresentParameters.Windowed = true;
 			AdapterFormat = Format.Unknown;
 			CreationFlags = CreateFlags.HardwareVertexProcessing;
-            var pp = new PresentParameters();
-            pp.Windowed = true;
-            pp.BackBufferFormat = Format.Unknown;
-            pp.BackBufferCount = 1;
-            pp.MultiSampleType = MultisampleType.None;
-            pp.SwapEffect = SwapEffect.Discard;
-            pp.EnableAutoDepthStencil = true;
-            pp.AutoDepthStencilFormat = Format.Unknown;
-            pp.PresentFlags = PresentFlags.DiscardDepthStencil;
-            pp.PresentationInterval = PresentInterval.Default;
-
-            this.PresentParameters = pp;
-        }
+			PresentParameters.BackBufferFormat = Format.Unknown;
+			PresentParameters.BackBufferCount = 1;
+			PresentParameters.Multisample = MultisampleType.None;
+			PresentParameters.SwapEffect = SwapEffect.Discard;
+			PresentParameters.EnableAutoDepthStencil = true;
+			PresentParameters.AutoDepthStencilFormat = Format.Unknown;
+			PresentParameters.PresentFlags = PresentFlags.DiscardDepthStencil;
+			PresentParameters.PresentationInterval = PresentInterval.Default;
+		}
 
 		public Direct3D9Settings Clone()
 		{
@@ -85,7 +81,7 @@ namespace SampleFramework
 			clone.AdapterOrdinal = AdapterOrdinal;
 			clone.CreationFlags = CreationFlags;
 			clone.DeviceType = DeviceType;
-			clone.PresentParameters = PresentParameters;
+			clone.PresentParameters = PresentParameters.Clone();
 
 			return clone;
 		}
@@ -99,17 +95,16 @@ namespace SampleFramework
 		{
 			DisplayMode desktopMode = GraphicsDeviceManager.Direct3D9Object.GetAdapterDisplayMode(0);
 			Direct3D9Settings optimal = new Direct3D9Settings();
-            var pp = optimal.PresentParameters;
 
-            optimal.AdapterOrdinal = settings.AdapterOrdinal;
+			optimal.AdapterOrdinal = settings.AdapterOrdinal;
 			optimal.DeviceType = settings.DeviceType;
-            pp.Windowed = settings.Windowed;
-            pp.BackBufferCount = settings.BackBufferCount;
-            pp.MultiSampleType = settings.MultisampleType;
-            pp.MultiSampleQuality = settings.MultisampleQuality;
-            pp.FullScreenRefreshRateInHz = settings.RefreshRate;
+			optimal.PresentParameters.Windowed = settings.Windowed;
+			optimal.PresentParameters.BackBufferCount = settings.BackBufferCount;
+			optimal.PresentParameters.Multisample = settings.MultisampleType;
+			optimal.PresentParameters.MultisampleQuality = settings.MultisampleQuality;
+			optimal.PresentParameters.FullScreenRefreshRateInHertz = settings.RefreshRate;
 
-            if (settings.Multithreaded)
+			if(settings.Multithreaded)
 				optimal.CreationFlags |= CreateFlags.Multithreaded;
 
 			if(optimal.PresentParameters.Windowed || ConversionMethods.GetColorBits(desktopMode.Format) >= 8)
@@ -121,41 +116,40 @@ namespace SampleFramework
 			{
 				if(optimal.PresentParameters.Windowed)
 				{
-                    pp.BackBufferWidth = 640;
-                    pp.BackBufferHeight = 480;
-                }
+					optimal.PresentParameters.BackBufferWidth = 640;
+					optimal.PresentParameters.BackBufferHeight = 480;
+				}
 				else
 				{
-                    pp.BackBufferWidth = desktopMode.Width;
-                    pp.BackBufferHeight = desktopMode.Height;
-                }
+					optimal.PresentParameters.BackBufferWidth = desktopMode.Width;
+					optimal.PresentParameters.BackBufferHeight = desktopMode.Height;
+				}
 			}
 			else
 			{
-                pp.BackBufferWidth = settings.BackBufferWidth;
-                pp.BackBufferHeight = settings.BackBufferHeight;
-            }
+				optimal.PresentParameters.BackBufferWidth = settings.BackBufferWidth;
+				optimal.PresentParameters.BackBufferHeight = settings.BackBufferHeight;
+			}
 
 			if(settings.BackBufferFormat == Format.Unknown)
-				pp.BackBufferFormat = optimal.AdapterFormat;
+				optimal.PresentParameters.BackBufferFormat = optimal.AdapterFormat;
 			else
-				pp.BackBufferFormat = settings.BackBufferFormat;
+				optimal.PresentParameters.BackBufferFormat = settings.BackBufferFormat;
 
 			if(settings.DepthStencilFormat == Format.Unknown)
 			{
 				if(ConversionMethods.GetColorBits(optimal.PresentParameters.BackBufferFormat) >= 8)
-					pp.AutoDepthStencilFormat = Format.D32;
+					optimal.PresentParameters.AutoDepthStencilFormat = Format.D32;
 				else
-					pp.AutoDepthStencilFormat = Format.D16;
+					optimal.PresentParameters.AutoDepthStencilFormat = Format.D16;
 			}
 			else
-				pp.AutoDepthStencilFormat = settings.DepthStencilFormat;
+				optimal.PresentParameters.AutoDepthStencilFormat = settings.DepthStencilFormat;
 
 			if(!settings.EnableVSync)
-				pp.PresentationInterval = PresentInterval.Immediate;
+				optimal.PresentParameters.PresentationInterval = PresentInterval.Immediate;
 
-            optimal.PresentParameters = pp;
-            return optimal;
+			return optimal;
 		}
 
 		public static float RankSettingsCombo(SettingsCombo9 combo, Direct3D9Settings optimal, DisplayMode desktopMode)
@@ -235,8 +229,8 @@ namespace SampleFramework
 				MultisampleType type = combo.MultisampleTypes[i];
 				int quality = combo.MultisampleQualities[i];
 
-                if (type == optimal.PresentParameters.MultiSampleType && quality == optimal.PresentParameters.MultiSampleQuality)
-                {
+				if(type == optimal.PresentParameters.Multisample && quality == optimal.PresentParameters.MultisampleQuality)
+				{
 					ranking += 1.0f;
 					break;
 				}
@@ -248,8 +242,8 @@ namespace SampleFramework
 			foreach(DisplayMode displayMode in combo.AdapterInfo.DisplayModes)
 			{
 				if(displayMode.Format == combo.AdapterFormat &&
-                    displayMode.RefreshRate == optimal.PresentParameters.FullScreenRefreshRateInHz)
-                {
+					displayMode.RefreshRate == optimal.PresentParameters.FullScreenRefreshRateInHertz)
+				{
 					ranking += 1.0f;
 					break;
 				}
@@ -264,17 +258,16 @@ namespace SampleFramework
 		public static Direct3D9Settings BuildValidSettings(SettingsCombo9 combo, Direct3D9Settings input)
 		{
 			Direct3D9Settings settings = new Direct3D9Settings();
-            var pp = settings.PresentParameters;
 
-            settings.AdapterOrdinal = combo.AdapterOrdinal;
+			settings.AdapterOrdinal = combo.AdapterOrdinal;
 			settings.DeviceType = combo.DeviceType;
+			settings.PresentParameters.Windowed = combo.Windowed;
 			settings.AdapterFormat = combo.AdapterFormat;
-            pp.Windowed = combo.Windowed;
-            pp.BackBufferFormat = combo.BackBufferFormat;
-            pp.SwapEffect = input.PresentParameters.SwapEffect;
-            pp.PresentFlags = input.PresentParameters.PresentFlags | PresentFlags.DiscardDepthStencil;
+			settings.PresentParameters.BackBufferFormat = combo.BackBufferFormat;
+			settings.PresentParameters.SwapEffect = input.PresentParameters.SwapEffect;
+			settings.PresentParameters.PresentFlags = input.PresentParameters.PresentFlags | PresentFlags.DiscardDepthStencil;
 
-            settings.CreationFlags = input.CreationFlags;
+			settings.CreationFlags = input.CreationFlags;
 			if((combo.DeviceInfo.Capabilities.DeviceCaps & DeviceCaps.HWTransformAndLight) == 0 &&
 				((settings.CreationFlags & CreateFlags.HardwareVertexProcessing) != 0 ||
 				(settings.CreationFlags & CreateFlags.MixedVertexProcessing) != 0))
@@ -295,20 +288,20 @@ namespace SampleFramework
 			}
 
 			DisplayMode bestDisplayMode = FindValidResolution(combo, input);
-			pp.BackBufferWidth = bestDisplayMode.Width;
-			pp.BackBufferHeight = bestDisplayMode.Height;
+			settings.PresentParameters.BackBufferWidth = bestDisplayMode.Width;
+			settings.PresentParameters.BackBufferHeight = bestDisplayMode.Height;
 
-			pp.BackBufferCount = input.PresentParameters.BackBufferCount;
-			if(pp.BackBufferCount > 3)
-				pp.BackBufferCount = 3;
-			if(pp.BackBufferCount < 1)
-				pp.BackBufferCount = 1;
+			settings.PresentParameters.BackBufferCount = input.PresentParameters.BackBufferCount;
+			if(settings.PresentParameters.BackBufferCount > 3)
+				settings.PresentParameters.BackBufferCount = 3;
+			if(settings.PresentParameters.BackBufferCount < 1)
+				settings.PresentParameters.BackBufferCount = 1;
 
 			if(input.PresentParameters.SwapEffect != SwapEffect.Discard)
 			{
-                pp.MultiSampleType = MultisampleType.None;
-                pp.MultiSampleQuality = 0;
-            }
+				settings.PresentParameters.Multisample = MultisampleType.None;
+				settings.PresentParameters.MultisampleQuality = 0;
+			}
 			else
 			{
 				MultisampleType bestType = MultisampleType.None;
@@ -317,19 +310,19 @@ namespace SampleFramework
 				for(int i = 0; i < combo.MultisampleTypes.Count; i++)
 				{
 					MultisampleType type = combo.MultisampleTypes[i];
-					int quality = combo.MultisampleQualities[i];
+					int quality = combo.MultisampleQualities[0];
 
-                    if (Math.Abs(type - input.PresentParameters.MultiSampleType) < Math.Abs(bestType -
-                        input.PresentParameters.MultiSampleType))
-                    {
+					if(Math.Abs(type - input.PresentParameters.Multisample) < Math.Abs(bestType -
+						input.PresentParameters.Multisample))
+					{
 						bestType = type;
-                        bestQuality = Math.Min(quality - 1, input.PresentParameters.MultiSampleQuality);
-                    }
+						bestQuality = Math.Min(quality - 1, input.PresentParameters.MultisampleQuality);
+					}
 				}
 
-                pp.MultiSampleType = bestType;
-                pp.MultiSampleQuality = bestQuality;
-            }
+				settings.PresentParameters.Multisample = bestType;
+				settings.PresentParameters.MultisampleQuality = bestQuality;
+			}
 
 			List<int> rankings = new List<int>();
 			int inputDepthBitDepth = ConversionMethods.GetDepthBits(input.PresentParameters.AutoDepthStencilFormat);
@@ -355,21 +348,21 @@ namespace SampleFramework
 
 			if(bestIndex >= 0)
 			{
-				pp.AutoDepthStencilFormat = combo.DepthStencilFormats[bestIndex];
-				pp.EnableAutoDepthStencil = true;
+				settings.PresentParameters.AutoDepthStencilFormat = combo.DepthStencilFormats[bestIndex];
+				settings.PresentParameters.EnableAutoDepthStencil = true;
 			}
 			else
 			{
-				pp.AutoDepthStencilFormat = Format.Unknown;
-				pp.EnableAutoDepthStencil = false;
+				settings.PresentParameters.AutoDepthStencilFormat = Format.Unknown;
+				settings.PresentParameters.EnableAutoDepthStencil = false;
 			}
 
 			if(combo.Windowed)
-                pp.FullScreenRefreshRateInHz = 0;
-            else
+				settings.PresentParameters.FullScreenRefreshRateInHertz = 0;
+			else
 			{
-                int match = input.PresentParameters.FullScreenRefreshRateInHz;
-                bestDisplayMode.RefreshRate = 0;
+				int match = input.PresentParameters.FullScreenRefreshRateInHertz;
+				bestDisplayMode.RefreshRate = 0;
 				if(match != 0)
 				{
 					bestRanking = 100000;
@@ -393,16 +386,15 @@ namespace SampleFramework
 					}
 				}
 
-                pp.FullScreenRefreshRateInHz = bestDisplayMode.RefreshRate;
-            }
+				settings.PresentParameters.FullScreenRefreshRateInHertz = bestDisplayMode.RefreshRate;
+			}
 
-            if (combo.PresentIntervals.Contains(input.PresentParameters.PresentationInterval))
-                pp.PresentationInterval = input.PresentParameters.PresentationInterval;
-            else
-                pp.PresentationInterval = PresentInterval.Default;
+			if(combo.PresentIntervals.Contains(input.PresentParameters.PresentationInterval))
+				settings.PresentParameters.PresentationInterval = input.PresentParameters.PresentationInterval;
+			else
+				settings.PresentParameters.PresentationInterval = PresentInterval.Default;
 
-            settings.PresentParameters = pp;
-            return settings;
+			return settings;
 		}
 
 		static DisplayMode FindValidResolution(SettingsCombo9 combo, Direct3D9Settings input)

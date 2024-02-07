@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Drawing;
-using SharpDX.Direct3D9;
+using SlimDX;
+using SlimDX.Direct3D9;
 using FDK;
 
 namespace TJAPlayer3
@@ -26,7 +27,7 @@ namespace TJAPlayer3
 		}
 		public Device D3D9Device
 		{
-			get { return (TJAPlayer3.app != null ) ? TJAPlayer3.app.Device : null; }
+			get { return (TJAPlayer3.app != null ) ? TJAPlayer3.app.Device.UnderlyingDevice : null; }
 		}
 		/*
 		public Format TextureFormat

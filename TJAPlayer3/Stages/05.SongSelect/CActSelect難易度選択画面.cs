@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Drawing;
-using SharpDX;
+using SlimDX;
 using FDK;
-
-using Rectangle = System.Drawing.Rectangle;
-using RectangleF = System.Drawing.RectangleF;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -371,15 +367,15 @@ namespace TJAPlayer3
                 }
             }
 
-            TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
+            TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f);
             TJAPlayer3.Tx.Difficulty_Bar.t2D描画(TJAPlayer3.app.Device, 255, 270, new RectangleF(0, 0, 171, 236));    //閉じる、演奏オプション
 
             for (int i = 0; i < 3; i++)
             {
                 if(TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i] > 0)
-                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
+                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f);
                 else
-                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f, 1f);
+                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f);
 
                 TJAPlayer3.Tx.Difficulty_Bar.t2D描画(TJAPlayer3.app.Device, 255 + 171 + 143 * i, 270, new RectangleF(171 + 143 * i, 0, 143, 236));    //閉じる～難しいまで
 
@@ -413,9 +409,9 @@ namespace TJAPlayer3
             if (b裏譜面)
             {
                 if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[4] > 0)
-                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f, 1f);
+                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f);
                 else
-                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f, 1f);
+                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f);
 
                 TJAPlayer3.Tx.Difficulty_Bar.t2D描画(TJAPlayer3.app.Device, 855, 270, new RectangleF(743, 0, 138, 236));
 
@@ -438,9 +434,13 @@ namespace TJAPlayer3
             else
             {
                 if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[3] > 0)
-                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f, 1f);
+                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f);
                 else
+<<<<<<< HEAD
                     TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f, 0.5f);
+=======
+                    TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f);
+>>>>>>> parent of 2adbd0b (Ver.0.7.0.0(SlimDX依存排除《Thx Mr.Ojii》))
 
                 TJAPlayer3.Tx.Difficulty_Bar.t2D描画(TJAPlayer3.app.Device, 855, 270, new RectangleF(600, 0, 143, 236));
                 TJAPlayer3.Tx.Difficulty_Crown.t2D描画(TJAPlayer3.app.Device, 445 + 3 * 144, 284, new RectangleF(TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nクリア[3] * 24.5f, 0, 24.5f, 26));

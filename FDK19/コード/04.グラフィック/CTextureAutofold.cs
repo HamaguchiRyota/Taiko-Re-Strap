@@ -5,12 +5,10 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Diagnostics;
-using SharpDX;
-using SharpDX.Direct3D9;
+using SlimDX;
+using SlimDX.Direct3D9;
 
-using Rectangle = System.Drawing.Rectangle;
-using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
+using Device = SampleFramework.DeviceCache;
 
 namespace FDK
 {
