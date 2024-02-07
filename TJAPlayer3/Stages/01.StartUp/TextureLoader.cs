@@ -290,6 +290,11 @@ namespace TJAPlayer3
             for (int i = 0; i < 3; i++)
                 Challenge_Select[i] = TxC(DANISELECT + "Challenge_Select_" + i.ToString() + ".png");
 
+            for (int i = 0; i < DaniSelect_Donchan_Normal.Length; i++)
+            {
+                DaniSelect_Donchan_Normal[i] = TxC(DANISELECT + @"Loop\" + i.ToString() + ".png");
+            }
+
             #endregion
 
             #region 4_読み込み画面
@@ -310,7 +315,7 @@ namespace TJAPlayer3
             Judge = TxC(GAME + @"Judge.png");
             ChipEffect = TxC(GAME + @"ChipEffect.png");
             ScoreRank = TxC(GAME + @"ScoreRank.png");
-            NowStages = TxC(GAME + @"NowStages");
+            //NowStages = TxC(GAME + @"NowStages");
 
             Judge_Meter = TxC(GAME + @"Judge_Meter.png");
             Bar = TxC(GAME + @"Bar.png");
@@ -569,9 +574,9 @@ namespace TJAPlayer3
             Taiko_Frame = new CTexture[2];
             Taiko_Frame[0] = TxC(GAME + TAIKO + @"1P_Frame.png");
             Taiko_Frame[1] = TxC(GAME + TAIKO + @"2P_Frame.png");
-            Taiko_PlayerNumber = new CTexture[2];
-            Taiko_PlayerNumber[0] = TxC(GAME + TAIKO + @"1P_PlayerNumber.png");
-            Taiko_PlayerNumber[1] = TxC(GAME + TAIKO + @"2P_PlayerNumber.png");
+            //Taiko_PlayerNumber = new CTexture[2];
+            //Taiko_PlayerNumber[0] = TxC(GAME + TAIKO + @"1P_PlayerNumber.png");
+            //Taiko_PlayerNumber[1] = TxC(GAME + TAIKO + @"2P_PlayerNumber.png");
             Taiko_NamePlate = new CTexture[2];
             Taiko_NamePlate[0] = TxC(GAME + TAIKO + @"1P_NamePlate.png");
             Taiko_NamePlate[1] = TxC(GAME + TAIKO + @"2P_NamePlate.png");
@@ -778,7 +783,7 @@ namespace TJAPlayer3
             DanC_Small_Number = TxC(GAME + DANC + @"Small_Number.png");
             DanC_ExamType = TxC(GAME + DANC + @"ExamType.png");
             DanC_ExamRange = TxC(GAME + DANC + @"ExamRange.png");
-            DanC_ExamUnit = TxC(GAME + DANC + @"ExamUnit.png");
+            //DanC_ExamUnit = TxC(GAME + DANC + @"ExamUnit.png");
             DanC_Screen = TxC(GAME + DANC + @"Screen.png");
             DanC_SmallBase = TxC(GAME + DANC + @"SmallBase.png");
             DanC_Small_ExamCymbol = TxC(GAME + DANC + @"Small_ExamCymbol.png");
@@ -1120,6 +1125,7 @@ namespace TJAPlayer3
         public CTexture Dani_Dan_Text;
 
         public CTexture[] Challenge_Select = new CTexture[3];
+        public CTexture[] DaniSelect_Donchan_Normal = new CTexture[61];
 
         #endregion
 
@@ -1140,8 +1146,8 @@ namespace TJAPlayer3
             Notes_Arm,
             ChipEffect,
             ScoreRank,
-            Judge,
-            NowStages;
+            Judge;
+            //NowStages;
         public CTexture Bar,
             Judge_Meter,
             Bar_Branch;
@@ -1207,7 +1213,7 @@ namespace TJAPlayer3
             Background_Up_Sakura_Clear,
             //Background_Up_Clear_Kumo0,
             //Background_Up_Clear_Kumo1,
-        Background_Up_Dan = new CTexture[6];
+            Background_Up_Dan = new CTexture[6];
         #endregion
         #region 太鼓
         public CTexture[] Taiko_Frame, // MTaiko下敷き
@@ -1226,7 +1232,7 @@ namespace TJAPlayer3
             Taiko_Combo_Effect,
             Taiko_Combo_Text;
         public CTexture[] Couse_Symbol,// コースシンボル
-            Taiko_PlayerNumber,
+            //Taiko_PlayerNumber,
             Taiko_NamePlate; // ネームプレート
         public CTexture[] Taiko_Score,
             Taiko_Combo;

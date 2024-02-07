@@ -1,13 +1,12 @@
 ﻿using FDK;
-using System.Security.Cryptography.X509Certificates;
 
 namespace TJAPlayer3
 {
-	internal class CAct演奏Drumsスコア : CAct演奏スコア共通
-	{
-		// CActivity 実装（共通クラスからの差分のみ）
+    internal class CAct演奏Drumsスコア : CAct演奏スコア共通
+    {
+        // CActivity 実装（共通クラスからの差分のみ）
 
-		public unsafe override int On進行描画()
+        public unsafe override int On進行描画()
         {
             if (!base.b活性化してない)
             {
@@ -15,7 +14,7 @@ namespace TJAPlayer3
                 {
                     base.b初めての進行描画 = false;
                 }
-                //long num = FDK.CSound管理.rc演奏用タイマ.n現在時刻;
+                long num = FDK.CSound管理.rc演奏用タイマ.n現在時刻;
 
                 if (!this.ctTimer.b停止中)
                 {
@@ -24,6 +23,7 @@ namespace TJAPlayer3
                     {
                         this.ctTimer.t停止();
                     }
+
                 }
 
                 for (int i = 0; i < 4; i++)
@@ -50,6 +50,7 @@ namespace TJAPlayer3
                         }
                     }
                 }
+
 
                 base.t小文字表示(TJAPlayer3.Skin.Game_Score_X[0], TJAPlayer3.Skin.Game_Score_Y[0], string.Format("{0,7:######0}", this.n現在表示中のスコア[0].Taiko), 0, 256, 0);
                 if (TJAPlayer3.stage演奏ドラム画面.bDoublePlay) base.t小文字表示(TJAPlayer3.Skin.Game_Score_X[1], TJAPlayer3.Skin.Game_Score_Y[1], string.Format("{0,7:######0}", this.n現在表示中のスコア[1].Taiko), 0, 256, 1);
@@ -88,44 +89,43 @@ namespace TJAPlayer3
                             int xAdd = 0;
                             int yAdd = 0;
                             int alpha = 0;
-                            int timerValue = this.stScore[i].ctTimer.n現在の値;
 
-                            if (timerValue < 10)
+                            if (this.stScore[i].ctTimer.n現在の値 < 10)
                             {
                                 xAdd = 25;
                                 alpha = 150;
                             }
-                            else if (timerValue < 20)
+                            else if (this.stScore[i].ctTimer.n現在の値 < 20)
                             {
                                 xAdd = 10;
                                 alpha = 200;
                             }
-                            else if (timerValue < 30)
+                            else if (this.stScore[i].ctTimer.n現在の値 < 30)
                             {
                                 xAdd = -5;
                                 alpha = 250;
                             }
-                            else if (timerValue < 40)
+                            else if (this.stScore[i].ctTimer.n現在の値 < 40)
                             {
                                 xAdd = -9;
                                 alpha = 256;
                             }
-                            else if (timerValue < 50)
+                            else if (this.stScore[i].ctTimer.n現在の値 < 50)
                             {
                                 xAdd = -10;
                                 alpha = 256;
                             }
-                            else if (timerValue < 60)
+                            else if (this.stScore[i].ctTimer.n現在の値 < 60)
                             {
                                 xAdd = -9;
                                 alpha = 256;
                             }
-                            else if (timerValue < 70)
+                            else if (this.stScore[i].ctTimer.n現在の値 < 70)
                             {
                                 xAdd = -5;
                                 alpha = 256;
                             }
-                            else if (timerValue < 80)
+                            else if (this.stScore[i].ctTimer.n現在の値 < 80)
                             {
                                 xAdd = -3;
                                 alpha = 256;
@@ -136,11 +136,55 @@ namespace TJAPlayer3
                                 alpha = 256;
                             }
 
-                            if (timerValue > 120)
+
+
+                            if (this.stScore[i].ctTimer.n現在の値 > 120)
                             {
-                                yAdd = timerValue > 210 ? 20 : timerValue > 180 ? 0 : timerValue > 160 ? -8 : timerValue > 150 ? -8 : timerValue > 140 ? -7 : timerValue > 130 ? -5 : -1;
-                                alpha = timerValue > 210 ? 0 : timerValue > 200 ? 150 : timerValue > 190 ? 200 : timerValue > 180 ? 256 : timerValue > 170 ? 256 : timerValue > 160 ? 256 : 256;
+                                yAdd = -1;
                             }
+                            if (this.stScore[i].ctTimer.n現在の値 > 130)
+                            {
+                                yAdd = -5;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 140)
+                            {
+                                yAdd = -7;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 150)
+                            {
+                                yAdd = -8;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 160)
+                            {
+                                yAdd = -8;
+                                alpha = 256;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 170)
+                            {
+                                yAdd = -6;
+                                alpha = 256;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 180)
+                            {
+                                yAdd = 0;
+                                alpha = 256;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 190)
+                            {
+                                yAdd = 5;
+                                alpha = 200;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 200)
+                            {
+                                yAdd = 12;
+                                alpha = 150;
+                            }
+                            if (this.stScore[i].ctTimer.n現在の値 > 210)
+                            {
+                                yAdd = 20;
+                                alpha = 0;
+                            }
+
 
                             if (this.n現在表示中のAddScore < 10 && this.stScore[i].bBonusScore == false)
                                 base.t小文字表示(TJAPlayer3.Skin.Game_Score_Add_X[this.stScore[i].nPlayer] + xAdd, this.stScore[i].nPlayer == 0 ? TJAPlayer3.Skin.Game_Score_Add_Y[this.stScore[i].nPlayer] + yAdd : TJAPlayer3.Skin.Game_Score_Add_Y[this.stScore[i].nPlayer] - yAdd, string.Format("{0,7:######0}", this.stScore[i].nAddScore), this.stScore[i].nPlayer + 1, alpha, stScore[i].nPlayer);
@@ -153,23 +197,7 @@ namespace TJAPlayer3
                             }
                         }
                     }
-                }
 
-                int[] HighScore = TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア;
-                int d = TJAPlayer3.stage選曲.n確定された曲の難易度[0];
-                //long nb = this.n現在表示中のスコア[0].Taiko - HighScore[d];
-                //TJAPlayer3.act文字コンソール.tPrint(20, 5, C文字コンソール.Eフォント種別.白, nb.ToString());
-                /*
-                if (HighScore[d] >= 1 && nb <= 5000 )
-                {
-                    TJAPlayer3.act文字コンソール.tPrint(10, 230, C文字コンソール.Eフォント種別.白, "ハイスコア間近".ToString());
-
-                }
-                */
-
-                if (HighScore[d] >= 1 && this.n現在表示中のスコア[0].Taiko > HighScore[d])
-                {
-                    TJAPlayer3.Tx.Taiko_HG?.t2D描画(TJAPlayer3.app.Device, 2, 228);
                 }
 
             }
@@ -177,5 +205,3 @@ namespace TJAPlayer3
         }
     }
 }
-
-

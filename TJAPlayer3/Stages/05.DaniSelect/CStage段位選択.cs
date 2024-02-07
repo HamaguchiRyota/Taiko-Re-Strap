@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FDK;
+//using SlimDX.DirectInput;
 
 namespace TJAPlayer3
 {
@@ -20,7 +20,6 @@ namespace TJAPlayer3
             base.list子Activities.Add(this.段位挑戦選択画面 = new CActSelect段位挑戦選択画面());
             base.list子Activities.Add(this.actFOtoTitle = new CActFIFOBlack());
             base.list子Activities.Add(this.actPlayOption = new CActPlayOption());
-
         }
 
         public override void On活性化()
@@ -36,8 +35,6 @@ namespace TJAPlayer3
             ct待機 = new CCounter();
             ctDonchan_In = new CCounter();
             ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.SongSelect_Donchan_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);
-
-            bInSongPlayed = false;
 
             base.On活性化();
         }
@@ -56,76 +53,18 @@ namespace TJAPlayer3
         {
             base.OnManagedリソースの解放();
         }
-        
+
         public override int On進行描画()
         {
             ctDonchan_Normal.t進行Loop();
             ctDonchan_In.t進行();
             ct待機.t進行();
-            int stamp = this.段位リスト.ctDaniIn.n現在の値;
 
-            float zoom = Math.Min(1.14f, Math.Max(1f, (float)Math.Pow(stamp / 3834f, 0.5f)));
-
-            TJAPlayer3.Tx.Dani_Background.vc拡大縮小倍率.X = zoom;
-            TJAPlayer3.Tx.Dani_Background.vc拡大縮小倍率.Y = zoom;
-            TJAPlayer3.Tx.Dani_Background.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 360);
+            TJAPlayer3.Tx.Dani_Background.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
             this.段位リスト.On進行描画();
 
-            if (stamp < 6000)
-            {
-                #region [ 段位入場アニメ ]
-
-                if (!bInSongPlayed)
-                {
-                    this.段位リスト.ctDaniIn = new CCounter(0, 6000, 1, TJAPlayer3.Timer);
-                    TJAPlayer3.Skin.soundDanSongSelectIn.t再生する();
-                    bInSongPlayed = true;
-                }
-
-                int doorLeft = 0;
-                int doorRight = 640;
-                if (stamp >= 3834)
-                {
-                    doorLeft -= stamp - 3834;
-                    doorRight += stamp - 3834;
-                }
-
-                TJAPlayer3.Tx.Dani_Dan_In.t2D描画(TJAPlayer3.app.Device, doorLeft, 0, new Rectangle(0, 0, 640, 720));
-                TJAPlayer3.Tx.Dani_Dan_In.t2D描画(TJAPlayer3.app.Device, doorRight, 0, new Rectangle(640, 0, 640, 720));
-
-                if (stamp <= 3834)
-                {
-                    #region [Dan intro letters]
-
-                    int quarter = TJAPlayer3.Tx.Dani_Dan_Text.szテクスチャサイズ.Width / 4;
-
-                    int[] xAxis = { 300, 980 };
-                    int[] yAxis = { 198, 522 };
-                    int[] appearStamps = { 1645, 2188, 2646, 3152 };
-
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (stamp < appearStamps[i])
-                            break;
-
-                        TJAPlayer3.Tx.Dani_Dan_Text.Opacity = Math.Min(255, stamp - appearStamps[i]);
-
-                        float ratio = (255 - TJAPlayer3.Tx.Dani_Dan_Text.Opacity) / 400f + 1f;
-
-                        TJAPlayer3.Tx.Dani_Dan_Text.vc拡大縮小倍率.X = ratio;
-                        TJAPlayer3.Tx.Dani_Dan_Text.vc拡大縮小倍率.Y = ratio;
-
-                        TJAPlayer3.Tx.Dani_Dan_Text.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, xAxis[i % 2], yAxis[i / 2],
-                            new Rectangle(quarter * i, 0, quarter, TJAPlayer3.Tx.Dani_Dan_Text.szテクスチャサイズ.Height));
-                    }
-
-                    #endregion
-                }
-
-                #endregion
-            }
-            else if (stamp == 6000)
+            if (this.段位リスト.ctDaniIn.n現在の値 == 3000)
             {
                 if (!ctDonchan_In.b開始した)
                 {
@@ -169,7 +108,7 @@ namespace TJAPlayer3
                         this.段位挑戦選択画面.ctBarIn.t開始(0, 255, 1, TJAPlayer3.Timer);
                     }
 
-                    if(TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Escape))
+                    if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Escape))
                     {
                         TJAPlayer3.Skin.soundDanSelectBGM.t停止する();
                         TJAPlayer3.Skin.sound取消音.t再生する();
@@ -184,26 +123,23 @@ namespace TJAPlayer3
 
                 #region [ どんちゃん関連 ]
 
-                if(ctDonchan_In.n現在の値 != 90)
+                if (ctDonchan_In.n現在の値 != 90)
                 {
-                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 1f;
-                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 1f;
-
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 0.85f;
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 0.85f;
                     float DonchanX = 0f, DonchanY = 0f;
 
                     DonchanX = (float)Math.Sin(ctDonchan_In.n現在の値 / 2 * (Math.PI / 180)) * 200f;
                     DonchanY = ((float)Math.Sin((90 + (ctDonchan_In.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
-                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].Opacity = ctDonchan_In.n現在の値 * 2;
-                    TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -450 + DonchanX, 300 - DonchanY);//-200 , 336
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].Opacity = ctDonchan_In.n現在の値 * 2;
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, - 454 + DonchanX, 336 - DonchanY - 37);
                 }
 
                 #endregion
 
-                TJAPlayer3.Tx.Entry_Overlay?.t2D描画(TJAPlayer3.app.Device, 1050, 0, new RectangleF(327, 0, 230, 156));
                 this.段位挑戦選択画面.On進行描画();
             }
-
             if (段位挑戦選択画面.bOption) actPlayOption.On進行描画(0);
 
             if (ct待機.n現在の値 >= 3000)
@@ -261,12 +197,9 @@ namespace TJAPlayer3
 
         public bool b選択した;
         public bool bDifficultyIn;
-        public bool bキャラサイズ初期化;
 
         private CCounter ctDonchan_In;
         private CCounter ctDonchan_Normal;
-
-        public bool bInSongPlayed;
 
         public E戻り値 eフェードアウト完了時の戻り値;
 

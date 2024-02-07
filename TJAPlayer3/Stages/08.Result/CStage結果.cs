@@ -315,6 +315,10 @@ namespace TJAPlayer3
                         TJAPlayer3.Skin.bgm段位リザルト音.t再生する();
                         b音声再生 = true;
                     }
+					else
+					{
+
+					}
                 }
 
                 // 描画
@@ -372,6 +376,7 @@ namespace TJAPlayer3
 						if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Escape))
 						{
 							TJAPlayer3.Skin.bgmリザルト音.t停止する();
+							TJAPlayer3.Skin.bgm段位リザルト音.t停止する();
 							TJAPlayer3.Skin.sound決定音.t再生する();
 							actFI.tフェードアウト開始();
 
@@ -382,7 +387,8 @@ namespace TJAPlayer3
 						if (((TJAPlayer3.Pad.b押されたDGB(Eパッド.CY) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RD)) || (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LC) 
 							|| (TJAPlayer3.Pad.b押されたDGB(Eパッド.LRed) || (TJAPlayer3.Pad.b押されたDGB(Eパッド.RRed) || TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return))))))
 						{
-							TJAPlayer3.Skin.sound決定音.t再生する();
+                            TJAPlayer3.Skin.bgm段位リザルト音.t停止する();
+                            TJAPlayer3.Skin.sound決定音.t再生する();
 							#region [ Skip animations ]
 
 							if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] < (int)Difficulty.Tower
