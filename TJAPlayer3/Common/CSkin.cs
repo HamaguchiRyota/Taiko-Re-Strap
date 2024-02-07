@@ -36,6 +36,12 @@ namespace TJAPlayer3
         sound特訓ジャンプポイント,
         sound特訓スキップ音,
         SOUND特訓スクロール,
+        soundTimer,
+        sound30sec,
+        sound10sec,
+        sound5sec,
+
+
         Count				// システムサウンド総数の計算用
     }
 
@@ -326,6 +332,10 @@ namespace TJAPlayer3
         public Cシステムサウンド bgmリザルトイン = null;
         public Cシステムサウンド sound裏 = null;
         public Cシステムサウンド soundオプション = null;
+        public Cシステムサウンド soundTimer = null;
+        public Cシステムサウンド sound30sec = null;
+        public Cシステムサウンド sound10sec = null;
+        public Cシステムサウンド sound5sec = null;
 
         public Cシステムサウンド SoundBanapas = null;
 
@@ -513,6 +523,14 @@ namespace TJAPlayer3
 
                     case 24:
                         return this.sound裏;
+                    case 25:
+                        return this.soundTimer;
+                    case 26:
+                        return this.sound30sec;
+                    case 27:
+                        return this.sound10sec;
+                    case 28:
+                        return this.sound5sec;
                 }
                 throw new IndexOutOfRangeException();
             }
@@ -672,6 +690,11 @@ namespace TJAPlayer3
 
             this.soundBalloon = new Cシステムサウンド(@"Sounds\balloon.ogg", false, false, true, ESoundGroup.SoundEffect);
             this.sound曲決定音 = new Cシステムサウンド(@"Sounds\SongDecide.ogg", false, false, true, ESoundGroup.Voice);
+
+            this.soundTimer = new Cシステムサウンド(@"Sounds\SongSelect\Timer.ogg", false, false, false, ESoundGroup.SoundEffect);
+            this.sound30sec = new Cシステムサウンド(@"Sounds\SongSelect\30sec.ogg", false, false, false, ESoundGroup.SoundEffect);
+            this.sound10sec = new Cシステムサウンド(@"Sounds\SongSelect\10sec.ogg", false, false, false, ESoundGroup.SoundEffect);
+            this.sound5sec = new Cシステムサウンド(@"Sounds\SongSelect\5sec.ogg", false, false, false, ESoundGroup.SoundEffect);
 
             this.bgmタイトルイン = new Cシステムサウンド(@"Sounds\BGM\Title_Start.ogg", false, false, true, ESoundGroup.SongPlayback);
             this.bgmタイトル = new Cシステムサウンド(@"Sounds\BGM\Title.ogg", true, false, true, ESoundGroup.SongPlayback);

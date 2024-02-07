@@ -197,7 +197,7 @@ namespace TJAPlayer3
 
                 ctBackgroundFade.n現在の値 = 600;
 
-                if(TJAPlayer3.ConfigIni.bBGM音を発声する)
+                if(TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面.b再生中)
                     TJAPlayer3.Skin.bgm選曲画面イン.t再生する();
 
                 for (int i = 0; i < 3; i++)
@@ -297,6 +297,25 @@ namespace TJAPlayer3
                 #endregion
 
                 ctTimer.t進行();
+
+                #region [ タイマー音声 ]
+                int NowTime = 100 - ctTimer.n現在の値;
+
+                if (NowTime == 30 && TJAPlayer3.Skin.sound30sec.b読み込み成功 && !TJAPlayer3.Skin.sound30sec.b再生中)
+                    TJAPlayer3.Skin.sound30sec.t再生する();
+
+                if (NowTime == 10 && TJAPlayer3.Skin.sound10sec.b読み込み成功 && !TJAPlayer3.Skin.sound10sec.b再生中)
+                    TJAPlayer3.Skin.sound10sec.t再生する();
+
+                if (NowTime < 10 && NowTime > 0 && TJAPlayer3.Skin.soundTimer.b読み込み成功 && !TJAPlayer3.Skin.soundTimer.b再生中)
+                    TJAPlayer3.Skin.soundTimer.t再生する();
+
+                if (NowTime == 5 && TJAPlayer3.Skin.sound5sec.b読み込み成功 && !TJAPlayer3.Skin.sound5sec.b再生中)
+                    TJAPlayer3.Skin.sound5sec.t再生する();
+
+
+                #endregion
+
                 ctCreditAnime.t進行Loop();
                 ctBackgroundFade.t進行();
                 ctDonchan_Select.t進行();
@@ -345,8 +364,9 @@ namespace TJAPlayer3
     
                 if (TJAPlayer3.ConfigIni.bBGM音を発声する && !bBGM再生済み && (eフェーズID == Eフェーズ.共通_通常状態) && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                 {
-                    TJAPlayer3.Skin.bgm選曲画面.t再生する();
-                    bBGM再生済み = true;
+                    if (!TJAPlayer3.Skin.bgm選曲画面.b再生中) 
+                        TJAPlayer3.Skin.bgm選曲画面.t再生する();
+                        bBGM再生済み = true;
                 }
 
                 ctDiffSelect移動待ち?.t進行();
