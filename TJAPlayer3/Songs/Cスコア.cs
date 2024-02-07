@@ -55,7 +55,7 @@ namespace TJAPlayer3
 			public string アーティスト名;
 			public string コメント;
 			public string ジャンル;
-			public string Preimage;
+			//public string Preimage;
 			public string Premovie;
 			public string Presound;
 			public string Backgound;
@@ -275,7 +275,7 @@ namespace TJAPlayer3
 			this.譜面情報.アーティスト名 = "";
 			this.譜面情報.コメント = "";
 			this.譜面情報.ジャンル = "";
-			this.譜面情報.Preimage = "";
+			//this.譜面情報.Preimage = "";
 			this.譜面情報.Premovie = "";
 			this.譜面情報.Presound = "";
 			this.譜面情報.Backgound = "";
