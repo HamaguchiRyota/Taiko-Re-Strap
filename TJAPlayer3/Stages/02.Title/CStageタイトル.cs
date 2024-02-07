@@ -302,10 +302,11 @@ namespace TJAPlayer3
                     }
 
 					//バナパスアニメスキップ→モード選択
+					/*
                     if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RRed) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LRed))
                     {
                         TJAPlayer3.Skin.sound決定音.t再生する();
-                        bプレイヤーエントリー = false;
+						bプレイヤーエントリー = true;
                         bプレイヤーエントリー決定 = true;
                         bバナパス読み込み = false;
                         TJAPlayer3.Skin.SoundBanapas.bPlayed = false;
@@ -327,6 +328,7 @@ namespace TJAPlayer3
 
                         }
                     }
+					*/
                 }
 
 				#endregion
@@ -534,9 +536,16 @@ namespace TJAPlayer3
 
                 #region [ モード選択 ]
 
-                if (bモード選択 && b直モードセレクト)
+                if (bモード選択 /*&& b直モードセレクト*/)
 				{
-					ctBarAnimeIn.t進行();
+					if (n現在の選択行プレイヤーエントリー == 0)
+						TJAPlayer3.act文字コンソール.tPrint(4, 44, C文字コンソール.Eフォント種別.白, "0");
+                    if (n現在の選択行プレイヤーエントリー == 1)
+                        TJAPlayer3.act文字コンソール.tPrint(4, 44, C文字コンソール.Eフォント種別.白, "1");
+                    if (n現在の選択行プレイヤーエントリー == 2)
+                        TJAPlayer3.act文字コンソール.tPrint(4, 44, C文字コンソール.Eフォント種別.白, "2");
+
+                    ctBarAnimeIn.t進行();
 
 					TJAPlayer3.Skin.soundTaikoS.t停止する();
 
