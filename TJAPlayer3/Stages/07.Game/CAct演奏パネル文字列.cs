@@ -61,6 +61,7 @@ namespace TJAPlayer3
             st文字位置10.ch = '9';
             st文字位置10.pt = new Point(297, 0);
             st文字位置Array[9] = st文字位置10;
+            st小文字位置 = st文字位置Array;
 
             base.b活性化してない = true;
             this.Start();
@@ -187,7 +188,6 @@ namespace TJAPlayer3
             }
         }
 
-        /*
         public void t歌詞テクスチャを生成する(Bitmap bmplyric)
         {
             TJAPlayer3.t安全にDisposeする(ref this.tx歌詞テクスチャ);
@@ -197,11 +197,9 @@ namespace TJAPlayer3
         {
             TJAPlayer3.tテクスチャの解放(ref this.tx歌詞テクスチャ);
         }
-        */
         /// <summary>
         /// レイヤー管理のため、On進行描画から分離。
         /// </summary>
-        /*
         public void t歌詞テクスチャを描画する()
         {
             if (this.tx歌詞テクスチャ != null)
@@ -220,7 +218,6 @@ namespace TJAPlayer3
                 }
             }
         }
-        */
 
         public void Stop()
         {
@@ -265,9 +262,9 @@ namespace TJAPlayer3
                 TJAPlayer3.t安全にDisposeする(ref txMusicName);
                 TJAPlayer3.t安全にDisposeする(ref txGENRE);
                 TJAPlayer3.t安全にDisposeする(ref txPanel);
-                //TJAPlayer3.t安全にDisposeする(ref tx歌詞テクスチャ);
+                TJAPlayer3.t安全にDisposeする(ref tx歌詞テクスチャ);
                 TJAPlayer3.t安全にDisposeする(ref pfMusicName);
-                //TJAPlayer3.t安全にDisposeする(ref pf歌詞フォント);
+                TJAPlayer3.t安全にDisposeする(ref pf歌詞フォント);
                 base.OnManagedリソースの解放();
             }
         }
@@ -336,9 +333,9 @@ namespace TJAPlayer3
         private CTexture txMusicName;
         private CTexture txStage;
         private CTexture txGENRE;
-        //private CTexture tx歌詞テクスチャ;
+        private CTexture tx歌詞テクスチャ;
         private CPrivateFastFont pfMusicName;
-        //private CPrivateFastFont pf歌詞フォント;
+        private CPrivateFastFont pf歌詞フォント;
         //private readonly CStage選曲 CS選曲;
         public int MaxSong = 3;
         public int NowSong = 1;
@@ -348,6 +345,33 @@ namespace TJAPlayer3
             public char ch;
             public Point pt;
         }
+        private readonly ST文字位置[] st小文字位置;
+
+        private void t小文字表示(int x, int y, string str)
+        {
+            foreach (char ch in str)
+            {
+                for (int i = 0; i < this.st小文字位置.Length; i++)
+                {
+                    if (ch == ' ')
+                    {
+                        break;
+                    }
+
+                    if (this.st小文字位置[i].ch == ch)
+                    {
+                        Rectangle rectangle = new Rectangle(st小文字位置[i].pt.X, this.st小文字位置[i].pt.Y, 33, 35);
+                        //TJAPlayer3.Tx.SongSelect_ScoreNumber.vc拡大縮小倍率.X = 0.995f;
+                        //TJAPlayer3.Tx.SongSelect_ScoreNumber.vc拡大縮小倍率.Y = 0.995f;
+                        TJAPlayer3.Tx.NowStages?.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
+                        break;
+                    }
+                }
+                x += 14;
+                //22
+            }
+        }
+
         //-----------------
         #endregion
     }
