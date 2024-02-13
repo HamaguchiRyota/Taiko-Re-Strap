@@ -152,7 +152,7 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Game");
                     }
-                    else if (genreName.Equals("ナムコオリジナル") || genreName.Equals("ナムコ"))
+                    else if (genreName.Equals("ナムコオリジナル") || genreName.Equals("ナムコ") || genreName.Equals("ナムオリ"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Namco");
                     }
@@ -168,10 +168,6 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Child");
                     }
-                    else if (genreName.Equals("バラエティ"))
-                    {
-                        this.txGENRE = TJAPlayer3.Tx.TxCGen("Variety");
-                    }
                     else if (genreName.Equals("ボーカロイド") || genreName.Equals("Vocaloid") || genreName.Equals("ボカロ"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Vocaloid");
@@ -186,41 +182,6 @@ namespace TJAPlayer3
                 this.Start();
             }
         }
-
-        /*
-        public void t歌詞テクスチャを生成する(Bitmap bmplyric)
-        {
-            TJAPlayer3.t安全にDisposeする(ref this.tx歌詞テクスチャ);
-            this.tx歌詞テクスチャ = TJAPlayer3.tテクスチャの生成(bmplyric);
-        }
-        public void t歌詞テクスチャを削除する()
-        {
-            TJAPlayer3.tテクスチャの解放(ref this.tx歌詞テクスチャ);
-        }
-        */
-        /// <summary>
-        /// レイヤー管理のため、On進行描画から分離。
-        /// </summary>
-        /*
-        public void t歌詞テクスチャを描画する()
-        {
-            if (this.tx歌詞テクスチャ != null)
-            {
-                if (TJAPlayer3.Skin.Game_Lyric_ReferencePoint == CSkin.ReferencePoint.Left)
-                {
-                    this.tx歌詞テクスチャ.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lyric_X, TJAPlayer3.Skin.Game_Lyric_Y);
-                }
-                else if (TJAPlayer3.Skin.Game_Lyric_ReferencePoint == CSkin.ReferencePoint.Right)
-                {
-                    this.tx歌詞テクスチャ.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lyric_X - this.tx歌詞テクスチャ.szテクスチャサイズ.Width, TJAPlayer3.Skin.Game_Lyric_Y);
-                }
-                else
-                {
-                    this.tx歌詞テクスチャ.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lyric_X - (this.tx歌詞テクスチャ.szテクスチャサイズ.Width / 2), TJAPlayer3.Skin.Game_Lyric_Y);
-                }
-            }
-        }
-        */
 
         public void Stop()
         {
@@ -264,10 +225,9 @@ namespace TJAPlayer3
                 TJAPlayer3.t安全にDisposeする(ref txPanel);
                 TJAPlayer3.t安全にDisposeする(ref txMusicName);
                 TJAPlayer3.t安全にDisposeする(ref txGENRE);
+                TJAPlayer3.t安全にDisposeする(ref txStage);
                 TJAPlayer3.t安全にDisposeする(ref txPanel);
-                //TJAPlayer3.t安全にDisposeする(ref tx歌詞テクスチャ);
                 TJAPlayer3.t安全にDisposeする(ref pfMusicName);
-                //TJAPlayer3.t安全にDisposeする(ref pf歌詞フォント);
                 base.OnManagedリソースの解放();
             }
         }
@@ -336,12 +296,7 @@ namespace TJAPlayer3
         private CTexture txMusicName;
         private CTexture txStage;
         private CTexture txGENRE;
-        //private CTexture tx歌詞テクスチャ;
         private CPrivateFastFont pfMusicName;
-        //private CPrivateFastFont pf歌詞フォント;
-        //private readonly CStage選曲 CS選曲;
-        public int MaxSong = 3;
-        public int NowSong = 1;
 
         private struct ST文字位置
         {
