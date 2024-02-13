@@ -233,8 +233,16 @@ namespace TJAPlayer3
 					}
 				#endregion
 
+
+				var clear = TJAPlayer3.stage結果.actParameterPanel.ClearType;
+
 				// Discord Presenseの更新
-				Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + ".tja", Properties.Discord.Stage_Result + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), TJAPlayer3.StartupTime);
+				Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + ".tja", 
+					Properties.Discord.Stage_Result + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), 
+					TJAPlayer3.StartupTime,
+                    clear
+                    //String.Format("COURSE:{0} ({1})", difficultyName, TJAPlayer3.stage選曲.n確定された曲の難易度)
+                    );
 
 				base.On活性化();
 			}
@@ -334,8 +342,8 @@ namespace TJAPlayer3
 
 				if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)//何曲目?
 				{
-					tSongNumberDraw(1111, 14, NowSong.ToString());
-					tSongNumberDraw(1204, 14, MaxSong.ToString());
+					tSongNumberDraw(1111, 14, TJAPlayer3.stage選曲.NowSong.ToString());
+					tSongNumberDraw(1204, 14, TJAPlayer3.stage選曲.MaxSong.ToString());
 				}
 
                 #region [ ネームプレート ]
