@@ -1,4 +1,5 @@
 ﻿using FDK;
+using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,6 +7,9 @@ using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using Point = SharpDX.Point;
+using Rectangle = System.Drawing.Rectangle;
+using RectangleF = System.Drawing.RectangleF;
 
 namespace TJAPlayer3
 {
@@ -191,13 +195,17 @@ namespace TJAPlayer3
                 ctDonchan_Select = new CCounter();
                 ctDonchan_Jump[0] = new CCounter();
                 ctDonchan_Jump[1] = new CCounter();
+
+                ctPuchiCounter = new CCounter(0, TJAPlayer3.Skin.Game_PuchiChara[2] - 1, 1000, TJAPlayer3.Timer);
+                ctPuchiSineCounter = new CCounter(0, 360, 3, TJAPlayer3.Timer);
+
                 ctBackgroundFade = new CCounter();
                 ctCreditAnime = new CCounter(0, 4500, 1, TJAPlayer3.Timer);
                 ctTimer = new CCounter(0, 100, 1000, TJAPlayer3.Timer);
 
                 ctBackgroundFade.n現在の値 = 600;
 
-                if(TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面.b再生中)
+                if(TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面.b再生中　&& !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                     TJAPlayer3.Skin.bgm選曲画面イン.t再生する();
 
                 for (int i = 0; i < 3; i++)
@@ -313,7 +321,6 @@ namespace TJAPlayer3
                 if (NowTime == 5 && TJAPlayer3.Skin.sound5sec.b読み込み成功 && !TJAPlayer3.Skin.sound5sec.b再生中)
                     TJAPlayer3.Skin.sound5sec.t再生する();
 
-
                 #endregion
 
                 ctCreditAnime.t進行Loop();
@@ -322,6 +329,8 @@ namespace TJAPlayer3
                 ctDonchan_Jump[0].t進行();
                 ctDonchan_Jump[1].t進行();
                 ctDonchan_Normal.t進行Loop();
+                ctPuchiCounter.t進行Loop();
+                ctPuchiSineCounter.t進行Loop();                
 
                 ct登場時アニメ用共通.t進行();
 
@@ -717,7 +726,13 @@ namespace TJAPlayer3
                         TJAPlayer3.Tx.SongSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -320, 237);//330
                     }
                 }
-                //TJAPlayer3.stage演奏ドラム画面.PuchiChara.On進行描画(TJAPlayer3.Skin.Game_PuchiChara_X[0], TJAPlayer3.Skin.Game_PuchiChara_Y[0]);
+
+                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.75f;
+                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.75f;
+                var sineY = Math.Sin(ctPuchiSineCounter.n現在の値 * (Math.PI / 180)) * (20 * TJAPlayer3.Skin.Game_PuchiChara_Scale[0]);
+                TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, -10, 440 + (int)sineY, new Rectangle(ctPuchiCounter.n現在の値 * TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1], TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1]));
+
+
 
                 #endregion
 
@@ -873,6 +888,8 @@ namespace TJAPlayer3
         }
         public CCounter ctTimer;
         private CCounter ctCreditAnime;
+        private CCounter ctPuchiCounter;
+        private CCounter ctPuchiSineCounter;
         private readonly Random[] r = new Random[3];
         public CCounter ctBackgroundFade;
         public string NowGenre;
@@ -1082,7 +1099,7 @@ namespace TJAPlayer3
                 if (!bBGMIn再生した)
                 {
                     TJAPlayer3.stage選曲.bBGM再生済み = false;
-                    if (TJAPlayer3.ConfigIni.bBGM音を発声する)
+                    if (TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中 && !TJAPlayer3.Skin.bgm選曲画面.b再生中)
                         TJAPlayer3.Skin.bgm選曲画面イン.t再生する();
                     bBGMIn再生した = true;
                 }
@@ -1106,7 +1123,7 @@ namespace TJAPlayer3
                 if (!bBGMIn再生した)
                 {
                     TJAPlayer3.stage選曲.bBGM再生済み = false;
-                    if (TJAPlayer3.ConfigIni.bBGM音を発声する)
+                    if (TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中 && !TJAPlayer3.Skin.bgm選曲画面.b再生中)
                         TJAPlayer3.Skin.bgm選曲画面イン.t再生する();
                     bBGMIn再生した = true;
                 }
