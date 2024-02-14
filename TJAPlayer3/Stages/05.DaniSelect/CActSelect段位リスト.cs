@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FDK;
+using Point = SharpDX.Point;
 using static TJAPlayer3.CActSelect曲リスト;
 
 namespace TJAPlayer3

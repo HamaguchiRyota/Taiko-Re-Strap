@@ -37,15 +37,15 @@ namespace TJAPlayer3
 			st演奏記録.Taiko = new CScoreIni.C演奏記録();
 			r空うちドラムチップ = new CDTX.CChip[10];
 			n総合ランク値 = -1;
-			nチャンネル0Atoレーン07 = new int[] { 1, 2, 3, 4, 5, 7, 6, 1, 7, 0 };
+			//nチャンネル0Atoレーン07 = new int[] { 1, 2, 3, 4, 5, 7, 6, 1, 7, 0 };
 			eステージID = CStage.Eステージ.結果;
 			eフェーズID = CStage.Eフェーズ.共通_通常状態;
 			b活性化してない = true;
 			list子Activities.Add(actParameterPanel = new CActResultParameterPanel());
 			list子Activities.Add(actSongBar = new CActResultSongBar());
-			list子Activities.Add(actOption = new CActオプションパネル());
+			//list子Activities.Add(actOption = new CActオプションパネル());
 			list子Activities.Add(actFI = new CActFIFOResult());
-			list子Activities.Add(actFO = new CActFIFOBlack());
+			//list子Activities.Add(actFO = new CActFIFOBlack());
 			for (int i = 0; i < 10; i++)
 			{
 				stSongNumber[i].ch = i.ToString().ToCharArray()[0];
@@ -77,8 +77,8 @@ namespace TJAPlayer3
 					eフェードアウト完了時の戻り値 = E戻り値.継続;
 					bアニメが完了 = false;
 					bIsCheckedWhetherResultScreenShouldSaveOrNot = false;              // #24609 2011.3.14 yyagi
-					n最後に再生したHHのWAV番号 = -1;
-					n最後に再生したHHのチャンネル番号 = 0;
+					//n最後に再生したHHのWAV番号 = -1;
+					//n最後に再生したHHのチャンネル番号 = 0;
 					
 					for (int i = 0; i < 3; i++)
 					{
@@ -549,20 +549,20 @@ namespace TJAPlayer3
 		private CCounter ct登場用;
 		private E戻り値 eフェードアウト完了時の戻り値;
 		private readonly CActFIFOResult actFI;
-		private readonly CActFIFOBlack actFO;
-		private readonly CActオプションパネル actOption;
+		//private readonly CActFIFOBlack actFO;
+		//private readonly CActオプションパネル actOption;
 		public CAct演奏Drumsスコア actGameScore;
 		private readonly CActResultParameterPanel actParameterPanel;
 		private readonly CActResultSongBar actSongBar;
 		private bool bアニメが完了;
 		private bool bIsCheckedWhetherResultScreenShouldSaveOrNot;              // #24509 2011.3.14 yyagi
-		private readonly int[] nチャンネル0Atoレーン07;
-		private int n最後に再生したHHのWAV番号;
-		private int n最後に再生したHHのチャンネル番号;
+		//private readonly int[] nチャンネル0Atoレーン07;
+		//private int n最後に再生したHHのWAV番号;
+		//private int n最後に再生したHHのチャンネル番号;
 		private CSound rResultSound;
 		//private CTexture txオプションパネル;
-		private const int MaxSong = 3;
-		public int NowSong = 1;
+		//private const int MaxSong = 3;
+		//public int NowSong = 1;
 		private readonly STNumber[] stSongNumber = new STNumber[10];
 		public struct STNumber
 		{

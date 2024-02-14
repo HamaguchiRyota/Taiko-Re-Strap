@@ -102,7 +102,8 @@ namespace TJAPlayer3
 		public override void On活性化()
 		{
 			ft表示用フォント = new Font("Arial", 30f, FontStyle.Bold, GraphicsUnit.Pixel);
-			base.On活性化();
+            ctEdit = new CCounter();
+            base.On活性化();
 		}
 		public override void On非活性化()
 		{
@@ -135,7 +136,7 @@ namespace TJAPlayer3
 			{
 				if (b初めての進行描画)
 				{
-					ct登場アニメ用 = new CCounter(0, 2, 1, TJAPlayer3.Timer);
+					ct登場アニメ用 = new CCounter(0, 1, 1, TJAPlayer3.Timer);
 					b初めての進行描画 = false;
 				}
 				ct登場アニメ用.t進行();
@@ -161,6 +162,7 @@ namespace TJAPlayer3
 					int DifW = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Width;
 					int DifH = TJAPlayer3.Tx.SongSelect_HighScore_Difficult.szテクスチャサイズ.Height;
 
+					
                     if (highScores[4] > 0)
                     {
 						t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[4].ToString()));
@@ -171,6 +173,27 @@ namespace TJAPlayer3
                         t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[3].ToString()));
                         TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(123, 0, DifW / 5, DifH));
                     }
+					
+					
+					if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[3] > 0)
+					{
+                        if (ctEdit.n現在の値 % 4 == 0)
+						{
+                            t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[3].ToString()));
+                            TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(123, 0, DifW / 5, DifH));
+                        }
+                        else
+						{
+                            t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[4].ToString()));
+                            TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(164, 0, DifW / 5, DifH));
+                        }
+                    }
+					else if (!(TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[4] > 0))
+					{
+                        t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[3].ToString()));
+                        TJAPlayer3.Tx.SongSelect_HighScore_Difficult?.t2D描画(TJAPlayer3.app.Device, x - 50, y - 4, new Rectangle(123, 0, DifW / 5, DifH));
+                    }
+
                     else if (highScores[2] > highScores[3])
                     {
                         t小文字表示(x + 5, y, string.Format("{0,7:#######0}", highScores[2].ToString()));
@@ -194,6 +217,7 @@ namespace TJAPlayer3
 					
                     #endregion
 				
+					
                     int[] highScores = TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nハイスコア;
                     int[] thresholds = new int[] { 0, 1, 2, 3, 4 };
                     int[] xOffsets = new int[] { 0, 41, 82, 123, 164 };
@@ -216,7 +240,6 @@ namespace TJAPlayer3
                     }
                     else
                     {
-						
                         for (int i = 0; i < thresholds.Length; i++)
                         {
                             if (highScores[thresholds[i]] > highScores[thresholds[i] + 1] || (i == thresholds.Length - 1 && highScores[thresholds[i]] > 0))
@@ -230,6 +253,7 @@ namespace TJAPlayer3
 						
                     }
 					
+				
 
                 }
             }
@@ -243,6 +267,7 @@ namespace TJAPlayer3
 		private CCounter ct登場アニメ用;
 		private Font ft表示用フォント;
 		private CTexture tx文字列パネル;
+        private CCounter ctEdit;
         //private CCounter ctDiff_fe;
         [StructLayout(LayoutKind.Sequential)]
 		

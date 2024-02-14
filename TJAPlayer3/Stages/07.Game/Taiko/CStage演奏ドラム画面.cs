@@ -8,7 +8,6 @@ using FDK;
 
 using Rectangle = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -251,7 +250,6 @@ namespace TJAPlayer3
                 }
             }
 
-
             if (this.actDancer.ct踊り子モーション != null)
             {
                 double dbUnit_dancer = (((60 / (TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM))) / this.actDancer.ar踊り子モーション番号.Length);
@@ -264,22 +262,8 @@ namespace TJAPlayer3
 
             this.ct手つなぎ = new CCounter(0, 60, 20, TJAPlayer3.Timer);
 
-
-
-
-
-
             // Discord Presence の更新
             var difficultyName = TJAPlayer3.DifficultyNumberToEnum(TJAPlayer3.stage選曲.n確定された曲の難易度[0]).ToString();
-            /*
-            Discord.UpdatePresence(TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? TJAPlayer3.DTX.TITLE + ".tja" : "",
-                Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
-                0,
-                Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
-                TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? difficultyName.ToLower() : "",
-                TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? String.Format("COURSE:{0} ({1})", difficultyName, TJAPlayer3.stage選曲.n確定された曲の難易度) : "");
-
-            */
             Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + ".tja",
                                    Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
                                    0, Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
@@ -1266,39 +1250,6 @@ namespace TJAPlayer3
                 }
             }
         }
-
-        // t入力処理_ドラム()からメソッドを抽出したもの。
-        /// <summary>
-        /// chipArrayの中を, n発生位置の小さい順に並べる + nullを大きい方に退かす。セットでe判定Arrayも並べ直す。
-        /// </summary>
-        /// <param name="chipArray">ソート対象chip群</param>
-        /// <param name="e判定Array">ソート対象e判定群</param>
-        /// <param name="NumOfChips">チップ数</param>
-        /*
-        private static void SortChipsByNTime(CDTX.CChip[] chipArray, E判定[] e判定Array, int NumOfChips)
-        {
-            for (int i = 0; i < NumOfChips - 1; i++)
-            {
-                //num9 = 2;
-                //while( num9 > num8 )
-                for (int j = NumOfChips - 1; j > i; j--)
-                {
-                    if ((chipArray[j - 1] == null) || ((chipArray[j] != null) && (chipArray[j - 1].n発声位置 > chipArray[j].n発声位置)))
-                    {
-                        // swap
-                        CDTX.CChip chipTemp = chipArray[j - 1];
-                        chipArray[j - 1] = chipArray[j];
-                        chipArray[j] = chipTemp;
-                        E判定 e判定Temp = e判定Array[j - 1];
-                        e判定Array[j - 1] = e判定Array[j];
-                        e判定Array[j] = e判定Temp;
-                    }
-                    //num9--;
-                }
-                //num8++;
-            }
-        }
-        */
 
         protected override void t背景テクスチャの生成()
         {

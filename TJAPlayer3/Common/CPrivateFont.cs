@@ -890,20 +890,24 @@ namespace TJAPlayer3
         //-----------------
         public void Dispose()
         {
-            if (!this.bDispose完了済み)
+            if (!bDispose完了済み)
             {
-                if (this._font != null)
+                if (_font != null)
                 {
-                    this._font.Dispose();
-                    this._font = null;
+                    _font.Dispose();
+                    _font = null;
                 }
-                if (this._pfc != null)
+                if (_pfc != null)
                 {
-                    this._pfc.Dispose();
-                    this._pfc = null;
+                    _pfc.Dispose();
+                    _pfc = null;
                 }
-
-                this.bDispose完了済み = true;
+                if (_fontfamily != null)
+                {
+                    _fontfamily.Dispose();
+                    _fontfamily = null;
+                }
+                bDispose完了済み = true;
             }
         }
         //-----------------

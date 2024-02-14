@@ -121,7 +121,7 @@ namespace TJAPlayer3
             }
 
             NullCheckAndRender(ref TJAPlayer3.Tx.Effects_GoGoSplash);
-            NullCheckAndRender(ref TJAPlayer3.Tx.Runner);
+            //NullCheckAndRender(ref TJAPlayer3.Tx.Runner);
 
             RenderMobTextures(TJAPlayer3.Skin.Game_Mob_Ptn, TJAPlayer3.Tx.Mob);
 

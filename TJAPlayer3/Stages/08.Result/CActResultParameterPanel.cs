@@ -211,6 +211,18 @@ namespace TJAPlayer3
 				TJAPlayer3.Sound管理.tサウンドを破棄する(sdDTXで指定されたフルコンボ音);
 				sdDTXで指定されたフルコンボ音 = null;
 			}
+			ct全体進行 = null;
+			ctゲージアニメ = null;
+			ct虹ゲージアニメ = null;
+			ctSoul = null;
+			ctEndAnime = null;
+			ctBackgroundAnime = null;
+			ctBackgroundAnime_Clear = null;
+			ctMountain_ClearIn = null;
+			ctFlash_Icon = null;
+			ctChara_Clear = null;
+			ctChara_Normal = null;
+			ctGaugeFlash = null;
             ctPuchiCounter = null;
             ctPuchiSineCounter = null;
 			base.On非活性化();
@@ -255,6 +267,20 @@ namespace TJAPlayer3
 			if (!b活性化してない)
 			{
                 TJAPlayer3.t安全にDisposeする(ref Dan_Plate);
+                TJAPlayer3.t安全にDisposeする(ref ct全体進行);
+                TJAPlayer3.t安全にDisposeする(ref ctゲージアニメ);
+                TJAPlayer3.t安全にDisposeする(ref ct虹ゲージアニメ);
+                TJAPlayer3.t安全にDisposeする(ref ctSoul);
+                TJAPlayer3.t安全にDisposeする(ref ctEndAnime);
+                TJAPlayer3.t安全にDisposeする(ref ctBackgroundAnime);
+                TJAPlayer3.t安全にDisposeする(ref ctBackgroundAnime_Clear);
+                TJAPlayer3.t安全にDisposeする(ref ctMountain_ClearIn);
+                TJAPlayer3.t安全にDisposeする(ref ctFlash_Icon);
+                TJAPlayer3.t安全にDisposeする(ref ctChara_Clear);
+                TJAPlayer3.t安全にDisposeする(ref ctChara_Normal);
+                TJAPlayer3.t安全にDisposeする(ref ctPuchiCounter);
+                TJAPlayer3.t安全にDisposeする(ref ctPuchiSineCounter);
+                TJAPlayer3.t安全にDisposeする(ref ctGaugeFlash);
                 base.OnManagedリソースの解放();
 			}
 		}
@@ -854,7 +880,6 @@ namespace TJAPlayer3
 		public int ClearType;
 
         public CCounter ct全体進行;
-		//private CCounter ct全体進行;
 		public CCounter ctゲージアニメ;
 		private CCounter ct虹ゲージアニメ;
 		private CCounter ctSoul;

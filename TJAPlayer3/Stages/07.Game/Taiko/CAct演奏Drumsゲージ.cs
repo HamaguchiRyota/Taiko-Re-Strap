@@ -88,14 +88,13 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-            this.ct炎 = new CCounter( 0, 6, 50, TJAPlayer3.Timer );
-
             for (int i = 0; i < 32; i++ )
             {
                 this.st花火状態[i].ct進行 = new CCounter();
                 this.st花火状態2P[i].ct進行 = new CCounter();
 
             }
+            this.ct炎 = new CCounter(0, 6, 50, TJAPlayer3.Timer);
             ctSoul = new CCounter();
             base.On活性化();
 		}
@@ -106,7 +105,8 @@ namespace TJAPlayer3
                 this.st花火状態[i].ct進行 = null;
                 this.st花火状態2P[i].ct進行 = null;
             }
-            this.ct炎 = null;
+            ct炎 = null;
+            ctSoul = null;
 		}
 		public override void OnManagedリソースの作成()
 		{
@@ -121,7 +121,6 @@ namespace TJAPlayer3
                 this.ctGaugeFlash = new CCounter(0, 532, 1, TJAPlayer3.Timer);
                 this.ctCharaEf = new CCounter(0, 100, 17, TJAPlayer3.Timer);
                 this.ctSoulFlash = new CCounter(0, 8, 33, TJAPlayer3.Timer);
-
                 base.OnManagedリソースの作成();
 			}
 		}

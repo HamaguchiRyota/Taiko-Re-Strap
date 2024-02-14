@@ -77,8 +77,20 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
-
-			}
+				ctバナパス読み込み待機 = null;
+                ctコインイン待機 = null;
+                ctバナパス読み込み成功 = null;
+                ctバナパス読み込み失敗 = null;
+                ctエントリーバー点滅 = null;
+                ctエントリーバー決定点滅 = null;
+                ctどんちゃんエントリーループ = null;
+                ctどんちゃんイン = null;
+                ctどんちゃんループ = null;
+                ctPuchiCounter = null;
+                ctPuchiSineCounter = null;
+                ctBarAnimeIn = null;
+                ctBarMove = null;
+            }
 			finally
 			{
 				Trace.TraceInformation( "タイトルステージの非活性化を完了しました。" );
