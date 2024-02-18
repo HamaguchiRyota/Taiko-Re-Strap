@@ -358,8 +358,8 @@ namespace TJAPlayer3
 					}
 				}
 			}
-string[] s = { "Stop", "Play", "Preview" };
-Trace.TraceInformation( "Command: " + s[ (int) this.Command ] );
+			string[] s = { "Stop", "Play", "Preview" };
+			Trace.TraceInformation( "Command: " + s[ (int) this.Command ] );
 			return ret;
 		}
 

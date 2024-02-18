@@ -6,7 +6,7 @@ using System.Diagnostics;
 using SharpDX;
 using FDK;
 
-using Rectangle = System.Drawing.Rectangle;
+using RectangleF = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
 
 namespace TJAPlayer3
@@ -61,6 +61,12 @@ namespace TJAPlayer3
             st文字位置10.ch = '9';
             st文字位置10.pt = new Point(297, 0);
             st文字位置Array[9] = st文字位置10;
+
+            for (int i = 0; i < 10; i++)
+            {
+                stSongNumberIngame[i].ch = i.ToString().ToCharArray()[0];
+                stSongNumberIngame[i].pt = new Point(27 * i, 0);
+            }
 
             base.b活性化してない = true;
             this.Start();
@@ -129,6 +135,7 @@ namespace TJAPlayer3
                         using (bmpDiff)
                         {
                             txStage = TJAPlayer3.Tx.TxCGen("Songs");
+                            txStageNumber = TJAPlayer3.Tx.Song_Number_Ingame;
                         }
                     }
                     catch (CTextureCreateFailedException e)
@@ -226,6 +233,7 @@ namespace TJAPlayer3
                 TJAPlayer3.t安全にDisposeする(ref txMusicName);
                 TJAPlayer3.t安全にDisposeする(ref txGENRE);
                 TJAPlayer3.t安全にDisposeする(ref txStage);
+                TJAPlayer3.t安全にDisposeする(ref txStageNumber);
                 TJAPlayer3.t安全にDisposeする(ref txPanel);
                 TJAPlayer3.t安全にDisposeする(ref pfMusicName);
                 base.OnManagedリソースの解放();
@@ -244,29 +252,34 @@ namespace TJAPlayer3
                 ct進行用.t進行Loop();
                 txGENRE?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y);
                 txStage?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y);
+                tSongNumberDrawIngame(1091, 70, TJAPlayer3.stage選曲.NowSong.ToString());
+                tSongNumberDrawIngame(1190, 70, TJAPlayer3.stage選曲.MaxSong.ToString());
 
                 #region[ 透明度制御 ]
-
-                if (ct進行用.n現在の値 < 745)
+                if (txStage != null && txStageNumber != null)
                 {
-                    if (txStage != null)
+                    if (ct進行用.n現在の値 < 745)
+                    {
                         txStage.Opacity = 0;
-                }
-                else if (ct進行用.n現在の値 >= 745 && ct進行用.n現在の値 < 1000)
-                {
-                    if (txStage != null)
+                        txStageNumber.Opacity = 0;
+                    }
+                    else if (ct進行用.n現在の値 >= 745 && ct進行用.n現在の値 < 1000)
+                    {
                         txStage.Opacity = (ct進行用.n現在の値 - 745);
-                }
-                else if (ct進行用.n現在の値 >= 1000 && ct進行用.n現在の値 <= 1745)
-                {
-                    if (txStage != null)
+                        txStageNumber.Opacity = (ct進行用.n現在の値 - 745);
+                    }
+                    else if (ct進行用.n現在の値 >= 1000 && ct進行用.n現在の値 <= 1745)
+                    {
                         txStage.Opacity = 255;
-                }
-                else if (ct進行用.n現在の値 >= 1745)
-                {
-                    if (txStage != null)
+                        txStageNumber.Opacity = 255;
+                    }
+                    else if (ct進行用.n現在の値 >= 1745)
+                    {
                         txStage.Opacity = 255 - (ct進行用.n現在の値 - 1745);
+                        txStageNumber.Opacity = 255 - (ct進行用.n現在の値 - 1745);
+                    }
                 }
+
                 #endregion
 
                 if (txMusicName != null)
@@ -295,13 +308,35 @@ namespace TJAPlayer3
         private bool bMute;
         private CTexture txMusicName;
         private CTexture txStage;
+        private CTexture txStageNumber;
         private CTexture txGENRE;
         private CPrivateFastFont pfMusicName;
-
+        private readonly STNumberIngame[] stSongNumberIngame = new STNumberIngame[10];
         private struct ST文字位置
         {
             public char ch;
             public Point pt;
+        }
+        public struct STNumberIngame
+        {
+            public char ch;
+            public Point pt;
+        }
+        public void tSongNumberDrawIngame(int x, int y, string str)
+        {
+            for (int j = 0; j < str.Length; j++)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (str[j] == stSongNumberIngame[i].ch)
+                    {
+                        TJAPlayer3.Tx.Song_Number_Ingame?.t2D描画(TJAPlayer3.app.Device, x - (str.Length * 27 + 27 * str.Length - str.Length * 27) / 2 + 27 / 2, (float)y, new RectangleF(stSongNumberIngame[i].pt.X, stSongNumberIngame[i].pt.Y, 27, 29));
+                        x += str.Length >= 2 ? 16 : 27;
+                    }
+                }
+                TJAPlayer3.Tx.Song_Number_Ingame.vc拡大縮小倍率.X = 0.70f;
+                TJAPlayer3.Tx.Song_Number_Ingame.vc拡大縮小倍率.Y = 0.70f;
+            }
         }
         //-----------------
         #endregion

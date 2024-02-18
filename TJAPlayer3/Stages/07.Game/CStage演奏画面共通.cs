@@ -309,7 +309,7 @@ namespace TJAPlayer3
 
             cInvisibleChip.Reset();
             base.On活性化();
-            this.tステータスパネルの選択();
+            //this.tステータスパネルの選択();
             this.tパネル文字列の設定();
             //this.演奏判定ライン座標();
             this.bIsGOGOTIME = new bool[] { false, false, false, false };
@@ -1165,6 +1165,7 @@ namespace TJAPlayer3
                 this.nHand[nPlayer] = 0;
         }
 
+        /*
         protected void tステータスパネルの選択()
         {
             if (TJAPlayer3.bコンパクトモード)
@@ -1176,6 +1177,7 @@ namespace TJAPlayer3
                 this.actStatusPanels.tラベル名からステータスパネルを決定する(TJAPlayer3.stage選曲.r確定された曲.ar難易度ラベル[TJAPlayer3.stage選曲.n確定された曲の難易度[0]]);
             }
         }
+        */
 
         protected bool tRollProcess(CDTX.CChip pChip, double dbProcess_time, int num, int sort, int Input, int nPlayer)
         {

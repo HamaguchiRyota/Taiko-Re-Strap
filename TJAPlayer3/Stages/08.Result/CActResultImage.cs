@@ -1,4 +1,6 @@
-﻿using FDK;
+﻿
+/*
+ * using FDK;
 
 namespace TJAPlayer3
 {
@@ -63,3 +65,4 @@ namespace TJAPlayer3
 
     }
 }
+*/

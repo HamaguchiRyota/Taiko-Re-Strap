@@ -22,22 +22,19 @@ namespace TJAPlayer3
             base.b活性化してない = true;
             base.list子Activities.Add(this.actPad = new CAct演奏Drumsパッド());
             base.list子Activities.Add(this.actCombo = new CAct演奏DrumsコンボDGB());
-            //base.list子Activities.Add(this.actDANGER = new CAct演奏DrumsDanger());
             base.list子Activities.Add(this.actChipFireD = new CAct演奏DrumsチップファイアD());
             base.list子Activities.Add(this.Rainbow = new Rainbow());
             base.list子Activities.Add(this.actGauge = new CAct演奏Drumsゲージ());
-            //base.list子Activities.Add(this.actGraph = new CAct演奏Drumsグラフ()); // #24074 2011.01.23 add ikanick
             base.list子Activities.Add(this.actJudgeString = new CAct演奏Drums判定文字列());
             base.list子Activities.Add(this.actTaikoLaneFlash = new TaikoLaneFlash());
-            base.list子Activities.Add(this.actLaneFlushGB = new CAct演奏DrumsレーンフラッシュGB());
+            //base.list子Activities.Add(this.actLaneFlushGB = new CAct演奏DrumsレーンフラッシュGB());
             base.list子Activities.Add(this.actScore = new CAct演奏Drumsスコア());
-            base.list子Activities.Add(this.actStatusPanels = new CAct演奏Drumsステータスパネル());
+            //base.list子Activities.Add(this.actStatusPanels = new CAct演奏Drumsステータスパネル());
             base.list子Activities.Add(this.act譜面スクロール速度 = new CAct演奏スクロール速度());
             base.list子Activities.Add(this.actAVI = new CAct演奏AVI());
             base.list子Activities.Add(this.actPanel = new CAct演奏パネル文字列());
             base.list子Activities.Add(this.actStageFailed = new CAct演奏ステージ失敗());
             base.list子Activities.Add(this.actPlayInfo = new CAct演奏演奏情報());
-            //base.list子Activities.Add( this.actFI = new CActFIFOBlack() );
             base.list子Activities.Add(this.actFI = new CActFIFOStart());
             base.list子Activities.Add(this.actFO = new CActFIFOBlack());
             base.list子Activities.Add(this.actFOClear = new CActFIFOResult());
@@ -264,11 +261,11 @@ namespace TJAPlayer3
 
             // Discord Presence の更新
             var difficultyName = TJAPlayer3.DifficultyNumberToEnum(TJAPlayer3.stage選曲.n確定された曲の難易度[0]).ToString();
-            Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + ".tja",
+            Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + (TJAPlayer3.DTX.SUBTITLE != "" ? " - " : "") + TJAPlayer3.DTX.SUBTITLE,
                                    Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
                                    0, Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
                                    difficultyName.ToLower(),
-                                   String.Format("COURSE:{0} ({1})", difficultyName, TJAPlayer3.stage選曲.n確定された曲の難易度)
+                                   String.Format(difficultyName)
                                    );
 
         }

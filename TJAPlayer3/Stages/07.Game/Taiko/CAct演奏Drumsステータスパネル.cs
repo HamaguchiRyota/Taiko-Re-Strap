@@ -1,4 +1,5 @@
-﻿namespace TJAPlayer3
+﻿/*
+namespace TJAPlayer3
 {
 	internal class CAct演奏Drumsステータスパネル : CAct演奏ステータスパネル共通
 	{
@@ -39,3 +40,4 @@
 		#endregion
 	}
 }
+*/

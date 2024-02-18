@@ -231,17 +231,15 @@ namespace TJAPlayer3
 						n演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
 						n演奏回数.Bass = ini.stファイル.PlayCountBass;
 					}
-				#endregion
-
-
-				var clear = TJAPlayer3.stage結果.actParameterPanel.ClearType;
+                #endregion
 
 				// Discord Presenseの更新
-				Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + ".tja", 
+                var ClearType = TJAPlayer3.stage結果.nクリア;
+                Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + (TJAPlayer3.DTX.SUBTITLE != "" ? " - " : "") + TJAPlayer3.DTX.SUBTITLE, 
 					Properties.Discord.Stage_Result + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), 
 					TJAPlayer3.StartupTime,
-                    clear
-                    //String.Format("COURSE:{0} ({1})", difficultyName, TJAPlayer3.stage選曲.n確定された曲の難易度)
+					ClearType,
+                    ClearType.ToString()
                     );
 
 				base.On活性化();
@@ -549,20 +547,12 @@ namespace TJAPlayer3
 		private CCounter ct登場用;
 		private E戻り値 eフェードアウト完了時の戻り値;
 		private readonly CActFIFOResult actFI;
-		//private readonly CActFIFOBlack actFO;
-		//private readonly CActオプションパネル actOption;
 		public CAct演奏Drumsスコア actGameScore;
 		private readonly CActResultParameterPanel actParameterPanel;
 		private readonly CActResultSongBar actSongBar;
 		private bool bアニメが完了;
 		private bool bIsCheckedWhetherResultScreenShouldSaveOrNot;              // #24509 2011.3.14 yyagi
-		//private readonly int[] nチャンネル0Atoレーン07;
-		//private int n最後に再生したHHのWAV番号;
-		//private int n最後に再生したHHのチャンネル番号;
 		private CSound rResultSound;
-		//private CTexture txオプションパネル;
-		//private const int MaxSong = 3;
-		//public int NowSong = 1;
 		private readonly STNumber[] stSongNumber = new STNumber[10];
 		public struct STNumber
 		{

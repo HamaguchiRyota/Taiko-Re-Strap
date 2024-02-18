@@ -93,13 +93,13 @@ namespace TJAPlayer3
             eステージID = Eステージ.選曲;
             eフェーズID = Eフェーズ.共通_通常状態;
             b活性化してない = true;
-            list子Activities.Add(actオプションパネル = new CActオプションパネル());
+            //list子Activities.Add(actオプションパネル = new CActオプションパネル());
             list子Activities.Add(actFIFO = new CActFIFOBlack());
             list子Activities.Add(actFIfrom結果画面 = new CActFIFOBlack());
             list子Activities.Add(actFOtoNowLoading = new CActFIFOStart());
             list子Activities.Add(act曲リスト = new CActSelect曲リスト());
             list子Activities.Add(actステータスパネル = new CActSelectステータスパネル());
-            list子Activities.Add(actPreimageパネル = new CActSelectPreimageパネル());
+            //list子Activities.Add(actPreimageパネル = new CActSelectPreimageパネル());
             list子Activities.Add(actPresound = new CActSelectPresound());
             list子Activities.Add(actArtistComment = new CActSelectArtistComment());
             list子Activities.Add(actInformation = new CActSelectInformation());
@@ -797,7 +797,7 @@ namespace TJAPlayer3
                     tBoardNumberDraw(ptBoardNumber[i].X - 10, ptBoardNumber[i].Y, i < 7 ? act曲リスト.ScoreRankCount[i].ToString() : act曲リスト.CrownCount[i - 7].ToString());
                 }
                 tTimerDraw((100 - ctTimer.n現在の値).ToString());
-                tSongNumberDraw(1097, 167, NowSong.ToString());
+                tSongNumberDraw(1097, 165, NowSong.ToString());
                 tSongNumberDraw(1190, 167, MaxSong.ToString());
                 act演奏履歴パネル.On進行描画();
 
@@ -900,9 +900,9 @@ namespace TJAPlayer3
         //private CActFIFOBlack actFOtoNowLoading;
         public CActFIFOStart actFOtoNowLoading;
         private CActSelectInformation actInformation;
-        private CActSelectPreimageパネル actPreimageパネル;
+        //private CActSelectPreimageパネル actPreimageパネル;
         public CActSelectPresound actPresound;
-        private CActオプションパネル actオプションパネル;
+        //private CActオプションパネル actオプションパネル;
         private CActSelectステータスパネル actステータスパネル;
         public CActSelect演奏履歴パネル act演奏履歴パネル;
         public CActSelect曲リスト act曲リスト;

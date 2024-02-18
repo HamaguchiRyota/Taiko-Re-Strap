@@ -310,6 +310,8 @@ namespace TJAPlayer3
             Bar = TxC(GAME + @"Bar.png");
             Bar_Branch = TxC(GAME + @"Bar_Branch.png");
 
+            Song_Number_Ingame = TxC(GAME + GENRE + @"Song_Number_Ingame.png");
+
             #endregion
             #region キャラクター
             TJAPlayer3.Skin.Game_Chara_Ptn_Normal = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + GAME + CHARA + @"Normal\"));
@@ -1094,6 +1096,7 @@ namespace TJAPlayer3
             Notes_Arm,
             ChipEffect,
             ScoreRank,
+            Song_Number_Ingame,
             Judge;
             //NowStages;
         public CTexture Bar,

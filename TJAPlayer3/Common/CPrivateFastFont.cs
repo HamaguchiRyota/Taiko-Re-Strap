@@ -302,10 +302,7 @@ namespace TJAPlayer3
 				if (listFontCache.Count > MAXCACHESIZE)
 				{
 					Debug.WriteLine("Cache溢れ。" + listFontCache[0].drawstr + " を解放します。");
-					if (listFontCache[0].bmp != null)
-					{
-						listFontCache[0].bmp.Dispose();
-					}
+					listFontCache[0].bmp?.Dispose();
 					listFontCache.RemoveAt(0);
 				}
 				#endregion
