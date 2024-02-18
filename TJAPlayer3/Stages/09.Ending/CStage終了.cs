@@ -112,11 +112,11 @@ namespace TJAPlayer3
 						y = (int)((c2 * (7.5625 * t2 * t2 + 0.984375) + b2) * 0.5);
 					}
 
-					TJAPlayer3.Tx.Exit_Curtain.t2D描画(TJAPlayer3.app.Device, x , 0);
+					TJAPlayer3.Tx.Exit_Curtain?.t2D描画(TJAPlayer3.app.Device, x , 0);
 
-					TJAPlayer3.Tx.Exit_Text.t2D描画(TJAPlayer3.app.Device, 0, y);
+					TJAPlayer3.Tx.Exit_Text?.t2D描画(TJAPlayer3.app.Device, 0, y);
 
-					TJAPlayer3.Tx.Exit_BG.t2D描画(TJAPlayer3.app.Device, 0, 0);
+					TJAPlayer3.Tx.Exit_BG?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 				}
 
 				if (this.ctAnimation.b終了値に達した && !TJAPlayer3.Skin.soundゲーム終了音.b再生中)

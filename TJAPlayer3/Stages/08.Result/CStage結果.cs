@@ -37,15 +37,15 @@ namespace TJAPlayer3
 			st演奏記録.Taiko = new CScoreIni.C演奏記録();
 			r空うちドラムチップ = new CDTX.CChip[10];
 			n総合ランク値 = -1;
-			nチャンネル0Atoレーン07 = new int[] { 1, 2, 3, 4, 5, 7, 6, 1, 7, 0 };
+			//nチャンネル0Atoレーン07 = new int[] { 1, 2, 3, 4, 5, 7, 6, 1, 7, 0 };
 			eステージID = CStage.Eステージ.結果;
 			eフェーズID = CStage.Eフェーズ.共通_通常状態;
 			b活性化してない = true;
 			list子Activities.Add(actParameterPanel = new CActResultParameterPanel());
 			list子Activities.Add(actSongBar = new CActResultSongBar());
-			list子Activities.Add(actOption = new CActオプションパネル());
+			//list子Activities.Add(actOption = new CActオプションパネル());
 			list子Activities.Add(actFI = new CActFIFOResult());
-			list子Activities.Add(actFO = new CActFIFOBlack());
+			//list子Activities.Add(actFO = new CActFIFOBlack());
 			for (int i = 0; i < 10; i++)
 			{
 				stSongNumber[i].ch = i.ToString().ToCharArray()[0];
@@ -77,8 +77,8 @@ namespace TJAPlayer3
 					eフェードアウト完了時の戻り値 = E戻り値.継続;
 					bアニメが完了 = false;
 					bIsCheckedWhetherResultScreenShouldSaveOrNot = false;              // #24609 2011.3.14 yyagi
-					n最後に再生したHHのWAV番号 = -1;
-					n最後に再生したHHのチャンネル番号 = 0;
+					//n最後に再生したHHのWAV番号 = -1;
+					//n最後に再生したHHのチャンネル番号 = 0;
 					
 					for (int i = 0; i < 3; i++)
 					{
@@ -231,10 +231,16 @@ namespace TJAPlayer3
 						n演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
 						n演奏回数.Bass = ini.stファイル.PlayCountBass;
 					}
-				#endregion
+                #endregion
 
 				// Discord Presenseの更新
-				Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + ".tja", Properties.Discord.Stage_Result + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), TJAPlayer3.StartupTime);
+                var ClearType = TJAPlayer3.stage結果.nクリア;
+                Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + (TJAPlayer3.DTX.SUBTITLE != "" ? " - " : "") + TJAPlayer3.DTX.SUBTITLE, 
+					Properties.Discord.Stage_Result + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""), 
+					TJAPlayer3.StartupTime,
+					ClearType,
+                    ClearType.ToString()
+                    );
 
 				base.On活性化();
 			}
@@ -315,6 +321,10 @@ namespace TJAPlayer3
                         TJAPlayer3.Skin.bgm段位リザルト音.t再生する();
                         b音声再生 = true;
                     }
+					else
+					{
+
+					}
                 }
 
                 // 描画
@@ -330,8 +340,8 @@ namespace TJAPlayer3
 
 				if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)//何曲目?
 				{
-					tSongNumberDraw(1111, 14, NowSong.ToString());
-					tSongNumberDraw(1204, 14, MaxSong.ToString());
+					tSongNumberDraw(1111, 14, TJAPlayer3.stage選曲.NowSong.ToString());
+					tSongNumberDraw(1204, 14, TJAPlayer3.stage選曲.MaxSong.ToString());
 				}
 
                 #region [ ネームプレート ]
@@ -372,6 +382,7 @@ namespace TJAPlayer3
 						if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Escape))
 						{
 							TJAPlayer3.Skin.bgmリザルト音.t停止する();
+							TJAPlayer3.Skin.bgm段位リザルト音.t停止する();
 							TJAPlayer3.Skin.sound決定音.t再生する();
 							actFI.tフェードアウト開始();
 
@@ -382,7 +393,8 @@ namespace TJAPlayer3
 						if (((TJAPlayer3.Pad.b押されたDGB(Eパッド.CY) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RD)) || (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LC) 
 							|| (TJAPlayer3.Pad.b押されたDGB(Eパッド.LRed) || (TJAPlayer3.Pad.b押されたDGB(Eパッド.RRed) || TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return))))))
 						{
-							TJAPlayer3.Skin.sound決定音.t再生する();
+                            TJAPlayer3.Skin.bgm段位リザルト音.t停止する();
+                            TJAPlayer3.Skin.sound決定音.t再生する();
 							#region [ Skip animations ]
 
 							if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] < (int)Difficulty.Tower
@@ -535,20 +547,12 @@ namespace TJAPlayer3
 		private CCounter ct登場用;
 		private E戻り値 eフェードアウト完了時の戻り値;
 		private readonly CActFIFOResult actFI;
-		private readonly CActFIFOBlack actFO;
-		private readonly CActオプションパネル actOption;
 		public CAct演奏Drumsスコア actGameScore;
 		private readonly CActResultParameterPanel actParameterPanel;
 		private readonly CActResultSongBar actSongBar;
 		private bool bアニメが完了;
 		private bool bIsCheckedWhetherResultScreenShouldSaveOrNot;              // #24509 2011.3.14 yyagi
-		private readonly int[] nチャンネル0Atoレーン07;
-		private int n最後に再生したHHのWAV番号;
-		private int n最後に再生したHHのチャンネル番号;
 		private CSound rResultSound;
-		//private CTexture txオプションパネル;
-		private const int MaxSong = 3;
-		public int NowSong = 1;
 		private readonly STNumber[] stSongNumber = new STNumber[10];
 		public struct STNumber
 		{

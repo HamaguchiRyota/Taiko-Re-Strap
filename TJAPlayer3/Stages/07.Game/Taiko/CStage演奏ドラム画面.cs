@@ -8,7 +8,6 @@ using FDK;
 
 using Rectangle = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -23,22 +22,19 @@ namespace TJAPlayer3
             base.b活性化してない = true;
             base.list子Activities.Add(this.actPad = new CAct演奏Drumsパッド());
             base.list子Activities.Add(this.actCombo = new CAct演奏DrumsコンボDGB());
-            //base.list子Activities.Add(this.actDANGER = new CAct演奏DrumsDanger());
             base.list子Activities.Add(this.actChipFireD = new CAct演奏DrumsチップファイアD());
             base.list子Activities.Add(this.Rainbow = new Rainbow());
             base.list子Activities.Add(this.actGauge = new CAct演奏Drumsゲージ());
-            //base.list子Activities.Add(this.actGraph = new CAct演奏Drumsグラフ()); // #24074 2011.01.23 add ikanick
             base.list子Activities.Add(this.actJudgeString = new CAct演奏Drums判定文字列());
             base.list子Activities.Add(this.actTaikoLaneFlash = new TaikoLaneFlash());
-            base.list子Activities.Add(this.actLaneFlushGB = new CAct演奏DrumsレーンフラッシュGB());
+            //base.list子Activities.Add(this.actLaneFlushGB = new CAct演奏DrumsレーンフラッシュGB());
             base.list子Activities.Add(this.actScore = new CAct演奏Drumsスコア());
-            base.list子Activities.Add(this.actStatusPanels = new CAct演奏Drumsステータスパネル());
+            //base.list子Activities.Add(this.actStatusPanels = new CAct演奏Drumsステータスパネル());
             base.list子Activities.Add(this.act譜面スクロール速度 = new CAct演奏スクロール速度());
             base.list子Activities.Add(this.actAVI = new CAct演奏AVI());
             base.list子Activities.Add(this.actPanel = new CAct演奏パネル文字列());
             base.list子Activities.Add(this.actStageFailed = new CAct演奏ステージ失敗());
             base.list子Activities.Add(this.actPlayInfo = new CAct演奏演奏情報());
-            //base.list子Activities.Add( this.actFI = new CActFIFOBlack() );
             base.list子Activities.Add(this.actFI = new CActFIFOStart());
             base.list子Activities.Add(this.actFO = new CActFIFOBlack());
             base.list子Activities.Add(this.actFOClear = new CActFIFOResult());
@@ -187,7 +183,7 @@ namespace TJAPlayer3
         {
             LoudnessMetadataScanner.StopBackgroundScanning(joinImmediately: false);
 
-            this.bフィルイン中 = false;
+            //this.bフィルイン中 = false;
             this.n待機中の大音符の座標 = 0;
             this.actGame.t叩ききりまショー_初期化();
             base.ReSetScore(TJAPlayer3.DTX.nScoreInit[0, TJAPlayer3.stage選曲.n確定された曲の難易度[0]], TJAPlayer3.DTX.nScoreDiff[TJAPlayer3.stage選曲.n確定された曲の難易度[0]]);
@@ -251,7 +247,6 @@ namespace TJAPlayer3
                 }
             }
 
-
             if (this.actDancer.ct踊り子モーション != null)
             {
                 double dbUnit_dancer = (((60 / (TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM))) / this.actDancer.ar踊り子モーション番号.Length);
@@ -263,22 +258,15 @@ namespace TJAPlayer3
             }
 
             this.ct手つなぎ = new CCounter(0, 60, 20, TJAPlayer3.Timer);
-            this.ShownLyric2 = 0;
 
             // Discord Presence の更新
             var difficultyName = TJAPlayer3.DifficultyNumberToEnum(TJAPlayer3.stage選曲.n確定された曲の難易度[0]).ToString();
-            /*
-            Discord.UpdatePresence(TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? TJAPlayer3.DTX.TITLE + ".tja" : "",
-                Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
-                0,
-                Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
-                TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? difficultyName.ToLower() : "",
-                TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ? String.Format("COURSE:{0} ({1})", difficultyName, TJAPlayer3.stage選曲.n確定された曲の難易度) : "");
-
-            */
-            Discord.UpdatePresence(TJAPlayer3.ConfigIni.SendDiscordPlayingInformation ?  TJAPlayer3.DTX.TITLE + ".tja" : "",
+            Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + (TJAPlayer3.DTX.SUBTITLE != "" ? " - " : "") + TJAPlayer3.DTX.SUBTITLE,
                                    Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
-                                   0, Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000);
+                                   0, Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
+                                   difficultyName.ToLower(),
+                                   String.Format(difficultyName)
+                                   );
 
         }
         public override void On非活性化()
@@ -370,8 +358,8 @@ namespace TJAPlayer3
                     CSound管理.rc演奏用タイマ.tリセット();
                     TJAPlayer3.Timer.tリセット();
                     this.ctチップ模様アニメ.Drums = new CCounter(0, 1, 500, TJAPlayer3.Timer);
-                    this.ctチップ模様アニメ.Guitar = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
-                    this.ctチップ模様アニメ.Bass = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
+                    //this.ctチップ模様アニメ.Guitar = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
+                    //this.ctチップ模様アニメ.Bass = new CCounter(0, 0x17, 20, TJAPlayer3.Timer);
                     this.ctチップ模様アニメ.Taiko = new CCounter(0, 1, 500, TJAPlayer3.Timer);
 
                     // this.actChipFireD.Start( Eレーン.HH );	// #31554 2013.6.12 yyagi
@@ -430,7 +418,6 @@ namespace TJAPlayer3
                     this.actFooter.On進行描画();
 
                 //this.t進行描画_グラフ();   // #24074 2011.01.23 add ikanick
-
 
                 //this.t進行描画_DANGER();
                 //this.t進行描画_判定ライン();
@@ -503,12 +490,13 @@ namespace TJAPlayer3
 
                 this.t進行描画_演奏情報();
 
+                /*
                 if (TJAPlayer3.DTX.listLyric2.Count > ShownLyric2 && TJAPlayer3.DTX.listLyric2[ShownLyric2].Time < (long)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0)))
                 {
                     this.actPanel.t歌詞テクスチャを生成する(TJAPlayer3.DTX.listLyric2[ShownLyric2++].TextTex);
                 }
-
                 this.actPanel.t歌詞テクスチャを描画する();
+                */
 
                 actChara.OnDraw_Balloon();
 
@@ -613,7 +601,8 @@ namespace TJAPlayer3
         public FireWorks FireWorks;
         public PuchiChara PuchiChara;
         public CAct演奏Drumsスコアランク ScoreRank;
-        private bool bフィルイン中;
+        //private bool bフィルイン中;
+        /*
         private readonly Eパッド[] eチャンネルtoパッド = new Eパッド[]
         {
             Eパッド.HH, Eパッド.SD, Eパッド.BD, Eパッド.HT,
@@ -621,10 +610,10 @@ namespace TJAPlayer3
             Eパッド.RD, Eパッド.UNKNOWN, Eパッド.UNKNOWN, Eパッド.LC,
             Eパッド.LP, Eパッド.LBD
         };
+        */
         private CCounter ct手つなぎ;
 
         public float nGauge = 0.0f;
-        private int ShownLyric2 = 0;
 
         private int n待機中の大音符の座標;
         private readonly ST文字位置[] st小文字位置;
@@ -811,7 +800,7 @@ namespace TJAPlayer3
             this.actChipFireD.On進行描画();
         }
 
-
+        /*
         private void t進行描画_ドラムパッド()
         {
             if (TJAPlayer3.ConfigIni.eDark != Eダークモード.FULL)
@@ -819,6 +808,7 @@ namespace TJAPlayer3
                 this.actPad.On進行描画();
             }
         }
+        */
         protected override void t進行描画_パネル文字列()
         {
             base.t進行描画_パネル文字列(336, 427);
@@ -1255,37 +1245,6 @@ namespace TJAPlayer3
                     //-----------------------------
                     #endregion
                 }
-            }
-        }
-
-        // t入力処理_ドラム()からメソッドを抽出したもの。
-        /// <summary>
-        /// chipArrayの中を, n発生位置の小さい順に並べる + nullを大きい方に退かす。セットでe判定Arrayも並べ直す。
-        /// </summary>
-        /// <param name="chipArray">ソート対象chip群</param>
-        /// <param name="e判定Array">ソート対象e判定群</param>
-        /// <param name="NumOfChips">チップ数</param>
-        private static void SortChipsByNTime(CDTX.CChip[] chipArray, E判定[] e判定Array, int NumOfChips)
-        {
-            for (int i = 0; i < NumOfChips - 1; i++)
-            {
-                //num9 = 2;
-                //while( num9 > num8 )
-                for (int j = NumOfChips - 1; j > i; j--)
-                {
-                    if ((chipArray[j - 1] == null) || ((chipArray[j] != null) && (chipArray[j - 1].n発声位置 > chipArray[j].n発声位置)))
-                    {
-                        // swap
-                        CDTX.CChip chipTemp = chipArray[j - 1];
-                        chipArray[j - 1] = chipArray[j];
-                        chipArray[j] = chipTemp;
-                        E判定 e判定Temp = e判定Array[j - 1];
-                        e判定Array[j - 1] = e判定Array[j];
-                        e判定Array[j] = e判定Temp;
-                    }
-                    //num9--;
-                }
-                //num8++;
             }
         }
 
@@ -2064,7 +2023,7 @@ namespace TJAPlayer3
 
         protected void t進行描画_レーン()
         {
-            this.actLane.On進行描画();
+            actLane.On進行描画();
         }
 
         /// <summary>

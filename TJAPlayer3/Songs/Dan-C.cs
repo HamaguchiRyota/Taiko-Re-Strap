@@ -375,13 +375,29 @@ namespace TJAPlayer3
             /// </summary>
             Failure,
             /// <summary>
-            /// 合格
+            /// 銀枠赤合格
             /// </summary>
             Success,
             /// <summary>
-            /// より良い合格
+            /// 金枠赤合格
             /// </summary>
-            Better_Success
+            Better_Success,
+            /// <summary>
+            /// 虹枠赤合格
+            /// </summary>>
+            Perfect_Success,
+            /// <summary>
+            /// 銀枠金合格
+            /// </summary>
+            Success_Gold,
+            /// <summary>
+            /// 金枠金合格
+            /// </summary>
+            Better_Success_Gold,
+            /// <summary>
+            /// 虹枠金合格
+            /// </summary>>
+            Perfect_Success_Gold
         }
     }
 }

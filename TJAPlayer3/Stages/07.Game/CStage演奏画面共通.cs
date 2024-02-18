@@ -309,7 +309,7 @@ namespace TJAPlayer3
 
             cInvisibleChip.Reset();
             base.On活性化();
-            this.tステータスパネルの選択();
+            //this.tステータスパネルの選択();
             this.tパネル文字列の設定();
             //this.演奏判定ライン座標();
             this.bIsGOGOTIME = new bool[] { false, false, false, false };
@@ -1165,6 +1165,7 @@ namespace TJAPlayer3
                 this.nHand[nPlayer] = 0;
         }
 
+        /*
         protected void tステータスパネルの選択()
         {
             if (TJAPlayer3.bコンパクトモード)
@@ -1176,6 +1177,7 @@ namespace TJAPlayer3
                 this.actStatusPanels.tラベル名からステータスパネルを決定する(TJAPlayer3.stage選曲.r確定された曲.ar難易度ラベル[TJAPlayer3.stage選曲.n確定された曲の難易度[0]]);
             }
         }
+        */
 
         protected bool tRollProcess(CDTX.CChip pChip, double dbProcess_time, int num, int sort, int Input, int nPlayer)
         {
@@ -3615,7 +3617,7 @@ namespace TJAPlayer3
                         if (!pChip.bHit && (pChip.nバーからの距離dot.Drums < 0))
                         {
                             pChip.bHit = true;
-                            this.actPanel.t歌詞テクスチャを削除する();
+                            //this.actPanel.t歌詞テクスチャを削除する();
                             if (pChip.nコース == this.n現在のコース[nPlayer])
                             {
                                 if (ListDan_Number != 0 && actDan.FirstSectionAnime)
@@ -3948,7 +3950,9 @@ namespace TJAPlayer3
                         break;
                     #endregion
                     #region[ f1: 歌詞 ]
+
                     case 0xF1:
+                        /*
                         if (!pChip.bHit && (pChip.nバーからの距離dot.Drums < 0))
                         {
                             if (dTX.listLyric.Count > ShownLyric[nPlayer] && dTX.nPlayerSide == nPlayer)
@@ -3958,7 +3962,9 @@ namespace TJAPlayer3
                             }
                             pChip.bHit = true;
                         }
+                        */
                         break;
+
                     #endregion
                     #region[ ff: 譜面の強制終了 ]
                     //バグで譜面がとてつもないことになっているため、#ENDがきたらこれを差し込む。
@@ -4351,7 +4357,7 @@ namespace TJAPlayer3
             TJAPlayer3.DTX.t全チップの再生停止とミキサーからの削除();
             this.t数値の初期化(true, true);
             this.actAVI.tReset();
-            this.actPanel.t歌詞テクスチャを削除する();
+            //this.actPanel.t歌詞テクスチャを削除する();
             for (int i = 0; i < 2; i++)
             {
                 this.t演奏位置の変更(0, i);

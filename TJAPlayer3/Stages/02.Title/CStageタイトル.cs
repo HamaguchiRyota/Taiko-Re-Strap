@@ -36,7 +36,9 @@ namespace TJAPlayer3
 				ctどんちゃんエントリーループ = new CCounter();
 				ctどんちゃんイン = new CCounter();
 				ctどんちゃんループ = new CCounter(0, TJAPlayer3.Tx.Entry_Donchan_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);
-				ctBarAnimeIn = new CCounter();
+                ctPuchiCounter = new CCounter(0, TJAPlayer3.Skin.Game_PuchiChara[2] - 1, 1000, TJAPlayer3.Timer);
+                ctPuchiSineCounter = new CCounter(0, 360, 3, TJAPlayer3.Timer);
+                ctBarAnimeIn = new CCounter();
 				ctBarMove = new CCounter();
 				ctBarMove.n現在の値 = 250;
 
@@ -75,8 +77,20 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
-
-			}
+				ctバナパス読み込み待機 = null;
+                ctコインイン待機 = null;
+                ctバナパス読み込み成功 = null;
+                ctバナパス読み込み失敗 = null;
+                ctエントリーバー点滅 = null;
+                ctエントリーバー決定点滅 = null;
+                ctどんちゃんエントリーループ = null;
+                ctどんちゃんイン = null;
+                ctどんちゃんループ = null;
+                ctPuchiCounter = null;
+                ctPuchiSineCounter = null;
+                ctBarAnimeIn = null;
+                ctBarMove = null;
+            }
 			finally
 			{
 				Trace.TraceInformation( "タイトルステージの非活性化を完了しました。" );
@@ -126,7 +140,9 @@ namespace TJAPlayer3
 				ctどんちゃんイン.t進行();
 				ctどんちゃんループ.t進行Loop();
 				ctどんちゃんエントリーループ.t進行Loop();
-				ctBarMove.t進行();
+                ctPuchiCounter.t進行Loop();
+                ctPuchiSineCounter.t進行Loop();
+                ctBarMove.t進行();
 
 				if (!TJAPlayer3.Skin.bgmタイトルイン.b再生中)
                 {
@@ -256,7 +272,7 @@ namespace TJAPlayer3
 										TJAPlayer3.Skin.soundModeS.t停止する();
 										TJAPlayer3.Skin.sound決定音.t再生する();
 										n現在の選択行モード選択 = (int)E戻り値.DANGAMESTART - 1;
-										actFO.tフェードアウト開始(0, 800);
+										actFO.tフェードアウト開始(0, 400);
 										eフェーズID = Eフェーズ.共通_フェードアウト;
 									}
 									else
@@ -270,7 +286,7 @@ namespace TJAPlayer3
 								TJAPlayer3.Skin.soundModeS.t停止する();
 								TJAPlayer3.Skin.sound決定音.t再生する();
 								n現在の選択行モード選択 = (int)E戻り値.GAMESTART - 1;
-								actFO.tフェードアウト開始(0, 800);
+								actFO.tフェードアウト開始(0, 400);
 								eフェーズID = Eフェーズ.共通_フェードアウト;
 							}
 						}
@@ -302,10 +318,11 @@ namespace TJAPlayer3
                     }
 
 					//バナパスアニメスキップ→モード選択
+					/*
                     if (TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RRed) || TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LRed))
                     {
                         TJAPlayer3.Skin.sound決定音.t再生する();
-                        bプレイヤーエントリー = false;
+						bプレイヤーエントリー = true;
                         bプレイヤーエントリー決定 = true;
                         bバナパス読み込み = false;
                         TJAPlayer3.Skin.SoundBanapas.bPlayed = false;
@@ -327,6 +344,7 @@ namespace TJAPlayer3
 
                         }
                     }
+					*/
                 }
 
 				#endregion
@@ -480,15 +498,16 @@ namespace TJAPlayer3
 
 					if (!bどんちゃんカウンター初期化)
 					{
-						ctどんちゃんエントリーループ = new CCounter(0, TJAPlayer3.Tx.Donchan_Entry.Length - 1, 1000 / 60, TJAPlayer3.Timer);
+						ctどんちゃんエントリーループ = new CCounter(0, TJAPlayer3.Tx.Donchan_Entry.Length - 1, 1000 / 55, TJAPlayer3.Timer);
 						bどんちゃんカウンター初期化 = true;
 					}
 
 					TJAPlayer3.Tx.Entry_Player[0].Opacity = ctエントリーバー決定点滅.n現在の値 >= 800 ? 255 - (ctエントリーバー決定点滅.n現在の値 - 800) : (ctバナパス読み込み成功.n現在の値 - 3400); 
 					TJAPlayer3.Tx.Entry_Player[1].Opacity = ctエントリーバー決定点滅.n現在の値 >= 800 ? 255 - (ctエントリーバー決定点滅.n現在の値 - 800) : (ctバナパス読み込み成功.n現在の値 - 3400);
 					TJAPlayer3.Tx.Donchan_Entry[ctどんちゃんエントリーループ.n現在の値].Opacity = ctエントリーバー決定点滅.n現在の値 >= 800 ? 255 - (ctエントリーバー決定点滅.n現在の値 - 800) : (ctバナパス読み込み成功.n現在の値 - 3400);
+                    TJAPlayer3.Tx.PuchiChara[0].Opacity = ctエントリーバー決定点滅.n現在の値 >= 800 ? 255 - (ctエントリーバー決定点滅.n現在の値 - 800) : (ctバナパス読み込み成功.n現在の値 - 3400);
 
-					TJAPlayer3.Tx.Entry_Player[0]?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                    TJAPlayer3.Tx.Entry_Player[0]?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
 					TJAPlayer3.Tx.Donchan_Entry[ctどんちゃんエントリーループ.n現在の値]?.t2D描画(TJAPlayer3.app.Device, 170, 0);//485, 140
 
@@ -500,9 +519,14 @@ namespace TJAPlayer3
 
 					TJAPlayer3.Tx.Entry_Player[1]?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
-					#region [ 透明度 ]
+                    TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.75f;
+                    TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.75f;
+                    var sineY = Math.Sin(ctPuchiSineCounter.n現在の値 * (Math.PI / 180)) * (20 * TJAPlayer3.Skin.Game_PuchiChara_Scale[0]);
+                    TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, 460, 200 + (int)sineY, new Rectangle(ctPuchiCounter.n現在の値 * TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1], TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1]));
 
-					int Opacity = 0;
+                    #region [ 透明度 ]
+
+                    int Opacity = 0;
 
 					if (ctエントリーバー決定点滅.n現在の値 <= 100)
 						Opacity = (int)(ctエントリーバー決定点滅.n現在の値 * 2.55f);
@@ -534,9 +558,16 @@ namespace TJAPlayer3
 
                 #region [ モード選択 ]
 
-                if (bモード選択 && b直モードセレクト)
+                if (bモード選択 /*&& b直モードセレクト*/)
 				{
-					ctBarAnimeIn.t進行();
+					if (n現在の選択行プレイヤーエントリー == 0)
+						TJAPlayer3.act文字コンソール.tPrint(4, 44, C文字コンソール.Eフォント種別.白, "0");
+                    if (n現在の選択行プレイヤーエントリー == 1)
+                        TJAPlayer3.act文字コンソール.tPrint(4, 44, C文字コンソール.Eフォント種別.白, "1");
+                    if (n現在の選択行プレイヤーエントリー == 2)
+                        TJAPlayer3.act文字コンソール.tPrint(4, 44, C文字コンソール.Eフォント種別.白, "2");
+
+                    ctBarAnimeIn.t進行();
 
 					TJAPlayer3.Skin.soundTaikoS.t停止する();
 
@@ -549,10 +580,18 @@ namespace TJAPlayer3
 						DonchanY = ((float)Math.Sin((90 + (ctどんちゃんイン.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
 						TJAPlayer3.Tx.Entry_Donchan_Normal[ctどんちゃんループ.n現在の値].t2D描画(TJAPlayer3.app.Device, -525 + 4 + DonchanX, 237 - DonchanY);//200, 341
-					}
-					#endregion
 
-					if (ctBarAnimeIn.n現在の値 >= (int)(16 * 16.6f))
+                        TJAPlayer3.Tx.PuchiChara[0].Opacity = 1000;
+                        TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.75f;
+                        TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.75f;
+
+                        var sineY = Math.Sin(ctPuchiSineCounter.n現在の値 * (Math.PI / 180)) * (20 * TJAPlayer3.Skin.Game_PuchiChara_Scale[0]);
+                        TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, -210 + DonchanX, 440 + (int)sineY - DonchanY, new Rectangle(ctPuchiCounter.n現在の値 * TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1], TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1]));
+
+                    }
+                    #endregion
+
+                    if (ctBarAnimeIn.n現在の値 >= (int)(16 * 16.6f))
 					{
 						//TJAPlayer3.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, ctBarMove.n現在の値.ToString());
 
@@ -742,7 +781,10 @@ namespace TJAPlayer3
 		private CCounter ctどんちゃんイン;
 		private CCounter ctどんちゃんループ;
 
-		private CCounter ctBarAnimeIn;
+        private CCounter ctPuchiCounter;
+        private CCounter ctPuchiSineCounter;
+
+        private CCounter ctBarAnimeIn;
 		private CCounter ctBarMove;
 
 		private bool b直モードセレクト;

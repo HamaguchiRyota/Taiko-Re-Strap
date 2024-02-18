@@ -40,12 +40,6 @@ namespace TJAPlayer3
         const string DANC = @"17_DanC\";
         const string MODICONS = @"21_ModIcons\";
 
-        // InGame_Effects
-        //const string FIRE = @"Fire\";
-        //const string HIT = @"Hit\";
-        //const string ROLL = @"Roll\";
-        //const string SPLASH = @"Splash\";
-
         public bool IsLoaded = false;
 
 
@@ -83,11 +77,8 @@ namespace TJAPlayer3
             Scanning_Loudness = TxC(@"Scanning_Loudness.png");
             Overlay = TxC(@"Overlay.png");
             Network_Connection = TxC(@"Network_Connection.png");
-            //Readme = TxC(@"Readme.png");
             NamePlate = new CTexture[2];
             NamePlateBase = TxC(@"NamePlate.png");
-            NamePlate[0] = TxC(@"1P_NamePlate.png");
-            NamePlate[1] = TxC(@"2P_NamePlate.png");
             NamePlate_Effect[0] = TxC(@"9_NamePlateEffect\GoldMStar.png");
             NamePlate_Effect[1] = TxC(@"9_NamePlateEffect\PurpleMStar.png");
             NamePlate_Effect[2] = TxC(@"9_NamePlateEffect\GoldBStar.png");
@@ -225,7 +216,6 @@ namespace TJAPlayer3
                     SongSelect_GenreBack[i] = TxC(SONGSELECT + @"Genre_Background\GenreBackground_" + i.ToString() + ".png");
                 }
             }
-            
 
             TJAPlayer3.Skin.SongSelect_Box_Chara_Count = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + SONGSELECT + @"Box_Chara\"), "Box_Chara_");
 
@@ -290,6 +280,11 @@ namespace TJAPlayer3
             for (int i = 0; i < 3; i++)
                 Challenge_Select[i] = TxC(DANISELECT + "Challenge_Select_" + i.ToString() + ".png");
 
+            for (int i = 0; i < DaniSelect_Donchan_Normal.Length; i++)
+            {
+                DaniSelect_Donchan_Normal[i] = TxC(DANISELECT + @"Loop\" + i.ToString() + ".png");
+            }
+
             #endregion
 
             #region 4_読み込み画面
@@ -310,15 +305,15 @@ namespace TJAPlayer3
             Judge = TxC(GAME + @"Judge.png");
             ChipEffect = TxC(GAME + @"ChipEffect.png");
             ScoreRank = TxC(GAME + @"ScoreRank.png");
-            NowStages = TxC(GAME + @"NowStages");
 
             Judge_Meter = TxC(GAME + @"Judge_Meter.png");
             Bar = TxC(GAME + @"Bar.png");
             Bar_Branch = TxC(GAME + @"Bar_Branch.png");
 
+            Song_Number_Ingame = TxC(GAME + GENRE + @"Song_Number_Ingame.png");
+
             #endregion
             #region キャラクター
-            
             TJAPlayer3.Skin.Game_Chara_Ptn_Normal = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + GAME + CHARA + @"Normal\"));
             if (TJAPlayer3.Skin.Game_Chara_Ptn_Normal != 0)
             {
@@ -362,7 +357,6 @@ namespace TJAPlayer3
                     Chara_GoGoTime_Maxed[i] = TxC(GAME + CHARA + @"GoGo_Max\" + i.ToString() + ".png");
                 }
             }
-
             TJAPlayer3.Skin.Game_Chara_Ptn_10combo = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + GAME + CHARA + @"10combo\"));
             if (TJAPlayer3.Skin.Game_Chara_Ptn_10combo != 0)
             {
@@ -512,47 +506,11 @@ namespace TJAPlayer3
             Background_Up_3rd[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_3rd.png");
             Background_Up_3rd[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_3rd.png");
             Background_Up_3rd[2] = TxC(GAME + BACKGROUND + @"0\" + @"Clear_Up_3rd.png");
-            
-
-            Background_Up_Kumo0 = new CTexture[2];
-            Background_Up_Kumo0[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_Kumo0.png");
-            Background_Up_Kumo0[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_Kumo0.png");
-
-            Background_Up_Kumo1 = new CTexture[2];
-            Background_Up_Kumo1[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_Kumo1.png");
-            Background_Up_Kumo1[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_Kumo1.png");
-
-            Background_Up_Clear_Kumo0 = new CTexture[2];
-            Background_Up_Clear_Kumo0[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_Clear_Kumo0.png");
-            Background_Up_Clear_Kumo0[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_Clear_Kumo0.png");
-
-            Background_Up_Clear_Kumo1 = new CTexture[2];
-            Background_Up_Clear_Kumo1[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_Clear_Kumo1.png");
-            Background_Up_Clear_Kumo1[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_Clear_Kumo1.png");
-
-            Background_Up_Chara = new CTexture[2];
-            Background_Up_Chara[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_Chara.png");
-            Background_Up_Chara[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_Chara.png");
             */
             for (int i = 0; i < Background_Up_Dan.Length; i++)
                 Background_Up_Dan[i] = TxC(GAME + BACKGROUND + @"1\" + i.ToString() + @".png");
-
             Background_Down = TxC(GAME + BACKGROUND + @"0\" + @"Down.png");
-            //Background_Up_Clear_HM0 = TxC(GAME + BACKGROUND + @"0\" + @"HM0.png");
-            //Background_Up_Clear_HM1 = TxC(GAME + BACKGROUND + @"0\" + @"HM1.png");
             Background_Down_Clear = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear.png");
-
-            /*
-            Background_Down_BG_1 = TxC(GAME + BACKGROUND + @"0\" + @"BG1.png");
-            Background_Down_Sc_0 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Sc0.png");
-            Background_Down_Sc_1 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Sc1.png");
-            Background_Down_M0 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_M0.png");
-            Background_Down_M1 = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_M1.png");
-            Background_Down_Fune = TxC(GAME + BACKGROUND + @"0\" + @"Down_Fune.png");
-            Background_Down_FuneX2 = TxC(GAME + BACKGROUND + @"0\" + @"Down_FuneX2.png");
-            Background_Down_Splash = TxC(GAME + BACKGROUND + @"0\" + @"Down_Splash.png");
-            */
-
             //Background_Down_Clear_Light = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light.png");
             Background_Down_Light_B = TxC(GAME + BACKGROUND + @"0\" + @"Down_Clear_Light_B.png");
             Background_Down_Scroll = TxC(GAME + BACKGROUND + @"0\" + @"Down_Scroll.png");
@@ -569,9 +527,6 @@ namespace TJAPlayer3
             Taiko_Frame = new CTexture[2];
             Taiko_Frame[0] = TxC(GAME + TAIKO + @"1P_Frame.png");
             Taiko_Frame[1] = TxC(GAME + TAIKO + @"2P_Frame.png");
-            Taiko_PlayerNumber = new CTexture[2];
-            Taiko_PlayerNumber[0] = TxC(GAME + TAIKO + @"1P_PlayerNumber.png");
-            Taiko_PlayerNumber[1] = TxC(GAME + TAIKO + @"2P_PlayerNumber.png");
             Taiko_NamePlate = new CTexture[2];
             Taiko_NamePlate[0] = TxC(GAME + TAIKO + @"1P_NamePlate.png");
             Taiko_NamePlate[1] = TxC(GAME + TAIKO + @"2P_NamePlate.png");
@@ -760,7 +715,7 @@ namespace TJAPlayer3
             Failed_Stage = TxC(GAME + FAILED + @"Stage.png");
             #endregion
             #region ランナー
-            Runner = TxC(GAME + RUNNER + @"0.png");
+            //Runner = TxC(GAME + RUNNER + @"0.png");
             #endregion
             #region DanC
             DanC_Background = TxC(GAME + DANC + @"Background.png");
@@ -778,7 +733,7 @@ namespace TJAPlayer3
             DanC_Small_Number = TxC(GAME + DANC + @"Small_Number.png");
             DanC_ExamType = TxC(GAME + DANC + @"ExamType.png");
             DanC_ExamRange = TxC(GAME + DANC + @"ExamRange.png");
-            DanC_ExamUnit = TxC(GAME + DANC + @"ExamUnit.png");
+            //DanC_ExamUnit = TxC(GAME + DANC + @"ExamUnit.png");
             DanC_Screen = TxC(GAME + DANC + @"Screen.png");
             DanC_SmallBase = TxC(GAME + DANC + @"SmallBase.png");
             DanC_Small_ExamCymbol = TxC(GAME + DANC + @"Small_ExamCymbol.png");
@@ -1120,6 +1075,7 @@ namespace TJAPlayer3
         public CTexture Dani_Dan_Text;
 
         public CTexture[] Challenge_Select = new CTexture[3];
+        public CTexture[] DaniSelect_Donchan_Normal = new CTexture[61];
 
         #endregion
 
@@ -1140,8 +1096,9 @@ namespace TJAPlayer3
             Notes_Arm,
             ChipEffect,
             ScoreRank,
-            Judge,
-            NowStages;
+            Song_Number_Ingame,
+            Judge;
+            //NowStages;
         public CTexture Bar,
             Judge_Meter,
             Bar_Branch;
@@ -1207,7 +1164,7 @@ namespace TJAPlayer3
             Background_Up_Sakura_Clear,
             //Background_Up_Clear_Kumo0,
             //Background_Up_Clear_Kumo1,
-        Background_Up_Dan = new CTexture[6];
+            Background_Up_Dan = new CTexture[6];
         #endregion
         #region 太鼓
         public CTexture[] Taiko_Frame, // MTaiko下敷き
@@ -1226,7 +1183,7 @@ namespace TJAPlayer3
             Taiko_Combo_Effect,
             Taiko_Combo_Text;
         public CTexture[] Couse_Symbol,// コースシンボル
-            Taiko_PlayerNumber,
+            //Taiko_PlayerNumber,
             Taiko_NamePlate; // ネームプレート
         public CTexture[] Taiko_Score,
             Taiko_Combo;
@@ -1302,7 +1259,7 @@ namespace TJAPlayer3
             Failed_Stage;
         #endregion
         #region ランナー
-        public CTexture Runner;
+        //public CTexture Runner;
         #endregion
         #region DanC
         public CTexture DanC_Background;

@@ -6,7 +6,7 @@ using System.Diagnostics;
 using SharpDX;
 using FDK;
 
-using Rectangle = System.Drawing.Rectangle;
+using RectangleF = System.Drawing.Rectangle;
 using Point = System.Drawing.Point;
 
 namespace TJAPlayer3
@@ -61,7 +61,12 @@ namespace TJAPlayer3
             st文字位置10.ch = '9';
             st文字位置10.pt = new Point(297, 0);
             st文字位置Array[9] = st文字位置10;
-            st小文字位置 = st文字位置Array;
+
+            for (int i = 0; i < 10; i++)
+            {
+                stSongNumberIngame[i].ch = i.ToString().ToCharArray()[0];
+                stSongNumberIngame[i].pt = new Point(27 * i, 0);
+            }
 
             base.b活性化してない = true;
             this.Start();
@@ -130,6 +135,7 @@ namespace TJAPlayer3
                         using (bmpDiff)
                         {
                             txStage = TJAPlayer3.Tx.TxCGen("Songs");
+                            txStageNumber = TJAPlayer3.Tx.Song_Number_Ingame;
                         }
                     }
                     catch (CTextureCreateFailedException e)
@@ -153,7 +159,7 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Game");
                     }
-                    else if (genreName.Equals("ナムコオリジナル") || genreName.Equals("ナムコ"))
+                    else if (genreName.Equals("ナムコオリジナル") || genreName.Equals("ナムコ") || genreName.Equals("ナムオリ"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Namco");
                     }
@@ -169,10 +175,6 @@ namespace TJAPlayer3
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Child");
                     }
-                    else if (genreName.Equals("バラエティ"))
-                    {
-                        this.txGENRE = TJAPlayer3.Tx.TxCGen("Variety");
-                    }
                     else if (genreName.Equals("ボーカロイド") || genreName.Equals("Vocaloid") || genreName.Equals("ボカロ"))
                     {
                         this.txGENRE = TJAPlayer3.Tx.TxCGen("Vocaloid");
@@ -185,37 +187,6 @@ namespace TJAPlayer3
 
                 this.ct進行用 = new CCounter(0, 2000, 2, TJAPlayer3.Timer);
                 this.Start();
-            }
-        }
-
-        public void t歌詞テクスチャを生成する(Bitmap bmplyric)
-        {
-            TJAPlayer3.t安全にDisposeする(ref this.tx歌詞テクスチャ);
-            this.tx歌詞テクスチャ = TJAPlayer3.tテクスチャの生成(bmplyric);
-        }
-        public void t歌詞テクスチャを削除する()
-        {
-            TJAPlayer3.tテクスチャの解放(ref this.tx歌詞テクスチャ);
-        }
-        /// <summary>
-        /// レイヤー管理のため、On進行描画から分離。
-        /// </summary>
-        public void t歌詞テクスチャを描画する()
-        {
-            if (this.tx歌詞テクスチャ != null)
-            {
-                if (TJAPlayer3.Skin.Game_Lyric_ReferencePoint == CSkin.ReferencePoint.Left)
-                {
-                    this.tx歌詞テクスチャ.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lyric_X, TJAPlayer3.Skin.Game_Lyric_Y);
-                }
-                else if (TJAPlayer3.Skin.Game_Lyric_ReferencePoint == CSkin.ReferencePoint.Right)
-                {
-                    this.tx歌詞テクスチャ.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lyric_X - this.tx歌詞テクスチャ.szテクスチャサイズ.Width, TJAPlayer3.Skin.Game_Lyric_Y);
-                }
-                else
-                {
-                    this.tx歌詞テクスチャ.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Lyric_X - (this.tx歌詞テクスチャ.szテクスチャサイズ.Width / 2), TJAPlayer3.Skin.Game_Lyric_Y);
-                }
             }
         }
 
@@ -261,10 +232,10 @@ namespace TJAPlayer3
                 TJAPlayer3.t安全にDisposeする(ref txPanel);
                 TJAPlayer3.t安全にDisposeする(ref txMusicName);
                 TJAPlayer3.t安全にDisposeする(ref txGENRE);
+                TJAPlayer3.t安全にDisposeする(ref txStage);
+                TJAPlayer3.t安全にDisposeする(ref txStageNumber);
                 TJAPlayer3.t安全にDisposeする(ref txPanel);
-                TJAPlayer3.t安全にDisposeする(ref tx歌詞テクスチャ);
                 TJAPlayer3.t安全にDisposeする(ref pfMusicName);
-                TJAPlayer3.t安全にDisposeする(ref pf歌詞フォント);
                 base.OnManagedリソースの解放();
             }
         }
@@ -281,29 +252,34 @@ namespace TJAPlayer3
                 ct進行用.t進行Loop();
                 txGENRE?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y);
                 txStage?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Genre_X, TJAPlayer3.Skin.Game_Genre_Y);
+                tSongNumberDrawIngame(1091, 70, TJAPlayer3.stage選曲.NowSong.ToString());
+                tSongNumberDrawIngame(1190, 70, TJAPlayer3.stage選曲.MaxSong.ToString());
 
                 #region[ 透明度制御 ]
-
-                if (ct進行用.n現在の値 < 745)
+                if (txStage != null && txStageNumber != null)
                 {
-                    if (txStage != null)
+                    if (ct進行用.n現在の値 < 745)
+                    {
                         txStage.Opacity = 0;
-                }
-                else if (ct進行用.n現在の値 >= 745 && ct進行用.n現在の値 < 1000)
-                {
-                    if (txStage != null)
+                        txStageNumber.Opacity = 0;
+                    }
+                    else if (ct進行用.n現在の値 >= 745 && ct進行用.n現在の値 < 1000)
+                    {
                         txStage.Opacity = (ct進行用.n現在の値 - 745);
-                }
-                else if (ct進行用.n現在の値 >= 1000 && ct進行用.n現在の値 <= 1745)
-                {
-                    if (txStage != null)
+                        txStageNumber.Opacity = (ct進行用.n現在の値 - 745);
+                    }
+                    else if (ct進行用.n現在の値 >= 1000 && ct進行用.n現在の値 <= 1745)
+                    {
                         txStage.Opacity = 255;
-                }
-                else if (ct進行用.n現在の値 >= 1745)
-                {
-                    if (txStage != null)
+                        txStageNumber.Opacity = 255;
+                    }
+                    else if (ct進行用.n現在の値 >= 1745)
+                    {
                         txStage.Opacity = 255 - (ct進行用.n現在の値 - 1745);
+                        txStageNumber.Opacity = 255 - (ct進行用.n現在の値 - 1745);
+                    }
                 }
+
                 #endregion
 
                 if (txMusicName != null)
@@ -332,46 +308,36 @@ namespace TJAPlayer3
         private bool bMute;
         private CTexture txMusicName;
         private CTexture txStage;
+        private CTexture txStageNumber;
         private CTexture txGENRE;
-        private CTexture tx歌詞テクスチャ;
         private CPrivateFastFont pfMusicName;
-        private CPrivateFastFont pf歌詞フォント;
-        //private readonly CStage選曲 CS選曲;
-        public int MaxSong = 3;
-        public int NowSong = 1;
-
+        private readonly STNumberIngame[] stSongNumberIngame = new STNumberIngame[10];
         private struct ST文字位置
         {
             public char ch;
             public Point pt;
         }
-        private readonly ST文字位置[] st小文字位置;
-
-        private void t小文字表示(int x, int y, string str)
+        public struct STNumberIngame
         {
-            foreach (char ch in str)
+            public char ch;
+            public Point pt;
+        }
+        public void tSongNumberDrawIngame(int x, int y, string str)
+        {
+            for (int j = 0; j < str.Length; j++)
             {
-                for (int i = 0; i < this.st小文字位置.Length; i++)
+                for (int i = 0; i < 10; i++)
                 {
-                    if (ch == ' ')
+                    if (str[j] == stSongNumberIngame[i].ch)
                     {
-                        break;
-                    }
-
-                    if (this.st小文字位置[i].ch == ch)
-                    {
-                        Rectangle rectangle = new Rectangle(st小文字位置[i].pt.X, this.st小文字位置[i].pt.Y, 33, 35);
-                        //TJAPlayer3.Tx.SongSelect_ScoreNumber.vc拡大縮小倍率.X = 0.995f;
-                        //TJAPlayer3.Tx.SongSelect_ScoreNumber.vc拡大縮小倍率.Y = 0.995f;
-                        TJAPlayer3.Tx.NowStages?.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
-                        break;
+                        TJAPlayer3.Tx.Song_Number_Ingame?.t2D描画(TJAPlayer3.app.Device, x - (str.Length * 27 + 27 * str.Length - str.Length * 27) / 2 + 27 / 2, (float)y, new RectangleF(stSongNumberIngame[i].pt.X, stSongNumberIngame[i].pt.Y, 27, 29));
+                        x += str.Length >= 2 ? 16 : 27;
                     }
                 }
-                x += 14;
-                //22
+                TJAPlayer3.Tx.Song_Number_Ingame.vc拡大縮小倍率.X = 0.70f;
+                TJAPlayer3.Tx.Song_Number_Ingame.vc拡大縮小倍率.Y = 0.70f;
             }
         }
-
         //-----------------
         #endregion
     }
