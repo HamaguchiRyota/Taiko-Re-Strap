@@ -3617,7 +3617,7 @@ namespace TJAPlayer3
                         if (!pChip.bHit && (pChip.nバーからの距離dot.Drums < 0))
                         {
                             pChip.bHit = true;
-                            //this.actPanel.t歌詞テクスチャを削除する();
+                            this.actPanel.t歌詞テクスチャを削除する();
                             if (pChip.nコース == this.n現在のコース[nPlayer])
                             {
                                 if (ListDan_Number != 0 && actDan.FirstSectionAnime)
@@ -3950,9 +3950,7 @@ namespace TJAPlayer3
                         break;
                     #endregion
                     #region[ f1: 歌詞 ]
-
                     case 0xF1:
-                        /*
                         if (!pChip.bHit && (pChip.nバーからの距離dot.Drums < 0))
                         {
                             if (dTX.listLyric.Count > ShownLyric[nPlayer] && dTX.nPlayerSide == nPlayer)
@@ -3962,9 +3960,7 @@ namespace TJAPlayer3
                             }
                             pChip.bHit = true;
                         }
-                        */
                         break;
-
                     #endregion
                     #region[ ff: 譜面の強制終了 ]
                     //バグで譜面がとてつもないことになっているため、#ENDがきたらこれを差し込む。
@@ -4357,7 +4353,7 @@ namespace TJAPlayer3
             TJAPlayer3.DTX.t全チップの再生停止とミキサーからの削除();
             this.t数値の初期化(true, true);
             this.actAVI.tReset();
-            //this.actPanel.t歌詞テクスチャを削除する();
+            this.actPanel.t歌詞テクスチャを削除する();
             for (int i = 0; i < 2; i++)
             {
                 this.t演奏位置の変更(0, i);

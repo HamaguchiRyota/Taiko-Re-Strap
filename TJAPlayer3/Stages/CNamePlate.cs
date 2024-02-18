@@ -60,7 +60,7 @@ namespace TJAPlayer3
                 //ここが称号背景
                 if (TJAPlayer3.NamePlateConfig.data.Dan[player] != "" && TJAPlayer3.NamePlateConfig.data.Dan[player] != null)
                 {
-                    if (TJAPlayer3.NamePlateConfig.data.Title[player] != "" && TJAPlayer3.NamePlateConfig.data.Title[player] != null) 
+                    if (TJAPlayer3.NamePlateConfig.data.Title[player] != "" && TJAPlayer3.NamePlateConfig.data.Title[player] != null)
                         TJAPlayer3.Tx.NamePlateBase.t2D描画(TJAPlayer3.app.Device, x, y, new RectangleF(0, (4 + TJAPlayer3.NamePlateConfig.data.TitleType[player]) * 54, 220, 54));
                 }
 
@@ -141,7 +141,7 @@ namespace TJAPlayer3
 
         private void tNamePlateDraw(int player, int x, int y)
         {
-            if(TJAPlayer3.NamePlateConfig.data.TitleType[player] != 0 && TJAPlayer3.NamePlateConfig.data.Title[player] != "")
+            if(TJAPlayer3.NamePlateConfig.data.TitleType[player] != 0)
             {
                 int Type = TJAPlayer3.NamePlateConfig.data.TitleType[player] - 1;
                 if (ctNamePlateEffect.n現在の値 <= 10)

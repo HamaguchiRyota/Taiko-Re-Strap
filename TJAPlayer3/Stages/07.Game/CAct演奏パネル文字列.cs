@@ -61,6 +61,7 @@ namespace TJAPlayer3
             st文字位置10.ch = '9';
             st文字位置10.pt = new Point(297, 0);
             st文字位置Array[9] = st文字位置10;
+            st小文字位置 = st文字位置Array;
 
             for (int i = 0; i < 10; i++)
             {
@@ -236,6 +237,7 @@ namespace TJAPlayer3
                 TJAPlayer3.t安全にDisposeする(ref txStageNumber);
                 TJAPlayer3.t安全にDisposeする(ref txPanel);
                 TJAPlayer3.t安全にDisposeする(ref pfMusicName);
+
                 base.OnManagedリソースの解放();
             }
         }
@@ -312,11 +314,14 @@ namespace TJAPlayer3
         private CTexture txGENRE;
         private CPrivateFastFont pfMusicName;
         private readonly STNumberIngame[] stSongNumberIngame = new STNumberIngame[10];
+        private CPrivateFastFont pfMusicName;
+
         private struct ST文字位置
         {
             public char ch;
             public Point pt;
         }
+
         public struct STNumberIngame
         {
             public char ch;
@@ -336,6 +341,33 @@ namespace TJAPlayer3
                 }
                 TJAPlayer3.Tx.Song_Number_Ingame.vc拡大縮小倍率.X = 0.70f;
                 TJAPlayer3.Tx.Song_Number_Ingame.vc拡大縮小倍率.Y = 0.70f;
+            }
+        }
+
+        private readonly ST文字位置[] st小文字位置;
+
+        private void t小文字表示(int x, int y, string str)
+        {
+            foreach (char ch in str)
+            {
+                for (int i = 0; i < this.st小文字位置.Length; i++)
+                {
+                    if (ch == ' ')
+                    {
+                        break;
+                    }
+
+                    if (this.st小文字位置[i].ch == ch)
+                    {
+                        Rectangle rectangle = new Rectangle(st小文字位置[i].pt.X, this.st小文字位置[i].pt.Y, 33, 35);
+                        //TJAPlayer3.Tx.SongSelect_ScoreNumber.vc拡大縮小倍率.X = 0.995f;
+                        //TJAPlayer3.Tx.SongSelect_ScoreNumber.vc拡大縮小倍率.Y = 0.995f;
+                        TJAPlayer3.Tx.NowStages?.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
+                        break;
+                    }
+                }
+                x += 14;
+                //22
             }
         }
         //-----------------
