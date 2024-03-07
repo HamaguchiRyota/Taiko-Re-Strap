@@ -110,7 +110,7 @@ namespace TJAPlayer3
 			st文字位置22.ch = '%';
 			st文字位置22.pt = new Point(0x37, 0);
 			st文字位置Array2[10] = st文字位置22;
-			st大文字位置 = st文字位置Array2;
+			//st大文字位置 = st文字位置Array2;
 
             #endregion
 
@@ -161,7 +161,7 @@ namespace TJAPlayer3
 
             #endregion
 
-            ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
+            //ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
 			b活性化してない = true;
 		}
 
@@ -189,7 +189,7 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-			sdDTXで指定されたフルコンボ音 = null;
+			//sdDTXで指定されたフルコンボ音 = null;
             ctPuchiCounter = new CCounter(0, TJAPlayer3.Skin.Game_PuchiChara[2] - 1, 1000, TJAPlayer3.Timer);
             ctPuchiSineCounter = new CCounter(0, 360, 3, TJAPlayer3.Timer);
             base.On活性化();
@@ -205,12 +205,13 @@ namespace TJAPlayer3
             {
 				b音声再生[i] = false;
             }
-
+			/*
 			if (sdDTXで指定されたフルコンボ音 != null)
 			{
 				TJAPlayer3.Sound管理.tサウンドを破棄する(sdDTXで指定されたフルコンボ音);
 				sdDTXで指定されたフルコンボ音 = null;
 			}
+			*/
 			ct全体進行 = null;
 			ctゲージアニメ = null;
 			ct虹ゲージアニメ = null;
@@ -851,7 +852,18 @@ namespace TJAPlayer3
 					case Exam.Status.Better_Success:
 						TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0] * 2, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
 						break;
-					default:
+					/*
+                    case Exam.Status.Perfect_Success:
+                        TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(0, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+                        break;
+                    case Exam.Status.Better_Success_Gold:
+                        TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0], 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+                        break;
+                    case Exam.Status.Perfect_Success_Gold:
+                        TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0] * 2, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+                        break;
+					*/
+                    default:
 						break;
 				}
 
@@ -897,10 +909,10 @@ namespace TJAPlayer3
 		public bool[] b音声再生 = { false, false, false, false, false, false, false, false, false, false, false };
 		
 		private CCounter ct表示用;
-		private readonly Point[] ptFullCombo位置;
-		private CSound sdDTXで指定されたフルコンボ音;
+		//private readonly Point[] ptFullCombo位置;
+		//private CSound sdDTXで指定されたフルコンボ音;
 		private readonly ST文字位置[] st小文字位置;
-		private readonly ST文字位置[] st大文字位置;
+		//private readonly ST文字位置[] st大文字位置;
 		private readonly ST文字位置[] stScoreFont;
 
 		private CTexture Dan_Plate;
