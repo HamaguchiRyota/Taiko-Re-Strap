@@ -368,7 +368,7 @@ namespace TJAPlayer3
                     if (str[j] == stExamNumber[i].ch)
                     {
                         TJAPlayer3.Tx.Dani_Exam_Number.t2D描画(TJAPlayer3.app.Device, x, (float)y - 24 / 2, new RectangleF(stExamNumber[i].pt.X, stExamNumber[i].pt.Y, 19, 24));
-                        x += 16;
+                        x += 13;//16
                     }
                 }
             }
