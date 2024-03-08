@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.IO;
 using FDK;
+using Point = SharpDX.Point;
+//using RectangleF = System.Drawing.Rectangle;
 
 namespace TJAPlayer3
 {
@@ -161,8 +163,13 @@ namespace TJAPlayer3
 
             #endregion
 
-            //ptFullCombo位置 = new Point[] { new Point(0x80, 0xed), new Point(0xdf, 0xed), new Point(0x141, 0xed) };
-			b活性化してない = true;
+            for (int i = 0; i < 10; i++)
+            {
+                stDanNumber[i].ch = i.ToString().ToCharArray()[0];
+                stDanNumber[i].pt = new Point(i * 23, 0);
+            }
+
+            b活性化してない = true;
 		}
 
 
@@ -189,7 +196,6 @@ namespace TJAPlayer3
 
 		public override void On活性化()
 		{
-			//sdDTXで指定されたフルコンボ音 = null;
             ctPuchiCounter = new CCounter(0, TJAPlayer3.Skin.Game_PuchiChara[2] - 1, 1000, TJAPlayer3.Timer);
             ctPuchiSineCounter = new CCounter(0, 360, 3, TJAPlayer3.Timer);
             base.On活性化();
@@ -205,13 +211,7 @@ namespace TJAPlayer3
             {
 				b音声再生[i] = false;
             }
-			/*
-			if (sdDTXで指定されたフルコンボ音 != null)
-			{
-				TJAPlayer3.Sound管理.tサウンドを破棄する(sdDTXで指定されたフルコンボ音);
-				sdDTXで指定されたフルコンボ音 = null;
-			}
-			*/
+
 			ct全体進行 = null;
 			ctゲージアニメ = null;
 			ct虹ゲージアニメ = null;
@@ -839,18 +839,71 @@ namespace TJAPlayer3
 			else
 			{
                 #region [ 段位時リザルト ]
+				//28000ぐらいで曲別表示終了する。
+                int AnimeCount = ct全体進行.n現在の値;
+
                 TJAPlayer3.Tx.Result_Background_Dan?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+
+                TJAPlayer3.act文字コンソール.tPrint(0, 0, C文字コンソール.Eフォント種別.白, AnimeCount.ToString());
+
+                TJAPlayer3.Tx.Result_Dan_SectionBasePanel?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                TJAPlayer3.Tx.Result_Dan_SectionPanel?.t2D描画(TJAPlayer3.app.Device, 0, 0);
+
+                #region [ 曲名 ]
+
+                var t1 = TJAPlayer3.DTX.List_DanSongs[0].TitleTex;
+                var t2 = TJAPlayer3.DTX.List_DanSongs[1].TitleTex;
+                var t3 = TJAPlayer3.DTX.List_DanSongs[2].TitleTex;
+                if (t1 != null || t2 != null || t3 != null)
+				{
+                    t1.vc拡大縮小倍率.X = 0.75f;
+                    t1.vc拡大縮小倍率.Y = 0.75f;
+                    t2.vc拡大縮小倍率.X = 0.75f;
+                    t2.vc拡大縮小倍率.Y = 0.75f;
+                    t3.vc拡大縮小倍率.X = 0.75f;
+                    t3.vc拡大縮小倍率.Y = 0.75f;
+                    TJAPlayer3.DTX.List_DanSongs[0].TitleTex.Opacity = 255;
+                    TJAPlayer3.DTX.List_DanSongs[1].TitleTex.Opacity = 255;
+                    TJAPlayer3.DTX.List_DanSongs[2].TitleTex.Opacity = 255;
+                    t1?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Left, 415, 169);
+                    t2?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Left, 415, 351);
+                    t3?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Left, 415, 535);
+                }
+
+                #endregion
+
+                #region [ 内訳 ]
+
+                tDanNumberDraw(516, 236, TJAPlayer3.stage演奏ドラム画面.actDan.P.ToString());
+                tDanNumberDraw(729, 236, TJAPlayer3.stage演奏ドラム画面.actDan.G.ToString());
+                tDanNumberDraw(938, 236, TJAPlayer3.stage演奏ドラム画面.actDan.B.ToString());
+                tDanNumberDraw(1141, 236, TJAPlayer3.stage演奏ドラム画面.actDan.R.ToString());
+
+                tDanNumberDraw(516, 420, TJAPlayer3.stage演奏ドラム画面.actDan.P2.ToString());
+                tDanNumberDraw(729, 420, TJAPlayer3.stage演奏ドラム画面.actDan.G2.ToString());
+                tDanNumberDraw(938, 420, TJAPlayer3.stage演奏ドラム画面.actDan.B2.ToString());
+                tDanNumberDraw(1141, 420, TJAPlayer3.stage演奏ドラム画面.actDan.R2.ToString());
+
+                tDanNumberDraw(516, 604, TJAPlayer3.stage演奏ドラム画面.actDan.P3.ToString());
+                tDanNumberDraw(729, 604, TJAPlayer3.stage演奏ドラム画面.actDan.G3.ToString());
+                tDanNumberDraw(938, 604, TJAPlayer3.stage演奏ドラム画面.actDan.B3.ToString());
+                tDanNumberDraw(1141, 604, TJAPlayer3.stage演奏ドラム画面.actDan.R3.ToString());
+
+                #endregion
+
+                #region [ DanPlateと合否Plate ]
+
                 Dan_Plate?.t2D描画(TJAPlayer3.app.Device, 50, 50);
 				switch (TJAPlayer3.stage演奏ドラム画面.actDan.GetExamStatus(TJAPlayer3.stage結果.st演奏記録.Drums.Dan_C))
 				{
 					case Exam.Status.Failure:
-						TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(0, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+						//TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(0, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
 						break;
 					case Exam.Status.Success:
-						TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0], 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+						//TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0], 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
 						break;
 					case Exam.Status.Better_Success:
-						TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0] * 2, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+						//TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0] * 2, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
 						break;
 					/*
                     case Exam.Status.Perfect_Success:
@@ -867,10 +920,12 @@ namespace TJAPlayer3
 						break;
 				}
 
-				#endregion
-			}
+                #endregion
 
-			if (!ct表示用.b終了値に達した)
+                #endregion
+            }
+
+            if (!ct表示用.b終了値に達した)
 			{
 				return 0;
 			}
@@ -909,13 +964,11 @@ namespace TJAPlayer3
 		public bool[] b音声再生 = { false, false, false, false, false, false, false, false, false, false, false };
 		
 		private CCounter ct表示用;
-		//private readonly Point[] ptFullCombo位置;
-		//private CSound sdDTXで指定されたフルコンボ音;
 		private readonly ST文字位置[] st小文字位置;
-		//private readonly ST文字位置[] st大文字位置;
 		private readonly ST文字位置[] stScoreFont;
+        private CStage選曲.STNumber[] stDanNumber = new CStage選曲.STNumber[10];
 
-		private CTexture Dan_Plate;
+        private CTexture Dan_Plate;
 
 		private void t小文字表示(int x, int y, string str)
 		{
@@ -956,7 +1009,22 @@ namespace TJAPlayer3
 			}
 		}
 
-		public int[] gaugeValues;
+        public void tDanNumberDraw(float x, float y, string str)
+        {
+            for (int j = 0; j < str.Length; j++)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (str[j] == stDanNumber[i].ch)
+                    {
+                        TJAPlayer3.Tx.Result_Dan_Number.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x - (str.Length * 23 + 18 * str.Length - str.Length * 23) / 2 + 23 / 2, (float)y - 30 / 2, new RectangleF(stDanNumber[i].pt.X, stDanNumber[i].pt.Y, 23, 30));
+                        x += 17;
+                    }
+                }
+            }
+        }
+
+        public int[] gaugeValues;
 		public int[] ApparitionTimeStamps = { 10, 30, 50, 100, 190 };
 
 		public float MountainAppearValue;

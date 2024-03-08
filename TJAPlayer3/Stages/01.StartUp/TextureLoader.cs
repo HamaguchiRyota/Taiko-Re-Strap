@@ -1,4 +1,5 @@
 using FDK;
+using SharpDX;
 using System.Collections.Generic;
 using Un4seen.Bass.AddOn.Vst;
 
@@ -817,6 +818,13 @@ namespace TJAPlayer3
             Result_Score_Number = TxC(RESULT + @"Score_Number.png");
             Result_Dan = TxC(RESULT + @"Dan.png");
             Result_Background_Dan = TxC(RESULT + @"Background_Dan.png");
+
+            Result_Dan_SectionBasePanel = TxC(RESULT + @"Dan_SectionBasePanel.png");
+            Result_Dan_Panel = TxC(RESULT + @"Dan_Panel.png");
+            Result_Dan_SectionPanel = TxC(RESULT + @"Dan_SectionPanel.png");
+            Result_Dan_Number = TxC(RESULT + @"Dan_Number.png");
+
+
             Result_Background_Double = TxC(RESULT + @"Background_Double.png");
 
             for (int i = 0; i < 41; i++)
@@ -1328,7 +1336,11 @@ namespace TJAPlayer3
             Result_ScoreRankEffect,
             Result_Score_Number,
             Result_Background_Dan,
+            Result_Dan_SectionBasePanel,
+            Result_Dan_Panel,
+            Result_Dan_SectionPanel,
             Result_Background_Double,
+            Result_Dan_Number,
             Result_Dan;
         public CTexture[]
             Result_Rainbow = new CTexture[41],
