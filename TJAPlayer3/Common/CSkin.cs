@@ -2922,15 +2922,15 @@ namespace TJAPlayer3
         public int[] Game_DanC_Number_Small_Number_Offset = new int[] { 285, 38 };
         public int[] Game_DanC_Exam_Offset = new int[] { 222, 27 };
 
-        public int[] Game_DanC_X = new int[] { 807, 70, 70, 70 }; // 329, 437
-        public int[] Game_DanC_Y = new int[] { 116, 190, 236, 292 };//ゲージ％,190,236,292
+        public int[] Game_DanC_X = new int[] { 807, 84, 84, 84 }; // 329, 437
+        public int[] Game_DanC_Y = new int[] { 116, 282, 282, 282 };//ゲージ％,190,236,292
 
         public int Game_DanC_Y_Padding = 100;
 
         public int[] Game_DanC_Number_XY = new int[] { 214, 67 };
         public int[] Game_DanC_Dan_Plate = new int[] { 149, 416 };
 
-        public int Game_DanC_Padding = 9;
+        public int Game_DanC_Padding = 14;
         public int Game_DanC_Number_Padding = 35;
         public int Game_DanC_Number_Small_Padding = 41;
         public int Game_DanC_ExamRange_Padding = 49;
@@ -2976,7 +2976,7 @@ namespace TJAPlayer3
         public int[] Result_NamePlate_Y = new int[] { 619, 619 };
 
         public int[] Result_Dan = new int[] { 500, 500 };
-        public int[] Result_Dan_XY = new int[] { 100, 0 };
+        public int[] Result_Dan_XY = new int[] { 20, 10 };
         public int[] Result_Dan_Plate_XY = new int[] { 149, 416 };
         #endregion
         #region Font
