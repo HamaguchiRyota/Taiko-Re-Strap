@@ -2976,7 +2976,7 @@ namespace TJAPlayer3
         public int[] Result_NamePlate_Y = new int[] { 619, 619 };
 
         public int[] Result_Dan = new int[] { 500, 500 };
-        public int[] Result_Dan_XY = new int[] { 20, 10 };
+        public int[] Result_Dan_XY = new int[] { -44, 203 };
         public int[] Result_Dan_Plate_XY = new int[] { 149, 416 };
         #endregion
         #region Font

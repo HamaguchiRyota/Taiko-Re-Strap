@@ -816,7 +816,7 @@ namespace TJAPlayer3
             Result_ScoreRankEffect = TxC(RESULT + @"ScoreRankEffect.png");
 
             Result_Score_Number = TxC(RESULT + @"Score_Number.png");
-            Result_Dan = TxC(RESULT + @"Dan.png");
+            Result_Dan_Judge = TxC(RESULT + @"Dan_Judge.png");
             Result_Background_Dan = TxC(RESULT + @"Background_Dan.png");
 
             Result_Dan_SectionBasePanel = TxC(RESULT + @"Dan_SectionBasePanel.png");
@@ -1341,7 +1341,7 @@ namespace TJAPlayer3
             Result_Dan_SectionPanel,
             Result_Background_Double,
             Result_Dan_Number,
-            Result_Dan;
+            Result_Dan_Judge;
         public CTexture[]
             Result_Rainbow = new CTexture[41],
             Result_Background = new CTexture[4],
