@@ -841,6 +841,7 @@ namespace TJAPlayer3
                 #region [ 段位時リザルト ]
 				//28000ぐらいで曲別表示終了する。
                 int AnimeCount = ct全体進行.n現在の値;
+                Exam.Status examStatus = TJAPlayer3.stage演奏ドラム画面.actDan.GetExamStatus(TJAPlayer3.stage結果.st演奏記録.Drums.Dan_C);
 
                 TJAPlayer3.Tx.Result_Background_Dan?.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
@@ -894,16 +895,16 @@ namespace TJAPlayer3
                 #region [ DanPlateと合否Plate ]
 
                 Dan_Plate?.t2D描画(TJAPlayer3.app.Device, 50, 50);
-				switch (TJAPlayer3.stage演奏ドラム画面.actDan.GetExamStatus(TJAPlayer3.stage結果.st演奏記録.Drums.Dan_C))
+                switch (TJAPlayer3.stage演奏ドラム画面.actDan.GetExamStatus(TJAPlayer3.stage結果.st演奏記録.Drums.Dan_C))
 				{
-					case Exam.Status.Failure:
-						//TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(0, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+					case Exam.Status.Failure://不合格
+						TJAPlayer3.Tx.Result_Dan_Judge?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(0, 0, 334, 334));
 						break;
-					case Exam.Status.Success:
-						//TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0], 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+					case Exam.Status.Success://赤合格
+						TJAPlayer3.Tx.Result_Dan_Judge?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(334, 0, 334, 334));
 						break;
-					case Exam.Status.Better_Success:
-						//TJAPlayer3.Tx.Result_Dan?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(TJAPlayer3.Skin.Result_Dan[0] * 2, 0, TJAPlayer3.Skin.Result_Dan[0], TJAPlayer3.Skin.Result_Dan[1]));
+					case Exam.Status.Better_Success://金合格
+						TJAPlayer3.Tx.Result_Dan_Judge?.t2D描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Result_Dan_XY[0], TJAPlayer3.Skin.Result_Dan_XY[1], new Rectangle(668, 0, 334, 334));
 						break;
 					/*
                     case Exam.Status.Perfect_Success:
@@ -1018,7 +1019,7 @@ namespace TJAPlayer3
                     if (str[j] == stDanNumber[i].ch)
                     {
                         TJAPlayer3.Tx.Result_Dan_Number.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, x - (str.Length * 23 + 18 * str.Length - str.Length * 23) / 2 + 23 / 2, (float)y - 30 / 2, new RectangleF(stDanNumber[i].pt.X, stDanNumber[i].pt.Y, 23, 30));
-                        x += 17;
+                        x += 20;
                     }
                 }
             }
