@@ -70,6 +70,15 @@ namespace TJAPlayer3.Properties {
         }
         
         /// <summary>
+        ///   DaniSelect に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Stage_DaniSelect {
+            get {
+                return ResourceManager.GetString("Stage_DaniSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Playing に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Stage_InGame {

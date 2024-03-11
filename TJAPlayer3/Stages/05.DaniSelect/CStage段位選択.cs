@@ -36,6 +36,9 @@ namespace TJAPlayer3
             ctDonchan_In = new CCounter();
             ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.SongSelect_Donchan_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);
 
+            // Discord Presenceの更新
+            Discord.UpdatePresence("", Properties.Discord.Stage_DaniSelect, TJAPlayer3.StartupTime);
+
             base.On活性化();
         }
 
