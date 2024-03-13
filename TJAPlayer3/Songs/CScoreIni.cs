@@ -164,7 +164,7 @@ namespace TJAPlayer3
 		{
 			public STAUTOPLAY bAutoPlay;
 			public bool bDrums有効;
-			public bool bGuitar有効;
+			//public bool bGuitar有効;
 			public STDGBVALUE<bool> bHidden;
 			public STDGBVALUE<bool> bLeft;
 			public STDGBVALUE<bool> bLight;
@@ -244,39 +244,39 @@ namespace TJAPlayer3
 
 				this.bSudden = new STDGBVALUE<bool>();
 				this.bSudden.Drums = false;
-				this.bSudden.Guitar = false;
-				this.bSudden.Bass = false;
+				//this.bSudden.Guitar = false;
+				//this.bSudden.Bass = false;
 				this.bHidden = new STDGBVALUE<bool>();
 				this.bHidden.Drums = false;
-				this.bHidden.Guitar = false;
-				this.bHidden.Bass = false;
+				//this.bHidden.Guitar = false;
+				//this.bHidden.Bass = false;
 				this.eInvisible = new STDGBVALUE<EInvisible>();
 				this.eInvisible.Drums = EInvisible.OFF;
-				this.eInvisible.Guitar = EInvisible.OFF;
-				this.eInvisible.Bass = EInvisible.OFF;
+				//this.eInvisible.Guitar = EInvisible.OFF;
+				//this.eInvisible.Bass = EInvisible.OFF;
 				this.bReverse = new STDGBVALUE<bool>();
 				this.bReverse.Drums = false;
-				this.bReverse.Guitar = false;
-				this.bReverse.Bass = false;
+				//this.bReverse.Guitar = false;
+				//this.bReverse.Bass = false;
 				this.eRandom = new STDGBVALUE<Eランダムモード>();
 				this.eRandom.Drums = Eランダムモード.OFF;
-				this.eRandom.Guitar = Eランダムモード.OFF;
-				this.eRandom.Bass = Eランダムモード.OFF;
+				//this.eRandom.Guitar = Eランダムモード.OFF;
+				//this.eRandom.Bass = Eランダムモード.OFF;
 				this.bLight = new STDGBVALUE<bool>();
 				this.bLight.Drums = false;
-				this.bLight.Guitar = false;
-				this.bLight.Bass = false;
+				//this.bLight.Guitar = false;
+				//this.bLight.Bass = false;
 				this.bLeft = new STDGBVALUE<bool>();
 				this.bLeft.Drums = false;
-				this.bLeft.Guitar = false;
-				this.bLeft.Bass = false;
+				//this.bLeft.Guitar = false;
+				//this.bLeft.Bass = false;
 				this.f譜面スクロール速度 = new STDGBVALUE<float>();
 				this.f譜面スクロール速度.Drums = 1f;
-				this.f譜面スクロール速度.Guitar = 1f;
-				this.f譜面スクロール速度.Bass = 1f;
+				//this.f譜面スクロール速度.Guitar = 1f;
+				//this.f譜面スクロール速度.Bass = 1f;
 				this.n演奏速度分子 = 20;
 				this.n演奏速度分母 = 20;
-				this.bGuitar有効 = true;
+				//this.bGuitar有効 = true;
 				this.bDrums有効 = true;
 				this.bSTAGEFAILED有効 = true;
 				this.eダメージレベル = Eダメージレベル.普通;
@@ -508,8 +508,8 @@ namespace TJAPlayer3
 			stファイル.Hash = "";
 			stファイル.History = new string[] { "", "", "", "", "" };
 			stファイル.BestRank.Drums =  (int)ERANK.UNKNOWN;		// #24459 2011.2.24 yyagi
-			stファイル.BestRank.Guitar = (int)ERANK.UNKNOWN;		//
-			stファイル.BestRank.Bass =   (int)ERANK.UNKNOWN;		//
+			//stファイル.BestRank.Guitar = (int)ERANK.UNKNOWN;		//
+			//stファイル.BestRank.Bass =   (int)ERANK.UNKNOWN;		//
 	
 			this.stセクション = new STセクション();
 			stセクション.HiScoreDrums = new C演奏記録();
@@ -698,7 +698,7 @@ namespace TJAPlayer3
 								}
 							}
 							continue;
-						#region [ File section ]
+							#region [ File section ]
 						Label_01C7:
 							if (item.Equals("Name"))
 							{
@@ -1052,16 +1052,20 @@ namespace TJAPlayer3
 									}
 									#endregion
 									#region [ ScrollSpeedGuitar ]
+									/*
 									else if ( item.Equals( "ScrollSpeedGuitar" ) )
 									{
 										c演奏記録.f譜面スクロール速度.Guitar = (float) decimal.Parse( para );
 									}
+									*/
 									#endregion
 									#region [ ScrollSpeedBass ]
+									/*
 									else if ( item.Equals( "ScrollSpeedBass" ) )
 									{
 										c演奏記録.f譜面スクロール速度.Bass = (float) decimal.Parse( para );
 									}
+									*/
 									#endregion
 									#region [ PlaySpeed ]
 									else if ( item.Equals( "PlaySpeed" ) )
@@ -1077,13 +1081,15 @@ namespace TJAPlayer3
 									else
 									{
 										#region [ Guitar ]
+										/*
 										if ( item.Equals( "Guitar" ) )
 										{
 											c演奏記録.bGuitar有効 = C変換.bONorOFF( para[ 0 ] );
 										}
+										*/
 										#endregion
 										#region [ Drums ]
-										else if ( item.Equals( "Drums" ) )
+										if ( item.Equals( "Drums" ) )
 										{
 											c演奏記録.bDrums有効 = C変換.bONorOFF( para[ 0 ] );
 										}
@@ -1253,7 +1259,7 @@ namespace TJAPlayer3
 			writer.WriteLine();
 			for ( int i = 0; i < 1; i++ )
 			{
-                string[] strArray = { "HiScore.Drums"};
+                string[] strArray = { "HiScore.Drums" };
 				writer.WriteLine( "[{0}]", strArray[ i ] );
 				writer.WriteLine( "Score={0}", this.stセクション[ i ].nスコア );
 				writer.WriteLine( "PlaySkill={0}", this.stセクション[ i ].db演奏型スキル値 );
@@ -1437,9 +1443,6 @@ namespace TJAPlayer3
             double dbボーナスA = 0;
             double dbボーナスB = 0;
 
-            #region[ 演奏点 ]
-
-            #endregion
             #region[ 空打ち ]
             int[] n空打ちArray = new int[] { 1, 2, 3, 5, 10, 15, 20, 30, 40, 50 };
             int n空打ちpt = 0;
@@ -1518,11 +1521,11 @@ namespace TJAPlayer3
 			}
 			return builder2.ToString();
 		}
-		internal static void t更新条件を取得する( out bool bDrumsを更新する, out bool bGuitarを更新する, out bool bBassを更新する )
+		internal static void t更新条件を取得する( out bool bDrumsを更新する )
 		{
             bDrumsを更新する = !TJAPlayer3.ConfigIni.b太鼓パートAutoPlay;
-			bGuitarを更新する = false;
-			bBassを更新する =   false;
+			//bGuitarを更新する = false;
+			//bBassを更新する =   false;
 		}
 		internal static int t総合ランク値を計算して返す( C演奏記録 Drums, C演奏記録 Guitar, C演奏記録 Bass )
 		{

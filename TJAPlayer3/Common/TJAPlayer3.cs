@@ -2619,8 +2619,8 @@ for (int i = 0; i < 3; i++) {
 				}
 			}
 			ini.stファイル.BGMAdjust = DTX.nBGMAdjust;
-			CScoreIni.t更新条件を取得する( out bIsUpdatedDrums, out bIsUpdatedGuitar, out bIsUpdatedBass );
-			if( bIsUpdatedDrums || bIsUpdatedGuitar || bIsUpdatedBass )
+			CScoreIni.t更新条件を取得する( out bIsUpdatedDrums );
+			if( bIsUpdatedDrums )
 			{
 				if( bIsUpdatedDrums )
 				{
