@@ -1440,8 +1440,8 @@ Debug.WriteLine( dBPM + ":" + c曲リストノード.strタイトル );
                     }
 				}
 				score.譜面情報.演奏回数.Drums = ini.stファイル.PlayCountDrums;
-				score.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
-				score.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
+				//score.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
+				//score.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
 				for( int i = 0; i < (int)Difficulty.Total; i++ )
 					score.譜面情報.演奏履歴[ i ] = ini.stファイル.History[ i ];
 			}

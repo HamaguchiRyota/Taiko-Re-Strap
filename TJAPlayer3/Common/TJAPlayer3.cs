@@ -2626,6 +2626,7 @@ for (int i = 0; i < 3; i++) {
 				{
 					ini.stファイル.PlayCountDrums++;
 				}
+				/*
 				if( bIsUpdatedGuitar )
 				{
 					ini.stファイル.PlayCountGuitar++;
@@ -2634,12 +2635,13 @@ for (int i = 0; i < 3; i++) {
 				{
 					ini.stファイル.PlayCountBass++;
 				}
+				*/
 				ini.tヒストリを追加する( str新ヒストリ行 );
 				if( !bコンパクトモード )
 				{
 					stage選曲.r確定されたスコア.譜面情報.演奏回数.Drums = ini.stファイル.PlayCountDrums;
-					stage選曲.r確定されたスコア.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
-					stage選曲.r確定されたスコア.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
+					//stage選曲.r確定されたスコア.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
+					//stage選曲.r確定されたスコア.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
 					for( int j = 0; j < ini.stファイル.History.Length; j++ )
 					{
 						stage選曲.r確定されたスコア.譜面情報.演奏履歴[ j ] = ini.stファイル.History[ j ];

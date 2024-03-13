@@ -25,12 +25,12 @@ namespace TJAPlayer3
 			public string Name;
 			public string Hash;
 			public int PlayCountDrums;
-			public int PlayCountGuitar;
-            public int PlayCountBass;
+			//public int PlayCountGuitar;
+            //public int PlayCountBass;
             // #23596 10.11.16 add ikanick-----/
             public int ClearCountDrums;
-            public int ClearCountGuitar;
-            public int ClearCountBass;
+            //public int ClearCountGuitar;
+            //public int ClearCountBass;
             // #24459 2011.2.24 yyagi----------/
 			public STDGBVALUE<int> BestRank;
 			// --------------------------------/
@@ -595,20 +595,20 @@ namespace TJAPlayer3
 							string para;
 							C演奏記録 c演奏記録;
 							#region [ section ]
-							if ( str[ 0 ] == '[' )
+							if (str[0] == '[')
 							{
-								StringBuilder builder = new StringBuilder( 0x20 );
+								StringBuilder builder = new StringBuilder(0x20);
 								int num = 1;
-								while( ( num < str.Length ) && ( str[ num ] != ']' ) )
+								while ((num < str.Length) && (str[num] != ']'))
 								{
-									builder.Append( str[ num++ ] );
+									builder.Append(str[num++]);
 								}
 								string str2 = builder.ToString();
-								if( str2.Equals( "File" ) )
+								if (str2.Equals("File"))
 								{
 									section = Eセクション種別.File;
 								}
-								else if( str2.Equals( "HiScore.Drums" ) )
+								else if (str2.Equals("HiScore.Drums"))
 								{
 									section = Eセクション種別.HiScoreDrums;
 								}
@@ -634,11 +634,11 @@ namespace TJAPlayer3
                                     section = Eセクション種別.HiSkillBass;
                                 }
 								*/
-                                // #23595 2011.1.9 ikanick
-                                else if (str2.Equals("LastPlay.Drums"))
-                                {
-                                    section = Eセクション種別.LastPlayDrums;
-                                }
+								// #23595 2011.1.9 ikanick
+								else if (str2.Equals("LastPlay.Drums"))
+								{
+									section = Eセクション種別.LastPlayDrums;
+								}
 								/*
                                 else if (str2.Equals("LastPlay.Guitar"))
                                 {
@@ -649,7 +649,7 @@ namespace TJAPlayer3
                                     section = Eセクション種別.LastPlayBass;
                                 }
 								*/
-                                //----------------------------------------------------
+								//----------------------------------------------------
 								else
 								{
 									section = Eセクション種別.Unknown;
@@ -658,16 +658,16 @@ namespace TJAPlayer3
 							#endregion
 							else
 							{
-								string[] strArray = str.Split( new char[] { '=' } );
-								if( strArray.Length == 2 )
+								string[] strArray = str.Split(new char[] { '=' });
+								if (strArray.Length == 2)
 								{
-									item = strArray[ 0 ].Trim();
-									para = strArray[ 1 ].Trim();
-									switch( section )
+									item = strArray[0].Trim();
+									para = strArray[1].Trim();
+									switch (section)
 									{
 										case Eセクション種別.File:
 											{
-												if( !item.Equals( "Title" ) )
+												if (!item.Equals("Title"))
 												{
 													goto Label_01C7;
 												}
@@ -679,18 +679,18 @@ namespace TJAPlayer3
 										//case Eセクション種別.HiScoreGuitar:
 										//case Eセクション種別.HiSkillGuitar:
 										//case Eセクション種別.HiScoreBass:
-                                        //case Eセクション種別.HiSkillBass:
-                                        case Eセクション種別.LastPlayDrums:// #23595 2011.1.9 ikanick
-                                        //case Eセクション種別.LastPlayGuitar:
-                                        //case Eセクション種別.LastPlayBass:
+										//case Eセクション種別.HiSkillBass:
+										case Eセクション種別.LastPlayDrums:// #23595 2011.1.9 ikanick
+																	//case Eセクション種別.LastPlayGuitar:
+																	//case Eセクション種別.LastPlayBass:
 											{
-												c演奏記録 = this.stセクション[ (int) section ];
-												if( !item.Equals( "Score" ) )
+												c演奏記録 = this.stセクション[(int)section];
+												if (!item.Equals("Score"))
 												{
 													goto Label_03B9;
 												}
-												c演奏記録.nスコア = long.Parse( para );
-                                                
+												c演奏記録.nスコア = long.Parse(para);
+
 
 												continue;
 											}
@@ -698,20 +698,21 @@ namespace TJAPlayer3
 								}
 							}
 							continue;
-							#region [ File section ]
+						#region [ File section ]
 						Label_01C7:
-							if( item.Equals( "Name" ) )
+							if (item.Equals("Name"))
 							{
 								this.stファイル.Name = para;
 							}
-							else if( item.Equals( "Hash" ) )
+							else if (item.Equals("Hash"))
 							{
 								this.stファイル.Hash = para;
 							}
-							else if( item.Equals( "PlayCountDrums" ) )
+							else if (item.Equals("PlayCountDrums"))
 							{
-								this.stファイル.PlayCountDrums = C変換.n値を文字列から取得して範囲内に丸めて返す( para, 0, 99999999, 0 );
+								this.stファイル.PlayCountDrums = C変換.n値を文字列から取得して範囲内に丸めて返す(para, 0, 99999999, 0);
 							}
+							/*
 							else if( item.Equals( "PlayCountGuitars" ) )// #23596 11.2.5 changed ikanick
 							{
 								this.stファイル.PlayCountGuitar = C変換.n値を文字列から取得して範囲内に丸めて返す( para, 0, 99999999, 0 );
@@ -720,24 +721,28 @@ namespace TJAPlayer3
 							{
 								this.stファイル.PlayCountBass = C変換.n値を文字列から取得して範囲内に丸めて返す( para, 0, 99999999, 0 );
                             }
-                            // #23596 10.11.16 add ikanick------------------------------------/
-                            else if (item.Equals("ClearCountDrums"))
-                            {
-                                this.stファイル.ClearCountDrums = C変換.n値を文字列から取得して範囲内に丸めて返す(para, 0, 99999999, 0);
-                            }
-                            else if (item.Equals("ClearCountGuitars"))// #23596 11.2.5 changed ikanick
-                            {
-                                this.stファイル.ClearCountGuitar = C変換.n値を文字列から取得して範囲内に丸めて返す(para, 0, 99999999, 0);
-                            }
-                            else if (item.Equals("ClearCountBass"))
-                            {
-                                this.stファイル.ClearCountBass = C変換.n値を文字列から取得して範囲内に丸めて返す(para, 0, 99999999, 0);
-                            }
+							*/
+							// #23596 10.11.16 add ikanick------------------------------------/
+							else if (item.Equals("ClearCountDrums"))
+							{
+								this.stファイル.ClearCountDrums = C変換.n値を文字列から取得して範囲内に丸めて返す(para, 0, 99999999, 0);
+							}
+							/*
+							else if (item.Equals("ClearCountGuitars"))// #23596 11.2.5 changed ikanick
+							{
+								this.stファイル.ClearCountGuitar = C変換.n値を文字列から取得して範囲内に丸めて返す(para, 0, 99999999, 0);
+							}
+							else if (item.Equals("ClearCountBass"))
+							{
+								this.stファイル.ClearCountBass = C変換.n値を文字列から取得して範囲内に丸めて返す(para, 0, 99999999, 0);
+							}
+							*/
                             // #24459 2011.2.24 yyagi-----------------------------------------/
 							else if ( item.Equals( "BestRankDrums" ) )
 							{
 								this.stファイル.BestRank.Drums = C変換.n値を文字列から取得して範囲内に丸めて返す( para, (int) ERANK.SS, (int) ERANK.E, (int) ERANK.UNKNOWN );
 							}
+							/*
 							else if ( item.Equals( "BestRankGuitar" ) )
 							{
 								this.stファイル.BestRank.Guitar = C変換.n値を文字列から取得して範囲内に丸めて返す( para, (int) ERANK.SS, (int) ERANK.E, (int) ERANK.UNKNOWN );
@@ -746,6 +751,7 @@ namespace TJAPlayer3
 							{
 								this.stファイル.BestRank.Bass = C変換.n値を文字列から取得して範囲内に丸めて返す( para, (int) ERANK.SS, (int) ERANK.E, (int) ERANK.UNKNOWN );
 							}
+							*/
 							//----------------------------------------------------------------/
 							else if ( item.Equals( "History0" ) )
 							{
@@ -876,6 +882,7 @@ namespace TJAPlayer3
 							{
 								c演奏記録.bSudden.Drums = C変換.bONorOFF( para[ 0 ] );
 							}
+							/*
 							else if ( item.Equals( "SuddenGuitar" ) )
 							{
 								c演奏記録.bSudden.Guitar = C変換.bONorOFF( para[ 0 ] );
@@ -884,10 +891,12 @@ namespace TJAPlayer3
 							{
 								c演奏記録.bSudden.Bass = C変換.bONorOFF( para[ 0 ] );
 							}
+							*/
 							else if ( item.Equals( "HiddenDrums" ) )
 							{
 								c演奏記録.bHidden.Drums = C変換.bONorOFF( para[ 0 ] );
 							}
+							/*
 							else if ( item.Equals( "HiddenGuitar" ) )
 							{
 								c演奏記録.bHidden.Guitar = C変換.bONorOFF( para[ 0 ] );
@@ -896,10 +905,12 @@ namespace TJAPlayer3
 							{
 								c演奏記録.bHidden.Bass = C変換.bONorOFF( para[ 0 ] );
 							}
+							*/
 							else if ( item.Equals( "InvisibleDrums" ) )
 							{
 								c演奏記録.eInvisible.Drums = (EInvisible) int.Parse( para );
 							}
+							/*
 							else if ( item.Equals( "InvisibleGuitar" ) )
 							{
 								c演奏記録.eInvisible.Guitar = (EInvisible) int.Parse( para );
@@ -908,10 +919,12 @@ namespace TJAPlayer3
 							{
 								c演奏記録.eInvisible.Bass = (EInvisible) int.Parse( para );
 							}
+							*/
 							else if ( item.Equals( "ReverseDrums" ) )
 							{
 								c演奏記録.bReverse.Drums = C変換.bONorOFF( para[ 0 ] );
 							}
+							/*
 							else if ( item.Equals( "ReverseGuitar" ) )
 							{
 								c演奏記録.bReverse.Guitar = C変換.bONorOFF( para[ 0 ] );
@@ -920,6 +933,7 @@ namespace TJAPlayer3
 							{
 								c演奏記録.bReverse.Bass = C変換.bONorOFF( para[ 0 ] );
 							}
+							*/
 							#endregion
 							else
 							{
@@ -1138,7 +1152,7 @@ namespace TJAPlayer3
 											{
 												c演奏記録.nPoorになる範囲ms = int.Parse( para );
 											}
-											else if ( item.Equals( "DTXManiaVersion" ) )
+											else if ( item.Equals( "Taiko-Re-Strap.Version" ) )
 											{
 												c演奏記録.strDTXManiaのバージョン = para;
 											}
@@ -1237,9 +1251,9 @@ namespace TJAPlayer3
 			writer.WriteLine( "History4={0}", this.stファイル.History[ 4 ] );
 			writer.WriteLine( "BGMAdjust={0}", this.stファイル.BGMAdjust );
 			writer.WriteLine();
-			for ( int i = 0; i < 2; i++ )
+			for ( int i = 0; i < 1; i++ )
 			{
-                string[] strArray = { "HiScore.Drums", "LastPlay.Drums" };
+                string[] strArray = { "HiScore.Drums"};
 				writer.WriteLine( "[{0}]", strArray[ i ] );
 				writer.WriteLine( "Score={0}", this.stセクション[ i ].nスコア );
 				writer.WriteLine( "PlaySkill={0}", this.stセクション[ i ].db演奏型スキル値 );
@@ -1456,37 +1470,37 @@ namespace TJAPlayer3
 				builder.Append( boolToChar( cc.bAutoPlay[ i ] ) );
 			builder.Append( boolToChar( cc.bTight ) );
 			builder.Append( boolToChar( cc.bSudden.Drums ) );
-			builder.Append( boolToChar( cc.bSudden.Guitar ) );
-			builder.Append( boolToChar( cc.bSudden.Bass ) );
+			//builder.Append( boolToChar( cc.bSudden.Guitar ) );
+			//builder.Append( boolToChar( cc.bSudden.Bass ) );
 			builder.Append( boolToChar( cc.bHidden.Drums ) );
-			builder.Append( boolToChar( cc.bHidden.Guitar ) );
-			builder.Append( boolToChar( cc.bHidden.Bass ) );
+			//builder.Append( boolToChar( cc.bHidden.Guitar ) );
+			//builder.Append( boolToChar( cc.bHidden.Bass ) );
 			builder.Append( (int) cc.eInvisible.Drums );
-			builder.Append( (int) cc.eInvisible.Guitar );
-			builder.Append( (int) cc.eInvisible.Bass );
+			//builder.Append( (int) cc.eInvisible.Guitar );
+			//builder.Append( (int) cc.eInvisible.Bass );
 			builder.Append( boolToChar( cc.bReverse.Drums ) );
-			builder.Append( boolToChar( cc.bReverse.Guitar ) );
-			builder.Append( boolToChar( cc.bReverse.Bass ) );
-			builder.Append( (int) cc.eRandom.Guitar );
-			builder.Append( (int) cc.eRandom.Bass );
-			builder.Append( boolToChar( cc.bLight.Guitar ) );
-			builder.Append( boolToChar( cc.bLight.Bass ) );
-			builder.Append( boolToChar( cc.bLeft.Guitar ) );
-			builder.Append( boolToChar( cc.bLeft.Bass ) );
+			//builder.Append( boolToChar( cc.bReverse.Guitar ) );
+			//builder.Append( boolToChar( cc.bReverse.Bass ) );
+			//builder.Append( (int) cc.eRandom.Guitar );
+			//builder.Append( (int) cc.eRandom.Bass );
+			//builder.Append( boolToChar( cc.bLight.Guitar ) );
+			//builder.Append( boolToChar( cc.bLight.Bass ) );
+			//builder.Append( boolToChar( cc.bLeft.Guitar ) );
+			//builder.Append( boolToChar( cc.bLeft.Bass ) );
 			builder.Append( (int) cc.eDark );
 			builder.Append( cc.f譜面スクロール速度.Drums.ToString( ".000000" ) );
-			builder.Append( cc.f譜面スクロール速度.Guitar.ToString( ".000000" ) );
-			builder.Append( cc.f譜面スクロール速度.Bass.ToString( ".000000" ) );
+			//builder.Append( cc.f譜面スクロール速度.Guitar.ToString( ".000000" ) );
+			//builder.Append( cc.f譜面スクロール速度.Bass.ToString( ".000000" ) );
 			builder.Append( cc.n演奏速度分子 );
 			builder.Append( cc.n演奏速度分母 );
-			builder.Append( boolToChar( cc.bGuitar有効 ) );
+			//builder.Append( boolToChar( cc.bGuitar有効 ) );
 			builder.Append( boolToChar( cc.bDrums有効 ) );
 			builder.Append( boolToChar( cc.bSTAGEFAILED有効 ) );
 			builder.Append( (int) cc.eダメージレベル );
 			builder.Append( boolToChar( cc.b演奏にキーボードを使用した ) );
-			builder.Append( boolToChar( cc.b演奏にMIDI入力を使用した ) );
+			//builder.Append( boolToChar( cc.b演奏にMIDI入力を使用した ) );
 			builder.Append( boolToChar( cc.b演奏にジョイパッドを使用した ) );
-			builder.Append( boolToChar( cc.b演奏にマウスを使用した ) );
+			//builder.Append( boolToChar( cc.b演奏にマウスを使用した ) );
 			builder.Append( cc.nPerfectになる範囲ms );
 			builder.Append( cc.nGreatになる範囲ms );
 			builder.Append( cc.nGoodになる範囲ms );

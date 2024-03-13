@@ -228,8 +228,8 @@ namespace TJAPlayer3
 					if (TJAPlayer3.ConfigIni.bScoreIniを出力する)
 					{
 						n演奏回数.Drums = ini.stファイル.PlayCountDrums;
-						n演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
-						n演奏回数.Bass = ini.stファイル.PlayCountBass;
+						//n演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
+						//n演奏回数.Bass = ini.stファイル.PlayCountBass;
 					}
                 #endregion
 
