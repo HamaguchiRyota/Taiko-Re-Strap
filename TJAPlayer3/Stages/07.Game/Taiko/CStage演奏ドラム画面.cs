@@ -27,9 +27,7 @@ namespace TJAPlayer3
             base.list子Activities.Add(this.actGauge = new CAct演奏Drumsゲージ());
             base.list子Activities.Add(this.actJudgeString = new CAct演奏Drums判定文字列());
             base.list子Activities.Add(this.actTaikoLaneFlash = new TaikoLaneFlash());
-            //base.list子Activities.Add(this.actLaneFlushGB = new CAct演奏DrumsレーンフラッシュGB());
             base.list子Activities.Add(this.actScore = new CAct演奏Drumsスコア());
-            //base.list子Activities.Add(this.actStatusPanels = new CAct演奏Drumsステータスパネル());
             base.list子Activities.Add(this.act譜面スクロール速度 = new CAct演奏スクロール速度());
             base.list子Activities.Add(this.actAVI = new CAct演奏AVI());
             base.list子Activities.Add(this.actPanel = new CAct演奏パネル文字列());
@@ -409,24 +407,20 @@ namespace TJAPlayer3
                     actRollChara.On進行描画();
                 }
 
-                if (!TJAPlayer3.ConfigIni.bAVI有効 && !bDoublePlay && TJAPlayer3.ConfigIni.ShowDancer && !TJAPlayer3.ConfigIni.bTokkunMode)
+                if (!TJAPlayer3.ConfigIni.bAVI有効 && !bDoublePlay && TJAPlayer3.ConfigIni.ShowDancer && !TJAPlayer3.ConfigIni.bTokkunMode && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
                 {
                     actDancer.On進行描画();
                 }
 
-                if (!TJAPlayer3.ConfigIni.bAVI有効 && !bDoublePlay && TJAPlayer3.ConfigIni.ShowFooter && !TJAPlayer3.ConfigIni.bTokkunMode)
+                if (!TJAPlayer3.ConfigIni.bAVI有効 && !bDoublePlay && TJAPlayer3.ConfigIni.ShowFooter && !TJAPlayer3.ConfigIni.bTokkunMode && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
                     this.actFooter.On進行描画();
 
-                //this.t進行描画_グラフ();   // #24074 2011.01.23 add ikanick
-
-                //this.t進行描画_DANGER();
-                //this.t進行描画_判定ライン();
                 if (!TJAPlayer3.ConfigIni.bNoInfo && TJAPlayer3.ConfigIni.bTokkunMode)
                     this.t進行描画_ネームプレート();
                 if (TJAPlayer3.ConfigIni.ShowChara)
                     this.actChara.On進行描画();
 
-                if (!TJAPlayer3.ConfigIni.bAVI有効 && TJAPlayer3.ConfigIni.ShowMob && !TJAPlayer3.ConfigIni.bTokkunMode)
+                if (!TJAPlayer3.ConfigIni.bAVI有効 && TJAPlayer3.ConfigIni.ShowMob && !TJAPlayer3.ConfigIni.bTokkunMode && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
                     this.actMob.On進行描画();
 
                 if (TJAPlayer3.ConfigIni.eGameMode != EGame.OFF)
@@ -434,10 +428,7 @@ namespace TJAPlayer3
 
                 this.t進行描画_譜面スクロール速度();
                 this.t進行描画_チップアニメ();
-
                 this.actLaneTaiko.On進行描画();
-                //this.t進行描画_レーン();
-                //this.t進行描画_レーンフラッシュD();
 
                 if ((TJAPlayer3.ConfigIni.eClipDispType == EClipDispType.ウィンドウのみ || TJAPlayer3.ConfigIni.eClipDispType == EClipDispType.両方) && TJAPlayer3.ConfigIni.nPlayerCount == 1)
                     this.actAVI.t窓表示();
@@ -447,18 +438,22 @@ namespace TJAPlayer3
 
                 this.actLaneTaiko.ゴーゴー炎();
 
-
                 for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                 {
                     bIsFinishedPlaying = this.t進行描画_チップ(E楽器パート.DRUMS, i);
                     this.t進行描画_チップ_連打(E楽器パート.DRUMS, i);
                 }
 
-                this.actDan.On進行描画();
+                if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan)
+                    this.actDan.On進行描画();
 
                 this.actMtaiko.On進行描画();
-                this.GoGoSplash.On進行描画();
+
+                if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
+                    this.GoGoSplash.On進行描画();
+
                 this.t進行描画_リアルタイム判定数表示();
+
                 if (TJAPlayer3.ConfigIni.bTokkunMode)
                     this.actTokkun.On進行描画_小節_速度();
 
@@ -466,7 +461,6 @@ namespace TJAPlayer3
                     this.t進行描画_コンボ();
                 if (!TJAPlayer3.ConfigIni.bNoInfo && !TJAPlayer3.ConfigIni.bTokkunMode)
                     this.t進行描画_スコア();
-
 
                 this.Rainbow.On進行描画();
                 this.FireWorks.On進行描画();
@@ -489,23 +483,10 @@ namespace TJAPlayer3
                     this.t進行描画_判定文字列1_通常位置指定の場合();
 
                 this.t進行描画_演奏情報();
-
-                /*
-                if (TJAPlayer3.DTX.listLyric2.Count > ShownLyric2 && TJAPlayer3.DTX.listLyric2[ShownLyric2].Time < (long)(CSound管理.rc演奏用タイマ.n現在時刻 * (((double)TJAPlayer3.ConfigIni.n演奏速度) / 20.0)))
-                {
-                    this.actPanel.t歌詞テクスチャを生成する(TJAPlayer3.DTX.listLyric2[ShownLyric2++].TextTex);
-                }
-                this.actPanel.t歌詞テクスチャを描画する();
-                */
-
                 actChara.OnDraw_Balloon();
-
                 this.t全体制御メソッド();
-
                 this.actPauseMenu.t進行描画();
-                //this.actEnd.On進行描画();
                 this.t進行描画_STAGEFAILED();
-
                 this.ScoreRank.On進行描画();
 
                 if (TJAPlayer3.ConfigIni.bTokkunMode)
@@ -601,16 +582,6 @@ namespace TJAPlayer3
         public FireWorks FireWorks;
         public PuchiChara PuchiChara;
         public CAct演奏Drumsスコアランク ScoreRank;
-        //private bool bフィルイン中;
-        /*
-        private readonly Eパッド[] eチャンネルtoパッド = new Eパッド[]
-        {
-            Eパッド.HH, Eパッド.SD, Eパッド.BD, Eパッド.HT,
-            Eパッド.LT, Eパッド.CY, Eパッド.FT, Eパッド.HHO,
-            Eパッド.RD, Eパッド.UNKNOWN, Eパッド.UNKNOWN, Eパッド.LC,
-            Eパッド.LP, Eパッド.LBD
-        };
-        */
         private CCounter ct手つなぎ;
 
         public float nGauge = 0.0f;
@@ -619,28 +590,6 @@ namespace TJAPlayer3
         private readonly ST文字位置[] st小文字位置;
         //private readonly ST文字位置[] st大文字位置;
         //-----------------
-
-        private bool bフィルイン区間の最後のChipである(CDTX.CChip pChip)
-        {
-            if (pChip == null)
-            {
-                return false;
-            }
-            int num = pChip.n発声位置;
-            for (int i = listChip[0].IndexOf(pChip) + 1; i < listChip[0].Count; i++)
-            {
-                pChip = listChip[0][i];
-                if ((pChip.nチャンネル番号 == 0x53) && (pChip.n整数値 == 2))
-                {
-                    return true;
-                }
-                if (((pChip.nチャンネル番号 >= 0x11) && (pChip.nチャンネル番号 <= 0x1C)) && ((pChip.n発声位置 - num) > 0x18))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
 
         protected override E判定 tチップのヒット処理(long nHitTime, CDTX.CChip pChip, bool bCorrectLane)
         {
@@ -785,30 +734,10 @@ namespace TJAPlayer3
             this.actDANGER.t進行描画(this.actGauge.IsDanger(E楽器パート.DRUMS), false, false);
         }
 
-        /*
-        private void t進行描画_グラフ()
-        {
-            if (TJAPlayer3.ConfigIni.bGraph.Drums)
-            {
-                this.actGraph.On進行描画();
-            }
-        }
-        */
-
         private void t進行描画_チップファイアD()
         {
             this.actChipFireD.On進行描画();
         }
-
-        /*
-        private void t進行描画_ドラムパッド()
-        {
-            if (TJAPlayer3.ConfigIni.eDark != Eダークモード.FULL)
-            {
-                this.actPad.On進行描画();
-            }
-        }
-        */
         protected override void t進行描画_パネル文字列()
         {
             base.t進行描画_パネル文字列(336, 427);
