@@ -2602,7 +2602,7 @@ for (int i = 0; i < 3; i++) {
 		}
 		private CScoreIni tScoreIniへBGMAdjustとHistoryとPlayCountを更新(string str新ヒストリ行)
 		{
-			bool bIsUpdatedDrums, bIsUpdatedGuitar, bIsUpdatedBass;
+			bool bIsUpdatedDrums;
 			string strFilename = DTX.strファイル名の絶対パス + ".score.ini";
 			CScoreIni ini = new CScoreIni( strFilename );
 			if( !File.Exists( strFilename ) )
@@ -2610,7 +2610,7 @@ for (int i = 0; i < 3; i++) {
 				ini.stファイル.Title = DTX.TITLE;
 				ini.stファイル.Name = DTX.strファイル名;
 				ini.stファイル.Hash = CScoreIni.tファイルのMD5を求めて返す( DTX.strファイル名の絶対パス );
-				for( int i = 0; i < 6; i++ )
+				for( int i = 0; i < 2; i++ )
 				{
 					ini.stセクション[ i ].nPerfectになる範囲ms = nPerfect範囲ms;
 					ini.stセクション[ i ].nGreatになる範囲ms = nGreat範囲ms;
