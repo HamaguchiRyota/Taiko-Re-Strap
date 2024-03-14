@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FDK;
-//using SlimDX.DirectInput;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace TJAPlayer3
 {
@@ -36,6 +36,11 @@ namespace TJAPlayer3
             ctDonchan_In = new CCounter();
             ctDonchan_Normal = new CCounter(0, TJAPlayer3.Tx.SongSelect_Donchan_Normal.Length - 1, 1000 / 60, TJAPlayer3.Timer);
 
+            ctPuchiCounter = new CCounter(0, TJAPlayer3.Skin.Game_PuchiChara[2] - 1, 1000, TJAPlayer3.Timer);
+            ctPuchiSineCounter = new CCounter(0, 360, 3, TJAPlayer3.Timer);
+            TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.60f;
+            TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.60f;
+
             // Discord Presenceの更新
             Discord.UpdatePresence("", Properties.Discord.Stage_DaniSelect, TJAPlayer3.StartupTime);
 
@@ -62,6 +67,8 @@ namespace TJAPlayer3
             ctDonchan_Normal.t進行Loop();
             ctDonchan_In.t進行();
             ct待機.t進行();
+            ctPuchiCounter.t進行Loop();
+            ctPuchiSineCounter.t進行Loop();
 
             TJAPlayer3.Tx.Dani_Background.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
@@ -128,22 +135,27 @@ namespace TJAPlayer3
 
                 if (ctDonchan_In.n現在の値 != 90)
                 {
-                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 0.85f;
-                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 0.85f;
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.X = 0.75f;
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].vc拡大縮小倍率.Y = 0.75f;
                     float DonchanX = 0f, DonchanY = 0f;
 
                     DonchanX = (float)Math.Sin(ctDonchan_In.n現在の値 / 2 * (Math.PI / 180)) * 200f;
                     DonchanY = ((float)Math.Sin((90 + (ctDonchan_In.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
                     TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].Opacity = ctDonchan_In.n現在の値 * 2;
-                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, - 454 + DonchanX, 336 - DonchanY - 37);
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, - 402 + DonchanX, 337 - DonchanY);//454,-37
+
+                    var sineY = Math.Sin(ctPuchiSineCounter.n現在の値 * (Math.PI / 180)) * (20 * TJAPlayer3.Skin.Game_PuchiChara_Scale[0]);
+                    TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, -194 + DonchanX, 471 + (int)sineY - DonchanY, new Rectangle(ctPuchiCounter.n現在の値 * TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1], TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1]));
+
                 }
 
                 #endregion
 
                 this.段位挑戦選択画面.On進行描画();
             }
-            if (段位挑戦選択画面.bOption) actPlayOption.On進行描画(0);
+            if (段位挑戦選択画面.bOption) 
+                actPlayOption.On進行描画(0);
 
             if (ct待機.n現在の値 >= 3000)
             {
@@ -203,6 +215,8 @@ namespace TJAPlayer3
 
         private CCounter ctDonchan_In;
         private CCounter ctDonchan_Normal;
+        private CCounter ctPuchiCounter;
+        private CCounter ctPuchiSineCounter;
 
         public E戻り値 eフェードアウト完了時の戻り値;
 
