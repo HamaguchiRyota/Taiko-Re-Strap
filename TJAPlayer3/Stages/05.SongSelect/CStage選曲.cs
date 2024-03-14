@@ -205,7 +205,10 @@ namespace TJAPlayer3
 
                 ctBackgroundFade.n現在の値 = 600;
 
-                if(TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面.b再生中　&& !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
+                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.75f;
+                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.75f;
+
+                if (TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面.b再生中　&& !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                     TJAPlayer3.Skin.bgm選曲画面イン.t再生する();
 
                 for (int i = 0; i < 3; i++)
@@ -727,8 +730,8 @@ namespace TJAPlayer3
                     }
                 }
 
-                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.75f;
-                TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.75f;
+                //TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.75f;
+                //TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.75f;
                 var sineY = Math.Sin(ctPuchiSineCounter.n現在の値 * (Math.PI / 180)) * (20 * TJAPlayer3.Skin.Game_PuchiChara_Scale[0]);
                 TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, -10, 440 + (int)sineY, new Rectangle(ctPuchiCounter.n現在の値 * TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1], TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1]));
 
