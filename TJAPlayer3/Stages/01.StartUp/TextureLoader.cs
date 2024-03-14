@@ -274,6 +274,7 @@ namespace TJAPlayer3
             Dani_Exam_Number = TxC(DANISELECT + "ExamNumber.png");
             Dani_Bar_Center = TxC(DANISELECT + "Bar_Center.png");
             Dani_Plate = TxC(DANISELECT + "Plate.png");
+            Dani_Header = TxC(DANISELECT + "header.png");
 
             Dani_Dan_In = TxC(DANISELECT + "Dan_In.png");
             Dani_Dan_Text = TxC(DANISELECT + "Dan_Text.png");
@@ -1078,6 +1079,7 @@ namespace TJAPlayer3
         public CTexture Dani_Exam_Number;
         public CTexture Dani_Bar_Center;
         public CTexture Dani_Plate;
+        public CTexture Dani_Header;
 
         public CTexture Dani_Dan_In;
         public CTexture Dani_Dan_Text;
