@@ -1401,11 +1401,11 @@ Debug.WriteLine( dBPM + ":" + c曲リストノード.strタイトル );
 
 				for( int n楽器番号 = 0; n楽器番号 < 3; n楽器番号++ )
 				{
-					int n = ( n楽器番号 * 2 ) + 1;	// n = 0～5
+					int n = ( n楽器番号 * 2 ) + 1;  // n = 0～5
 
-					#region socre.譜面情報.最大ランク[ n楽器番号 ] = ... 
-					//-----------------
-					if( ini.stセクション[ n ].b演奏にMIDI入力を使用した ||
+                    #region socre.譜面情報.最大ランク[ n楽器番号 ] = ... 
+                    //-----------------
+                    if ( ini.stセクション[ n ].b演奏にMIDI入力を使用した ||
 						ini.stセクション[ n ].b演奏にキーボードを使用した ||
 						ini.stセクション[ n ].b演奏にジョイパッドを使用した ||
 						ini.stセクション[ n ].b演奏にマウスを使用した )
@@ -1440,8 +1440,6 @@ Debug.WriteLine( dBPM + ":" + c曲リストノード.strタイトル );
                     }
 				}
 				score.譜面情報.演奏回数.Drums = ini.stファイル.PlayCountDrums;
-				score.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
-				score.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
 				for( int i = 0; i < (int)Difficulty.Total; i++ )
 					score.譜面情報.演奏履歴[ i ] = ini.stファイル.History[ i ];
 			}
