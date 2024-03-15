@@ -179,99 +179,113 @@ namespace TJAPlayer3
 
         public override void On活性化()
         {
-            LoudnessMetadataScanner.StopBackgroundScanning(joinImmediately: false);
 
-            //this.bフィルイン中 = false;
-            this.n待機中の大音符の座標 = 0;
-            this.actGame.t叩ききりまショー_初期化();
-            base.ReSetScore(TJAPlayer3.DTX.nScoreInit[0, TJAPlayer3.stage選曲.n確定された曲の難易度[0]], TJAPlayer3.DTX.nScoreDiff[TJAPlayer3.stage選曲.n確定された曲の難易度[0]]);
-            #region [ branch ]
-            for (int i = 0; i < 2; i++)
+            try
             {
-                this.n分岐した回数[0] = 0;
-                this.bLEVELHOLD[i] = false;
-            }
-            this.nBranch条件数値A = 0;
-            this.nBranch条件数値B = 0;
-            #endregion
+                //TJAPlayer3.Tx.LoadMainTex();
+                //TJAPlayer3.Tx.LoadGameTex();
+                LoudnessMetadataScanner.StopBackgroundScanning(joinImmediately: false);
 
-            base.On活性化();
-            base.eフェーズID = CStage.Eフェーズ.共通_通常状態;//初期化すれば、リザルト変遷は止まる。
-
-            // MODIFY_BEGIN #25398 2011.06.07 FROM
-            if (TJAPlayer3.bコンパクトモード)
-            {
-                var score = new Cスコア();
-                TJAPlayer3.Songs管理.tScoreIniを読み込んで譜面情報を設定する(TJAPlayer3.strコンパクトモードファイル + ".score.ini", score);
-            }
-            else
-            {
-            }
-            // MODIFY_END #25398
-            dtLastQueueOperation = DateTime.MinValue;
-
-            double dbPtn_Normal = (60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM) * TJAPlayer3.Skin.Game_Chara_Beat_Normal / this.actChara.arモーション番号.Length;
-            double dbPtn_Clear = (60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM) * TJAPlayer3.Skin.Game_Chara_Beat_Clear / this.actChara.arクリアモーション番号.Length;
-            double dbPtn_GoGo = (60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM) * TJAPlayer3.Skin.Game_Chara_Beat_GoGo / this.actChara.arゴーゴーモーション番号.Length;
-
-            PuchiChara.ChangeBPM(60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM);
-
-
-            for (int nPlayer = 0; nPlayer < 2; nPlayer++)
-            {
-                if (TJAPlayer3.Skin.Game_Chara_Ptn_Normal != 0)
+                //this.bフィルイン中 = false;
+                this.n待機中の大音符の座標 = 0;
+                this.actGame.t叩ききりまショー_初期化();
+                base.ReSetScore(TJAPlayer3.DTX.nScoreInit[0, TJAPlayer3.stage選曲.n確定された曲の難易度[0]], TJAPlayer3.DTX.nScoreDiff[TJAPlayer3.stage選曲.n確定された曲の難易度[0]]);
+                #region [ branch ]
+                for (int i = 0; i < 2; i++)
                 {
-                    this.actChara.ctChara_Normal[nPlayer] = new CCounter(0, this.actChara.arモーション番号.Length - 1, dbPtn_Normal, CSound管理.rc演奏用タイマ);
+                    this.n分岐した回数[0] = 0;
+                    this.bLEVELHOLD[i] = false;
+                }
+                this.nBranch条件数値A = 0;
+                this.nBranch条件数値B = 0;
+                #endregion
+
+                base.On活性化();
+                base.eフェーズID = CStage.Eフェーズ.共通_通常状態;//初期化すれば、リザルト変遷は止まる。
+
+                // MODIFY_BEGIN #25398 2011.06.07 FROM
+                if (TJAPlayer3.bコンパクトモード)
+                {
+                    var score = new Cスコア();
+                    TJAPlayer3.Songs管理.tScoreIniを読み込んで譜面情報を設定する(TJAPlayer3.strコンパクトモードファイル + ".score.ini", score);
                 }
                 else
                 {
-                    this.actChara.ctChara_Normal[nPlayer] = new CCounter();
                 }
-                if (TJAPlayer3.Skin.Game_Chara_Ptn_Clear != 0)
+                // MODIFY_END #25398
+                dtLastQueueOperation = DateTime.MinValue;
+
+                double dbPtn_Normal = (60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM) * TJAPlayer3.Skin.Game_Chara_Beat_Normal / this.actChara.arモーション番号.Length;
+                double dbPtn_Clear = (60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM) * TJAPlayer3.Skin.Game_Chara_Beat_Clear / this.actChara.arクリアモーション番号.Length;
+                double dbPtn_GoGo = (60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM) * TJAPlayer3.Skin.Game_Chara_Beat_GoGo / this.actChara.arゴーゴーモーション番号.Length;
+
+                PuchiChara.ChangeBPM(60.0 / TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM);
+
+
+                for (int nPlayer = 0; nPlayer < 2; nPlayer++)
                 {
-                    this.actChara.ctChara_Clear[nPlayer] = new CCounter(0, this.actChara.arクリアモーション番号.Length - 1, dbPtn_Clear, CSound管理.rc演奏用タイマ);
+                    if (TJAPlayer3.Skin.Game_Chara_Ptn_Normal != 0)
+                    {
+                        this.actChara.ctChara_Normal[nPlayer] = new CCounter(0, this.actChara.arモーション番号.Length - 1, dbPtn_Normal, CSound管理.rc演奏用タイマ);
+                    }
+                    else
+                    {
+                        this.actChara.ctChara_Normal[nPlayer] = new CCounter();
+                    }
+                    if (TJAPlayer3.Skin.Game_Chara_Ptn_Clear != 0)
+                    {
+                        this.actChara.ctChara_Clear[nPlayer] = new CCounter(0, this.actChara.arクリアモーション番号.Length - 1, dbPtn_Clear, CSound管理.rc演奏用タイマ);
+                    }
+                    else
+                    {
+                        this.actChara.ctChara_Clear[nPlayer] = new CCounter();
+                    }
+                    if (TJAPlayer3.Skin.Game_Chara_Ptn_GoGo != 0)
+                    {
+                        this.actChara.ctChara_GoGo[nPlayer] = new CCounter(0, this.actChara.arゴーゴーモーション番号.Length - 1, dbPtn_GoGo, CSound管理.rc演奏用タイマ);
+                    }
+                    else
+                    {
+                        this.actChara.ctChara_GoGo[nPlayer] = new CCounter();
+                    }
+                }
+
+                if (this.actDancer.ct踊り子モーション != null)
+                {
+                    double dbUnit_dancer = (((60 / (TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM))) / this.actDancer.ar踊り子モーション番号.Length);
+                    this.actDancer.ct踊り子モーション = new CCounter(0, this.actDancer.ar踊り子モーション番号.Length - 1, dbUnit_dancer * TJAPlayer3.Skin.Game_Dancer_Beat, CSound管理.rc演奏用タイマ);
                 }
                 else
                 {
-                    this.actChara.ctChara_Clear[nPlayer] = new CCounter();
+                    this.actDancer.ct踊り子モーション = new CCounter();
                 }
-                if (TJAPlayer3.Skin.Game_Chara_Ptn_GoGo != 0)
-                {
-                    this.actChara.ctChara_GoGo[nPlayer] = new CCounter(0, this.actChara.arゴーゴーモーション番号.Length - 1, dbPtn_GoGo, CSound管理.rc演奏用タイマ);
-                }
-                else
-                {
-                    this.actChara.ctChara_GoGo[nPlayer] = new CCounter();
-                }
-            }
 
-            if (this.actDancer.ct踊り子モーション != null)
+                this.ct手つなぎ = new CCounter(0, 60, 20, TJAPlayer3.Timer);
+
+                // Discord Presence の更新
+                var difficultyName = TJAPlayer3.DifficultyNumberToEnum(TJAPlayer3.stage選曲.n確定された曲の難易度[0]).ToString();
+                Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + (TJAPlayer3.DTX.SUBTITLE != "" ? " - " : "") + TJAPlayer3.DTX.SUBTITLE,
+                                       Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
+                                       0, Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
+                                       difficultyName.ToLower(),
+                                       String.Format(difficultyName)
+                                       );
+
+
+            }
+            finally
             {
-                double dbUnit_dancer = (((60 / (TJAPlayer3.stage演奏ドラム画面.actPlayInfo.dbBPM))) / this.actDancer.ar踊り子モーション番号.Length);
-                this.actDancer.ct踊り子モーション = new CCounter(0, this.actDancer.ar踊り子モーション番号.Length - 1, dbUnit_dancer * TJAPlayer3.Skin.Game_Dancer_Beat, CSound管理.rc演奏用タイマ);
-            }
-            else
-            {
-                this.actDancer.ct踊り子モーション = new CCounter();
+
             }
 
-            this.ct手つなぎ = new CCounter(0, 60, 20, TJAPlayer3.Timer);
 
-            // Discord Presence の更新
-            var difficultyName = TJAPlayer3.DifficultyNumberToEnum(TJAPlayer3.stage選曲.n確定された曲の難易度[0]).ToString();
-            Discord.UpdatePresence(TJAPlayer3.DTX.TITLE + (TJAPlayer3.DTX.SUBTITLE != "" ? " - " : "") + TJAPlayer3.DTX.SUBTITLE,
-                                   Properties.Discord.Stage_InGame + (TJAPlayer3.ConfigIni.b太鼓パートAutoPlay == true ? " (" + Properties.Discord.Info_IsAuto + ")" : ""),
-                                   0, Discord.GetUnixTime() + (long)TJAPlayer3.DTX.listChip[TJAPlayer3.DTX.listChip.Count - 1].n発声時刻ms / 1000,
-                                   difficultyName.ToLower(),
-                                   String.Format(difficultyName)
-                                   );
 
         }
         public override void On非活性化()
         {
             this.ct手つなぎ = null;
             base.On非活性化();
-
+            TJAPlayer3.Tx.DisposeTexture();
             LoudnessMetadataScanner.StartBackgroundScanning();
         }
         public override void OnManagedリソースの作成()

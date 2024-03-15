@@ -27,6 +27,8 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+                TJAPlayer3.Tx.LoadMainTex();
+                TJAPlayer3.Tx.LoadTitleTex();
 				ctバナパス読み込み待機 = new CCounter();
 				ctコインイン待機 = new CCounter(0, 2000, 1, TJAPlayer3.Timer);
 				ctバナパス読み込み成功 = new CCounter();
@@ -77,7 +79,8 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
-				ctバナパス読み込み待機 = null;
+                TJAPlayer3.Tx.DisposeTexture();
+                ctバナパス読み込み待機 = null;
                 ctコインイン待機 = null;
                 ctバナパス読み込み成功 = null;
                 ctバナパス読み込み失敗 = null;
@@ -104,10 +107,12 @@ namespace TJAPlayer3
 		}
 		public override void OnManagedリソースの解放()
 		{
-            if (!b活性化してない)
+            if (b活性化してない)
             {
+
                 base.OnManagedリソースの解放();
             }
+
         }
 		public override int On進行描画()
 		{

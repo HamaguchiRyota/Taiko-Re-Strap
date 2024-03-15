@@ -29,6 +29,8 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+				TJAPlayer3.Tx.LoadSongLoadTex();
+				TJAPlayer3.Tx.LoadGameTex();
 				str曲タイトル = "";
 				strSTAGEFILE = "";
                 if( !string.IsNullOrEmpty( TJAPlayer3.ConfigIni.FontName ) )
@@ -107,6 +109,7 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+				//TJAPlayer3.Tx.DisposeTexture();
                 TJAPlayer3.t安全にDisposeする(ref pfTITLE);
                 TJAPlayer3.t安全にDisposeする(ref pfSUBTITLE);
                 base.On非活性化();

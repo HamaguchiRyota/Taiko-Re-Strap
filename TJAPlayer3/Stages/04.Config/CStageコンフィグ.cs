@@ -56,6 +56,8 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+                TJAPlayer3.Tx.LoadMainTex();
+                TJAPlayer3.Tx.LoadConfigTex();
 				this.n現在のメニュー番号 = 0;                                                    //
                 if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
                 {
@@ -85,6 +87,7 @@ namespace TJAPlayer3
 			Trace.Indent();
 			try
 			{
+				TJAPlayer3.Tx.DisposeTexture();
 				TJAPlayer3.ConfigIni.t書き出し( TJAPlayer3.strEXEのあるフォルダ + "Config.ini" );	// CONFIGだけ
 				if( this.ftフォント != null )													// 以下OPTIONと共通
 				{

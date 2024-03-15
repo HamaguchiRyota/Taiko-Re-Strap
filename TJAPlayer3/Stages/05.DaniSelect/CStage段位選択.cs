@@ -24,6 +24,8 @@ namespace TJAPlayer3
 
         public override void On活性化()
         {
+            TJAPlayer3.Tx.LoadMainTex();
+            TJAPlayer3.Tx.LoadDaniTex();
             if (base.b活性化してる)
                 return;
 
@@ -49,6 +51,7 @@ namespace TJAPlayer3
 
         public override void On非活性化()
         {
+            TJAPlayer3.Tx.DisposeTexture();
             base.On非活性化();
         }
 
@@ -59,6 +62,9 @@ namespace TJAPlayer3
 
         public override void OnManagedリソースの解放()
         {
+            //TJAPlayer3.tテクスチャの解放(ref TJAPlayer3.Tx.Dani_Background);
+            //TJAPlayer3.tテクスチャの解放(ref TJAPlayer3.Tx.DaniSelect_Donchan_Normal[60]);
+
             base.OnManagedリソースの解放();
         }
 
@@ -70,7 +76,15 @@ namespace TJAPlayer3
             ctPuchiCounter.t進行Loop();
             ctPuchiSineCounter.t進行Loop();
 
-            TJAPlayer3.Tx.Dani_Background.t2D描画(TJAPlayer3.app.Device, 0, 0);
+            //int stamp = this.段位リスト.ctDaniIn.n現在の値;
+            //float zoom = Math.Min(1.14f, Math.Max(1f, (float)Math.Pow(stamp / 3834f, 0.5f)));
+
+            TJAPlayer3.Tx.Dani_Background.vc拡大縮小倍率.X = 1.13f;
+            TJAPlayer3.Tx.Dani_Background.vc拡大縮小倍率.Y = 1.13f;
+            TJAPlayer3.Tx.Dani_Background.t2D拡大率考慮中央基準描画(TJAPlayer3.app.Device, 640, 360);
+
+
+            //TJAPlayer3.Tx.Dani_Background.t2D描画(TJAPlayer3.app.Device, 0, 0);
 
             this.段位リスト.On進行描画();
 

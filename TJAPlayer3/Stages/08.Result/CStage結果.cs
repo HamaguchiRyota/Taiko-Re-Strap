@@ -72,6 +72,9 @@ namespace TJAPlayer3
 			b最近遊んだ曲追加済み = false;
 			try
 			{
+				TJAPlayer3.Tx.LoadMainTex();
+				TJAPlayer3.Tx.LoadResultTex();
+
 				#region [ 初期化 ]
 					//---------------------
 					eフェードアウト完了時の戻り値 = E戻り値.継続;
@@ -255,6 +258,7 @@ namespace TJAPlayer3
 				TJAPlayer3.Sound管理.tサウンドを破棄する(rResultSound);
 				rResultSound = null;
 			}
+			TJAPlayer3.Tx.DisposeTexture();
 			base.On非活性化();
 		}
 		public override void OnManagedリソースの作成()

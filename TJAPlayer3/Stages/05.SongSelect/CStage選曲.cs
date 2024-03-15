@@ -184,6 +184,9 @@ namespace TJAPlayer3
             Trace.Indent();
             try
             {
+                TJAPlayer3.Tx.LoadMainTex();
+                TJAPlayer3.Tx.LoadSelectSongsTex();
+                TJAPlayer3.Tx.LoadSongLoadTex();
                 n確定された曲の難易度 = new int[2];
                 eフェードアウト完了時の戻り値 = E戻り値.継続;
                 bBGM再生済み = false;
@@ -246,6 +249,7 @@ namespace TJAPlayer3
             Trace.Indent();
             try
             {
+                TJAPlayer3.Tx.DisposeTexture();
                 if (ftフォント != null)
                 {
                     ftフォント.Dispose();
@@ -785,7 +789,7 @@ namespace TJAPlayer3
 
                 TJAPlayer3.Tx.SongSelect_Other?.t2D描画(TJAPlayer3.app.Device, 1081, 163, new RectangleF(0, 129, 179, 40));
                 TJAPlayer3.Tx.SongSelect_Other?.t2D描画(TJAPlayer3.app.Device, 17, 209, new RectangleF(0, 0, 212, 129));
-                TJAPlayer3.Tx.Entry_Overlay?.t2D描画(TJAPlayer3.app.Device, 1050, 0, new RectangleF(327, 0, 230, 156));
+                //TJAPlayer3.Tx.Entry_Overlay?.t2D描画(TJAPlayer3.app.Device, 1050, 0, new RectangleF(327, 0, 230, 156));
 
                 if (TJAPlayer3.ConfigIni.nPlayerCount == 2)
                 {
