@@ -211,7 +211,7 @@ namespace TJAPlayer3
 					// #23596 10.11.16 add ikanick オートじゃないならクリア回数を1増やす
 					//        11.02.05 bオート to t更新条件を取得する use      ikanick
 					bool[] b更新が必要か否か = new bool[3];
-					CScoreIni.t更新条件を取得する(out b更新が必要か否か[0]);
+					CScoreIni.t更新条件を取得する(out b更新が必要か否か[0], out b更新が必要か否か[1], out b更新が必要か否か[2]);
 
 					if (b更新が必要か否か[0])
 					{
@@ -228,8 +228,10 @@ namespace TJAPlayer3
 					if (TJAPlayer3.ConfigIni.bScoreIniを出力する)
 					{
 						n演奏回数.Drums = ini.stファイル.PlayCountDrums;
+						n演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
+						n演奏回数.Bass = ini.stファイル.PlayCountBass;
 					}
-					#endregion
+                #endregion
 
 				// Discord Presenseの更新
                 var ClearType = TJAPlayer3.stage結果.nクリア;
@@ -343,16 +345,16 @@ namespace TJAPlayer3
 				}
 
                 #region [ ネームプレート ]
-				if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
-				{
+                if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
+                {
                     for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
                     {
                         TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.Result_NamePlate_X[i], TJAPlayer3.Skin.Result_NamePlate_Y[i], i);
                     }
-				}
-				else
-				{
-					//選曲と座標同じなんで,,,
+                }
+                else
+                {
+                    //選曲と座標同じなんで,,,
                     TJAPlayer3.NamePlate.tNamePlateDraw(TJAPlayer3.Skin.SongSelect_NamePlate_X[0], TJAPlayer3.Skin.SongSelect_NamePlate_Y[0], 0);
 
                 }

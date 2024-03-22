@@ -2602,7 +2602,7 @@ for (int i = 0; i < 3; i++) {
 		}
 		private CScoreIni tScoreIniへBGMAdjustとHistoryとPlayCountを更新(string str新ヒストリ行)
 		{
-			bool bIsUpdatedDrums;
+			bool bIsUpdatedDrums, bIsUpdatedGuitar, bIsUpdatedBass;
 			string strFilename = DTX.strファイル名の絶対パス + ".score.ini";
 			CScoreIni ini = new CScoreIni( strFilename );
 			if( !File.Exists( strFilename ) )
@@ -2610,7 +2610,7 @@ for (int i = 0; i < 3; i++) {
 				ini.stファイル.Title = DTX.TITLE;
 				ini.stファイル.Name = DTX.strファイル名;
 				ini.stファイル.Hash = CScoreIni.tファイルのMD5を求めて返す( DTX.strファイル名の絶対パス );
-				for( int i = 0; i < 2; i++ )
+				for( int i = 0; i < 6; i++ )
 				{
 					ini.stセクション[ i ].nPerfectになる範囲ms = nPerfect範囲ms;
 					ini.stセクション[ i ].nGreatになる範囲ms = nGreat範囲ms;
@@ -2619,17 +2619,27 @@ for (int i = 0; i < 3; i++) {
 				}
 			}
 			ini.stファイル.BGMAdjust = DTX.nBGMAdjust;
-			CScoreIni.t更新条件を取得する( out bIsUpdatedDrums );
-			if( bIsUpdatedDrums )
+			CScoreIni.t更新条件を取得する( out bIsUpdatedDrums, out bIsUpdatedGuitar, out bIsUpdatedBass );
+			if( bIsUpdatedDrums || bIsUpdatedGuitar || bIsUpdatedBass )
 			{
 				if( bIsUpdatedDrums )
 				{
 					ini.stファイル.PlayCountDrums++;
 				}
+				if( bIsUpdatedGuitar )
+				{
+					ini.stファイル.PlayCountGuitar++;
+				}
+				if( bIsUpdatedBass )
+				{
+					ini.stファイル.PlayCountBass++;
+				}
 				ini.tヒストリを追加する( str新ヒストリ行 );
 				if( !bコンパクトモード )
 				{
 					stage選曲.r確定されたスコア.譜面情報.演奏回数.Drums = ini.stファイル.PlayCountDrums;
+					stage選曲.r確定されたスコア.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
+					stage選曲.r確定されたスコア.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
 					for( int j = 0; j < ini.stファイル.History.Length; j++ )
 					{
 						stage選曲.r確定されたスコア.譜面情報.演奏履歴[ j ] = ini.stファイル.History[ j ];
