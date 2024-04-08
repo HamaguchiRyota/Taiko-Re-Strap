@@ -1,10 +1,10 @@
-﻿using System;
-using System.Text;
-using System.IO;
+﻿using FDK;
+using System;
 using System.Diagnostics;
-using FDK;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace TJAPlayer3
 {
@@ -713,7 +713,7 @@ namespace TJAPlayer3
             this.soundCrownIn = new Cシステムサウンド(@"Sounds\ResultScreen\CrownIn.ogg", false, false, false, ESoundGroup.SoundEffect);
             this.soundRankIn = new Cシステムサウンド(@"Sounds\ResultScreen\RankIn.ogg", false, false, false, ESoundGroup.SoundEffect);
 
-            this.sound特訓再生音 = new Cシステムサウンド(@"Sounds\Resume.ogg", false, false,false, ESoundGroup.SoundEffect);
+            this.sound特訓再生音 = new Cシステムサウンド(@"Sounds\Resume.ogg", false, false, false, ESoundGroup.SoundEffect);
             this.sound特訓停止音 = new Cシステムサウンド(@"Sounds\Pause.ogg", false, false, false, ESoundGroup.SoundEffect);
             this.sound特訓スクロール音 = new Cシステムサウンド(@"Sounds\Scroll.ogg", false, false, false, ESoundGroup.SoundEffect);
             this.sound特訓ジャンプポイント = new Cシステムサウンド(@"Sounds\Jump Point.ogg", false, false, false, ESoundGroup.SoundEffect);
@@ -2323,7 +2323,7 @@ namespace TJAPlayer3
                             }
                             #endregion
                             #region Training
-                            
+
                             else if (strCommand == nameof(Game_Training_ScrollTime))
                             {
                                 Game_Training_ScrollTime = int.Parse(strParam);
@@ -2609,14 +2609,14 @@ namespace TJAPlayer3
             All, // 旧筐体(旧作含む)
             WithoutStart // 新筐体
         }
-        
+
         public enum ReferencePoint //テクスチャ描画の基準点を変更可能にするための値(rhimm)
         {
             Center,
             Left,
             Right
         }
-        
+
 
         #region [ 新・SkinConfig ]
         #region General
@@ -2645,7 +2645,7 @@ namespace TJAPlayer3
         public int SongSelect_BoxExplanation_Interval = 30;
         public int SongSelect_Title_X = 0;
         public int SongSelect_Title_Y = -5;
-        public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームミュージック", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲"};
+        public string[] SongSelect_GenreName = { "ポップス", "アニメ", "ゲームミュージック", "ナムコオリジナル", "クラシック", "バラエティ", "キッズ", "ボーカロイド", "最近遊んだ曲" };
         public int[] SongSelect_NamePlate_X = new int[] { 37, 1020 };
         public int[] SongSelect_NamePlate_Y = new int[] { 612, 612 };
         public int[] SongSelect_Auto_X = new int[] { 37, 1020 };

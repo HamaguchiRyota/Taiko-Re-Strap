@@ -1,13 +1,10 @@
-﻿using System;
+﻿using FDK;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FDK;
-using Point = SharpDX.Point;
 using static TJAPlayer3.CActSelect曲リスト;
+using Point = SharpDX.Point;
 
 namespace TJAPlayer3
 {
@@ -163,11 +160,11 @@ namespace TJAPlayer3
 
                     if (stバー情報[n現在の選択行 - 1].DanName != null && stバー情報[n現在の選択行 - 1].DanGenre == "段位-外伝")
                     {
-                        TJAPlayer3.Tx.Dani_Header?.t2D描画(TJAPlayer3.app.Device,-1280 + 244 + Anime, 89);
+                        TJAPlayer3.Tx.Dani_Header?.t2D描画(TJAPlayer3.app.Device, -1280 + 244 + Anime, 89);
                         if (TJAPlayer3.stage選曲.act曲リスト.ResolveTitleTexture(stバー情報[n現在の選択行 - 1].DanName).szテクスチャサイズ.Width >= 510)
                             TJAPlayer3.stage選曲.act曲リスト.ResolveTitleTexture(stバー情報[n現在の選択行 - 1].DanName).vc拡大縮小倍率.X = 510f / TJAPlayer3.stage選曲.act曲リスト.ResolveTitleTexture(stバー情報[n現在の選択行 - 1].DanName).szテクスチャサイズ.Width;
 
-                        TJAPlayer3.stage選曲.act曲リスト.ResolveTitleTexture(stバー情報[n現在の選択行 - 1].DanName).t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Left,-1280 +  279 + Anime, 125);
+                        TJAPlayer3.stage選曲.act曲リスト.ResolveTitleTexture(stバー情報[n現在の選択行 - 1].DanName).t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Left, -1280 + 279 + Anime, 125);
                     }
 
                     if (stバー情報[n現在の選択行 - 1].List_DanSongs[0].Dan_C[0] != null)

@@ -1,5 +1,4 @@
 ﻿using FDK;
-using SharpDX;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -85,7 +84,7 @@ namespace TJAPlayer3
             {
                 return act曲リスト.r現在選択中の曲;
             }
-        }      
+        }
 
         // コンストラクタ
         public CStage選曲()
@@ -117,13 +116,13 @@ namespace TJAPlayer3
                 stTimer[i].pt = new Point(46 * i, 0);
             }
 
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 stSongNumber[i].ch = i.ToString().ToCharArray()[0];
                 stSongNumber[i].pt = new Point(27 * i, 0);
             }
 
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 stBoardNumber[i].ch = i.ToString().ToCharArray()[0];
                 stBoardNumber[i].pt = new Point(15 * i, 0);
@@ -208,7 +207,7 @@ namespace TJAPlayer3
                 TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.X = 0.75f;
                 TJAPlayer3.Tx.PuchiChara[0].vc拡大縮小倍率.Y = 0.75f;
 
-                if (TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面.b再生中　&& !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
+                if (TJAPlayer3.ConfigIni.bBGM音を発声する && !TJAPlayer3.Skin.bgm選曲画面.b再生中 && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                     TJAPlayer3.Skin.bgm選曲画面イン.t再生する();
 
                 for (int i = 0; i < 3; i++)
@@ -221,7 +220,7 @@ namespace TJAPlayer3
                 // Discord Presenceの更新
                 Discord.UpdatePresence("", Properties.Discord.Stage_SongSelect, TJAPlayer3.StartupTime);
 
-                if(r現在選択中の曲 != null)
+                if (r現在選択中の曲 != null)
                     NowGenre = r現在選択中の曲.strジャンル;
             }
             finally
@@ -333,7 +332,7 @@ namespace TJAPlayer3
                 ctDonchan_Jump[1].t進行();
                 ctDonchan_Normal.t進行Loop();
                 ctPuchiCounter.t進行Loop();
-                ctPuchiSineCounter.t進行Loop();                
+                ctPuchiSineCounter.t進行Loop();
 
                 ct登場時アニメ用共通.t進行();
 
@@ -373,12 +372,12 @@ namespace TJAPlayer3
                 actInformation.On進行描画();
                 actPresound.On進行描画();
                 actShowCurrentPosition.On進行描画(); // #27648 2011.3.28 yyagi
-    
+
                 if (TJAPlayer3.ConfigIni.bBGM音を発声する && !bBGM再生済み && (eフェーズID == Eフェーズ.共通_通常状態) && !TJAPlayer3.Skin.bgm選曲画面イン.b再生中)
                 {
-                    if (!TJAPlayer3.Skin.bgm選曲画面.b再生中) 
+                    if (!TJAPlayer3.Skin.bgm選曲画面.b再生中)
                         TJAPlayer3.Skin.bgm選曲画面.t再生する();
-                        bBGM再生済み = true;
+                    bBGM再生済み = true;
                 }
 
                 ctDiffSelect移動待ち?.t進行();
@@ -971,8 +970,8 @@ namespace TJAPlayer3
             }
         }
 
-         public void tSongNumberDraw(int x, int y, string str)
-         {
+        public void tSongNumberDraw(int x, int y, string str)
+        {
             for (int j = 0; j < str.Length; j++)
             {
                 for (int i = 0; i < 10; i++)
@@ -984,7 +983,7 @@ namespace TJAPlayer3
                     }
                 }
             }
-         }
+        }
 
         private void tTimerDraw(string str)
         {
@@ -1093,7 +1092,7 @@ namespace TJAPlayer3
             {
                 TJAPlayer3.stage選曲.bBGMIn再生した = false;
                 TJAPlayer3.Skin.bgm選曲画面イン.n位置_現在のサウンド = 0;
-                TJAPlayer3.Skin.bgm選曲画面.n位置_現在のサウンド = 0; 
+                TJAPlayer3.Skin.bgm選曲画面.n位置_現在のサウンド = 0;
                 TJAPlayer3.Skin.bgm選曲画面イン.t停止する();
                 TJAPlayer3.Skin.bgm選曲画面.t停止する();
             }
@@ -1132,7 +1131,7 @@ namespace TJAPlayer3
                 }
             }
             ctBackgroundFade.t開始(0, 600, 1, TJAPlayer3.Timer);
-            if (act曲リスト.ctBarOpen.n現在の値 >= 200 || ctBackgroundFade.n現在の値 >= 600 - 255)                
+            if (act曲リスト.ctBarOpen.n現在の値 >= 200 || ctBackgroundFade.n現在の値 >= 600 - 255)
                 TJAPlayer3.stage選曲.OldGenre = r現在選択中の曲.strジャンル;
             act曲リスト.t前に移動();
             TJAPlayer3.Skin.soundカーソル移動音.t再生する();
@@ -1286,9 +1285,9 @@ namespace TJAPlayer3
         public int nStrジャンルtoNum(string strジャンル)
         {
             int nGenre = 8;
-            for(int i = 0; i < TJAPlayer3.Skin.SongSelect_GenreName.Length; i++)
+            for (int i = 0; i < TJAPlayer3.Skin.SongSelect_GenreName.Length; i++)
             {
-                if(TJAPlayer3.Skin.SongSelect_GenreName[i] == strジャンル)
+                if (TJAPlayer3.Skin.SongSelect_GenreName[i] == strジャンル)
                 {
                     if (i + 1 >= TJAPlayer3.Skin.SongSelect_Genre_Background_Count)
                     {

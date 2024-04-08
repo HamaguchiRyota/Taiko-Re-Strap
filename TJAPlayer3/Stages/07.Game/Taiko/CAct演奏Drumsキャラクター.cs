@@ -267,7 +267,7 @@ namespace TJAPlayer3
         {
             for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
             {
-                
+
                 if (TJAPlayer3.Skin.Game_Chara_Ptn_Balloon_Breaking != 0) CharaAction_Balloon_Breaking[i]?.t進行();
                 if (TJAPlayer3.Skin.Game_Chara_Ptn_Balloon_Broke != 0) CharaAction_Balloon_Broke[i]?.t進行();
                 CharaAction_Balloon_Delay[i]?.t進行();

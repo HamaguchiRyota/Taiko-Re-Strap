@@ -1,7 +1,5 @@
 using FDK;
-using SharpDX;
 using System.Collections.Generic;
-using Un4seen.Bass.AddOn.Vst;
 
 namespace TJAPlayer3
 {
@@ -108,27 +106,27 @@ namespace TJAPlayer3
             Entry_Player[1] = TxC(TITLE + @"Entry_Player_Select_Bar.png");
             Entry_Player[2] = TxC(TITLE + @"Entry_Player_Select.png");
 
-            for(int i = 0; i < Donchan_Entry.Length; i++)
+            for (int i = 0; i < Donchan_Entry.Length; i++)
             {
                 Donchan_Entry[i] = TxC(TITLE + @"Donchan_Entry\" + i.ToString() + ".png");
             }
 
-            for(int i = 0; i < Entry_Donchan_Normal.Length; i++)
+            for (int i = 0; i < Entry_Donchan_Normal.Length; i++)
             {
                 Entry_Donchan_Normal[i] = TxC(TITLE + @"Donchan_Normal\" + i.ToString() + ".png");
             }
 
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 ModeSelect_Bar[i] = TxC(TITLE + @"ModeSelect_Bar_" + i.ToString() + ".png");
             }
-            
-            for(int i = 0; i < 2; i++)
+
+            for (int i = 0; i < 2; i++)
             {
                 ModeSelect_Bar_Chara[i] = TxC(TITLE + @"ModeSelect_Bar_Chara_" + i.ToString() + ".png");
             }
 
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 ModeSelect_Bar_Text[i] = TxC(TITLE + @"ModeSelect_Bar_Text_" + i.ToString() + ".png");
             }
@@ -208,7 +206,7 @@ namespace TJAPlayer3
             }
 
             TJAPlayer3.Skin.SongSelect_Genre_Background_Count = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + SONGSELECT + @"Genre_Background\"), "GenreBackground_");
-            
+
             if (TJAPlayer3.Skin.SongSelect_Genre_Background_Count != 0)
             {
                 SongSelect_GenreBack = new CTexture[TJAPlayer3.Skin.SongSelect_Genre_Background_Count];
@@ -479,7 +477,7 @@ namespace TJAPlayer3
             Background_Up_Clear = new CTexture[2];
             Background_Up_Clear[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_Clear.png");
             Background_Up_Clear[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_Clear.png");
-            
+
             Background_Up_YMove = new CTexture[2];
             Background_Up_YMove[0] = TxC(GAME + BACKGROUND + @"0/" + @"1P_Up_YMove.png");
             Background_Up_YMove[1] = TxC(GAME + BACKGROUND + @"0/" + @"2P_Up_YMove.png");
@@ -492,7 +490,7 @@ namespace TJAPlayer3
             Background_Up_Sakura_Clear = new CTexture[2];
             Background_Up_Sakura_Clear[0] = TxC(GAME + BACKGROUND + @"0/" + @"1P_Up_Sakura_Clear.png");
             Background_Up_Sakura_Clear[1] = TxC(GAME + BACKGROUND + @"0/" + @"2P_Up_Sakura_Clear.png");
-            
+
             /*
             Background_Up_1st = new CTexture[3];
             Background_Up_1st[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_1st.png");
@@ -750,7 +748,7 @@ namespace TJAPlayer3
             }
             #endregion
             #region Training
-            
+
             Tokkun_DownBG = TxC(GAME + TRAINING + @"Down.png");
             Tokkun_BigTaiko = TxC(GAME + TRAINING + @"BigTaiko.png");
             Tokkun_BigDon_Left = TxC(GAME + TRAINING + @"BigDon.png");
@@ -954,7 +952,7 @@ namespace TJAPlayer3
 
             */
             #endregion
-            
+
             foreach (var tex in listTexture)
             {
                 var texture = tex;
@@ -963,7 +961,7 @@ namespace TJAPlayer3
                 texture = null;
             }
             listTexture.Clear();
-            
+
         }
 
         #region 共通
@@ -1043,7 +1041,7 @@ namespace TJAPlayer3
             SongSelect_BoardNumber,
             SongSelect_Counter,
             SongSelect_ScoreNumber;
-        public CTexture[] 
+        public CTexture[]
             SongSelect_GenreBack,
             SongSelect_Bar_Genre,
             SongSelect_Box_Chara,
@@ -1108,7 +1106,7 @@ namespace TJAPlayer3
             ScoreRank,
             Song_Number_Ingame,
             Judge;
-            //NowStages;
+        //NowStages;
         public CTexture Bar,
             Judge_Meter,
             Bar_Branch;
@@ -1193,7 +1191,7 @@ namespace TJAPlayer3
             Taiko_Combo_Effect,
             Taiko_Combo_Text;
         public CTexture[] Couse_Symbol,// コースシンボル
-            //Taiko_PlayerNumber,
+                                       //Taiko_PlayerNumber,
             Taiko_NamePlate; // ネームプレート
         public CTexture[] Taiko_Score,
             Taiko_Combo;

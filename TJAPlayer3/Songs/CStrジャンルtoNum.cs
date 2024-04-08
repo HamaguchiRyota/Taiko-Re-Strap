@@ -2,9 +2,9 @@
 {
     internal static class CStrジャンルtoNum
     {
-        internal static int ForAC8_14( string strジャンル )
+        internal static int ForAC8_14(string strジャンル)
         {
-            switch( strジャンル )
+            switch (strジャンル)
             {
                 case "アニメ":
                     return 0;

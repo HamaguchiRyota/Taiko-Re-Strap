@@ -1,5 +1,5 @@
-﻿using System;
-using FDK;
+﻿using FDK;
+using System;
 
 namespace TJAPlayer3
 {
@@ -39,12 +39,12 @@ namespace TJAPlayer3
 
         public override int On進行描画()
         {
-            if(!TJAPlayer3.stage演奏ドラム画面.bDoublePlay)
+            if (!TJAPlayer3.stage演奏ドラム画面.bDoublePlay)
             {
                 if (ctMob != null || TJAPlayer3.Skin.Game_Mob_Ptn != 0) ctMob.t進行LoopDb();
                 if (ctMobPtn != null || TJAPlayer3.Skin.Game_Mob_Ptn != 0) ctMobPtn.t進行LoopDb();
 
-                if(TJAPlayer3.Skin.Game_Mob_Ptn != 0)
+                if (TJAPlayer3.Skin.Game_Mob_Ptn != 0)
                 {
                     if (TJAPlayer3.stage演奏ドラム画面.actGauge.db現在のゲージ値[0] >= 100)
                     {

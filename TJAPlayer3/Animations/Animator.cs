@@ -1,5 +1,5 @@
-﻿using System;
-using FDK;
+﻿using FDK;
+using System;
 
 namespace TJAPlayer3.Animations
 {

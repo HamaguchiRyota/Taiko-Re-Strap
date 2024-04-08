@@ -19,8 +19,8 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 */
-using System;
 using SharpDX.Direct3D9;
+using System;
 namespace SampleFramework
 {
     /// <summary>
@@ -229,25 +229,25 @@ namespace SampleFramework
         /// </summary>
         /// <param name="settings">The desired settings.</param>
         /// <returns>The best valid device settings matching the input settings.</returns>
-		public static DeviceSettings FindValidSettings( DeviceSettings settings )
-		{
-			try
-			{
-				GraphicsDeviceManager.EnsureD3D9();
-			}
-			catch( Exception e )
-			{
-				throw new NoCompatibleDevicesException( "Could not initialize Direct3D9.", e );
-			}
+		public static DeviceSettings FindValidSettings(DeviceSettings settings)
+        {
+            try
+            {
+                GraphicsDeviceManager.EnsureD3D9();
+            }
+            catch (Exception e)
+            {
+                throw new NoCompatibleDevicesException("Could not initialize Direct3D9.", e);
+            }
 
-			if( !Enumeration9.HasEnumerated )
-				Enumeration9.Enumerate();
+            if (!Enumeration9.HasEnumerated)
+                Enumeration9.Enumerate();
 
-			DeviceSettings newSettings = settings.Clone();
-			Direct3D9Settings d3d9 = FindValidD3D9Settings( settings );
-			newSettings.Direct3D9 = d3d9;
-			return newSettings;
-		}
+            DeviceSettings newSettings = settings.Clone();
+            Direct3D9Settings d3d9 = FindValidD3D9Settings(settings);
+            newSettings.Direct3D9 = d3d9;
+            return newSettings;
+        }
 
         static Direct3D9Settings FindValidD3D9Settings(DeviceSettings settings)
         {
@@ -272,7 +272,7 @@ namespace SampleFramework
                             bestCombo = combo;
                             bestRanking = ranking;
                         }
-                        
+
                     }
                 }
             }

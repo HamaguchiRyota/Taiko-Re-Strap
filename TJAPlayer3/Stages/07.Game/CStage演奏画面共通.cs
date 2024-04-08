@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Drawing;
-using System.Diagnostics;
 using FDK;
 using FDK.ExtensionMethods;
-using TJAPlayer3;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace TJAPlayer3
 {
@@ -2829,7 +2828,7 @@ namespace TJAPlayer3
             IInputDevice keyboard = TJAPlayer3.Input管理.Keyboard;
             if (keyboard.bキーが押された((int)SlimDXKeys.Key.F1) &&
                 (keyboard.bキーが押されている((int)SlimDXKeys.Key.RightShift) || keyboard.bキーが押されている((int)SlimDXKeys.Key.LeftShift)))
-            { 
+            {
             }
 
             if ((!this.bPAUSE && (base.eフェーズID != CStage.Eフェーズ.演奏_STAGE_FAILED)) && (base.eフェーズID != CStage.Eフェーズ.演奏_STAGE_FAILED_フェードアウト))
@@ -3997,7 +3996,7 @@ namespace TJAPlayer3
                             pChip.bHit = true;
                         }
                         break;
-                    #endregion
+                        #endregion
                 }
 
             }

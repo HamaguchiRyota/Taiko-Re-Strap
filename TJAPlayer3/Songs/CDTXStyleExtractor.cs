@@ -56,13 +56,13 @@ namespace TJAPlayer3
 
         private static readonly string SheetStartBareRegexMatchPattern =
             $"{SheetStartPrefixRegexPattern}$";
-        
+
         private static readonly string SheetStartP1RegexMatchPattern =
             $"{SheetStartPrefixRegexPattern}\\s*P1";
 
         private static readonly string SheetStartP2RegexMatchPattern =
             $"{SheetStartPrefixRegexPattern}\\s*P2";
-        
+
         private static readonly string SheetStartUnrecognizedRegexMatchPattern =
             $"{SheetStartPrefixRegexPattern}.*$";
 
@@ -353,7 +353,7 @@ namespace TJAPlayer3
                 {
                     return SubSectionKind.SheetStartP2;
                 }
-            
+
                 if (SheetStartUnrecognizedMatchRegex.IsMatch(subsection))
                 {
                     return SubSectionKind.SheetStartUnrecognized;
@@ -443,7 +443,7 @@ namespace TJAPlayer3
             {
                 unchecked
                 {
-                    return ((int) SectionKind * 397) ^ (int) SubSectionKind;
+                    return ((int)SectionKind * 397) ^ (int)SubSectionKind;
                 }
             }
 

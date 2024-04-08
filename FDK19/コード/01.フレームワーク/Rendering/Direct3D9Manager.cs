@@ -19,13 +19,13 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 */
+using SharpDX;
+using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using SharpDX;
-using SharpDX.Direct3D9;
 
 namespace SampleFramework
 {
@@ -43,9 +43,9 @@ namespace SampleFramework
 #if TEST_Direct3D9Ex
 		public DeviceEx Device							//yyagi
 #else
-		public Device Device
+        public Device Device
 #endif
-		{
+        {
             get;
             internal set;
         }

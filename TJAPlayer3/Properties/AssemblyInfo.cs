@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Resources;
+using System.Runtime.InteropServices;
 
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
@@ -38,4 +38,4 @@ using System.Resources;
 
 // このアセンブリは「ライブラリ」である（難読化ツールへの指示）。
 // → デフォルトの true のままだと、アセンブリ public なメンバもすべて難読化されてしまう。
-[assembly: ObfuscateAssembly( false )]
+[assembly: ObfuscateAssembly(false)]

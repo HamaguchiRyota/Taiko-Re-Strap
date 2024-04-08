@@ -1,6 +1,5 @@
-﻿using System;
-using System.IO.Ports;
-using FDK;
+﻿using FDK;
+using System;
 
 namespace TJAPlayer3
 {
@@ -82,7 +81,7 @@ namespace TJAPlayer3
                     ct下背景上下用タイマー = new CCounter(1, 100, 15, TJAPlayer3.Timer);
                     ct上背景クリアインタイマー[i] = new CCounter();
                 }
-			}
+            }
 
 
             ct点滅0 = new CCounter(0, 100, 20, TJAPlayer3.Timer);

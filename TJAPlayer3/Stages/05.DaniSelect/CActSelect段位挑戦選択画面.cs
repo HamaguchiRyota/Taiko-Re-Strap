@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FDK;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FDK;
 
 namespace TJAPlayer3
 {
@@ -71,7 +65,7 @@ namespace TJAPlayer3
                     if (TJAPlayer3.Input管理.Keyboard.bキーが押された((int)SlimDXKeys.Key.Return) ||
                         TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.LRed) ||
                         TJAPlayer3.Pad.b押された(E楽器パート.DRUMS, Eパッド.RRed))
-                   
+
                     {
                         if (n現在の選択行 == 0)
                         {

@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.InteropServices;
-using System.Drawing;
-using System.IO;
-using FDK;
+﻿using FDK;
 
 namespace TJAPlayer3
 {
-	internal class CAct演奏Drumsグラフ : CActivity
-	{
-	
-		// コンストラクタ
-		/*
+    internal class CAct演奏Drumsグラフ : CActivity
+    {
+
+        // コンストラクタ
+        /*
 		public CAct演奏Drumsグラフ()
 		{
 			base.b活性化してない = true;
@@ -58,9 +52,9 @@ namespace TJAPlayer3
 
 		// その他
 		*/
-		#region [ private ]
-		//----------------
-		//-----------------
-		#endregion
-	}
+        #region [ private ]
+        //----------------
+        //-----------------
+        #endregion
+    }
 }

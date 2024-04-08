@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FDK;
+﻿using FDK;
+using System;
 using Rectangle = System.Drawing.Rectangle;
 
 namespace TJAPlayer3
@@ -143,7 +139,7 @@ namespace TJAPlayer3
                     DonchanY = ((float)Math.Sin((90 + (ctDonchan_In.n現在の値 / 2)) * (Math.PI / 180)) * 150f);
 
                     TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].Opacity = ctDonchan_In.n現在の値 * 2;
-                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, - 402 + DonchanX, 337 - DonchanY);//454,-37
+                    TJAPlayer3.Tx.DaniSelect_Donchan_Normal[ctDonchan_Normal.n現在の値].t2D描画(TJAPlayer3.app.Device, -402 + DonchanX, 337 - DonchanY);//454,-37
 
                     var sineY = Math.Sin(ctPuchiSineCounter.n現在の値 * (Math.PI / 180)) * (20 * TJAPlayer3.Skin.Game_PuchiChara_Scale[0]);
                     TJAPlayer3.Tx.PuchiChara[0]?.t2D描画(TJAPlayer3.app.Device, -194 + DonchanX, 471 + (int)sineY - DonchanY, new Rectangle(ctPuchiCounter.n現在の値 * TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1], TJAPlayer3.Skin.Game_PuchiChara[0], TJAPlayer3.Skin.Game_PuchiChara[1]));
@@ -154,7 +150,7 @@ namespace TJAPlayer3
 
                 this.段位挑戦選択画面.On進行描画();
             }
-            if (段位挑戦選択画面.bOption) 
+            if (段位挑戦選択画面.bOption)
                 actPlayOption.On進行描画(0);
 
             if (ct待機.n現在の値 >= 3000)

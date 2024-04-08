@@ -20,22 +20,23 @@
 * THE SOFTWARE.
 */
 
+using SharpDX;
 using System;
-using System.Globalization;
 using System.Runtime.InteropServices;
 
-using SharpDX;
-
-namespace FDK {
+namespace FDK
+{
     /// <summary>
     /// Represents a vertex with a position and a color.
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct ColoredVertex : IEquatable<ColoredVertex> {
+    public struct ColoredVertex : IEquatable<ColoredVertex>
+    {
         /// <summary>
         /// Gets or sets the position of the vertex.
         /// </summary>
-        public Vector3 Position {
+        public Vector3 Position
+        {
             get;
             set;
         }
@@ -43,7 +44,8 @@ namespace FDK {
         /// <summary>
         /// Gets or sets the color of the vertex.
         /// </summary>
-        public int Color {
+        public int Color
+        {
             get;
             set;
         }
@@ -54,7 +56,8 @@ namespace FDK {
         /// <param name="position">The position.</param>
         /// <param name="color">The color.</param>
         public ColoredVertex(Vector3 position, int color)
-            : this() {
+            : this()
+        {
             Position = position;
             Color = color;
         }
@@ -65,7 +68,8 @@ namespace FDK {
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(ColoredVertex left, ColoredVertex right) {
+        public static bool operator ==(ColoredVertex left, ColoredVertex right)
+        {
             return left.Equals(right);
         }
 
@@ -75,7 +79,8 @@ namespace FDK {
         /// <param name="left">The left side of the operator.</param>
         /// <param name="right">The right side of the operator.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(ColoredVertex left, ColoredVertex right) {
+        public static bool operator !=(ColoredVertex left, ColoredVertex right)
+        {
             return !(left == right);
         }
 
@@ -85,7 +90,8 @@ namespace FDK {
         /// <returns>
         /// A 32-bit signed integer that is the hash code for this instance.
         /// </returns>
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             return Position.GetHashCode() + Color.GetHashCode();
         }
 
@@ -96,7 +102,8 @@ namespace FDK {
         /// <returns>
         /// true if <paramref name="obj"/> and this instance are the same type and represent the same value; otherwise, false.
         /// </returns>
-        public override bool Equals(object obj) {
+        public override bool Equals(object obj)
+        {
             if (obj == null)
                 return false;
 
@@ -113,7 +120,8 @@ namespace FDK {
         /// <returns>
         /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
         /// </returns>
-        public bool Equals(ColoredVertex other) {
+        public bool Equals(ColoredVertex other)
+        {
             return (Position == other.Position && Color == other.Color);
         }
     }

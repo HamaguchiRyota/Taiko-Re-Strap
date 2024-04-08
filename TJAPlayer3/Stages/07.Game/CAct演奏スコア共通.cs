@@ -1,20 +1,20 @@
-﻿using System;
-using FDK;
+﻿using FDK;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace TJAPlayer3
 {
-	internal class CAct演奏スコア共通 : CActivity
-	{
-		// プロパティ
+    internal class CAct演奏スコア共通 : CActivity
+    {
+        // プロパティ
 
-		protected STDGBVALUE<long>[] nスコアの増分;
-		protected STDGBVALUE<double>[] n現在の本当のスコア;
-		protected STDGBVALUE<long>[] n現在表示中のスコア;
-		//protected CTexture txScore;
+        protected STDGBVALUE<long>[] nスコアの増分;
+        protected STDGBVALUE<double>[] n現在の本当のスコア;
+        protected STDGBVALUE<long>[] n現在表示中のスコア;
+        //protected CTexture txScore;
 
-  //      protected CTexture txScore_1P;
+        //      protected CTexture txScore_1P;
         protected CCounter ctTimer;
         public CCounter[] ct点数アニメタイマ;
 
@@ -23,7 +23,7 @@ namespace TJAPlayer3
         protected STスコア[] stScore;
         protected int n現在表示中のAddScore;
 
-        [StructLayout( LayoutKind.Sequential )]
+        [StructLayout(LayoutKind.Sequential)]
         protected struct STスコア
         {
             public bool bAddEnd;
@@ -49,10 +49,10 @@ namespace TJAPlayer3
             return n現在表示中のスコア[player].Taiko;
         }
 
-		// コンストラクタ
+        // コンストラクタ
 
-		public CAct演奏スコア共通()
-		{
+        public CAct演奏スコア共通()
+        {
             ST文字位置[] st文字位置Array = new ST文字位置[11];
             ST文字位置 st文字位置 = new ST文字位置();
             st文字位置.ch = '0';
@@ -96,9 +96,9 @@ namespace TJAPlayer3
             st文字位置Array[9] = st文字位置10;
             this.stFont = st文字位置Array;
 
-            this.stScore = new STスコア[ 256 ];
-			base.b活性化してない = true;
-		}
+            this.stScore = new STスコア[256];
+            base.b活性化してない = true;
+        }
 
 
         // メソッド
@@ -171,128 +171,128 @@ namespace TJAPlayer3
             1f
         };
 
-        public double Get( E楽器パート part, int player )
-		{
-			return this.n現在の本当のスコア[ player ][ (int) part ];
-		}
-		public void Set( E楽器パート part, double nScore, int player )
-		{
+        public double Get(E楽器パート part, int player)
+        {
+            return this.n現在の本当のスコア[player][(int)part];
+        }
+        public void Set(E楽器パート part, double nScore, int player)
+        {
             //現状、TAIKOパートでの演奏記録を結果ステージに持っていけないので、ドラムパートにも加算することでお茶を濁している。
-            if( part == E楽器パート.TAIKO )
+            if (part == E楽器パート.TAIKO)
                 part = E楽器パート.DRUMS;
 
-			int nPart = (int) part;
-			if( this.n現在の本当のスコア[ player ][ nPart ] != nScore )
-			{
-				this.n現在の本当のスコア[ player ][ nPart ] = nScore;
-				this.nスコアの増分[ player ][ nPart ] = (long) ( ( (double) ( this.n現在の本当のスコア[ player ][ nPart ] - this.n現在表示中のスコア[ player ][ nPart ] ) ) / 20.0 );
-				this.nスコアの増分[ player ].Guitar = (long) ( ( (double) ( this.n現在の本当のスコア[ player ][ nPart ] - this.n現在表示中のスコア[ player ][ nPart ] ) ) );
-				if( this.nスコアの増分[ player ][ nPart ] < 1L )
-				{
-					this.nスコアの増分[ player ][ nPart ] = 1L;
-				}
-			}
+            int nPart = (int)part;
+            if (this.n現在の本当のスコア[player][nPart] != nScore)
+            {
+                this.n現在の本当のスコア[player][nPart] = nScore;
+                this.nスコアの増分[player][nPart] = (long)(((double)(this.n現在の本当のスコア[player][nPart] - this.n現在表示中のスコア[player][nPart])) / 20.0);
+                this.nスコアの増分[player].Guitar = (long)(((double)(this.n現在の本当のスコア[player][nPart] - this.n現在表示中のスコア[player][nPart])));
+                if (this.nスコアの増分[player][nPart] < 1L)
+                {
+                    this.nスコアの増分[player][nPart] = 1L;
+                }
+            }
 
-            if( part == E楽器パート.DRUMS )
+            if (part == E楽器パート.DRUMS)
                 part = E楽器パート.TAIKO;
 
-			nPart = (int) part;
-			if( this.n現在の本当のスコア[ player ][ nPart ] != nScore )
-			{
-				this.n現在の本当のスコア[ player ][ nPart ] = nScore;
-				this.nスコアの増分[ player ][ nPart ] = (long) ( ( (double) ( this.n現在の本当のスコア[ player ][ nPart ] - this.n現在表示中のスコア[ player ][ nPart ] ) ) / 20.0 );
-                this.nスコアの増分[ player ].Guitar = (long) ( ( (double) ( this.n現在の本当のスコア[ player ][ nPart ] - this.n現在表示中のスコア[ player ][ nPart ] ) ) );
-				if( this.nスコアの増分[ player ][ nPart ] < 1L )
-				{
-					this.nスコアの増分[ player ][ nPart ] = 1L;
-				}
-			}
-            
-		}
-		/// <summary>
-		/// 点数を加える(各種AUTO補正つき)
-		/// </summary>
-		/// <param name="part"></param>
-		/// <param name="bAutoPlay"></param>
-		/// <param name="delta"></param>
-		public void Add( E楽器パート part, STAUTOPLAY bAutoPlay, long delta, int player )
-		{
-			double rev = 1.0;
-			switch ( part )
-			{
-				#region [ Unknown ]
-				case E楽器パート.UNKNOWN:
-					throw new ArgumentException();
-				#endregion
-			}
-            this.ctTimer = new CCounter( 0, 400, 1, TJAPlayer3.Timer );
-
-            for( int sc = 0; sc < 1; sc++ )
+            nPart = (int)part;
+            if (this.n現在の本当のスコア[player][nPart] != nScore)
             {
-                for( int i = 0; i < 256; i++ )
+                this.n現在の本当のスコア[player][nPart] = nScore;
+                this.nスコアの増分[player][nPart] = (long)(((double)(this.n現在の本当のスコア[player][nPart] - this.n現在表示中のスコア[player][nPart])) / 20.0);
+                this.nスコアの増分[player].Guitar = (long)(((double)(this.n現在の本当のスコア[player][nPart] - this.n現在表示中のスコア[player][nPart])));
+                if (this.nスコアの増分[player][nPart] < 1L)
                 {
-                    if( this.stScore[ i ].b使用中 == false )
-                    {
-                        this.stScore[ i ].b使用中 = true;
-                        this.stScore[ i ].b表示中 = true;
-                        this.stScore[ i ].nAddScore = (int)delta;
-                        this.stScore[ i ].ctTimer = new CCounter( 0, 465, 2, TJAPlayer3.Timer );
-                        this.stScore[ i ].bBonusScore = false;
-                        this.stScore[ i ].bAddEnd = false;
-                        this.stScore[ i ].nPlayer = player;
-                        this.n現在表示中のAddScore++;
-                        break;
-                    }
+                    this.nスコアの増分[player][nPart] = 1L;
                 }
             }
 
-			this.Set( part, this.Get( part, player ) + delta * rev, player );
-		}
-
-        public void BonusAdd( int player )
+        }
+        /// <summary>
+        /// 点数を加える(各種AUTO補正つき)
+        /// </summary>
+        /// <param name="part"></param>
+        /// <param name="bAutoPlay"></param>
+        /// <param name="delta"></param>
+        public void Add(E楽器パート part, STAUTOPLAY bAutoPlay, long delta, int player)
         {
-            for( int sc = 0; sc < 1; sc++ )
+            double rev = 1.0;
+            switch (part)
             {
-                for( int i = 0; i < 256; i++ )
+                #region [ Unknown ]
+                case E楽器パート.UNKNOWN:
+                    throw new ArgumentException();
+                    #endregion
+            }
+            this.ctTimer = new CCounter(0, 400, 1, TJAPlayer3.Timer);
+
+            for (int sc = 0; sc < 1; sc++)
+            {
+                for (int i = 0; i < 256; i++)
                 {
-                    if( this.stScore[ i ].b使用中 == false )
+                    if (this.stScore[i].b使用中 == false)
                     {
-                        this.stScore[ i ].b使用中 = true;
-                        this.stScore[ i ].b表示中 = true;
-                        this.stScore[ i ].nAddScore = 10000;
-                        this.stScore[ i ].ctTimer = new CCounter( 0, 100, 4, TJAPlayer3.Timer );
-                        this.stScore[ i ].bBonusScore = true;
-                        this.stScore[ i ].bAddEnd = true;
-                        this.stScore[ i ].nPlayer = player;
+                        this.stScore[i].b使用中 = true;
+                        this.stScore[i].b表示中 = true;
+                        this.stScore[i].nAddScore = (int)delta;
+                        this.stScore[i].ctTimer = new CCounter(0, 465, 2, TJAPlayer3.Timer);
+                        this.stScore[i].bBonusScore = false;
+                        this.stScore[i].bAddEnd = false;
+                        this.stScore[i].nPlayer = player;
                         this.n現在表示中のAddScore++;
                         break;
                     }
                 }
             }
 
-            this.Set( E楽器パート.TAIKO, this.Get( E楽器パート.TAIKO, player ) + 10000, player );
+            this.Set(part, this.Get(part, player) + delta * rev, player);
         }
 
-		// CActivity 実装
-
-		public override void On活性化()
-		{
-            this.n現在表示中のスコア = new STDGBVALUE<long>[ 4 ];
-            this.n現在の本当のスコア = new STDGBVALUE<double>[ 4 ];
-            this.nスコアの増分 = new STDGBVALUE<long>[ 4 ];
-			for( int i = 0; i < 4; i++ )
-			{
-				this.n現在表示中のスコア[ i ][ i ] = 0L;
-				this.n現在の本当のスコア[ i ][ i ] = 0L;
-				this.nスコアの増分[ i ][ i ] = 0L;
-			}
-            for( int sc = 0; sc < 256; sc++ )
+        public void BonusAdd(int player)
+        {
+            for (int sc = 0; sc < 1; sc++)
             {
-                this.stScore[ sc ].b使用中 = false;
-                this.stScore[ sc ].ctTimer = new CCounter();
-                this.stScore[ sc ].nAddScore = 0;
-                this.stScore[ sc ].bBonusScore = false;
-                this.stScore[ sc ].bAddEnd = false;
+                for (int i = 0; i < 256; i++)
+                {
+                    if (this.stScore[i].b使用中 == false)
+                    {
+                        this.stScore[i].b使用中 = true;
+                        this.stScore[i].b表示中 = true;
+                        this.stScore[i].nAddScore = 10000;
+                        this.stScore[i].ctTimer = new CCounter(0, 100, 4, TJAPlayer3.Timer);
+                        this.stScore[i].bBonusScore = true;
+                        this.stScore[i].bAddEnd = true;
+                        this.stScore[i].nPlayer = player;
+                        this.n現在表示中のAddScore++;
+                        break;
+                    }
+                }
+            }
+
+            this.Set(E楽器パート.TAIKO, this.Get(E楽器パート.TAIKO, player) + 10000, player);
+        }
+
+        // CActivity 実装
+
+        public override void On活性化()
+        {
+            this.n現在表示中のスコア = new STDGBVALUE<long>[4];
+            this.n現在の本当のスコア = new STDGBVALUE<double>[4];
+            this.nスコアの増分 = new STDGBVALUE<long>[4];
+            for (int i = 0; i < 4; i++)
+            {
+                this.n現在表示中のスコア[i][i] = 0L;
+                this.n現在の本当のスコア[i][i] = 0L;
+                this.nスコアの増分[i][i] = 0L;
+            }
+            for (int sc = 0; sc < 256; sc++)
+            {
+                this.stScore[sc].b使用中 = false;
+                this.stScore[sc].ctTimer = new CCounter();
+                this.stScore[sc].nAddScore = 0;
+                this.stScore[sc].bBonusScore = false;
+                this.stScore[sc].bAddEnd = false;
             }
 
             this.n現在表示中のAddScore = 0;
@@ -310,56 +310,56 @@ namespace TJAPlayer3
                 this.ctボーナス加算タイマ[i] = new CCounter();
             }
             base.On活性化();
-		}
-		public override void OnManagedリソースの作成()
-		{
-			if( !base.b活性化してない )
-			{
-				base.OnManagedリソースの作成();
-			}
-		}
-		public override void OnManagedリソースの解放()
-		{
-			if( !base.b活性化してない )
-			{
-				base.OnManagedリソースの解放();
-			}
-		}
-
-        protected void t小文字表示( int x, int y, string str, int mode , int alpha, int player )
+        }
+        public override void OnManagedリソースの作成()
         {
-            foreach( char ch in str )
+            if (!base.b活性化してない)
             {
-                for( int i = 0; i < this.stFont.Length; i++ )
+                base.OnManagedリソースの作成();
+            }
+        }
+        public override void OnManagedリソースの解放()
+        {
+            if (!base.b活性化してない)
+            {
+                base.OnManagedリソースの解放();
+            }
+        }
+
+        protected void t小文字表示(int x, int y, string str, int mode, int alpha, int player)
+        {
+            foreach (char ch in str)
+            {
+                for (int i = 0; i < this.stFont.Length; i++)
                 {
-                    if( this.stFont[ i ].ch == ch )
+                    if (this.stFont[i].ch == ch)
                     {
                         Rectangle rectangle = new Rectangle(TJAPlayer3.Skin.Game_Score_Size[0] * i, 0, TJAPlayer3.Skin.Game_Score_Size[0], TJAPlayer3.Skin.Game_Score_Size[1]);
-                        switch( mode )
+                        switch (mode)
                         {
                             case 0:
-                                if( TJAPlayer3.Tx.Taiko_Score[0] != null )
+                                if (TJAPlayer3.Tx.Taiko_Score[0] != null)
                                 {
                                     TJAPlayer3.Tx.Taiko_Score[0].Opacity = alpha;
                                     TJAPlayer3.Tx.Taiko_Score[0].vc拡大縮小倍率.Y = ScoreScale[this.ct点数アニメタイマ[player].n現在の値];
-                                    TJAPlayer3.Tx.Taiko_Score[0].t2D拡大率考慮下基準描画( TJAPlayer3.app.Device, x , y, rectangle );
-                                    
+                                    TJAPlayer3.Tx.Taiko_Score[0].t2D拡大率考慮下基準描画(TJAPlayer3.app.Device, x, y, rectangle);
+
                                 }
                                 break;
                             case 1:
-                                if(TJAPlayer3.Tx.Taiko_Score[1] != null )
+                                if (TJAPlayer3.Tx.Taiko_Score[1] != null)
                                 {
                                     TJAPlayer3.Tx.Taiko_Score[1].Opacity = alpha;
                                     TJAPlayer3.Tx.Taiko_Score[1].vc拡大縮小倍率.Y = 1;
-                                    TJAPlayer3.Tx.Taiko_Score[1].t2D拡大率考慮下基準描画( TJAPlayer3.app.Device, x, y, rectangle );
+                                    TJAPlayer3.Tx.Taiko_Score[1].t2D拡大率考慮下基準描画(TJAPlayer3.app.Device, x, y, rectangle);
                                 }
                                 break;
                             case 2:
-                                if(TJAPlayer3.Tx.Taiko_Score[2] != null )
+                                if (TJAPlayer3.Tx.Taiko_Score[2] != null)
                                 {
                                     TJAPlayer3.Tx.Taiko_Score[2].Opacity = alpha;
                                     TJAPlayer3.Tx.Taiko_Score[2].vc拡大縮小倍率.Y = 1;
-                                    TJAPlayer3.Tx.Taiko_Score[2].t2D拡大率考慮下基準描画( TJAPlayer3.app.Device, x, y, rectangle );
+                                    TJAPlayer3.Tx.Taiko_Score[2].t2D拡大率考慮下基準描画(TJAPlayer3.app.Device, x, y, rectangle);
                                 }
                                 break;
                         }
@@ -369,5 +369,5 @@ namespace TJAPlayer3
                 x += TJAPlayer3.Skin.Game_Score_Padding;
             }
         }
-	}
+    }
 }

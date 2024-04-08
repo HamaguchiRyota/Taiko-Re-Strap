@@ -1,11 +1,10 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using FDK;
-using System.IO;
+﻿using FDK;
 using SharpDX;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using Rectangle = System.Drawing.Rectangle;
 using RectangleF = System.Drawing.RectangleF;
-using System.Linq;
 
 namespace TJAPlayer3
 {

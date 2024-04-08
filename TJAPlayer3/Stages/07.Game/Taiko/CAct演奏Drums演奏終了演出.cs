@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.InteropServices;
-using System.Drawing;
-using FDK;
-using System.Numerics;
-using SharpDX;
-
+﻿using FDK;
+using System;
 using Rectangle = System.Drawing.Rectangle;
 using RectangleF = System.Drawing.RectangleF;
-using Point = System.Drawing.Point;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -46,7 +37,7 @@ namespace TJAPlayer3
                 {
                     // 段位認定モード、クリア成功
                     this.Mode[0] = EndMode.StageCleared;
-                    
+
                     if (TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Miss == 0)
                     {
                         if (TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Good == 0)
@@ -323,7 +314,7 @@ namespace TJAPlayer3
         private void showEndEffect_FullCombo(int i)
         {
             #region [ フルコンボ ]
-            
+
             int[] y = new int[] { 0, 176 };
 
             this.ctEnd_FullCombo.t進行();
@@ -334,11 +325,11 @@ namespace TJAPlayer3
                 this.ctEnd_FullComboLoop.t進行Loop();
                 TJAPlayer3.Tx.End_FullComboLoop[this.ctEnd_FullComboLoop.n現在の値].t2D描画(TJAPlayer3.app.Device, 330, y[i] + 196);
             }
-            
+
             #endregion
 
             #region [ Dev ]
-			//if (TJAPlayer3.Tx.End_Clear_Text != null && TJAPlayer3.Tx.End_FullCombo_Text != null )
+            //if (TJAPlayer3.Tx.End_Clear_Text != null && TJAPlayer3.Tx.End_FullCombo_Text != null )
             {
                 //float[] f文字拡大率 = new float[] { 1.04f, 1.11f, 1.15f, 1.19f, 1.23f, 1.26f, 1.30f, 1.31f, 1.32f, 1.32f, 1.32f, 1.30f, 1.30f, 1.26f, 1.25f, 1.19f, 1.15f, 1.11f, 1.05f, 1.0f };
                 //int[] n透明度 = new int[] { 43, 85, 128, 170, 213, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255 };
@@ -593,10 +584,10 @@ namespace TJAPlayer3
                 this.ctEnd_DondaFullComboLoop.t進行Loop();
                 TJAPlayer3.Tx.End_DondaFullComboLoop[this.ctEnd_DondaFullComboLoop.n現在の値].t2D描画(TJAPlayer3.app.Device, 330, y[i] + 50);
             }
-			#endregion
+            #endregion
 
-			#region [ Dev ]
-			/*
+            #region [ Dev ]
+            /*
 			//case EndMode.StageDonderFullCombo:
 			if (TJAPlayer3.Tx.End_Clear_Text != null && TJAPlayer3.Tx.End_Clear_Text != null)
             {
@@ -878,13 +869,13 @@ namespace TJAPlayer3
 
             }
             */
-			#endregion
+            #endregion
 
-		}
-		// ------------------------------------
-		#endregion
+        }
+        // ------------------------------------
+        #endregion
 
-		public override int On進行描画()
+        public override int On進行描画()
         {
             if (base.b初めての進行描画)
             {

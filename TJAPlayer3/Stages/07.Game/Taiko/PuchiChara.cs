@@ -1,8 +1,6 @@
 ﻿using FDK;
-using System;
-using System.Drawing;
 using SharpDX;
-
+using System;
 using Rectangle = System.Drawing.Rectangle;
 
 namespace TJAPlayer3
