@@ -270,7 +270,7 @@ namespace TJAPlayer3
             this.譜面情報 = new ST譜面情報();
             this.譜面情報.タイトル = "";
             this.譜面情報.アーティスト名 = "";
-            this.譜面情報.コメント = "";
+            //this.譜面情報.コメント = "";
             this.譜面情報.ジャンル = "";
             //this.譜面情報.Preimage = "";
             this.譜面情報.Premovie = "";
@@ -279,8 +279,8 @@ namespace TJAPlayer3
             this.譜面情報.レベル = new STDGBVALUE<int>();
             this.譜面情報.最大ランク = new ST譜面情報.STRANK();
             this.譜面情報.最大ランク.Drums = (int)CScoreIni.ERANK.UNKNOWN;
-            this.譜面情報.最大ランク.Guitar = (int)CScoreIni.ERANK.UNKNOWN;
-            this.譜面情報.最大ランク.Bass = (int)CScoreIni.ERANK.UNKNOWN;
+            //this.譜面情報.最大ランク.Guitar = (int)CScoreIni.ERANK.UNKNOWN;
+            //this.譜面情報.最大ランク.Bass = (int)CScoreIni.ERANK.UNKNOWN;
             this.譜面情報.フルコンボ = new STDGBVALUE<bool>();
             this.譜面情報.演奏回数 = new STDGBVALUE<int>();
             this.譜面情報.演奏履歴 = new ST譜面情報.STHISTORY();

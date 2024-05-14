@@ -364,17 +364,7 @@ namespace TJAPlayer3
                     // 一発Start()を掛けてJITの結果を生成させておく。
 
                     base.eフェーズID = CStage.Eフェーズ.共通_フェードイン;
-
                     this.actFI.tフェードイン開始();
-
-                    if (TJAPlayer3.DTXVmode.Enabled)            // DTXVモードなら
-                    {
-                        #region [ DTXV用の再生設定にする(全AUTOなど) ]
-                        tDTXV用の設定();
-                        #endregion
-                        t演奏位置の変更(TJAPlayer3.DTXVmode.nStartBar, 0);
-                    }
-
                     TJAPlayer3.Sound管理.tDisableUpdateBufferAutomatically();
                     base.b初めての進行描画 = false;
                 }
@@ -418,9 +408,6 @@ namespace TJAPlayer3
                 if (TJAPlayer3.ConfigIni.ShowChara)
                     this.actChara.On進行描画();
 
-                if (!TJAPlayer3.ConfigIni.bAVI有効 && TJAPlayer3.ConfigIni.ShowMob && !TJAPlayer3.ConfigIni.bTokkunMode && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
-                    this.actMob.On進行描画();
-
                 if (TJAPlayer3.ConfigIni.eGameMode != EGame.OFF)
                     this.actGame.On進行描画();
 
@@ -449,6 +436,9 @@ namespace TJAPlayer3
 
                 if (TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
                     this.GoGoSplash.On進行描画();
+
+                if (!TJAPlayer3.ConfigIni.bAVI有効 && TJAPlayer3.ConfigIni.ShowMob && !TJAPlayer3.ConfigIni.bTokkunMode && TJAPlayer3.stage選曲.n確定された曲の難易度[0] != (int)Difficulty.Dan)
+                    this.actMob.On進行描画();
 
                 this.t進行描画_リアルタイム判定数表示();
 
