@@ -1319,7 +1319,7 @@ namespace TJAPlayer3
         }
         public void t書き出し(string iniファイル名)
         {
-            StreamWriter sw = new StreamWriter(iniファイル名, false, Encoding.GetEncoding("Shift_JIS"));
+            StreamWriter sw = new StreamWriter(iniファイル名, false, Encoding.GetEncoding(TJAPlayer3.sEncType));
             sw.WriteLine(";-------------------");
 
             #region [ System ]
@@ -1863,7 +1863,7 @@ namespace TJAPlayer3
             {
                 string str;
                 this.tキーアサインを全部クリアする();
-                using (StreamReader reader = new StreamReader(this.ConfigIniファイル名, Encoding.GetEncoding("Shift_JIS")))
+                using (StreamReader reader = new StreamReader(this.ConfigIniファイル名, Encoding.GetEncoding(TJAPlayer3.sEncType)))
                 {
                     str = reader.ReadToEnd();
                 }
@@ -2434,7 +2434,7 @@ namespace TJAPlayer3
                                             #region [ Mods ]
 
                                             #region [Scroll Speed]
-
+                                            
                                             else if (str3.Equals("DrumsScrollSpeed") || str3.Equals("DrumsScrollSpeed1P"))
                                             {
                                                 this.nScrollSpeed[0] = C変換.n値を文字列から取得して範囲内に丸めて返す(str4, 0, 0x7cf, this.nScrollSpeed[0]);
@@ -2451,6 +2451,7 @@ namespace TJAPlayer3
                                             {
                                                 this.nScrollSpeed[3] = C変換.n値を文字列から取得して範囲内に丸めて返す(str4, 0, 0x7cf, this.nScrollSpeed[3]);
                                             }
+                                            
 
                                             #endregion
 

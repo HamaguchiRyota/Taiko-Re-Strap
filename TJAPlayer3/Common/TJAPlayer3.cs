@@ -375,6 +375,7 @@ namespace TJAPlayer3
 
         #endregion
 
+        public static string sEncType = "Shift_JIS";
         // 0 : Hidari, 1 : Migi (1P only)
         public static int PlayerSide = 0;
         // 0 : 1P, 1 : 2P
@@ -589,7 +590,7 @@ namespace TJAPlayer3
         }
         protected override void Draw(GameTime gameTime)
         {
-            Sound管理?.t再生中の処理をする();
+            //Sound管理?.t再生中の処理をする();
             Timer?.t更新();
             CSound管理.rc演奏用タイマ?.t更新();
             Input管理?.tポーリング(this.bApplicationActive, TJAPlayer3.ConfigIni.bバッファ入力を行う);
@@ -1518,10 +1519,12 @@ for (int i = 0; i < 3; i++) {
 #if !GPUFlushAfterPresent
             actFlushGPU?.On進行描画();      // Flush GPU	// EndScene()～Present()間 (つまりVSync前) でFlush実行
 #endif
+            /*
             if (Sound管理?.GetCurrentSoundDeviceType() != "DirectSound")
             {
                 Sound管理?.t再生中の処理をする();  // サウンドバッファの更新; 画面描画と同期させることで、スクロールをスムーズにする
             }
+            */
 
 
             #region [ 全画面_ウインドウ切り替え ]

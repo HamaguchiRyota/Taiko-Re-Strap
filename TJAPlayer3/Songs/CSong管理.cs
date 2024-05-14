@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using TJAPlayer3.C曲リストノードComparers;
@@ -112,9 +113,9 @@ namespace TJAPlayer3
                         #region[ 拡張子を取得 ]
                         string strExt = fileinfo.Extension.ToLower();
                         #endregion
-                        if ((strExt.Equals(".tja") || strExt.Equals(".dtx")))
+                        if (strExt.Equals(".tja"))
                         {
-                            if (strExt.Equals(".tja"))
+                            if (strExt.Equals(".tja") || strExt.Equals(".dtx"))
                             {
                                 //tja、dtxが両方存在していた場合、tjaを読み込まずにtjaと同名のdtxだけを使う。
                                 string dtxscoreini = str基点フォルダ + (fileinfo.Name.Replace(strExt, ".dtx"));
@@ -185,8 +186,9 @@ namespace TJAPlayer3
                                 }
                             }
                             dtx = null;
+                            #endregion
                         }
-                        #endregion
+
                     }
                 }
                 finally
@@ -1387,10 +1389,14 @@ Debug.WriteLine( dBPM + ":" + c曲リストノード.strタイトル );
 #endif
         //-----------------
         #endregion
+
+
         #region [ .score.ini を読み込んで Cスコア.譜面情報に設定する ]
         //-----------------
         public void tScoreIniを読み込んで譜面情報を設定する(string strScoreIniファイルパス, Cスコア score)
         {
+            #region [ 前コード ]
+            /*
             if (!File.Exists(strScoreIniファイルパス))
                 return;
 
@@ -1440,8 +1446,8 @@ Debug.WriteLine( dBPM + ":" + c曲リストノード.strタイトル );
                     }
                 }
                 score.譜面情報.演奏回数.Drums = ini.stファイル.PlayCountDrums;
-                score.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
-                score.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
+                //score.譜面情報.演奏回数.Guitar = ini.stファイル.PlayCountGuitar;
+                //score.譜面情報.演奏回数.Bass = ini.stファイル.PlayCountBass;
                 for (int i = 0; i < (int)Difficulty.Total; i++)
                     score.譜面情報.演奏履歴[i] = ini.stファイル.History[i];
             }
@@ -1451,7 +1457,76 @@ Debug.WriteLine( dBPM + ":" + c曲リストノード.strタイトル );
                 Trace.TraceError(e.ToString());
                 Trace.TraceError("例外が発生しましたが処理を継続します。 (801f823d-a952-4809-a1bb-cf6a56194f5c)");
             }
+            */
+            #endregion
+
+            if (!File.Exists(strScoreIniファイルパス))
+                return;
+
+            try
+            {
+                var ini = new CScoreIni(strScoreIniファイルパス);
+                ini.t全演奏記録セクションの整合性をチェックし不整合があればリセットする();
+
+                for (int instrumentIndex = 0; instrumentIndex < 3; instrumentIndex++)
+                {
+                    int n = (instrumentIndex * 2) + 1;
+
+                    if (HasManualInput(ini.stセクション[n]))
+                    {
+                        score.譜面情報.最大ランク[instrumentIndex] = CScoreIni.tランク値を計算して返す(
+                            ini.stセクション[n].n全チップ数,
+                            ini.stセクション[n].nPerfect数,
+                            ini.stセクション[n].nGreat数,
+                            ini.stセクション[n].nGood数,
+                            ini.stセクション[n].nPoor数,
+                            ini.stセクション[n].nMiss数);
+                    }
+                    else
+                    {
+                        score.譜面情報.最大ランク[instrumentIndex] = (int)CScoreIni.ERANK.UNKNOWN;
+                    }
+
+                    score.譜面情報.最大スキル[instrumentIndex] = ini.stセクション[n].db演奏型スキル値;
+                    score.譜面情報.フルコンボ[instrumentIndex] = ini.stセクション[n].bフルコンボである;
+                }
+
+                score.譜面情報.ハイスコア = (int)ini.stセクション.HiScoreDrums.nスコア;
+                score.譜面情報.nクリア = ini.stセクション.HiScoreDrums.nクリア;
+                score.譜面情報.nスコアランク = ini.stセクション.HiScoreDrums.nスコアランク;
+                foreach (var (highScore, index) in ini.stセクション.HiScoreDrums.nハイスコア.Select((value, index) => (value, index)))
+                {
+                    score.譜面情報.nハイスコア[index] = (int)highScore;
+                }
+
+                score.譜面情報.演奏回数.Drums = ini.stファイル.PlayCountDrums;
+                foreach (var (history, index) in ini.stファイル.History.Select((value, index) => (value, index)))
+                {
+                    score.譜面情報.演奏履歴[index] = history;
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError("Failed to load performance record file: [{0}]", strScoreIniファイルパス);
+                Trace.TraceError(e.ToString());
+                Trace.TraceError("Exception occurred, but continuing the process. (801f823d-a952-4809-a1bb-cf6a56194f5c)");
+            }
+
+
         }
+        private bool HasManualInput(CScoreIni.C演奏記録 section)
+        {
+            return section.b演奏にMIDI入力を使用した ||
+                   section.b演奏にキーボードを使用した ||
+                   section.b演奏にジョイパッドを使用した ||
+                   section.b演奏にマウスを使用した;
+        }
+        /*
+        private int CalculateRank(int totalNotes, int perfectCount, int greatCount, int goodCount, int poorCount, int missCount)
+        {
+            return CScoreIni.CalculateRankValue(totalNotes, perfectCount, greatCount, goodCount, poorCount, missCount);
+        }
+        */
         //-----------------
         #endregion
 
