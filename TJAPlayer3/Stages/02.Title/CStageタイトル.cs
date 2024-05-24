@@ -63,6 +63,10 @@ namespace TJAPlayer3
                 if (TJAPlayer3.ConfigIni.bBGM音を発声する)
                     TJAPlayer3.Skin.bgmタイトルイン.t再生する();
                 b音声再生 = false;
+
+                // Discord Presenceの更新
+                Discord.UpdatePresence("", Properties.Discord.Stage_Title, TJAPlayer3.StartupTime);
+
                 base.On活性化();
             }
             finally
