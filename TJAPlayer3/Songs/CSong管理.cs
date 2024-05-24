@@ -115,16 +115,6 @@ namespace TJAPlayer3
                         #endregion
                         if (strExt.Equals(".tja"))
                         {
-                            if (strExt.Equals(".tja") || strExt.Equals(".dtx"))
-                            {
-                                //tja、dtxが両方存在していた場合、tjaを読み込まずにtjaと同名のdtxだけを使う。
-                                string dtxscoreini = str基点フォルダ + (fileinfo.Name.Replace(strExt, ".dtx"));
-                                if (File.Exists(dtxscoreini))
-                                {
-                                    continue;
-                                }
-                            }
-
                             #region[ 新処理 ]
                             CDTX dtx = new CDTX(fileinfo.FullName, false, 1.0, 0, 1);
                             C曲リストノード c曲リストノード = new C曲リストノード();
@@ -199,6 +189,7 @@ namespace TJAPlayer3
                     }
                 }
             }
+            
             //-----------------------------
             #endregion
 

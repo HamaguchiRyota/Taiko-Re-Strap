@@ -3936,12 +3936,12 @@ namespace TJAPlayer3
             base.eフェーズID = CStage.Eフェーズ.共通_フェードアウト;
             this.eフェードアウト完了時の戻り値 = E演奏画面の戻り値.演奏中断;
         }
-        protected abstract void t進行描画_チップ_ドラムス(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip);
-        protected abstract void t進行描画_チップ本体_ドラムス(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip);
+        //protected abstract void t進行描画_チップ_ドラムス(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip);
+        //protected abstract void t進行描画_チップ本体_ドラムス(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip);
         protected abstract void t進行描画_チップ_Taiko(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip, int nPlayer);
         protected abstract void t進行描画_チップ_Taiko連打(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip, int nPlayer);
 
-        protected abstract void t進行描画_チップ_フィルイン(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip);
+        //protected abstract void t進行描画_チップ_フィルイン(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip);
         protected abstract void t進行描画_チップ_小節線(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip, int nPlayer);
         protected void t進行描画_チップアニメ()
         {

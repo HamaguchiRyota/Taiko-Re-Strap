@@ -254,7 +254,15 @@ namespace TJAPlayer3
                 {
                     ctキー反復用[i] = null;
                 }
-
+                ctDonchan_Normal = null;
+                ctDonchan_Select = null;
+                ctDonchan_Jump[0] = null;
+                ctDonchan_Jump[1] = null;
+                ctPuchiCounter = null;
+                ctPuchiSineCounter = null;
+                ctBackgroundFade = null;
+                ctCreditAnime = null;
+                ctTimer = null;
                 base.On非活性化();
             }
             finally
@@ -924,7 +932,7 @@ namespace TJAPlayer3
         private CCounter ctDonchan_Normal;
         private CCounter ctDonchan_Select;
         public CCounter[] ctDonchan_Jump = new CCounter[2];
-        private PuchiChara PuchiChara;
+        private readonly PuchiChara PuchiChara;
         private int nGenreBack;
         private int nOldGenreBack;
         public bool bBGM再生済み;

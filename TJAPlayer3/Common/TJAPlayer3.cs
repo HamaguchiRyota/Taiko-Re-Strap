@@ -1098,8 +1098,7 @@ namespace TJAPlayer3
                             if (this.n進行描画の戻り値 == (int)E曲読込画面の戻り値.読込中止)
                             {
                                 //DTX.t全チップの再生停止();
-                                if (DTX != null)
-                                    DTX.On非活性化();
+                                DTX?.On非活性化();
                                 if (stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan)
                                 {
                                     Trace.TraceInformation("----------------------");
@@ -1535,6 +1534,7 @@ for (int i = 0; i < 3; i++) {
                 this.b次のタイミングで全画面_ウィンドウ切り替えを行う = false;
             }
             #endregion
+
             #region [ 垂直基線同期切り替え ]
             if (this.b次のタイミングで垂直帰線同期切り替えを行う)
             {

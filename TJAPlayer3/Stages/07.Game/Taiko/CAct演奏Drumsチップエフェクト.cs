@@ -1,4 +1,5 @@
-﻿using FDK;
+﻿/*
+using FDK;
 using SharpDX;
 using System.Runtime.InteropServices;
 using Rectangle = System.Drawing.Rectangle;
@@ -76,15 +77,13 @@ namespace TJAPlayer3
                     switch (st[i].nプレイヤー)
                     {
                         case 0:
-                            if (TJAPlayer3.Tx.Gauge_Soul_Explosion[0] != null)
-                                TJAPlayer3.Tx.Gauge_Soul_Explosion[0].t2D中心基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[0], TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[0], new Rectangle(st[i].ct進行.n現在の値 * TJAPlayer3.Skin.Game_Effect_NotesFlash[0], 0, TJAPlayer3.Skin.Game_Effect_NotesFlash[0], TJAPlayer3.Skin.Game_Effect_NotesFlash[1]));
+                            TJAPlayer3.Tx.Gauge_Soul_Explosion[0]?.t2D中心基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[0], TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[0], new Rectangle(st[i].ct進行.n現在の値 * TJAPlayer3.Skin.Game_Effect_NotesFlash[0], 0, TJAPlayer3.Skin.Game_Effect_NotesFlash[0], TJAPlayer3.Skin.Game_Effect_NotesFlash[1]));
                             if (this.st[i].ctChipEffect.n現在の値 < 13)
                                 TJAPlayer3.Tx.Notes.t2D中心基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[0], TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[0], new Rectangle(st[i].Lane * 130, 390, 130, 130));
                             break;
 
                         case 1:
-                            if (TJAPlayer3.Tx.Gauge_Soul_Explosion[1] != null)
-                                TJAPlayer3.Tx.Gauge_Soul_Explosion[1].t2D中心基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[1], TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[1], new Rectangle(st[i].ct進行.n現在の値 * TJAPlayer3.Skin.Game_Effect_NotesFlash[0], 0, TJAPlayer3.Skin.Game_Effect_NotesFlash[0], TJAPlayer3.Skin.Game_Effect_NotesFlash[1]));
+                            TJAPlayer3.Tx.Gauge_Soul_Explosion[1]?.t2D中心基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[1], TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[1], new Rectangle(st[i].ct進行.n現在の値 * TJAPlayer3.Skin.Game_Effect_NotesFlash[0], 0, TJAPlayer3.Skin.Game_Effect_NotesFlash[0], TJAPlayer3.Skin.Game_Effect_NotesFlash[1]));
                             if (this.st[i].ctChipEffect.n現在の値 < 13)
                                 TJAPlayer3.Tx.Notes.t2D中心基準描画(TJAPlayer3.app.Device, TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[1], TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[1], new Rectangle(st[i].Lane * 130, 390, 130, 130));
                             break;
@@ -107,13 +106,8 @@ namespace TJAPlayer3
             return 0;
         }
 
-
-        // その他
-
         #region [ private ]
         //-----------------
-        //private CTexture[] txChara;
-
         [StructLayout(LayoutKind.Sequential)]
         private struct STチップエフェクト
         {
@@ -124,8 +118,145 @@ namespace TJAPlayer3
             public int Lane;
         }
         private STチップエフェクト[] st = new STチップエフェクト[128];
-
         //-----------------
         #endregion
+    }
+}
+*/
+using FDK;
+using SharpDX;
+using System.Runtime.InteropServices;
+using Rectangle = System.Drawing.Rectangle;
+
+namespace TJAPlayer3
+{
+    internal class CAct演奏Drumsチップエフェクト : CActivity
+    {
+        private const int MaxChipEffects = 128;
+        private const int ChipEffectDuration1 = 13;
+        private const int ChipEffectDuration2 = 24;
+
+        private struct ChipEffect
+        {
+            public bool IsActive;
+            public CCounter ProgressCounter;
+            public CCounter EffectCounter;
+            public int Player;
+            public int Lane;
+        }
+
+        private ChipEffect[] _chipEffects = new ChipEffect[MaxChipEffects];
+
+        public CAct演奏Drumsチップエフェクト()
+        {
+            //base.b活性化してない = true;
+        }
+
+        public virtual void Start(int player, int lane)
+        {
+            if (TJAPlayer3.Tx.Gauge_Soul_Explosion != null)
+            {
+                for (int i = 0; i < MaxChipEffects; i++)
+                {
+                    if (!_chipEffects[i].IsActive)
+                    {
+                        _chipEffects[i].IsActive = true;
+                        _chipEffects[i].ProgressCounter = new CCounter(0, TJAPlayer3.Skin.Game_Effect_NotesFlash[2], TJAPlayer3.Skin.Game_Effect_NotesFlash_Timer, TJAPlayer3.Timer);
+                        _chipEffects[i].EffectCounter = new CCounter(0, ChipEffectDuration2, ChipEffectDuration1, TJAPlayer3.Timer);
+                        _chipEffects[i].Player = player;
+                        _chipEffects[i].Lane = lane;
+                        break;
+                    }
+                }
+            }
+        }
+
+        public override void On活性化()
+        {
+            for (int i = 0; i < MaxChipEffects; i++)
+            {
+                _chipEffects[i] = new ChipEffect
+                {
+                    IsActive = false,
+                    ProgressCounter = new CCounter(),
+                    EffectCounter = new CCounter()
+                };
+            }
+            base.On活性化();
+        }
+
+        public override void On非活性化()
+        {
+            for (int i = 0; i < MaxChipEffects; i++)
+            {
+                _chipEffects[i].ProgressCounter = null;
+                _chipEffects[i].EffectCounter = null;
+                _chipEffects[i].IsActive = false;
+            }
+            base.On非活性化();
+        }
+
+        public override int On進行描画()
+        {
+            for (int i = 0; i < MaxChipEffects; i++)
+            {
+                if (_chipEffects[i].IsActive)
+                {
+                    _chipEffects[i].ProgressCounter.t進行();
+                    _chipEffects[i].EffectCounter.t進行();
+                    if (_chipEffects[i].ProgressCounter.b終了値に達した)
+                    {
+                        _chipEffects[i].ProgressCounter.t停止();
+                        _chipEffects[i].IsActive = false;
+                    }
+
+                    RenderChipEffect(i);
+                }
+            }
+            return 0;
+        }
+
+        private void RenderChipEffect(int index)
+        {
+            var effect = _chipEffects[index];
+            var player = effect.Player;
+            var lane = effect.Lane;
+            var progress = effect.ProgressCounter.n現在の値;
+            var effectProgress = effect.EffectCounter.n現在の値;
+
+            if (player >= 0 && player <= 1 && TJAPlayer3.Tx.Gauge_Soul_Explosion[player] != null)
+            {
+                TJAPlayer3.Tx.Gauge_Soul_Explosion[player]?.t2D中心基準描画(
+                    TJAPlayer3.app.Device,
+                    TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[player],
+                    TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[player],
+                    new Rectangle(progress * TJAPlayer3.Skin.Game_Effect_NotesFlash[0], 0, TJAPlayer3.Skin.Game_Effect_NotesFlash[0], TJAPlayer3.Skin.Game_Effect_NotesFlash[1]));
+
+                if (effectProgress < ChipEffectDuration1)
+                {
+                    TJAPlayer3.Tx.Notes.t2D中心基準描画(
+                        TJAPlayer3.app.Device,
+                        TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[player],
+                        TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[player],
+                        new Rectangle(lane * 130, 390, 130, 130));
+                }
+
+                RenderChipEffectOverlay(effectProgress, player, lane);
+            }
+        }
+
+        private void RenderChipEffectOverlay(int effectProgress, int player, int lane)
+        {
+            var opacity = effectProgress < 12 ? (int)(effectProgress * (225f / 11)) : 255 - (int)((effectProgress - 10) * (255f / 14));
+            var color = effectProgress < 12 ? new Color4(1.0f, 1.0f, 0.0f, 1.0f) : new Color4(1.0f, 1.0f, 1.0f, 1.0f);
+
+            TJAPlayer3.Tx.ChipEffect.color4 = color;
+            TJAPlayer3.Tx.ChipEffect.Opacity = opacity;
+            TJAPlayer3.Tx.ChipEffect.t2D中心基準描画(
+                TJAPlayer3.app.Device,
+                TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_X[player],
+                TJAPlayer3.Skin.Game_Effect_FlyingNotes_EndPoint_Y[player],
+                new Rectangle(lane * 130, 0, 130, 130));
+        }
     }
 }

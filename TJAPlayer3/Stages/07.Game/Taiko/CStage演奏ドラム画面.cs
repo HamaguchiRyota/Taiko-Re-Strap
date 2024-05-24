@@ -267,16 +267,19 @@ namespace TJAPlayer3
         }
         public override void On非活性化()
         {
-            this.ct手つなぎ = null;
+            if (b活性化してない)
+            {
+                actChara = null;
+                actDancer = null;
+                ct手つなぎ = null;
+            }
             base.On非活性化();
-
             LoudnessMetadataScanner.StartBackgroundScanning();
         }
         public override void OnManagedリソースの作成()
         {
             if (!base.b活性化してない)
             {
-
                 // When performing calibration, reduce audio distraction from user input.
                 // For users who play primarily by listening to the music,
                 // you might think that we want them to hear drum sound effects during
@@ -302,16 +305,6 @@ namespace TJAPlayer3
                     this.soundBlue2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.ka[actual2]), ESoundGroup.SoundEffect);
                     this.soundAdlib2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(hs.adlib[actual2]), ESoundGroup.SoundEffect);
 
-
-                    /*
-                    this.soundRed = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\dong.ogg"), ESoundGroup.SoundEffect);
-                    this.soundBlue = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\ka.ogg"), ESoundGroup.SoundEffect);
-                    this.soundAdlib = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\Adlib.ogg"), ESoundGroup.SoundEffect);
-                    this.soundRed2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\dong.ogg"), ESoundGroup.SoundEffect);
-                    this.soundBlue2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\ka.ogg"), ESoundGroup.SoundEffect);
-                    this.soundAdlib2 = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\Taiko\Adlib.ogg"), ESoundGroup.SoundEffect);
-                    */
-
                     if (TJAPlayer3.ConfigIni.nPlayerCount >= 2)//2020.05.06 Mr-Ojii左右に出したかったから、追加。
                     {
                         this.soundRed.n位置 = -100;
@@ -322,7 +315,6 @@ namespace TJAPlayer3
                         this.soundAdlib2.n位置 = 100;
                     }
                 }
-
                 base.OnManagedリソースの作成();
             }
         }
@@ -330,7 +322,6 @@ namespace TJAPlayer3
         {
             if (!base.b活性化してない)
             {
-
                 this.soundRed?.t解放する();
                 this.soundBlue?.t解放する();
                 this.soundAdlib?.t解放する();
@@ -711,8 +702,6 @@ namespace TJAPlayer3
         {
             TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums = Math.Max(TJAPlayer3.ConfigIni.n譜面スクロール速度.Drums - 1, 0);
         }
-
-
         protected override void t進行描画_AVI()
         {
             base.t進行描画_AVI(0, 0);
@@ -1876,7 +1865,7 @@ namespace TJAPlayer3
             }
             #endregion
         }
-
+        /*
         protected override void t進行描画_チップ_ドラムス(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip)
         {
         }
@@ -1887,6 +1876,7 @@ namespace TJAPlayer3
         {
 
         }
+        */
         protected override void t進行描画_チップ_小節線(CConfigIni configIni, ref CDTX dTX, ref CDTX.CChip pChip, int nPlayer)
         {
             if (pChip.nコース != this.n現在のコース[nPlayer])
@@ -1938,10 +1928,12 @@ namespace TJAPlayer3
             }
         }
 
+        /*
         protected void t進行描画_レーン()
         {
             actLane.On進行描画();
         }
+        */
 
         /// <summary>
         /// 全体にわたる制御をする。
@@ -2040,8 +2032,7 @@ namespace TJAPlayer3
             {
                 //ボードの横幅は333px
                 //数字フォントの小さいほうはリザルトのものと同じ。
-                if (TJAPlayer3.Tx.Judge_Meter != null)
-                    TJAPlayer3.Tx.Judge_Meter.t2D描画(TJAPlayer3.app.Device, 0, 360);
+                TJAPlayer3.Tx.Judge_Meter?.t2D描画(TJAPlayer3.app.Device, 0, 360);
 
                 this.t小文字表示(102, 491, string.Format("{0,4:###0}", this.nヒット数_Auto含まない.Drums.Perfect.ToString()), false);
                 this.t小文字表示(102, 529, string.Format("{0,4:###0}", this.nヒット数_Auto含まない.Drums.Great.ToString()), false);
@@ -2087,10 +2078,7 @@ namespace TJAPlayer3
                     if (this.st小文字位置[i].ch == ch)
                     {
                         Rectangle rectangle = new Rectangle(this.st小文字位置[i].pt.X, this.st小文字位置[i].pt.Y, 32, 38);
-                        if (TJAPlayer3.Tx.Result_Number != null)
-                        {
-                            TJAPlayer3.Tx.Result_Number.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
-                        }
+                        TJAPlayer3.Tx.Result_Number?.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
                         break;
                     }
                 }
@@ -2112,10 +2100,7 @@ namespace TJAPlayer3
                     if (this.st小文字位置[i].ch == ch)
                     {
                         Rectangle rectangle = new Rectangle(this.st小文字位置[i].pt.X, 38, 32, 42);
-                        if (TJAPlayer3.Tx.Result_Number != null)
-                        {
-                            TJAPlayer3.Tx.Result_Number.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
-                        }
+                        TJAPlayer3.Tx.Result_Number?.t2D描画(TJAPlayer3.app.Device, x, y, rectangle);
                         break;
                     }
                 }

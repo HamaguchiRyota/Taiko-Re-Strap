@@ -855,104 +855,9 @@ namespace TJAPlayer3
 
         }
 
+        /*
         public void DisposeTexture()
         {
-            #region 共通
-            /*
-            TJAPlayer3.t安全にDisposeする(ref Tile_Black);
-            TJAPlayer3.t安全にDisposeする(ref Menu_Title);
-            TJAPlayer3.t安全にDisposeする(ref Menu_Highlight);
-            TJAPlayer3.t安全にDisposeする(ref Enum_Song);
-            TJAPlayer3.t安全にDisposeする(ref Enum_Song_Load);
-            TJAPlayer3.t安全にDisposeする(ref Scanning_Loudness);
-            TJAPlayer3.t安全にDisposeする(ref Overlay);
-            TJAPlayer3.t安全にDisposeする(ref Network_Connection);
-            TJAPlayer3.t安全にDisposeする(ref NamePlateBase);
-            TJAPlayer3.t安全にDisposeする(ref NamePlate_Effect);
-            TJAPlayer3.t安全にDisposeする(ref NamePlate);
-            */
-            #endregion
-
-            #region 1_タイトル画面
-            /*
-            TJAPlayer3.t安全にDisposeする(ref Title_Background);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Overlay);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Bar);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Bar_Text);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Bar_Select);
-            TJAPlayer3.t安全にDisposeする(ref Banapas_Load);
-            TJAPlayer3.t安全にDisposeする(ref Banapas_Load_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Banapas_Load_Failure);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Player);
-
-            for (int i = 0; i < Donchan_Entry.Length; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref Donchan_Entry[i]);
-            }
-            for (int i = 0; i < Entry_Donchan_Normal.Length; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref Entry_Donchan_Normal[i]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref ModeSelect_Bar[i]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref ModeSelect_Bar_Chara[i]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref ModeSelect_Bar_Text[i]);
-            }
-            */
-            #endregion
-
-            #region 2_コンフィグ画面
-            /*
-            TJAPlayer3.t安全にDisposeする(ref Config_Background);
-            TJAPlayer3.t安全にDisposeする(ref Config_Header);
-            TJAPlayer3.t安全にDisposeする(ref Config_Cursor);
-            TJAPlayer3.t安全にDisposeする(ref Config_ItemBox);
-            TJAPlayer3.t安全にDisposeする(ref Config_Arrow);
-            TJAPlayer3.t安全にDisposeする(ref Config_KeyAssign);
-            TJAPlayer3.t安全にDisposeする(ref Config_Font);
-            TJAPlayer3.t安全にDisposeする(ref Config_Font_Bold);
-            TJAPlayer3.t安全にDisposeする(ref Config_Enum_Song);
-            */
-            #endregion
-
-            #region 5_演奏画面
-            /*
-
-            #region 背景
-
-            TJAPlayer3.t安全にDisposeする(ref Background);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_YMove);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_YMove_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_Sakura);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_Sakura_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Light_B);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Scroll);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Scroll_Matu);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Scroll_Kumo);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Koma);
-
-
-
-
-            #endregion
-
-
-
-
-            */
-            #endregion
-
             foreach (var tex in listTexture)
             {
                 var texture = tex;
@@ -961,8 +866,22 @@ namespace TJAPlayer3
                 texture = null;
             }
             listTexture.Clear();
-
         }
+        */
+
+        public void DisposeTexture()
+        {
+            for (int i = 0; i < listTexture.Count; i++)
+            {
+                var texture = listTexture[i];
+                TJAPlayer3.tテクスチャの解放(ref texture);
+                texture?.Dispose();
+                listTexture[i] = null; // 参照をクリアする
+            }
+            listTexture.Clear();
+        }
+
+
 
         #region 共通
         public CTexture Tile_Black,

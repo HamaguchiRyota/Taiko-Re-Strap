@@ -209,13 +209,10 @@ namespace TJAPlayer3
             List<C曲リストノード> songList = GetSongListWithinMe(this.r現在選択中の曲);
             if (songList == null)
             {
-                // 何もしない;
             }
             else
             {
-                //				CDTXMania.Songs管理.t曲リストのソート3_演奏回数の多い順( songList, eInst, order );
                 sf(songList, eInst, order, p);
-                //				this.r現在選択中の曲 = CDTXMania
                 this.t現在選択中の曲を元に曲バーを再構成する();
             }
         }
@@ -434,13 +431,10 @@ namespace TJAPlayer3
 
             if (!bFirstCrownLoad)
             {
-
                 for (int i = 0; i < ScoreRankCount.Length; i++)
                     ScoreRankCount[i] = 0;
-
                 for (int i = 0; i < CrownCount.Length; i++)
                     CrownCount[i] = 0;
-
                 foreach (var song in TJAPlayer3.Songs管理.list曲ルート)
                 {
                     if (song.eノード種別 == C曲リストノード.Eノード種別.BOX)
@@ -473,13 +467,10 @@ namespace TJAPlayer3
                         }
                     }
                 }
-
                 bFirstCrownLoad = true;
-
             }
 
             TJAPlayer3.IsPerformingCalibration = false;
-
             TJAPlayer3.stage選曲.act難易度選択画面.bIsDifficltSelect = false;
 
             if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
@@ -543,8 +534,7 @@ namespace TJAPlayer3
             }
 
             base.On活性化();
-
-            this.t選択曲が変更された(true);      // #27648 2012.3.31 yyagi 選曲画面に入った直後の 現在位置/全アイテム数 の表示を正しく行うため
+            t選択曲が変更された(true);      // #27648 2012.3.31 yyagi 選曲画面に入った直後の 現在位置/全アイテム数 の表示を正しく行うため
         }
         public override void On非活性化()
         {
@@ -556,8 +546,12 @@ namespace TJAPlayer3
             TJAPlayer3.t安全にDisposeする(ref pfSubtitle);
             TJAPlayer3.t安全にDisposeする(ref this.ft曲リスト用フォント);
 
-            this.ct三角矢印アニメ = null;
-
+            ctBarOpen = null;
+            ctBoxOpen = null;
+            ctDifficultyIn = null;
+            ct三角矢印アニメ = null;
+            ctBarFlash = null;
+            ctScoreFrameAnime = null;
             base.On非活性化();
         }
         public override void OnManagedリソースの作成()
@@ -575,6 +569,7 @@ namespace TJAPlayer3
             #region [ Songs not found画像 ]
             try
             {
+                /*
                 using (Bitmap image = new Bitmap(640, 128))
                 using (Graphics graphics = Graphics.FromImage(image))
                 {
@@ -592,6 +587,7 @@ namespace TJAPlayer3
 
                     this.txSongNotFound.vc拡大縮小倍率 = new Vector3(0.5f, 0.5f, 1f); // 半分のサイズで表示する。
                 }
+                */
             }
             catch (CTextureCreateFailedException e)
             {
@@ -599,10 +595,12 @@ namespace TJAPlayer3
                 Trace.TraceError("SoungNotFoundテクスチャの作成に失敗しました。");
                 this.txSongNotFound = null;
             }
+            
             #endregion
             #region [ "曲データを検索しています"画像 ]
             try
             {
+                /*
                 using (Bitmap image = new Bitmap(640, 96))
                 using (Graphics graphics = Graphics.FromImage(image))
                 {
@@ -617,6 +615,7 @@ namespace TJAPlayer3
 
                     this.txEnumeratingSongs.vc拡大縮小倍率 = new Vector3(0.5f, 0.5f, 1f); // 半分のサイズで表示する。
                 }
+                */
             }
             catch (CTextureCreateFailedException e)
             {
@@ -625,10 +624,6 @@ namespace TJAPlayer3
                 this.txEnumeratingSongs = null;
             }
             #endregion
-            #region [ 曲数表示 ]
-            //this.txアイテム数数字 = CDTXMania.tテクスチャの生成( CSkin.Path( @"Graphics\ScreenSelect skill number on gauge etc.png" ), false );
-            #endregion
-
             base.OnManagedリソースの作成();
         }
         public override void OnManagedリソースの解放()
@@ -643,10 +638,8 @@ namespace TJAPlayer3
             }
 
             ClearTitleTextureCache();
-
             TJAPlayer3.tテクスチャの解放(ref this.txEnumeratingSongs);
             TJAPlayer3.tテクスチャの解放(ref this.txSongNotFound);
-
             base.OnManagedリソースの解放();
         }
         public override int On進行描画()
@@ -2135,7 +2128,7 @@ namespace TJAPlayer3
 
             return texture;
         }
-
+        /*
         public CTexture ResolveTitleTextureTate(TitleTextureKey titleTextureKey)
         {
             if (!_titledictionary.TryGetValue(titleTextureKey, out var texture))
@@ -2146,7 +2139,8 @@ namespace TJAPlayer3
 
             return texture;
         }
-
+        */
+        /*
         private static CTexture GenerateTitleTextureTate(TitleTextureKey titleTextureKey)
         {
             using (var bmp = new Bitmap(titleTextureKey.cPrivateFastFont.DrawPrivateFont(
@@ -2162,6 +2156,7 @@ namespace TJAPlayer3
                 return tx文字テクスチャ;
             }
         }
+        */
 
         private static CTexture GenerateTitleTexture(TitleTextureKey titleTextureKey)
         {

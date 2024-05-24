@@ -9,7 +9,7 @@ namespace TJAPlayer3
         {
             base.b活性化してない = true;
         }
-
+        
         public void tFadeIn(int player)
         {
             ct上背景クリアインタイマー[player] = new CCounter(0, 100, 2, TJAPlayer3.Timer);
@@ -26,39 +26,10 @@ namespace TJAPlayer3
 
         public override void On活性化()
         {
-            base.On活性化();
-        }
-
-        public override void On非活性化()
-        {
-            TJAPlayer3.t安全にDisposeする(ref ct上背景FIFOタイマー);
-            for (int i = 0; i < 2; i++)
-            {
-                ct上背景スクロール用タイマー[i] = null;
-                ct上背景サブスクロール用タイマー[i] = null;
-                ct上背景上下用タイマー[i] = null;
-                ct上背景桜用タイマー[i] = null;
-                ct上背景桜スクロール用タイマー[i] = null;
-            }
-            TJAPlayer3.t安全にDisposeする(ref ct上背景スクロール用タイマー);
-            TJAPlayer3.t安全にDisposeする(ref ct上背景サブスクロール用タイマー);
-            TJAPlayer3.t安全にDisposeする(ref ct上背景上下用タイマー);
-            TJAPlayer3.t安全にDisposeする(ref ct上背景桜用タイマー);
-            TJAPlayer3.t安全にDisposeする(ref ct上背景桜スクロール用タイマー);
-            TJAPlayer3.t安全にDisposeする(ref ct下背景スクロール用タイマー1);
-            TJAPlayer3.t安全にDisposeする(ref ct下背景スクロール用タイマー2);
-            TJAPlayer3.t安全にDisposeする(ref ct下背景スクロール用タイマー3);
-            TJAPlayer3.t安全にDisposeする(ref ct下背景上下用タイマー);
-
-            TJAPlayer3.t安全にDisposeする(ref ct点滅0);
-            TJAPlayer3.t安全にDisposeする(ref ct点滅1);
-            TJAPlayer3.t安全にDisposeする(ref ct点滅2);
-
-            base.On非活性化();
-        }
-
-        public override void OnManagedリソースの作成()
-        {
+            ct上背景FIFOタイマー = new CCounter();
+            ct点滅0 = new CCounter(0, 100, 20, TJAPlayer3.Timer);
+            ct点滅1 = new CCounter(0, 100, 1, TJAPlayer3.Timer);
+            ct点滅2 = new CCounter(0, 100, 60, TJAPlayer3.Timer);
             ct上背景スクロール用タイマー = new CCounter[2];
             ct上背景サブスクロール用タイマー = new CCounter[2];
             ct上背景上下用タイマー = new CCounter[2];
@@ -82,19 +53,12 @@ namespace TJAPlayer3
                     ct上背景クリアインタイマー[i] = new CCounter();
                 }
             }
-
-
-            ct点滅0 = new CCounter(0, 100, 20, TJAPlayer3.Timer);
-            ct点滅1 = new CCounter(0, 100, 1, TJAPlayer3.Timer);
-            ct点滅2 = new CCounter(0, 100, 60, TJAPlayer3.Timer);
-
             if (TJAPlayer3.Tx.Background_Down_Scroll != null && TJAPlayer3.Tx.Background_Down_Scroll_Matu != null && TJAPlayer3.Tx.Background_Down_Scroll_Kumo != null)
             {
                 ct下背景スクロール用タイマー1 = new CCounter(1, TJAPlayer3.Tx.Background_Down_Scroll.szテクスチャサイズ.Width, 20, TJAPlayer3.Timer);
                 ct下背景スクロール用タイマー2 = new CCounter(1, TJAPlayer3.Tx.Background_Down_Scroll_Matu.szテクスチャサイズ.Width, 13, TJAPlayer3.Timer);
                 ct下背景スクロール用タイマー3 = new CCounter(1, TJAPlayer3.Tx.Background_Down_Scroll_Kumo.szテクスチャサイズ.Width, 18, TJAPlayer3.Timer);
             }
-
             if (TJAPlayer3.Tx.Background_Up_Dan != null && TJAPlayer3.stage選曲.n確定された曲の難易度[0] == (int)Difficulty.Dan)
             {
                 ct上背景スクロール用タイマー1stDan[0] = new CCounter(0, TJAPlayer3.Tx.Background_Up_Dan[1].szテクスチャサイズ.Width, 8.453f * 2, TJAPlayer3.Timer);
@@ -103,8 +67,34 @@ namespace TJAPlayer3
                 ct上背景スクロール用タイマー1stDan[3] = new CCounter(0, TJAPlayer3.Tx.Background_Up_Dan[5].szテクスチャサイズ.Width, 33.88f, TJAPlayer3.Timer);
                 ct上背景スクロール用タイマー2stDan = new CCounter(0, TJAPlayer3.Tx.Background_Up_Dan[4].szテクスチャサイズ.Width + 200, 10, TJAPlayer3.Timer);
             }
+            base.On活性化();
+        }
 
-            ct上背景FIFOタイマー = new CCounter();
+        public override void On非活性化()
+        {
+            if (b活性化してない)
+            {
+                ct上背景FIFOタイマー = null;
+                for (int i = 0; i < 2; i++)
+                {
+                    ct上背景スクロール用タイマー[i] = null;
+                    ct上背景サブスクロール用タイマー[i] = null;
+                    ct上背景上下用タイマー[i] = null;
+                    ct上背景桜用タイマー[i] = null;
+                    ct上背景桜スクロール用タイマー[i] = null;
+                }
+                ct点滅0 = null;
+                ct点滅1 = null;
+                ct点滅2 = null;
+                ct下背景スクロール用タイマー1 = null;
+                ct下背景スクロール用タイマー2 = null;
+                ct下背景スクロール用タイマー3 = null;
+                base.On非活性化();
+            }
+        }
+
+        public override void OnManagedリソースの作成()
+        {
             base.OnManagedリソースの作成();
         }
 
@@ -145,7 +135,7 @@ namespace TJAPlayer3
                     double textureSizeRatio = 1280.0;
                     int loopCount = (int)Math.Ceiling(textureSizeRatio) + 1;
 
-                    #region [ 新 ]
+                    #region [ new ]
                     if (ct上背景スクロール用タイマー[i] != null && TJAPlayer3.Tx.Background_Up[i] != null)
                     {
                         _ = 1280.0 / TJAPlayer3.Tx.Background_Up[i].szテクスチャサイズ.Width;

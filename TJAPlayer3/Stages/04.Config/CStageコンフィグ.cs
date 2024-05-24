@@ -182,10 +182,8 @@ namespace TJAPlayer3
             #region [ 背景 ]
             //---------------------
             for (int i = 0; i < 2; i++)
-                if (TJAPlayer3.Tx.Config_Background != null)
-                    TJAPlayer3.Tx.Config_Background.t2D描画(TJAPlayer3.app.Device, 0 + -(1280 * i) + ctBackgroundAnime.n現在の値, 0);
-            if (TJAPlayer3.Tx.Config_Header != null)
-                TJAPlayer3.Tx.Config_Header.t2D描画(TJAPlayer3.app.Device, 0, 0);
+                TJAPlayer3.Tx.Config_Background?.t2D描画(TJAPlayer3.app.Device, 0 + -(1280 * i) + ctBackgroundAnime.n現在の値, 0);
+            TJAPlayer3.Tx.Config_Header?.t2D描画(TJAPlayer3.app.Device, 0, 0);
             //---------------------
             #endregion
             #region [ メニューカーソル ]
