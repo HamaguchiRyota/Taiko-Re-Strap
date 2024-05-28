@@ -19,11 +19,11 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 */
+using SharpDX;
+using SharpDX.Direct3D9;
 using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
-using SharpDX;
-using SharpDX.Direct3D9;
 
 namespace SampleFramework
 {

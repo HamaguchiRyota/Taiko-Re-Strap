@@ -1,15 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.InteropServices;
-using System.Drawing;
-using System.Diagnostics;
-using System.IO;
-using System.Globalization;
-using System.Threading;
-using System.Text.RegularExpressions;
 using FDK;
 using FDK.ExtensionMethods;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace TJAPlayer3
 {
@@ -704,7 +704,7 @@ namespace TJAPlayer3
                 Number++;
             }
         }
-        
+
         public struct STLYRIC
         {
             public long Time;
@@ -1689,12 +1689,12 @@ namespace TJAPlayer3
                         //TimeSpan span;
                         string[] files = Directory.GetFiles(this.strフォルダ名, "*.tja");
 
-                        StreamReader reader = new StreamReader(strファイル名, Encoding.GetEncoding("Shift_JIS"));
+                        StreamReader reader = new StreamReader(strファイル名, Encoding.GetEncoding(TJAPlayer3.sEncType));
                         string str2 = reader.ReadToEnd();
                         reader.Close();
 
                         //StreamReader reader2 = new StreamReader( this.strフォルダ名 + "test.tja", Encoding.GetEncoding( "Shift_JIS" ) );
-                        StreamReader reader2 = new StreamReader(files[0], Encoding.GetEncoding("Shift_JIS"));
+                        StreamReader reader2 = new StreamReader(files[0], Encoding.GetEncoding(TJAPlayer3.sEncType));
                         string str3 = reader2.ReadToEnd();
                         reader2.Close();
 
@@ -1710,7 +1710,7 @@ namespace TJAPlayer3
                         //DateTime timeBeginLoad = DateTime.Now;
                         //TimeSpan span;
 
-                        StreamReader reader = new StreamReader(strファイル名, Encoding.GetEncoding("Shift_JIS"));
+                        StreamReader reader = new StreamReader(strファイル名, Encoding.GetEncoding(TJAPlayer3.sEncType));
                         string str2 = reader.ReadToEnd();
                         reader.Close();
 
@@ -2529,7 +2529,7 @@ namespace TJAPlayer3
         private string[] tコマンド行を削除したTJAを返す(string[] input, int nMode)
         {
             var sb = new StringBuilder();
-            
+
             // 18/11/11 AioiLight 譜面にSpace、スペース、Tab等が入っているとおかしくなるので修正。
             // 多分コマンドもスペースが抜かれちゃっているが、コマンド行を除く譜面を返すので大丈夫(たぶん)。
             for (int i = 0; i < input.Length; i++)
@@ -3174,7 +3174,7 @@ namespace TJAPlayer3
                 chip.n整数値_内部番号 = 1;
                 // チップを配置。
 
-                if(n参照中の難易度 == (int)Difficulty.Dan)
+                if (n参照中の難易度 == (int)Difficulty.Dan)
                 {
                     for (int i = listChip.Count - 1; i >= 0; i--)
                     {
@@ -3725,7 +3725,7 @@ namespace TJAPlayer3
                 {
                     if (listChip[i].nチャンネル番号 >= 0x11 && listChip[i].nチャンネル番号 <= 0x18)
                     {
-                        if(DanSongs.Number != 0)
+                        if (DanSongs.Number != 0)
                         {
                             Array.Resize(ref this.pDan_LastChip, this.pDan_LastChip.Length + 1);
                             this.pDan_LastChip[DanSongs.Number - 1] = listChip[i];
@@ -4206,7 +4206,7 @@ namespace TJAPlayer3
                                     }
 
 
-                                    if(this.n参照中の難易度 == (int)Difficulty.Dan)
+                                    if (this.n参照中の難易度 == (int)Difficulty.Dan)
                                         this.nDan_NotesCount[DanSongs.Number - 1]++;
 
                                     this.nノーツ数[3]++;
@@ -4221,11 +4221,11 @@ namespace TJAPlayer3
                                     else
                                         this.n風船数[3]++;
                                 }
-                                
+
                                 Array.Resize(ref nDan_NotesCount, nDan_NotesCount.Length + 1);
                                 this.listChip.Add(chip);
 
-                                if(IsEndedBranching)
+                                if (IsEndedBranching)
                                     this.listChip_Branch[i].Add(chip);
                                 else
                                     this.listChip_Branch[(int)chip.nコース].Add(chip);
@@ -4447,7 +4447,7 @@ namespace TJAPlayer3
                             break;
                     }
 
-                    if(Dan_C[int.Parse(strCommandName.Substring(4)) - 1] == null)
+                    if (Dan_C[int.Parse(strCommandName.Substring(4)) - 1] == null)
                         Dan_C[int.Parse(strCommandName.Substring(4)) - 1] = new Dan_C(examType, examValue, examRange);
 
                     List_DanSongs[DanSongs.Number - 1].Dan_C[int.Parse(strCommandName.Substring(4)) - 1] = new Dan_C(examType, examValue, examRange);
@@ -6839,7 +6839,7 @@ namespace TJAPlayer3
             this.listBalloon_Normal = new List<int>();
             this.listBalloon_Expert = new List<int>();
             this.listBalloon_Master = new List<int>();
-            this.listLine = new List<CLine>(); 
+            this.listLine = new List<CLine>();
             this.listLyric = new List<Bitmap>();
             this.listLyric2 = new List<STLYRIC>();
             this.List_DanSongs = new List<DanSongs>();
@@ -7368,7 +7368,7 @@ namespace TJAPlayer3
                     {
                         this.t入力_行解析_チップ配置(strコマンド, strパラメータ, strコメント);
                     }
-                    EOL:
+                EOL:
                     Debug.Assert(true);     // #23885 2010.12.12 yyagi: dummy line to exit parsing the line
                                             // 2011.8.17 from: "int xx=0;" から変更。毎回警告が出るので。
                 }
@@ -7911,10 +7911,10 @@ namespace TJAPlayer3
             //-----------------
             nチャンネル番号 = C変換.n16進数2桁の文字列を数値に変換して返す(strコマンド.Substring(3, 2));
 
-                if (nチャンネル番号 < 0)
-                    return false;
-                //-----------------
-                #endregion
+            if (nチャンネル番号 < 0)
+                return false;
+            //-----------------
+            #endregion
             //-----------------
             #endregion
             #region [ 取得したチャンネル番号で、this.bチップがある に該当があれば設定する。]

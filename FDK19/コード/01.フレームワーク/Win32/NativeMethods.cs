@@ -79,7 +79,7 @@ namespace SampleFramework
         [SuppressUnmanagedCodeSecurityAttribute]
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool AdjustWindowRect(ref NativeRectangle lpRect, uint dwStyle, [MarshalAs(UnmanagedType.Bool)]bool bMenu);
+        public static extern bool AdjustWindowRect(ref NativeRectangle lpRect, uint dwStyle, [MarshalAs(UnmanagedType.Bool)] bool bMenu);
 
         [SuppressUnmanagedCodeSecurityAttribute]
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = false)]

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace TJAPlayer3
 {
@@ -13,7 +10,7 @@ namespace TJAPlayer3
 
         public Dan_C(Dan_C dan_C) : this(dan_C.GetExamType(), new int[] { dan_C.GetValue(false), dan_C.GetValue(true) }, dan_C.GetExamRange())
         {
-            
+
         }
 
         /// <summary>
@@ -48,25 +45,25 @@ namespace TJAPlayer3
                     SetCleared();
                     break;
                 case Exam.Type.JudgePerfect:
-                        SetCleared();
+                    SetCleared();
                     break;
                 case Exam.Type.JudgeGood:
-                        SetCleared();
+                    SetCleared();
                     break;
                 case Exam.Type.JudgeBad:
-                        SetCleared();
+                    SetCleared();
                     break;
                 case Exam.Type.Score:
-                        SetCleared();
+                    SetCleared();
                     break;
                 case Exam.Type.Roll:
-                        SetCleared();
+                    SetCleared();
                     break;
                 case Exam.Type.Hit:
-                        SetCleared();
+                    SetCleared();
                     break;
                 case Exam.Type.Combo:
-                        SetCleared();
+                    SetCleared();
                     break;
                 default:
                     break;
@@ -207,9 +204,9 @@ namespace TJAPlayer3
                 {
                     IsCleared[0] = false;
                 }
-            }        
+            }
         }
-        
+
         /// <summary>
         /// ゲージの描画のための百分率を返す。
         /// </summary>
@@ -217,11 +214,11 @@ namespace TJAPlayer3
         public int GetAmountToPercent()
         {
             var percent = 0.0D;
-            if(GetValue(false) == 0)
+            if (GetValue(false) == 0)
             {
                 return 0;
             }
-            if(GetExamRange() == Exam.Range.More)
+            if (GetExamRange() == Exam.Range.More)
             {
                 switch (GetExamType())
                 {

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using FDK;
-using System.IO;
+﻿using FDK;
 using SharpDX;
+using System;
+using System.IO;
+using System.Runtime.InteropServices;
 using Rectangle = System.Drawing.Rectangle;
 using RectangleF = System.Drawing.RectangleF;
 
@@ -10,10 +10,10 @@ namespace TJAPlayer3
 {
     static internal class CExamInfo
     {
-        // Includes the gauge exam, DanCert max number of exams is 6
+        // 最大条件数
         public static readonly int cMaxExam = 4;
 
-        // Max number of songs for a Dan chart
+        // 最大曲数
         public static readonly int cExamMaxSongs = 3;
     }
     internal class Dan_Cert : CActivity
@@ -346,6 +346,8 @@ namespace TJAPlayer3
             // 背景を描画する。
             TJAPlayer3.Tx.DanC_Background?.t2D描画(TJAPlayer3.app.Device, 0, 360);
 
+            #region [ 曲別内訳 ]
+
             if (NowShowingNumber == 0)
             {
                 P = TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含む.Drums.Perfect + TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Perfect;
@@ -367,6 +369,8 @@ namespace TJAPlayer3
                 B3 = TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含む.Drums.Miss + TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Miss - (B + B2);
                 R3 = TJAPlayer3.stage演奏ドラム画面.GetRoll(0) - (R + R2);
             }
+
+            #endregion
 
             DrawExam(Challenge);
 
@@ -431,7 +435,7 @@ namespace TJAPlayer3
                     Counter_Text = new CCounter(0, 2899, 1, TJAPlayer3.Timer);
                 }
             }
-            if (Counter_Text != null)
+            if (Counter_Text != null) // 幕アニメの曲名
             {
                 if (Counter_Text.b終了値に達してない)
                 {
@@ -1008,6 +1012,8 @@ namespace TJAPlayer3
         {
             var status = Exam.Status.Better_Success;
             var count = 0;
+            var isFullcombo = TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Miss == 0;
+            var isPerfect = TJAPlayer3.stage演奏ドラム画面.nヒット数_Auto含まない.Drums.Good == 0;
             for (int i = 0; i < 4; i++)
             {
                 if (dan_C[i] != null && dan_C[i].GetEnable() == true)
@@ -1034,32 +1040,17 @@ namespace TJAPlayer3
 
         public bool GetExamConfirmStatus(Dan_C dan_C)
         {
-            switch (dan_C.GetExamRange())
-            {
-                case Exam.Range.Less:
-                    {
-                        if (GetExamStatus(dan_C) == Exam.Status.Better_Success && notesremain == 0)
-                            return true;
-                        else
-                            return false;
-                    }
+            var examStatus = GetExamStatus(dan_C);
+            var examRange = dan_C.GetExamRange();
 
-                case Exam.Range.More:
-                    {
-                        if (GetExamStatus(dan_C) == Exam.Status.Better_Success)
-                            return true;
-                        else
-                            return false;
-                    }
-            }
-            return false;
+            return (examRange == Exam.Range.Less && examStatus == Exam.Status.Better_Success && notesremain == 0) ||
+                   (examRange == Exam.Range.More && examStatus == Exam.Status.Better_Success);
         }
 
         public Dan_C[] GetExam()
         {
             return Challenge;
         }
-
 
         private readonly float[] ScoreScale = new float[]
         {

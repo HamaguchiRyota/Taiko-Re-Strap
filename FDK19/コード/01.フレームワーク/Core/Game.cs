@@ -19,13 +19,10 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 */
+using SharpDX;
 using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows.Forms;
-using SharpDX;
-using SharpDX.Direct3D9;
-using System.Collections.ObjectModel;
 
 namespace SampleFramework
 {
@@ -496,8 +493,8 @@ namespace SampleFramework
         {
             try
             {
-				if ( !IsExiting /* && !Window.IsMinimized */ )		// #28230 2012.5.1 yyagi
-				{
+                if (!IsExiting /* && !Window.IsMinimized */ )       // #28230 2012.5.1 yyagi
+                {
                     CancelEventArgs e = new CancelEventArgs(false);
                     OnFrameStart(e);
                     if (!e.Cancel)

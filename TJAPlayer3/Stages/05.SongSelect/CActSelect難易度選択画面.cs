@@ -1,12 +1,11 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Drawing;
+﻿using FDK;
 using SharpDX;
-using FDK;
-
+using System;
+using System.Drawing;
+using System.Runtime.InteropServices;
+using Color = System.Drawing.Color;
 using Rectangle = System.Drawing.Rectangle;
 using RectangleF = System.Drawing.RectangleF;
-using Color = System.Drawing.Color;
 
 namespace TJAPlayer3
 {
@@ -15,22 +14,22 @@ namespace TJAPlayer3
     /// この難易度選択画面はAC7～AC14のような方式であり、WiiまたはAC15移行の方式とは異なる。
     /// </summary>
 	internal class CActSelect難易度選択画面 : CActivity
-	{
-		// プロパティ
+    {
+        // プロパティ
 
         public bool bIsDifficltSelect;
 
-		// コンストラクタ
+        // コンストラクタ
 
         public CActSelect難易度選択画面()
         {
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 st小文字位置[i].ptX = i * 18;
                 st小文字位置[i].ch = i.ToString().ToCharArray()[0];
             }
             base.b活性化してない = true;
-		}
+        }
 
         public void t次に移動(int player)
         {
@@ -64,7 +63,7 @@ namespace TJAPlayer3
                     TJAPlayer3.Skin.sound裏.t再生する();
                     for (int i = 0; i < 2; i++)
                     {
-                        if(!bSelect[i])
+                        if (!bSelect[i])
                         {
                             if (n現在の選択行[i] == 5)
                             {
@@ -83,20 +82,20 @@ namespace TJAPlayer3
             }
         }
 
-		public void t前に移動(int player)
-		{
-            if(n現在の選択行[player] - 1 >= 0)
+        public void t前に移動(int player)
+        {
+            if (n現在の選択行[player] - 1 >= 0)
             {
                 ctBarAnime[player].t開始(0, 180, 1, TJAPlayer3.Timer);
                 nスイッチカウント = 0;
-                if(n現在の選択行[player] == 6)
+                if (n現在の選択行[player] == 6)
                     n現在の選択行[player] -= 2;
                 else
                     n現在の選択行[player]--;
             }
-		}
+        }
 
-		public void t選択画面初期化()
+        public void t選択画面初期化()
         {
             if (!string.IsNullOrEmpty(TJAPlayer3.ConfigIni.FontName))
             {
@@ -109,7 +108,7 @@ namespace TJAPlayer3
                 this.pfSubTitle = new CPrivateFastFont(new FontFamily("MS UI Gothic"), 16);
             }
 
-            this.txTitle = TJAPlayer3.tテクスチャの生成(pfTitle.DrawPrivateFont(TJAPlayer3.stage選曲.r現在選択中の曲.strタイトル, Color.White, Color.Black ));
+            this.txTitle = TJAPlayer3.tテクスチャの生成(pfTitle.DrawPrivateFont(TJAPlayer3.stage選曲.r現在選択中の曲.strタイトル, Color.White, Color.Black));
             {
                 this.txTitle.vc拡大縮小倍率.X = TJAPlayer3.GetSongNameXScaling(ref txTitle, 700);
                 this.txTitle.vc拡大縮小倍率.Y = TJAPlayer3.GetSongNameXScaling(ref txTitle, 700);
@@ -126,49 +125,49 @@ namespace TJAPlayer3
             this.b裏譜面 = false;
 
             this.b初めての進行描画 = true;
-		}
+        }
 
-		// CActivity 実装
+        // CActivity 実装
 
-		public override void On活性化()
-		{
-			if( this.b活性化してる )
-				return;
+        public override void On活性化()
+        {
+            if (this.b活性化してる)
+                return;
             ctBarAnime = new CCounter[2];
             ctBarAnime[0] = new CCounter();
             ctBarAnime[1] = new CCounter();
             ctSelect = new CCounter();
 
             base.On活性化();
-		}
-		public override void On非活性化()
-		{
-			if( this.b活性化してない )
-				return;
+        }
+        public override void On非活性化()
+        {
+            if (this.b活性化してない)
+                return;
 
             ctBarAnime = null;
 
             base.On非活性化();
-		}
-		public override void OnManagedリソースの作成()
-		{
-			if( this.b活性化してない )
-				return;
+        }
+        public override void OnManagedリソースの作成()
+        {
+            if (this.b活性化してない)
+                return;
 
-            this.soundSelectAnnounce = TJAPlayer3.Sound管理.tサウンドを生成する( CSkin.Path( @"Sounds\DiffSelect.ogg" ), ESoundGroup.SoundEffect );
+            this.soundSelectAnnounce = TJAPlayer3.Sound管理.tサウンドを生成する(CSkin.Path(@"Sounds\DiffSelect.ogg"), ESoundGroup.SoundEffect);
             this.ct点滅 = new CCounter(0, 100, 50, TJAPlayer3.Timer);
 
             base.OnManagedリソースの作成();
-		}
-		public override void OnManagedリソースの解放()
-		{
-			if( this.b活性化してない )
-				return;
+        }
+        public override void OnManagedリソースの解放()
+        {
+            if (this.b活性化してない)
+                return;
 
-            TJAPlayer3.t安全にDisposeする( ref this.soundSelectAnnounce );
+            TJAPlayer3.t安全にDisposeする(ref this.soundSelectAnnounce);
 
-			base.OnManagedリソースの解放();
-		}
+            base.OnManagedリソースの解放();
+        }
         public override int On進行描画()
         {
             if (this.b活性化してない)
@@ -355,7 +354,7 @@ namespace TJAPlayer3
 
             TJAPlayer3.Tx.Difficulty_Back[nStrジャンルtoNum(TJAPlayer3.stage選曲.r現在選択中の曲.strジャンル)].t2D中心基準描画(TJAPlayer3.app.Device, 640, 290);
 
-            for(int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
+            for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
             {
                 //選択バーのフレーム
                 if (!bSelect[i] == true)
@@ -376,7 +375,7 @@ namespace TJAPlayer3
 
             for (int i = 0; i < 3; i++)
             {
-                if(TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i] > 0)
+                if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i] > 0)
                     TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(1.0f, 1.0f, 1.0f, 1.0f);
                 else
                     TJAPlayer3.Tx.Difficulty_Bar.color4 = new Color4(0.5f, 0.5f, 0.5f, 1f);
@@ -385,7 +384,7 @@ namespace TJAPlayer3
 
                 TJAPlayer3.Tx.Difficulty_Crown.t2D描画(TJAPlayer3.app.Device, 445 + i * 144, 284, new RectangleF(TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nクリア[i] * 24.5f, 0, 24.5f, 26));
 
-                if(TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nスコアランク[i] != 0)
+                if (TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nスコアランク[i] != 0)
                     TJAPlayer3.Tx.SongSelect_ScoreRank.t2D描画(TJAPlayer3.app.Device, 467 + i * 144, 281, new RectangleF(0, (TJAPlayer3.stage選曲.r現在選択中の曲.arスコア[3].譜面情報.nスコアランク[i] - 1) * 42.71f, 50, 42.71f));
 
                 if (TJAPlayer3.stage選曲.r現在選択中のスコア.譜面情報.nレベル[i] > 0)
@@ -466,7 +465,7 @@ namespace TJAPlayer3
 
             #region [ コントロール ]
 
-            if ( TJAPlayer3.Tx.Ctr != null && TJAPlayer3.Tx.Ctr_Ef != null)
+            if (TJAPlayer3.Tx.Ctr != null && TJAPlayer3.Tx.Ctr_Ef != null)
             {
                 TJAPlayer3.Tx.Ctr.t2D描画(TJAPlayer3.app.Device, 517, 622);//399, 611
                 TJAPlayer3.Tx.Ctr_Ef.t2D描画(TJAPlayer3.app.Device, 517, 622);//399, 611
@@ -517,7 +516,7 @@ namespace TJAPlayer3
         private CCounter[] ctBarAnime = new CCounter[2];
 
         //0 閉じる 1 演奏オプション 2~ 難易度
-		private int[] n現在の選択行;
+        private int[] n現在の選択行;
         private int nスイッチカウント;
 
         private bool b裏譜面;

@@ -13,15 +13,15 @@ namespace TJAPlayer3.C曲リストノードComparers
 
         public int Compare(C曲リストノード n1, C曲リストノード n2)
         {
-            if( ( n1.eノード種別 == C曲リストノード.Eノード種別.BOX ) && ( n2.eノード種別 == C曲リストノード.Eノード種別.BOX ) )
+            if ((n1.eノード種別 == C曲リストノード.Eノード種別.BOX) && (n2.eノード種別 == C曲リストノード.Eノード種別.BOX))
             {
-                return _order * n1.arスコア[ 0 ].ファイル情報.フォルダの絶対パス.CompareTo( n2.arスコア[ 0 ].ファイル情報.フォルダの絶対パス );
+                return _order * n1.arスコア[0].ファイル情報.フォルダの絶対パス.CompareTo(n2.arスコア[0].ファイル情報.フォルダの絶対パス);
             }
 
             var str = strファイルの絶対パス(n1);
             var strB = strファイルの絶対パス(n2);
 
-            return _order * str.CompareTo( strB );
+            return _order * str.CompareTo(strB);
         }
 
         private static string strファイルの絶対パス(C曲リストノード c曲リストノード)

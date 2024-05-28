@@ -1,8 +1,8 @@
 ﻿using System;
-using System.IO;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace TJAPlayer3
@@ -45,166 +45,166 @@ namespace TJAPlayer3
     #endregion
 
     public class CPrivateFont : IDisposable
-	{
-		#region [ コンストラクタ ]
-		public CPrivateFont( FontFamily fontfamily, int pt, FontStyle style )
-		{
-			Initialize( null, fontfamily, pt, style );
-		}
-		public CPrivateFont( FontFamily fontfamily, int pt )
-		{
-			Initialize( null, fontfamily, pt, FontStyle.Regular );
-		}
-		public CPrivateFont( string fontpath, int pt, FontStyle style )
-		{
-			Initialize( fontpath, null, pt, style );
-		}
-		public CPrivateFont( string fontpath, int pt )
-		{
-			Initialize( fontpath, null, pt, FontStyle.Regular );
-		}
-		public CPrivateFont()
-		{
-		}
-		#endregion
+    {
+        #region [ コンストラクタ ]
+        public CPrivateFont(FontFamily fontfamily, int pt, FontStyle style)
+        {
+            Initialize(null, fontfamily, pt, style);
+        }
+        public CPrivateFont(FontFamily fontfamily, int pt)
+        {
+            Initialize(null, fontfamily, pt, FontStyle.Regular);
+        }
+        public CPrivateFont(string fontpath, int pt, FontStyle style)
+        {
+            Initialize(fontpath, null, pt, style);
+        }
+        public CPrivateFont(string fontpath, int pt)
+        {
+            Initialize(fontpath, null, pt, FontStyle.Regular);
+        }
+        public CPrivateFont()
+        {
+        }
+        #endregion
 
-		protected void Initialize( string fontpath, FontFamily fontfamily, int pt, FontStyle style )
-		{
-			this._pfc = null;
-			this._fontfamily = null;
-			this._font = null;
-			this._pt = pt;
-			this._rectStrings = new Rectangle(0, 0, 0, 0);
-			this._ptOrigin = new Point(0, 0);
-			this.bDispose完了済み = false;
+        protected void Initialize(string fontpath, FontFamily fontfamily, int pt, FontStyle style)
+        {
+            this._pfc = null;
+            this._fontfamily = null;
+            this._font = null;
+            this._pt = pt;
+            this._rectStrings = new Rectangle(0, 0, 0, 0);
+            this._ptOrigin = new Point(0, 0);
+            this.bDispose完了済み = false;
 
-			if (fontfamily != null)
-			{
-				this._fontfamily = fontfamily;
-			}
-			else
-			{
-				try
-				{
-					this._pfc = new System.Drawing.Text.PrivateFontCollection();	//PrivateFontCollectionオブジェクトを作成する
-					this._pfc.AddFontFile(fontpath);								//PrivateFontCollectionにフォントを追加する
-					_fontfamily = _pfc.Families[0];
-				}
-				catch (System.IO.FileNotFoundException)
-				{
-					Trace.TraceWarning("プライベートフォントの追加に失敗しました({0})。代わりにMS UI Gothicの使用を試みます。", fontpath);
-					//throw new FileNotFoundException( "プライベートフォントの追加に失敗しました。({0})", Path.GetFileName( fontpath ) );
-					//return;
-					_fontfamily = null;
-				}
-			}
+            if (fontfamily != null)
+            {
+                this._fontfamily = fontfamily;
+            }
+            else
+            {
+                try
+                {
+                    this._pfc = new System.Drawing.Text.PrivateFontCollection();    //PrivateFontCollectionオブジェクトを作成する
+                    this._pfc.AddFontFile(fontpath);                                //PrivateFontCollectionにフォントを追加する
+                    _fontfamily = _pfc.Families[0];
+                }
+                catch (System.IO.FileNotFoundException)
+                {
+                    Trace.TraceWarning("プライベートフォントの追加に失敗しました({0})。代わりにMS UI Gothicの使用を試みます。", fontpath);
+                    //throw new FileNotFoundException( "プライベートフォントの追加に失敗しました。({0})", Path.GetFileName( fontpath ) );
+                    //return;
+                    _fontfamily = null;
+                }
+            }
 
-			// 指定されたフォントスタイルが適用できない場合は、フォント内で定義されているスタイルから候補を選んで使用する
-			// 何もスタイルが使えないようなフォントなら、例外を出す。
-			if (_fontfamily != null)
-			{
-				if (!_fontfamily.IsStyleAvailable(style))
-				{
-					FontStyle[] FS = { FontStyle.Regular, FontStyle.Bold, FontStyle.Italic, FontStyle.Underline, FontStyle.Strikeout };
-					style = FontStyle.Regular | FontStyle.Bold | FontStyle.Italic | FontStyle.Underline | FontStyle.Strikeout;	// null非許容型なので、代わりに全盛をNGワードに設定
-					foreach (FontStyle ff in FS)
-					{
-						if (this._fontfamily.IsStyleAvailable(ff))
-						{
-							style = ff;
-							Trace.TraceWarning("フォント{0}へのスタイル指定を、{1}に変更しました。", Path.GetFileName(fontpath), style.ToString());
-							break;
-						}
-					}
-					if (style == (FontStyle.Regular | FontStyle.Bold | FontStyle.Italic | FontStyle.Underline | FontStyle.Strikeout))
-					{
-						Trace.TraceWarning("フォント{0}は適切なスタイル{1}を選択できませんでした。", Path.GetFileName(fontpath), style.ToString());
-					}
-				}
-				float emSize = pt * 96.0f / 72.0f;
-				this._font = new Font(this._fontfamily, emSize, style, GraphicsUnit.Pixel);	//PrivateFontCollectionの先頭のフォントのFontオブジェクトを作成する
-				//HighDPI対応のため、pxサイズで指定
-			}
-			else
-			// フォントファイルが見つからなかった場合 (MS PGothicを代わりに指定する)
-			{
-				float emSize = pt * 96.0f / 72.0f;
-				this._font = new Font("MS UI Gothic", emSize, style, GraphicsUnit.Pixel);	//MS PGothicのFontオブジェクトを作成する
-				FontFamily[] ffs = new System.Drawing.Text.InstalledFontCollection().Families;
-				int lcid = System.Globalization.CultureInfo.GetCultureInfo("en-us").LCID;
-				foreach (FontFamily ff in ffs)
-				{
-					// Trace.WriteLine( lcid ) );
-					if (ff.GetName(lcid) == "MS UI Gothic")
-					{
-						this._fontfamily = ff;
-						Trace.TraceInformation("MS UI Gothicを代わりに指定しました。");
-						return;
-					}
-				}
-				throw new FileNotFoundException("プライベートフォントの追加に失敗し、MS UI Gothicでの代替処理にも失敗しました。({0})", Path.GetFileName(fontpath));
-			}
-		}
+            // 指定されたフォントスタイルが適用できない場合は、フォント内で定義されているスタイルから候補を選んで使用する
+            // 何もスタイルが使えないようなフォントなら、例外を出す。
+            if (_fontfamily != null)
+            {
+                if (!_fontfamily.IsStyleAvailable(style))
+                {
+                    FontStyle[] FS = { FontStyle.Regular, FontStyle.Bold, FontStyle.Italic, FontStyle.Underline, FontStyle.Strikeout };
+                    style = FontStyle.Regular | FontStyle.Bold | FontStyle.Italic | FontStyle.Underline | FontStyle.Strikeout;  // null非許容型なので、代わりに全盛をNGワードに設定
+                    foreach (FontStyle ff in FS)
+                    {
+                        if (this._fontfamily.IsStyleAvailable(ff))
+                        {
+                            style = ff;
+                            Trace.TraceWarning("フォント{0}へのスタイル指定を、{1}に変更しました。", Path.GetFileName(fontpath), style.ToString());
+                            break;
+                        }
+                    }
+                    if (style == (FontStyle.Regular | FontStyle.Bold | FontStyle.Italic | FontStyle.Underline | FontStyle.Strikeout))
+                    {
+                        Trace.TraceWarning("フォント{0}は適切なスタイル{1}を選択できませんでした。", Path.GetFileName(fontpath), style.ToString());
+                    }
+                }
+                float emSize = pt * 96.0f / 72.0f;
+                this._font = new Font(this._fontfamily, emSize, style, GraphicsUnit.Pixel); //PrivateFontCollectionの先頭のフォントのFontオブジェクトを作成する
+                                                                                            //HighDPI対応のため、pxサイズで指定
+            }
+            else
+            // フォントファイルが見つからなかった場合 (MS PGothicを代わりに指定する)
+            {
+                float emSize = pt * 96.0f / 72.0f;
+                this._font = new Font("MS UI Gothic", emSize, style, GraphicsUnit.Pixel);   //MS PGothicのFontオブジェクトを作成する
+                FontFamily[] ffs = new System.Drawing.Text.InstalledFontCollection().Families;
+                int lcid = System.Globalization.CultureInfo.GetCultureInfo("en-us").LCID;
+                foreach (FontFamily ff in ffs)
+                {
+                    // Trace.WriteLine( lcid ) );
+                    if (ff.GetName(lcid) == "MS UI Gothic")
+                    {
+                        this._fontfamily = ff;
+                        Trace.TraceInformation("MS UI Gothicを代わりに指定しました。");
+                        return;
+                    }
+                }
+                throw new FileNotFoundException("プライベートフォントの追加に失敗し、MS UI Gothicでの代替処理にも失敗しました。({0})", Path.GetFileName(fontpath));
+            }
+        }
 
-		[Flags]
-		public enum DrawMode
-		{
-			Normal,
-			Edge,
-			Gradation,
+        [Flags]
+        public enum DrawMode
+        {
+            Normal,
+            Edge,
+            Gradation,
             Vertical
-		}
+        }
 
-		#region [ DrawPrivateFontのオーバーロード群 ]
-		/// <summary>
-		/// 文字列を描画したテクスチャを返す
-		/// </summary>
-		/// <param name="drawstr">描画文字列</param>
-		/// <param name="fontColor">描画色</param>
-		/// <returns>描画済テクスチャ</returns>
-		public Bitmap DrawPrivateFont( string drawstr, Color fontColor )
-		{
-			return DrawPrivateFont( drawstr, DrawMode.Normal, fontColor, Color.White, Color.White, Color.White );
-		}
+        #region [ DrawPrivateFontのオーバーロード群 ]
+        /// <summary>
+        /// 文字列を描画したテクスチャを返す
+        /// </summary>
+        /// <param name="drawstr">描画文字列</param>
+        /// <param name="fontColor">描画色</param>
+        /// <returns>描画済テクスチャ</returns>
+        public Bitmap DrawPrivateFont(string drawstr, Color fontColor)
+        {
+            return DrawPrivateFont(drawstr, DrawMode.Normal, fontColor, Color.White, Color.White, Color.White);
+        }
 
-		/// <summary>
-		/// 文字列を描画したテクスチャを返す
-		/// </summary>
-		/// <param name="drawstr">描画文字列</param>
-		/// <param name="fontColor">描画色</param>
-		/// <param name="edgeColor">縁取色</param>
-		/// <returns>描画済テクスチャ</returns>
-		public Bitmap DrawPrivateFont( string drawstr, Color fontColor, Color edgeColor )
-		{
-			return DrawPrivateFont( drawstr, DrawMode.Edge, fontColor, edgeColor, Color.White, Color.White );
-		}
+        /// <summary>
+        /// 文字列を描画したテクスチャを返す
+        /// </summary>
+        /// <param name="drawstr">描画文字列</param>
+        /// <param name="fontColor">描画色</param>
+        /// <param name="edgeColor">縁取色</param>
+        /// <returns>描画済テクスチャ</returns>
+        public Bitmap DrawPrivateFont(string drawstr, Color fontColor, Color edgeColor)
+        {
+            return DrawPrivateFont(drawstr, DrawMode.Edge, fontColor, edgeColor, Color.White, Color.White);
+        }
 
-		/// <summary>
-		/// 文字列を描画したテクスチャを返す
-		/// </summary>
-		/// <param name="drawstr">描画文字列</param>
-		/// <param name="fontColor">描画色</param>
-		/// <param name="gradationTopColor">グラデーション 上側の色</param>
-		/// <param name="gradationBottomColor">グラデーション 下側の色</param>
-		/// <returns>描画済テクスチャ</returns>
-		//public Bitmap DrawPrivateFont( string drawstr, Color fontColor, Color gradationTopColor, Color gradataionBottomColor )
-		//{
-		//    return DrawPrivateFont( drawstr, DrawMode.Gradation, fontColor, Color.White, gradationTopColor, gradataionBottomColor );
-		//}
+        /// <summary>
+        /// 文字列を描画したテクスチャを返す
+        /// </summary>
+        /// <param name="drawstr">描画文字列</param>
+        /// <param name="fontColor">描画色</param>
+        /// <param name="gradationTopColor">グラデーション 上側の色</param>
+        /// <param name="gradationBottomColor">グラデーション 下側の色</param>
+        /// <returns>描画済テクスチャ</returns>
+        //public Bitmap DrawPrivateFont( string drawstr, Color fontColor, Color gradationTopColor, Color gradataionBottomColor )
+        //{
+        //    return DrawPrivateFont( drawstr, DrawMode.Gradation, fontColor, Color.White, gradationTopColor, gradataionBottomColor );
+        //}
 
-		/// <summary>
-		/// 文字列を描画したテクスチャを返す
-		/// </summary>
-		/// <param name="drawstr">描画文字列</param>
-		/// <param name="fontColor">描画色</param>
-		/// <param name="edgeColor">縁取色</param>
-		/// <param name="gradationTopColor">グラデーション 上側の色</param>
-		/// <param name="gradationBottomColor">グラデーション 下側の色</param>
-		/// <returns>描画済テクスチャ</returns>
-		public Bitmap DrawPrivateFont( string drawstr, Color fontColor, Color edgeColor, Color gradationTopColor, Color gradataionBottomColor )
-		{
-			return DrawPrivateFont( drawstr, DrawMode.Edge | DrawMode.Gradation, fontColor, edgeColor, gradationTopColor, gradataionBottomColor );
-		}
+        /// <summary>
+        /// 文字列を描画したテクスチャを返す
+        /// </summary>
+        /// <param name="drawstr">描画文字列</param>
+        /// <param name="fontColor">描画色</param>
+        /// <param name="edgeColor">縁取色</param>
+        /// <param name="gradationTopColor">グラデーション 上側の色</param>
+        /// <param name="gradationBottomColor">グラデーション 下側の色</param>
+        /// <returns>描画済テクスチャ</returns>
+        public Bitmap DrawPrivateFont(string drawstr, Color fontColor, Color edgeColor, Color gradationTopColor, Color gradataionBottomColor)
+        {
+            return DrawPrivateFont(drawstr, DrawMode.Edge | DrawMode.Gradation, fontColor, edgeColor, gradationTopColor, gradataionBottomColor);
+        }
 
 #if こちらは使わない // (Bitmapではなく、CTextureを返す版)
 		/// <summary>
@@ -480,68 +480,68 @@ namespace TJAPlayer3
 		/// <param name="gradationTopColor">グラデーション 上側の色</param>
 		/// <param name="gradationBottomColor">グラデーション 下側の色</param>
 		/// <returns>描画済テクスチャ</returns>
-		protected Bitmap DrawPrivateFont_V( string drawstr, Color fontColor, Color edgeColor, bool bVertical )
-		{
-			if ( this._fontfamily == null || drawstr == null || drawstr == "" )
-			{
-				// nullを返すと、その後bmp→texture処理や、textureのサイズを見て__の処理で全部例外が発生することになる。
-				// それは非常に面倒なので、最小限のbitmapを返してしまう。
-				// まずはこの仕様で進めますが、問題有れば(上位側からエラー検出が必要であれば)例外を出したりエラー状態であるプロパティを定義するなり検討します。
-				if ( drawstr != "" )
-				{
-					Trace.TraceWarning( "DrawPrivateFont()の入力不正。最小値のbitmapを返します。" );
-				}
-				_rectStrings = new Rectangle( 0, 0, 0, 0 );
-				_ptOrigin = new Point( 0, 0 );
-				return new Bitmap(1, 1);
-			}
+		protected Bitmap DrawPrivateFont_V(string drawstr, Color fontColor, Color edgeColor, bool bVertical)
+        {
+            if (this._fontfamily == null || drawstr == null || drawstr == "")
+            {
+                // nullを返すと、その後bmp→texture処理や、textureのサイズを見て__の処理で全部例外が発生することになる。
+                // それは非常に面倒なので、最小限のbitmapを返してしまう。
+                // まずはこの仕様で進めますが、問題有れば(上位側からエラー検出が必要であれば)例外を出したりエラー状態であるプロパティを定義するなり検討します。
+                if (drawstr != "")
+                {
+                    Trace.TraceWarning("DrawPrivateFont()の入力不正。最小値のbitmapを返します。");
+                }
+                _rectStrings = new Rectangle(0, 0, 0, 0);
+                _ptOrigin = new Point(0, 0);
+                return new Bitmap(1, 1);
+            }
 
-            string[] strName =  new string[ drawstr.Length ];
-            for( int i = 0; i < drawstr.Length; i++ ) strName[i] = drawstr.Substring(i, 1);
+            string[] strName = new string[drawstr.Length];
+            for (int i = 0; i < drawstr.Length; i++) strName[i] = drawstr.Substring(i, 1);
 
             #region[ キャンバスの大きさ予測 ]
             //大きさを計算していく。
             int nHeight = 0;
-            for( int i = 0; i < strName.Length; i++ )
+            for (int i = 0; i < strName.Length; i++)
             {
-                Size strSize = System.Windows.Forms.TextRenderer.MeasureText( strName[ i ], this._font, new Size( int.MaxValue, int.MaxValue ),
-				System.Windows.Forms.TextFormatFlags.NoPrefix |
-				System.Windows.Forms.TextFormatFlags.NoPadding );
+                Size strSize = System.Windows.Forms.TextRenderer.MeasureText(strName[i], this._font, new Size(int.MaxValue, int.MaxValue),
+                System.Windows.Forms.TextFormatFlags.NoPrefix |
+                System.Windows.Forms.TextFormatFlags.NoPadding);
 
                 //stringformatは最初にやっていてもいいだろう。
-			    StringFormat sFormat = new StringFormat();
-			    sFormat.LineAlignment = StringAlignment.Center;	// 画面下部（垂直方向位置）
-			    sFormat.Alignment = StringAlignment.Center;	// 画面中央（水平方向位置）
+                StringFormat sFormat = new StringFormat();
+                sFormat.LineAlignment = StringAlignment.Center; // 画面下部（垂直方向位置）
+                sFormat.Alignment = StringAlignment.Center;	// 画面中央（水平方向位置）
 
 
                 //できるだけ正確な値を計算しておきたい...!
-                Bitmap bmpDummy = new Bitmap( 150, 150 ); //とりあえず150
-                Graphics gCal = Graphics.FromImage( bmpDummy );
-                Rectangle rect正確なサイズ = this.MeasureStringPrecisely( gCal, strName[ i ], this._font, strSize, sFormat );
+                Bitmap bmpDummy = new Bitmap(150, 150); //とりあえず150
+                Graphics gCal = Graphics.FromImage(bmpDummy);
+                Rectangle rect正確なサイズ = this.MeasureStringPrecisely(gCal, strName[i], this._font, strSize, sFormat);
                 int n余白サイズ = strSize.Height - rect正確なサイズ.Height;
 
-                Rectangle rect = new Rectangle( 0, -n余白サイズ + 2, 46, ( strSize.Height + 16 ));
+                Rectangle rect = new Rectangle(0, -n余白サイズ + 2, 46, (strSize.Height + 16));
 
-                if( strName[ i ] == "ー" || strName[ i ] == "-" || strName[ i ] == "～" || strName[ i ] == "<" || strName[ i ] == ">" || strName[ i ] == "(" || strName[ i ] == ")" || strName[ i ] == "「" || strName[ i ] == "」" || strName[ i ] == "[" || strName[ i ] == "]" )
+                if (strName[i] == "ー" || strName[i] == "-" || strName[i] == "～" || strName[i] == "<" || strName[i] == ">" || strName[i] == "(" || strName[i] == ")" || strName[i] == "「" || strName[i] == "」" || strName[i] == "[" || strName[i] == "]")
                 {
-                    nHeight += ( rect正確なサイズ.Width ) + 4;
+                    nHeight += (rect正確なサイズ.Width) + 4;
                 }
-                else if( strName[ i ] == "_" ){ nHeight += ( rect正確なサイズ.Height ) + 6;  }
-                else if( strName[ i ] == " " )
-                { nHeight += ( 12 ); }
-                else { nHeight += ( rect正確なサイズ.Height ) + 10; }
+                else if (strName[i] == "_") { nHeight += (rect正確なサイズ.Height) + 6; }
+                else if (strName[i] == " ")
+                { nHeight += (12); }
+                else { nHeight += (rect正確なサイズ.Height) + 10; }
 
                 //念のため解放
                 bmpDummy.Dispose();
                 gCal.Dispose();
 
                 //stream.WriteLine( "文字の大きさ{0},大きさ合計{1}", ( rect正確なサイズ.Height ) + 6, nHeight );
-                
+
             }
             #endregion
 
-            Bitmap bmpCambus = new Bitmap( 46, nHeight );
-            Graphics Gcambus = Graphics.FromImage( bmpCambus );
+            Bitmap bmpCambus = new Bitmap(46, nHeight);
+            Graphics Gcambus = Graphics.FromImage(bmpCambus);
 
             //キャンバス作成→1文字ずつ作成してキャンバスに描画という形がよさそうかな?
             int nNowPos = 0;
@@ -682,14 +682,14 @@ namespace TJAPlayer3
                 }
                 //個別の文字に関して、カンマで区切ってSkinConfigに記入したものを回転させる(20181205 rhimm)
 
-                else if( strName[ i ] == " " )
+                else if (strName[i] == " ")
                     nNowPos = nNowPos + 10;
 
-                if( i == 0 )
+                if (i == 0)
                 {
                     nNowPos = 4;
                 }
-                Gcambus.DrawImage( bmpV, (bmpCambus.Width / 2) - (bmpV.Width / 2) + n補正, nNowPos + nY補正 );
+                Gcambus.DrawImage(bmpV, (bmpCambus.Width / 2) - (bmpV.Width / 2) + n補正, nNowPos + nY補正);
                 nNowPos += bmpV.Size.Height - 6;
 
                 bmpV?.Dispose(); bmpV = null;
@@ -699,16 +699,16 @@ namespace TJAPlayer3
                 //if( this._pt < 20 )
                 //    bmpCambus.Save( "test_S.png" );
 
-			    _rectStrings = new Rectangle( 0, 0, strSize.Width, strSize.Height );
-			    _ptOrigin = new Point( 6 * 2, 6 * 2 ); 
+                _rectStrings = new Rectangle(0, 0, strSize.Width, strSize.Height);
+                _ptOrigin = new Point(6 * 2, 6 * 2);
             }
             //stream.Close();
 
-            if( Gcambus != null ) Gcambus.Dispose();
+            if (Gcambus != null) Gcambus.Dispose();
 
-			//return bmp;
+            //return bmp;
             return bmpCambus;
-		}
+        }
 
         //------------------------------------------------
         //使用:http://dobon.net/vb/dotnet/graphics/measurestring.html
@@ -860,31 +860,31 @@ namespace TJAPlayer3
         */
         //------------------------------------------------
 
-		/// <summary>
-		/// 最後にDrawPrivateFont()した文字列の描画領域を取得します。
-		/// </summary>
-		public Rectangle RectStrings
-		{
-			get
-			{
-				return _rectStrings;
-			}
-			protected set
-			{
-				_rectStrings = value;
-			}
-		}
-		public Point PtOrigin
-		{
-			get
-			{
-				return _ptOrigin;
-			}
-			protected set
-			{
-				_ptOrigin = value;
-			}
-		}
+        /// <summary>
+        /// 最後にDrawPrivateFont()した文字列の描画領域を取得します。
+        /// </summary>
+        public Rectangle RectStrings
+        {
+            get
+            {
+                return _rectStrings;
+            }
+            protected set
+            {
+                _rectStrings = value;
+            }
+        }
+        public Point PtOrigin
+        {
+            get
+            {
+                return _ptOrigin;
+            }
+            protected set
+            {
+                _ptOrigin = value;
+            }
+        }
 
         #region [ IDisposable 実装 ]
         //-----------------
@@ -915,14 +915,14 @@ namespace TJAPlayer3
         #region [ private ]
         //-----------------
         protected bool bDispose完了済み;
-		protected Font _font;
+        protected Font _font;
 
-		private System.Drawing.Text.PrivateFontCollection _pfc;
-		private FontFamily _fontfamily;
-		private int _pt;
-		private Rectangle _rectStrings;
-		private Point _ptOrigin;
-		//-----------------
-		#endregion
-	}
+        private System.Drawing.Text.PrivateFontCollection _pfc;
+        private FontFamily _fontfamily;
+        private int _pt;
+        private Rectangle _rectStrings;
+        private Point _ptOrigin;
+        //-----------------
+        #endregion
+    }
 }

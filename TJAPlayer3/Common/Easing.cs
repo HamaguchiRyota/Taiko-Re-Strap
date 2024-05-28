@@ -1,10 +1,10 @@
-﻿using System;
-using FDK;
+﻿using FDK;
+using System;
 
 namespace TJAPlayer3
 {
     class Easing
-    {   
+    {
 
         public int EaseOut(CCounter counter, int startPoint, int endPoint, CalcType type)
         {

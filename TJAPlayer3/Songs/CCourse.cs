@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 
 namespace TJAPlayer3
 {
@@ -13,12 +9,12 @@ namespace TJAPlayer3
         //
         //
         //○コースデータ（.tjc）
-        
+
         //複数の曲を共通のゲージで連続して演奏します。
         //通常ゲージは某段位認定っぽい増減の仕方をします（補正なし）。
-        
+
         //また曲は自動的に再生されるため、ばいそく等のオプションの使用は出来ません。
-        
+
         //.tjcのファイルは他の譜面（.tja等）と同様に扱われるので譜面データと同じフォルダに入れても構いません。
         //
         //    ●ヘッダ
@@ -38,9 +34,9 @@ namespace TJAPlayer3
         //            指定されたデータは上にあるものから順に演奏されます。
 
 
-        public void t入力( string strファイル名 )
+        public void t入力(string strファイル名)
         {
-            StreamReader reader = new StreamReader( strファイル名 );
+            StreamReader reader = new StreamReader(strファイル名);
             string str = reader.ReadToEnd();
             reader.Close();
         }

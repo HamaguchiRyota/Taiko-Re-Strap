@@ -1,32 +1,32 @@
-﻿using System;
+﻿using FDK;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using FDK;
 
 namespace TJAPlayer3
 {
-	internal class CAct演奏Combo音声 : CActivity
-	{
-		// コンストラクタ
+    internal class CAct演奏Combo音声 : CActivity
+    {
+        // コンストラクタ
 
-		public CAct演奏Combo音声()
-		{
-			base.b活性化してない = true;
-		}
-		
-		// メソッド
-        public void t再生( int nCombo, int player )
+        public CAct演奏Combo音声()
         {
-            if(VoiceIndex[player] < ListCombo[player].Count)
+            base.b活性化してない = true;
+        }
+
+        // メソッド
+        public void t再生(int nCombo, int player)
+        {
+            if (VoiceIndex[player] < ListCombo[player].Count)
             {
-                
+
                 var index = ListCombo[player][VoiceIndex[player]];
                 if (nCombo == index.nCombo)
                 {
                     index.soundComboVoice.t再生を開始する();
                     VoiceIndex[player]++;
                 }
-                
+
             }
         }
 
@@ -39,21 +39,21 @@ namespace TJAPlayer3
             VoiceIndex[nPlayer] = 0;
         }
 
-		// CActivity 実装
+        // CActivity 実装
 
-		public override void On活性化()
-		{
+        public override void On活性化()
+        {
             for (int i = 0; i < 2; i++)
             {
                 ListCombo[i] = new List<CComboVoice>();
             }
             VoiceIndex = new int[] { 0, 0 };
-			base.On活性化();
-		}
-		public override void OnManagedリソースの作成()
-		{
-			if( !base.b活性化してない )
-			{
+            base.On活性化();
+        }
+        public override void OnManagedリソースの作成()
+        {
+            if (!base.b活性化してない)
+            {
                 // フォルダ内を走査してコンボボイスをListに入れていく
                 // 1P、2P コンボボイス
                 for (int i = 0; i < TJAPlayer3.ConfigIni.nPlayerCount; i++)
@@ -80,19 +80,19 @@ namespace TJAPlayer3
                             comboVoice.nCombo = int.Parse(Path.GetFileNameWithoutExtension(item));
                             ListCombo[i].Add(comboVoice);
                         }
-                        if(ListCombo[i].Count > 0)
+                        if (ListCombo[i].Count > 0)
                         {
                             ListCombo[i].Sort();
                         }
                     }
                 }
-    			base.OnManagedリソースの作成();
-			}
-		}
-		public override void OnManagedリソースの解放()
-		{
-			if( !base.b活性化してない )
-			{
+                base.OnManagedリソースの作成();
+            }
+        }
+        public override void OnManagedリソースの解放()
+        {
+            if (!base.b活性化してない)
+            {
                 for (int i = 0; i < 2; i++)
                 {
                     foreach (var item in ListCombo[i])
@@ -102,17 +102,17 @@ namespace TJAPlayer3
                     ListCombo[i].Clear();
                 }
 
-				base.OnManagedリソースの解放();
-			}
-		}
+                base.OnManagedリソースの解放();
+            }
+        }
 
-		#region [ private ]
-		//-----------------
+        #region [ private ]
+        //-----------------
         int[] VoiceIndex;
         readonly List<CComboVoice>[] ListCombo = new List<CComboVoice>[2];
-		//-----------------
-		#endregion
-	}
+        //-----------------
+        #endregion
+    }
 
     public class CComboVoice : IComparable<CComboVoice>
     {
@@ -131,10 +131,10 @@ namespace TJAPlayer3
             soundComboVoice = null;
         }
 
-        public int CompareTo( CComboVoice other )
+        public int CompareTo(CComboVoice other)
         {
-            if( this.nCombo > other.nCombo ) return 1;
-            else if( this.nCombo < other.nCombo ) return -1;
+            if (this.nCombo > other.nCombo) return 1;
+            else if (this.nCombo < other.nCombo) return -1;
 
             return 0;
         }

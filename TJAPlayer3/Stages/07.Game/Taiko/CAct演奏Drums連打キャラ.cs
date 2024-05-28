@@ -1,25 +1,25 @@
+using FDK;
 using System;
 using System.Runtime.InteropServices;
-using FDK;
 
 namespace TJAPlayer3
 {
-	internal class CAct演奏Drums連打キャラ : CActivity
-	{
-		// コンストラクタ
+    internal class CAct演奏Drums連打キャラ : CActivity
+    {
+        // コンストラクタ
 
-		public CAct演奏Drums連打キャラ()
-		{
-			base.b活性化してない = true;
-		}
-		
-		
-		// メソッド
-        public virtual void Start( int nPlayer )
-		{
+        public CAct演奏Drums連打キャラ()
+        {
+            base.b活性化してない = true;
+        }
+
+
+        // メソッド
+        public virtual void Start(int nPlayer)
+        {
             for (int i = 0; i < 128; i++)
             {
-                if(!RollCharas[i].IsUsing)
+                if (!RollCharas[i].IsUsing)
                 {
                     RollCharas[i].IsUsing = true;
                     //RollCharas[i].Type = random.Next(0, TJAPlayer3.Skin.Game_Effect_Roll_Ptn);
@@ -54,16 +54,16 @@ namespace TJAPlayer3
                         RollCharas[i].YAdd = TJAPlayer3.Skin.Game_Effect_Roll_Speed_Y[random.Next(0, TJAPlayer3.Skin.Game_Effect_Roll_Speed_Y.Length)];
                     }
                     break;
-                    
+
                 }
             }
 
-		}
+        }
 
-		// CActivity 実装
+        // CActivity 実装
 
-		public override void On活性化()
-		{
+        public override void On活性化()
+        {
             for (int i = 0; i < 128; i++)
             {
                 RollCharas[i] = new RollChara();
@@ -73,40 +73,40 @@ namespace TJAPlayer3
             // SkinConfigで指定されたいくつかの変数からこのクラスに合ったものに変換していく
 
             base.On活性化();
-		}
-		public override void On非活性化()
-		{
+        }
+        public override void On非活性化()
+        {
             for (int i = 0; i < 128; i++)
             {
                 RollCharas[i].Counter = null;
             }
-			base.On非活性化();
-		}
-		public override void OnManagedリソースの作成()
-		{
-			if( !base.b活性化してない )
-			{
-				base.OnManagedリソースの作成();
-			}
-		}
-		public override void OnManagedリソースの解放()
-		{
-			if( !base.b活性化してない )
-			{
-				base.OnManagedリソースの解放();
-			}
-		}
-		public override int On進行描画()
-		{
-			if( !base.b活性化してない )
-			{
+            base.On非活性化();
+        }
+        public override void OnManagedリソースの作成()
+        {
+            if (!base.b活性化してない)
+            {
+                base.OnManagedリソースの作成();
+            }
+        }
+        public override void OnManagedリソースの解放()
+        {
+            if (!base.b活性化してない)
+            {
+                base.OnManagedリソースの解放();
+            }
+        }
+        public override int On進行描画()
+        {
+            if (!base.b活性化してない)
+            {
                 for (int i = 0; i < 128; i++)
                 {
-                    if(RollCharas[i].IsUsing)
+                    if (RollCharas[i].IsUsing)
                     {
                         RollCharas[i].OldValue = RollCharas[i].Counter.n現在の値;
                         RollCharas[i].Counter.t進行();
-                        if(RollCharas[i].Counter.b終了値に達した)
+                        if (RollCharas[i].Counter.b終了値に達した)
                         {
                             RollCharas[i].Counter.t停止();
                             RollCharas[i].IsUsing = false;
@@ -120,13 +120,13 @@ namespace TJAPlayer3
 
 
                         if (RollCharas[i].Player == 0)
-					    {
+                        {
                             TJAPlayer3.Tx.Effects_Roll?.t2D描画(TJAPlayer3.app.Device, RollCharas[i].X, RollCharas[i].Y);
                         }
                         else if (RollCharas[i].Player == 1)
-						{
+                        {
                             TJAPlayer3.Tx.Effects_Roll_2P?.t2D描画(TJAPlayer3.app.Device, RollCharas[i].X, RollCharas[i].Y);
-                        }        
+                        }
                         // 画面外にいたら描画をやめさせる
                         if (RollCharas[i].X < 0 - TJAPlayer3.Tx.Effects_Roll.szテクスチャサイズ.Width || RollCharas[i].X > 1280)
                         {
@@ -140,15 +140,15 @@ namespace TJAPlayer3
                         }
                     }
                 }
-			}
-			return 0;
-		}
-		
+            }
+            return 0;
+        }
 
-		// その他
 
-		#region [ private ]
-		//-----------------
+        // その他
+
+        #region [ private ]
+        //-----------------
         private int nTex枚数;
 
         [StructLayout(LayoutKind.Sequential)]
@@ -181,7 +181,7 @@ namespace TJAPlayer3
             public float YAdd;
             public int OldValue;
             public int Player;
-		}
+        }
 
         private RollChara[] RollCharas = new RollChara[128];
 

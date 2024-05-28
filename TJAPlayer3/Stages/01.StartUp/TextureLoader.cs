@@ -1,7 +1,5 @@
 using FDK;
-using SharpDX;
 using System.Collections.Generic;
-using Un4seen.Bass.AddOn.Vst;
 
 namespace TJAPlayer3
 {
@@ -108,27 +106,27 @@ namespace TJAPlayer3
             Entry_Player[1] = TxC(TITLE + @"Entry_Player_Select_Bar.png");
             Entry_Player[2] = TxC(TITLE + @"Entry_Player_Select.png");
 
-            for(int i = 0; i < Donchan_Entry.Length; i++)
+            for (int i = 0; i < Donchan_Entry.Length; i++)
             {
                 Donchan_Entry[i] = TxC(TITLE + @"Donchan_Entry\" + i.ToString() + ".png");
             }
 
-            for(int i = 0; i < Entry_Donchan_Normal.Length; i++)
+            for (int i = 0; i < Entry_Donchan_Normal.Length; i++)
             {
                 Entry_Donchan_Normal[i] = TxC(TITLE + @"Donchan_Normal\" + i.ToString() + ".png");
             }
 
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 ModeSelect_Bar[i] = TxC(TITLE + @"ModeSelect_Bar_" + i.ToString() + ".png");
             }
-            
-            for(int i = 0; i < 2; i++)
+
+            for (int i = 0; i < 2; i++)
             {
                 ModeSelect_Bar_Chara[i] = TxC(TITLE + @"ModeSelect_Bar_Chara_" + i.ToString() + ".png");
             }
 
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 ModeSelect_Bar_Text[i] = TxC(TITLE + @"ModeSelect_Bar_Text_" + i.ToString() + ".png");
             }
@@ -208,7 +206,7 @@ namespace TJAPlayer3
             }
 
             TJAPlayer3.Skin.SongSelect_Genre_Background_Count = TJAPlayer3.t連番画像の枚数を数える(CSkin.Path(BASE + SONGSELECT + @"Genre_Background\"), "GenreBackground_");
-            
+
             if (TJAPlayer3.Skin.SongSelect_Genre_Background_Count != 0)
             {
                 SongSelect_GenreBack = new CTexture[TJAPlayer3.Skin.SongSelect_Genre_Background_Count];
@@ -274,6 +272,7 @@ namespace TJAPlayer3
             Dani_Exam_Number = TxC(DANISELECT + "ExamNumber.png");
             Dani_Bar_Center = TxC(DANISELECT + "Bar_Center.png");
             Dani_Plate = TxC(DANISELECT + "Plate.png");
+            Dani_Header = TxC(DANISELECT + "header.png");
 
             Dani_Dan_In = TxC(DANISELECT + "Dan_In.png");
             Dani_Dan_Text = TxC(DANISELECT + "Dan_Text.png");
@@ -478,7 +477,7 @@ namespace TJAPlayer3
             Background_Up_Clear = new CTexture[2];
             Background_Up_Clear[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_Clear.png");
             Background_Up_Clear[1] = TxC(GAME + BACKGROUND + @"0\" + @"2P_Up_Clear.png");
-            
+
             Background_Up_YMove = new CTexture[2];
             Background_Up_YMove[0] = TxC(GAME + BACKGROUND + @"0/" + @"1P_Up_YMove.png");
             Background_Up_YMove[1] = TxC(GAME + BACKGROUND + @"0/" + @"2P_Up_YMove.png");
@@ -491,7 +490,7 @@ namespace TJAPlayer3
             Background_Up_Sakura_Clear = new CTexture[2];
             Background_Up_Sakura_Clear[0] = TxC(GAME + BACKGROUND + @"0/" + @"1P_Up_Sakura_Clear.png");
             Background_Up_Sakura_Clear[1] = TxC(GAME + BACKGROUND + @"0/" + @"2P_Up_Sakura_Clear.png");
-            
+
             /*
             Background_Up_1st = new CTexture[3];
             Background_Up_1st[0] = TxC(GAME + BACKGROUND + @"0\" + @"1P_Up_1st.png");
@@ -749,7 +748,7 @@ namespace TJAPlayer3
             }
             #endregion
             #region Training
-            
+
             Tokkun_DownBG = TxC(GAME + TRAINING + @"Down.png");
             Tokkun_BigTaiko = TxC(GAME + TRAINING + @"BigTaiko.png");
             Tokkun_BigDon_Left = TxC(GAME + TRAINING + @"BigDon.png");
@@ -856,104 +855,9 @@ namespace TJAPlayer3
 
         }
 
+        /*
         public void DisposeTexture()
         {
-            #region 共通
-            /*
-            TJAPlayer3.t安全にDisposeする(ref Tile_Black);
-            TJAPlayer3.t安全にDisposeする(ref Menu_Title);
-            TJAPlayer3.t安全にDisposeする(ref Menu_Highlight);
-            TJAPlayer3.t安全にDisposeする(ref Enum_Song);
-            TJAPlayer3.t安全にDisposeする(ref Enum_Song_Load);
-            TJAPlayer3.t安全にDisposeする(ref Scanning_Loudness);
-            TJAPlayer3.t安全にDisposeする(ref Overlay);
-            TJAPlayer3.t安全にDisposeする(ref Network_Connection);
-            TJAPlayer3.t安全にDisposeする(ref NamePlateBase);
-            TJAPlayer3.t安全にDisposeする(ref NamePlate_Effect);
-            TJAPlayer3.t安全にDisposeする(ref NamePlate);
-            */
-            #endregion
-
-            #region 1_タイトル画面
-            /*
-            TJAPlayer3.t安全にDisposeする(ref Title_Background);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Overlay);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Bar);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Bar_Text);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Bar_Select);
-            TJAPlayer3.t安全にDisposeする(ref Banapas_Load);
-            TJAPlayer3.t安全にDisposeする(ref Banapas_Load_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Banapas_Load_Failure);
-            TJAPlayer3.t安全にDisposeする(ref Entry_Player);
-
-            for (int i = 0; i < Donchan_Entry.Length; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref Donchan_Entry[i]);
-            }
-            for (int i = 0; i < Entry_Donchan_Normal.Length; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref Entry_Donchan_Normal[i]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref ModeSelect_Bar[i]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref ModeSelect_Bar_Chara[i]);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                TJAPlayer3.t安全にDisposeする(ref ModeSelect_Bar_Text[i]);
-            }
-            */
-            #endregion
-
-            #region 2_コンフィグ画面
-            /*
-            TJAPlayer3.t安全にDisposeする(ref Config_Background);
-            TJAPlayer3.t安全にDisposeする(ref Config_Header);
-            TJAPlayer3.t安全にDisposeする(ref Config_Cursor);
-            TJAPlayer3.t安全にDisposeする(ref Config_ItemBox);
-            TJAPlayer3.t安全にDisposeする(ref Config_Arrow);
-            TJAPlayer3.t安全にDisposeする(ref Config_KeyAssign);
-            TJAPlayer3.t安全にDisposeする(ref Config_Font);
-            TJAPlayer3.t安全にDisposeする(ref Config_Font_Bold);
-            TJAPlayer3.t安全にDisposeする(ref Config_Enum_Song);
-            */
-            #endregion
-
-            #region 5_演奏画面
-            /*
-
-            #region 背景
-
-            TJAPlayer3.t安全にDisposeする(ref Background);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_YMove);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_YMove_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_Sakura);
-            TJAPlayer3.t安全にDisposeする(ref Background_Up_Sakura_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Light_B);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Clear);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Scroll);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Scroll_Matu);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Scroll_Kumo);
-            TJAPlayer3.t安全にDisposeする(ref Background_Down_Koma);
-
-
-
-
-            #endregion
-
-
-
-
-            */
-            #endregion
-            
             foreach (var tex in listTexture)
             {
                 var texture = tex;
@@ -962,8 +866,22 @@ namespace TJAPlayer3
                 texture = null;
             }
             listTexture.Clear();
-            
         }
+        */
+
+        public void DisposeTexture()
+        {
+            for (int i = 0; i < listTexture.Count; i++)
+            {
+                var texture = listTexture[i];
+                TJAPlayer3.tテクスチャの解放(ref texture);
+                texture?.Dispose();
+                listTexture[i] = null; // 参照をクリアする
+            }
+            listTexture.Clear();
+        }
+
+
 
         #region 共通
         public CTexture Tile_Black,
@@ -1042,7 +960,7 @@ namespace TJAPlayer3
             SongSelect_BoardNumber,
             SongSelect_Counter,
             SongSelect_ScoreNumber;
-        public CTexture[] 
+        public CTexture[]
             SongSelect_GenreBack,
             SongSelect_Bar_Genre,
             SongSelect_Box_Chara,
@@ -1078,6 +996,7 @@ namespace TJAPlayer3
         public CTexture Dani_Exam_Number;
         public CTexture Dani_Bar_Center;
         public CTexture Dani_Plate;
+        public CTexture Dani_Header;
 
         public CTexture Dani_Dan_In;
         public CTexture Dani_Dan_Text;
@@ -1106,7 +1025,7 @@ namespace TJAPlayer3
             ScoreRank,
             Song_Number_Ingame,
             Judge;
-            //NowStages;
+        //NowStages;
         public CTexture Bar,
             Judge_Meter,
             Bar_Branch;
@@ -1191,7 +1110,7 @@ namespace TJAPlayer3
             Taiko_Combo_Effect,
             Taiko_Combo_Text;
         public CTexture[] Couse_Symbol,// コースシンボル
-            //Taiko_PlayerNumber,
+                                       //Taiko_PlayerNumber,
             Taiko_NamePlate; // ネームプレート
         public CTexture[] Taiko_Score,
             Taiko_Combo;

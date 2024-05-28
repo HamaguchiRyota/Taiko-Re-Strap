@@ -29,7 +29,7 @@ namespace SampleFramework
         public const int WM_SYSCOMMAND = 0x112;
         public const int WM_ACTIVATEAPP = 0x001C;
         public const int WM_POWERBROADCAST = 0x0218;
-		public const int WM_COPYDATA = 0x004A;
+        public const int WM_COPYDATA = 0x004A;
 
         public const int SC_SCREENSAVE = 0xF140;
         public const int SC_MONITORPOWER = 0xF170;
@@ -72,6 +72,6 @@ namespace SampleFramework
 
         public const int MONITOR_DEFAULTTOPRIMARY = 1;
 
-		public const int WM_USER = 0x400;
-	}
+        public const int WM_USER = 0x400;
+    }
 }

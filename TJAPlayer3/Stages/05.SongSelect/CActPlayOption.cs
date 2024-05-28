@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FDK;
+using System;
 using System.Drawing;
-using FDK;
 
 namespace TJAPlayer3
 {
@@ -91,6 +89,7 @@ namespace TJAPlayer3
                 OptionType[i].vc拡大縮小倍率.X = 0.96f;
 
             base.On活性化();
+
         }
 
         public override void On非活性化()
@@ -165,11 +164,9 @@ namespace TJAPlayer3
             txRandom[nRandom].t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + 3 * 40.7f);
             txGameMode[nGameMode].t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + 4 * 40.7f);
             txSwitch[nAutoMode].t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + 5 * 40.7f);
+            txNone?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + 6 * 40.7f);
+            txOtoiro[nOtoiro].t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + 7 * 40.7f);
 
-            for (int i = 6; i < 8; i++)
-            {
-                txNone?.t2D拡大率考慮描画(TJAPlayer3.app.Device, CTexture.RefPnt.Up, 200, 375 + y + i * 40.7f);
-            }
 
             if (ctClose.n現在の値 >= 50)
             {
@@ -246,8 +243,6 @@ namespace TJAPlayer3
 
         public CTexture[] txSwitch = new CTexture[2];
 
-        //public CTexture[] txTiming = new CTexture[5];
-        //public int nTiming = 2;
 
         public CTexture OptionTypeTx(string str文字, Color forecolor, Color backcolor)
         {
@@ -295,6 +290,8 @@ namespace TJAPlayer3
                 case 5:
                     if (nAutoMode == 0) nAutoMode = 1;
                     else nAutoMode = 0;
+                    break;
+                case 6:
                     break;
                 case 7:
                     ShiftVal(left, ref nOtoiro, txOtoiro.Length - 1, 0);

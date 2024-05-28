@@ -138,4 +138,7 @@
   <data name="Stage_StartUp" xml:space="preserve">
     <value>Startup</value>
   </data>
+  <data name="Stage_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
 </root>

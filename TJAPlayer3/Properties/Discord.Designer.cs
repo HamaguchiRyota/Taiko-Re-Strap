@@ -122,5 +122,14 @@ namespace TJAPlayer3.Properties {
                 return ResourceManager.GetString("Stage_StartUp", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Title に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Stage_Title {
+            get {
+                return ResourceManager.GetString("Stage_Title", resourceCulture);
+            }
+        }
     }
 }

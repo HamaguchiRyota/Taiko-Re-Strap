@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FDK;
+﻿using FDK;
 using System.Drawing;
 
 namespace TJAPlayer3
@@ -45,7 +41,7 @@ namespace TJAPlayer3
                 {
                     if (i > TJAPlayer3.Skin.Game_Effect_GoGoSplash_Y.Length) break;
                     // Yの配列がiよりも小さかったらそこでキャンセルする。
-                    if(TJAPlayer3.Skin.Game_Effect_GoGoSplash_Rotate && TJAPlayer3.Tx.Effects_GoGoSplash != null)
+                    if (TJAPlayer3.Skin.Game_Effect_GoGoSplash_Rotate && TJAPlayer3.Tx.Effects_GoGoSplash != null)
                     {
                         // Switch文を使いたかったが、定数じゃないから使えねぇ!!!!
                         if (i == 0)

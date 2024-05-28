@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-using System.Runtime.InteropServices;
-using FDK;
+﻿using FDK;
 using System.Drawing;
 
 namespace TJAPlayer3
 {
-	internal class CAct演奏Drums判定文字列 : CActivity
-	{
+    internal class CAct演奏Drums判定文字列 : CActivity
+    {
         // コンストラクタ
         public CAct演奏Drums判定文字列()
         {

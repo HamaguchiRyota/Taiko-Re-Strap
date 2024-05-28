@@ -1,9 +1,9 @@
-﻿using System;
+﻿using FDK.ExtensionMethods;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using FDK.ExtensionMethods;
 
 namespace TJAPlayer3
 {
